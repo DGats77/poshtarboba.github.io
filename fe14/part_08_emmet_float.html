@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+	<title>Frontend. Заняття 8. Emmet, вирівнювання, hover, вага стилів, акуратність коду, border.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css?3">
+	<style>
+		p.test { font-size: 24px; line-height: 1.4em;}
+		p.test a:hover { color: green !important;}
+		p.test a:active { color: red !important;}
+		p.test a:visited { color: silver;}
+		p.test a:link { color:orange;}
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Emmet, вирівнювання, hover, вага стилів, акуратність коду, border.</h1>
+
+		<section>
+			<h2 class="js-toggle" data-id="toggle_emmet">Emmet.</h2>
+			<p>Для пришвидшення наробу коду існують різноманітні препроцесори, інструменти автодоповнення, підказок.</p>
+			<p>Одним із інструментів швидкого набору коду є <strong>Emmet</strong>.</p>
+			<div class="js-toggle-box" id="toggle_emmet">
+				<p>В jsFiddle та PHPStorm плагін Emmet вже вбудований. У інші IDE його можна підключити, <a href="https://emmet.io/download/" target="_blank">скачавши плагін</a>.</p>
+				<p>З повною документацією можна ознайомитися на <a href="https://docs.emmet.io/" target="_blank">офіційному сайті</a>.</p>
+				<h3>HTML.</h3>
+				<p>Для використання Emmet вводьте скорочений код і нажимайте <kbd>Tab</kbd>.</p>
+				<p>Поексперементуйте:</p>
+				<code>
+					p<kbd>Tab</kbd><br>
+					div<kbd>Tab</kbd><br>
+					a<kbd>Tab</kbd><br>
+					img<kbd>Tab</kbd><br>
+					link<kbd>Tab</kbd><br>
+					!<kbd>Tab</kbd>
+				</code>
+				<p>Якщо потрібно задати клас чи id - прописуйте їх через крапку чи ришітку:</p>
+				<code>
+					p.title<br>
+					div.big.red.bold<br>
+					.news<br>
+					div#news<br>
+					div#news.news<br>
+					#news.news
+				</code>
+				<p>Кутова дужка <strong>&gt;</strong> вказує на дочірній елемент. Символ плюса - на сусідній елемент:</p>
+				<code>
+					div>p<br>
+					div>p>strong>a>span<br>
+					div>h2+p+p<br>
+					ul>li+li+li+li
+				</code>
+				<p>В останньому випадку li задавати не дуже зручно. Символ множення вказує на необхідність створити копії елементів:</p>
+				<code>
+					ul>li*4<br>
+					p.info*4>span
+				</code>
+				<p>Текст вказується в фігурних дужках, можна використати символ долара як лічильник:</p>
+				<code>
+					h2{Семантика HTML5}<br>
+					p{Тест}*3<br>
+					p>span{$}*4<br>
+					ul>li{Item $}*5
+				</code>
+				<p>Повернутися до батьківського елемента можна за допомогою символа карет (^):</p>
+				<code>
+					p>span{привіт}+{ світ}^p>span{кагділа?}<br>
+					ul>li*4>a{посилання}^^p{текст під меню}
+				</code>
+				<p>Дужками можна виокремлювати блоки, порівняйте результат:</p>
+				<code>
+					ul>li*4>a{посилання}^^p{текст під меню}<br>
+					ul>(li*4>a{посилання})^^p{текст під меню}
+				</code>
+				<p>Текст-рибу можна створити скороченням lorem, можна вказати кількість слів:</p>
+				<code>
+					lorem<br>
+					p>lorem<br>
+					lorem5<br>
+					lorem100
+				</code>
+				<h3>CSS.</h3>
+				<p>В CSS є великий набір скорочень для стилів, деякі з них:</p>
+				<code>
+					c#f00 = color: #f00;<br>
+					m20 = margin: 20px;<br>
+					p8/16 = padding: 8px 16px;<br>
+					fz18 = font-size: 18px;
+				</code>
+				<p>З повним переліком скорочень можете ознайомитися в <a href="https://github.com/sergeche/emmet-sublime/blob/master/emmet/snippets.json" target="_blank">snippets.json</a>.</p>
+			</div>
+		</section>
+
+		<section>
+			<h2>Вирівнювання плаваючих блоків.</h2>
+			<p>Якщо потрібно розмістити блоки зліва чи справа - для них використовується стиль <strong>float</strong>.</p>
+			<p>Після використання стиля float як правило потрібно використати блок зі стилем <strong>clear</strong>.</p>
+			<code>
+				.left-box { float: left; }<br>
+				.right-box { float: right; }<br>
+				.clear { clear: both; }<br><br>
+				&lt;div class="wrap"&gt;<br>
+				&nbsp;&nbsp;&lt;div class="left-box">Блок зліва&lt;/div&gt;<br>
+				&nbsp;&nbsp;&lt;div class="right-box">Блок зправа&lt;/div&gt;<br>
+				&nbsp;&nbsp;&lt;div class="clear">&lt;/div&gt;<br>
+				&nbsp;&nbsp;&lt;p>Текст після блоків&lt;/p&gt;<br>
+				&lt;/div&gt;
+			</code>
+			<div class="clear_example clr">
+				<div>float: left;</div>
+				<div>float: right;</div>
+			</div>
+			<p>Clear не треба використовувати лише в тих випадках, коли текст повинен обтікати довкола блока. В сучасній комерційній верстці цей прийом використовується дуже рідко. Приклад можна глянути на <a href="https://uk.wikipedia.org/wiki/%D0%93%D0%BE%D0%BB%D0%BE%D0%B2%D0%BD%D0%B0_%D1%81%D1%82%D0%BE%D1%80%D1%96%D0%BD%D0%BA%D0%B0" target="_blank">вікіпедії</a> - текст обтікає довкола фотографій.</p>
+			<p>Поексперементуйте у пісочниці <a href="https://jsfiddle.net/poshtarboba/uanhvmns/" target="_blank">jsFiddle</a>.</p>
+			<p>Щоб батьківський елемент не схлопувався - використовуються такі методи:</p>
+			<div class="image">
+				<img src="../fe-img/fe_float.jpg" alt="float">
+				<p>Флоати.</p>
+			</div>
+
+			<!--
+				TODO: добавити собі, картинку зверстати в jsFiddle:
+
+				<p>За специфікацією плаваючі блоки (зі стилем float) не впливають на звичайні блоки (без цього стиля), але впливають на їх текстовий (інлайновий) вміст</p>
+
+				По спецификации, плавающие блоки не влияют на обычные, но влияют на их инлайновое (текстовое) содержимое — заставляют контейнеры строк («line boxes») ужаться. Т.е. границы обычных блоков для плавающих ничего не значат — они запросто накладываются на блоки и проходят сквозь них, хоть внутрь, хоть наружу, хоть навылет. А вот текст накладываться на них не может и вынужден обтекать их снаружи, втискиваясь в оставшееся место.
+				Поскольку float-ы придуманы именно для обтекания врезок текстом, а не для горизонтальной раскладки блоков, это поведение — «не баг, а фича»: текст будет обтекать врезку ровно столько, сколько нужно, не дожидаясь конца блока или абзаца, в верстке не будет некрасивых дырок. Но из него напрямую следует «недержание» float-ов обычными блочными контейнерами, в которых текста недостаточно или вообще нет.
+
+				<img src="files/tmp/floats.jpg">
+
+			-->
+
+		</section>
+
+		<section>
+			<h2>Властивості :hover, :active, :visited, :link.</h2>
+			<p>До елементів в стилях можна додати реакцію на події миші (без пробілів):</p>
+			<code>
+				<strong>a:hover</strong> { color: green;} - посилання, на яке навели курсор миші.<br>
+				<strong>a:active</strong> { color: red;} - посилання, на яке клацнули, але ще не відпустили кнопку миші.<br>
+				<strong>a:visited</strong> { color: silver;} - посилання, яке вже відвідали.<br>
+				<strong>a:link</strong> { color: orange;} - не відвідуване посилання (аналог простого запису a {...}).<br>
+			</code>
+			<p>Не клікайте по наступному посиланню до вказівки викладача:</p>
+			<p class="test"><a href="https://www.google.com/search?tbm=isch&amp;q=html2">Тестове посилання</a>.</p>
+			<code>
+				a.first.active:hover {...} - якщо у елемента є класи, то :hover додаємо в кінець.<br>
+				a#id_element:hover {...} - аналогічно якщо в елемента є ID.<br>
+				a#first.active:hover {...},<br>a.active#first:hover {...} - змішані приклади (еквівалентні між собою).<br><br>
+				<strong>img:hover</strong> {...} - стиль буде застосовано, якщо курсор миші навели на зображення.<br>
+				<strong>h2:hover</strong> {...} - стиль буде застосовано, якщо курсор миші навели на заголовок.
+			</code>
+		</section>
+
+		<section>
+			<h2>Вага стилів.</h2>
+			<p>В межах однієї веб-сторнки може бути багато тегів з однаковими класами, та ідентифікатори не повинні повторюватися, вони є унікальними:</p>
+			<code>
+				&lt;div class="box" id="box"&gt;...&lt;/div&gt;<br>
+				&lt;div class="box" id="box2"&gt;...&lt;/div&gt;<br>
+				&lt;div class="box" id="box3"&gt;...&lt;/div&gt;
+			</code>
+			<p>Селектори в CSS-коді можуть містити назви тегів, класи та ідентифікатори:</p>
+			<code>
+				div { ... }<br>
+				div.box { ... }<br>
+				div#box { ... }<br>
+				#box { ... }<br>
+				.box { ... }<br>
+				#box1.box { ... }<br>
+				.box#box2 { ... }<br>
+				div.box#box { ... }
+			</code>
+			<p>Стилі перекривають один одного, який стиль стоїть нижче в коді - той і перекриє попередні стилі (за умови, що у селекторів буде однакова вага).</p>
+			<p>Елементи селектора мають умовну вагу. Для всього селектора вага вважається сумою всіх його елементів.</p>
+			<p>Для простоти розрахунку вагу елементів прийнято вважати такою:</p>
+			<code>
+				стилі браузера - 0<br>
+				* - 0.1<br>
+				тег - 1<br>
+				клас - 10<br>
+				id - 100<br>
+				інлайновий стиль (внутритеговий, індивідуальний) - 1000<br>
+				!important - 10000
+			</code>
+			<p><strong>!important</strong> - костиль, який можна додавати до стилів для збільшення їх ваги. Це слово зі знаком оклику записується в кінець значення стиля через пробіл:</p>
+			<p>Порахуйте вагу селекторів:</p>
+			<code>
+				p { color: red;}<br>
+				p * { color: green;}<br>
+				p.big span { color: yellow;}<br>
+				.news h2#title { color: blue;}<br>
+				span.active + span + span { color: aqua;}<br>
+				&lt;p class="violet" style="color: violet;"&gt;<br>
+				p { color: pink !important; font-size: 24px;}
+			</code>
+			<p>Та 10-кратні різниці - це лище умовність, 11 класів в селекторі не будуть мати більшу вагу за один ідентифікатор. І 20 теж, і 9000, будь-яка кількість класів слабші за один ідентифікатор.</p>
+			<code>
+				.green { color: green !important;}<br>
+				.section h2 { color: blue;}<br><br>
+				&lt;div class="section"&gt;&lt;h2&gt;Блок 1 ...<br>
+				&lt;div class="section"&gt;&lt;h2&gt;Блок 2 ...<br>
+				&lt;div class="section"&gt;&lt;h2 class="green"&gt;Блок 3 ...<br>
+				&lt;div class="section"&gt;&lt;h2&gt;Блок 4 ...
+			</code>
+		</section>
+
+		<section>
+			<h2>Акуратність кода.</h2>
+			<p>Акуратний код легко читати та розбирати на окремі елементи.</p>
+			<p>Всі внутрішні елементи (діти першого порядку) по відношенню до батьківського повинні мати однаковий відступ, використовуйте для цього клавішу <kbd>Tab</kbd>, не використовуйте пробіли.</p>
+			<p>Великі блоки можна відділяти в коді пустими строками для полегшення навігації по коду.</p>
+			<p>Часто для цього використовують коментарі виду:</p>
+			<code>
+				&lt;!-- Header begin --&gt;<br>
+				&lt;div class="header"&gt;<br>
+				&nbsp;&nbsp;...<br>
+				&lt;/div&gt;<br>
+				&lt;!-- Header end --&gt;
+			</code>
+			<p>Але я вважаю, що вдало названі блоки і задані класи цілком і повністю будуть описувати контент поточного блока.</p>
+			<p>Приклади хорошого і поганого оформлення кода:</p>
+			<div class="image">
+				<img src="../fe-img/fe_code_1.png" alt="HTML code">
+				<p>HTML-код, акуратний та аби як зроблений.</p>
+			</div>
+			<p>В HAML-коді (як і в багатьох сучасних мовах програмування) неакуратний код просто не буде працювати: вкладення тегів один в один визначається виключно відступами:</p>
+			<div class="image">
+				<img src="../fe-img/fe_code_2.png" alt="HAML code">
+				<p>HAML-код - завжди акуратний.</p>
+			</div>
+			<p>В сучасних IDE є функція, що автоматично відформатовує код. Наприклад, в jsFiddle вона називається "Tidy", в PHPStorm знаходиться в меню Code (<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>L</kbd>):</p>
+			<div class="image">
+				<img src="../fe-img/fe_code_3.png" alt="Реформатування коду в PHPStorm">
+				<p>Реформатування коду в PHPStorm.</p>
+			</div>
+			<p><strong>Принцип бритви Оккама</strong> - рос.: "не плоди сущее без необходимости", тобто, не треба створювати зайвих елементів, які не несуть ніякого змісту. Якщо 2 блока можна об’єднати в один - це варто зробити.</p>
+			<p>Звичайно, не треба прагнути до принципового мінімалізму, часто зменшення HTML-коду збільшує CSS-код і навпаки. Або деякі фрагменти можна зробити економно, але дуже неочевидними способами, в яких важко розібратися, які важко пристосувати до інших умов.</p>
+			<p><strong>Валідатор</strong> - це програма, що перевіряє правильність коду. В сучасних IDE його можна зустріти у версіях з коробки або скачати у вигляді плагіна.</p>
+			<div class="image">
+				<img src="../fe-img/fe_code_4.png" alt="Валідний та невалідний код">
+				<p>Валідний та невалідний код в PHPStorm.</p>
+			</div>
+			<p>До появи зручних IED кожний файл потрібно було перевірити онлайн-валідатором.</p>
+			<p>Спробуйте на своїх файлах <a href="https://validator.w3.org/">валідатор для HTML</a> та <a href="http://jigsaw.w3.org/css-validator/">для CSS</a> щоб ознайомитися як він працює, яку інформацію видає, що пропонує змінити.</p>
+			<p><strong>Завдання:</strong> перевірити свій HTML-код і CSS. Зробіть деякі помили, приберіть атрибути <strong>alt</strong> у зображень і повторно зробіть перевірку.</p>
+		</section>
+
+		<!-- перенести в наступну -->
+
+		<section>
+			<h2>CSS border - границі блоків.</h2>
+			<code>
+				<strong>border: 2px solid #2e2e2e;</strong> - об’єднуючий стиль.<br><br>
+				<strong>border-width: 2px;</strong> - ширина границі.<br>
+				<strong>border-style: dashed;</strong> - тип границі.<br>
+				<strong>border-color: #f00;</strong> - колір границі.
+			</code>
+			<p>Типи границь (порівняйте їх вигляд у різних браузерах):</p>
+			<code>
+				<span style="display: inline-block; padding: 12px 20px; border: 5px solid red;">border-style: solid;</span><br><br>
+				<span style="display: inline-block; padding: 12px 20px; border: 5px dashed red;">border-style: dashed;</span><br><br>
+				<span style="display: inline-block; padding: 12px 20px; border: 5px dotted red;">border-style: dotted;</span>
+			</code>
+			<p>Є ще <a href="http://htmlbook.ru/css/border-style" target="_blank">декілька екзотичних</a> стилів бордерів, проте, сьогодні вони майже не використовуються.</p>
+			<p>Можна задати окремі стилі для кожного з чотирьох бордерів, синтаксис подібний до стилів margin та padding:</p>
+			<code>
+				border-width: 4px 2px;<br>
+				border-style: dashed soild;<br>
+				border-color: #f00 #0f0 #ff0 #f0f;
+			</code>
+			<p>Можна задавати тільки одну границю: зверху, знизу, зліва чи зправа (або декілька границь, окремо):</p>
+			<code>
+				border-left: 1px solid red;<br>
+				border-top: 2px solid blue;<br>
+				border-right: 20px dashed green;<br>
+				border-bottom: 1px dotted yellow;
+			</code>
+			<p>Ну і 12 стилів для того, щоб задати кожному бордеру один з параметрів:</p>
+			<code>
+				border-left-width: 2px;<br>
+				border-bottom-color: #aaa;<br>
+				border-top-style: solid;<br>
+				...
+			</code>
+			<p>Прибрати границю можна задавши значення <strong>none</strong>:</p>
+			<code>
+				border: none;<br>
+				border-bottom: none;
+			</code>
+			<p>Прозорий бордер для ховер-ефекта (<a href="https://jsfiddle.net/poshtarboba/t2w3nyzr/" target="_blank">jsFiddle</a>):</p>
+			<code>
+				.box { border: 1px solid transparent;}<br>
+				.box:hover { border-color: blue;}
+			</code>
+			<p>За допомогою бордерів можна робити кутики.</p>
+			<p><!-- TODO: CSS кутики -->(в цьому місці мали бути приклади кутиків, та я їх не встиг зробити).</p>
+			<h3>Заокруглення країв блока.</h3>
+			<p>Заокруглення можна застосовувати навіть якщо у блока не буде бордерів, буде заокруглюватися фон.</p>
+			<p>Задати радіус скруглення країв можна як для всіх чотирьох кутів одночасно, так і для кожного окремо, подібно як в margin/padding:</p>
+			<code>
+				border-radius: 10px;<br>
+				border-radius: 10px 20px;<br>
+				border-radius: 10px 20px 30px;<br>
+				border-radius: 10px 20px 30px 40px;<br><br>
+				// еліпсоподібні скруглення:<br>
+				border-radius: 20px/10px;<br>
+				border-radius: 10px 20px 30px 40px/20px 10px 50px 5px;
+			</code>
+			<p>Квадратний елемент можна зробити круглим, задавши радіус скруглення 50%. Прямокутний елемент стане овальним.</p>
+			<p>Перевага в тому, що вам не треба знати розмір елемента, 50% з любого квадрата зробить круг:</p>
+			<code>
+				border-radius: 50%;
+			</code>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<ol>
+				<li>Новий проект <a href="../fe-files/psd/oil.zip">Масло</a> <small>(<a href="../fe-files/psd/oil.jpg" target="_blank">jpg</a>)</small>.</li>
+			</ol>
+		</section>
+
+	</div>
+</div>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/fe.js"></script>
+
+</body>
+</html>

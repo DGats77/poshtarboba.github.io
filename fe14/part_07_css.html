@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 7. CSS, стилі браузера, коментарі, фон, display.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>CSS, стилі браузера, коментарі, фон, display, вирівнювання, hover.</h1>
+
+		<section>
+			<h2>Розміри елемента.</h2>
+			<p>Кожен елемент має ширину та висоту. Блочним елементам можна задавати розміри:</p>
+			<code>
+				<strong>width:</strong> 100%;<br>
+				<strong>height:</strong> 75px;
+			</code>
+			<p>Намагайтеся уникати використання height, нехай блоки самі собі виставляють висоту. Використовуйте внутрішні відступи padding та висоту строки line-height для керування висотою блоків.</p>
+			<p class="noheight">height: 40px;</p>
+			<p>Додаткові стилі, що обмежують мінімальні та максимальні розміри блоків:</p>
+			<code>
+				min-width: 50px;<br>
+				max-width: 200px;<br>
+				min-height: 50px;<br>
+				min-width: 200px;
+			</code>
+			<p>Приклад застосування у <a href="https://jsfiddle.net/poshtarboba/b6t013hx/" target="_blank">jsFiddle</a>.</p>
+			<p>"Обнулення" стилів:</p>
+			<code>
+				min-width: 0;<br>
+				max-width: auto;<br>
+				min-height: 0;<br>
+				min-width: auto;
+			</code>
+		</section>
+
+		<section>
+			<h2>Відступи.</h2>
+			<p>Відступи бувають зовнішні та внутрішні.</p>
+			<code>
+				<strong>margin:</strong> 0 8px 10px 20%;<br>
+				<strong>padding:</strong> 10px 8px;<br>
+			</code>
+			<p>
+				Відступи можуть мати 1, 2, 3, або 4 параметра, що записуються через пробіл:<br>
+				1 - всі відступи однакові;<br>
+				2 - вертикальні та горизонтальні відступи;<br>
+				3 - верхній, горизонтальні, нижній відступи;<br>
+				4 - верхній, правий, нижній, лівий відступи.
+			</p>
+			<h3>Особливості використання margin та padding.</h3>
+			<p>У маргінів є багато "сюрпризів", які неприємно вражають новачків.</p>
+			<p>Особливості можна переглянути у <a href="https://jsfiddle.net/poshtarboba/vgppgxrs/2/" target="_blank">jsFiddle</a>.</p>
+			<p>Внутрішні відступи збільшують розміри елемента.</p>
+			<p>В першу чергу намагайтесь використовувати padding.</p>
+			<p>Вертикальні маргіни об'єднуються, горизонтальні - ні.</p>
+			<p>Можна використовувати від'ємні значення маргінів, але паддінги можуть бути лише 0 або більше.</p>
+			<p>У абсолютно чи фіксовано спозиціонованих елементів зовнішні відступи не впливають на оточуючі блоки, лише на позицію поточного елемента.</p>
+			<p>Якщо у батьківського блока немає вертикальних паддінгів чи горизонтальних бордерів - маргіни вилазять за межі батьківського блока.</p>
+			<p>У строчних елементів вертикальні відступи не впливають на сусідні елементи зверху та знизу.</p>
+			<p>Саме з цієї причини не раджу використовувати вертикальні маргіни поки не наберетесь достатньо досвіду.</p>
+			<div class="image">
+				<img src="../fe-img/fe_rukojop.jpg" alt="margin-top">
+				<p>margin-top: 100px; margin: 35px 0;</p>
+			</div>
+		</section>
+
+		<section>
+			<h2>Стилі браузера (user agent stylesheet).</h2>
+			<p>По замовчуванню кожен браузер має власний набір стилів для всіх елементів.</p>
+			<p>Саме тому "голий" HTML виглядає не як текст в блокноті, а має деяке форматування: заголовки виконані більшим і жирним шрифтом, посилання виділені синім кольором, заголовки і параграфи мають відступи, списки також мають відступи та декоративні кружечки на початку кожного елемента списку.</p>
+			<div class="image">
+				<img src="../fe-img/fe_useragent_css.png" alt="User agent styles">
+				<p>Стилі браузера.</p>
+			</div>
+			<p>Проблема в тому, що ці стилі у різних браузерах можуть різнитися.</p>
+			<p>Перед тим, як почати писати стилі бажано провести обнулення стилів браузера.</p>
+			<p>Ось приклад обнуляючих стилів, включаючи веб-форми.</p>
+			<code>
+				html { margin:0; padding:0;}<br>
+				body { margin:0; padding:0; color:#666; font:normal 18px/28px Helvetice, Arial, sans-serif; background:#fff;}<br>
+				.clear { clear:both;}<br>
+				p { margin:0; padding:10px 0;}<br>
+				a { color:#0000ff; text-decoration:underline;}<br>
+				a:hover { color:#7777ff;}<br>
+				a img { border:none;}<br>
+				h1, h2, h3, h4, h5, h6 { margin:0; padding:0; font-weight:bold; color:#000;}<br>
+				h1 { padding:40px 0 24px; line-height:1.4em;}<br>
+				h2 { padding:0 0 12px;}<br>
+				strong { font-weight:bold;}<br>
+				em { font-style:italic;}<br>
+				form, menu, iframe { display:block; margin:0; padding:0; border:none;}<br>
+				ol, ul, dl, li, dt, dd { margin:0; padding:0; list-style:none;}<br>
+				* { outline:none;}
+			</code>
+		</section>
+
+		<section>
+			<h2>Коментарі.</h2>
+			<p>Коментар - це частина файлу, який не обробляється браузером.</p>
+			<p>У коментарях може знаходитися пояснення до коду або частина коду, яка з певних причин не повинна виконатися.</p>
+			<p>Приклади коментарів HTML (<a href="https://jsfiddle.net/poshtarboba/w52vhzLa/2/" target="_blank">jsFiddle</a>):</p>
+			<code>
+				&lt;!-- Блок користувача, відображається тільки коли користувач залогінився --&gt;<br>
+				<strong>&lt;div class="user"&gt;</strong><br>
+				&nbsp;&nbsp;<strong>...</strong><br><br>
+				<strong>&lt;p&gt;1&lt;/p&gt;<br>
+				&lt;p&gt;2</strong>&lt;!-- коментар всередині тега --&gt;<strong>&lt;/p&gt;</strong><br>
+				&lt;!--&lt;p&gt;3&lt;/p&gt;--&gt;<br>
+				<strong>&lt;p&gt;4&lt;/p&gt;</strong><br><br>
+				&lt;!-- Приклад неправильного коментаря: --&gt;<br>
+				<span class="danger">&lt;div</span> &lt;!-- class="test" --&gt;<span class="danger">&gt;test&lt;/div&gt;</span>
+			</code>
+			<p>Приклад коментарів CSS:</p>
+			<code>
+				/* стилі тексту */<br>
+				<strong>.text1 { color: red;</strong> /*font-style: italic;*/ <strong>}</strong><br>
+				/*.text2 { color: yellow; }*/<br>
+				<strong>.text3 { color: blue; }<br>
+				.text4 { color: green; font-style: italic; }</strong><br>
+				/*.text5 { color: pink; }<br>
+				.text6 { color: aqua; }<br>
+				.text7 { color: violet; }*/
+			</code>
+			<p>Чи потрібно коментувати код, пояснюючи що робить той чи інший блок?</p>
+			<p>Я зустрічав доволі фанатичних розробників, в їхньому коді пояснень більше, ніж самого коду.</p>
+			<p>В коді варто залишати:</p>
+			<ol>
+				<li>коментарі, які відповідають на питання "чому?", а не "що?", такі коментарі пояснюють незрозумілі ділянки коду, а не просто описують код;</li>
+				<li>коментарі перед великими блоками коду, в яких в декількох словах пояснюється що робить даний шмат коду. Це полегшує читання і навігацію по коду;</li>
+				<li>коментарі, що описують закоментовані шматки коду: чому цей шматок коду закоментований і коли слід безповоротно видалити цей шматок коду.</li>
+			</ol>
+		</section>
+
+		<section>
+			<h2>Фон.</h2>
+			<p>Фон можна задавати одним комплексним стилем, або окремими стилями, що змнюють складові фону.</p>
+			<p>Якщо в блока немає фонового зображення - фон потрібно задавати комплексним стилем.</p>
+			<p>Якщо в блока вже є фонове зображення - можна застосовувати окремі стилі для зміни складових фону.</p>
+			<code>
+				<em><strong>background:</strong> #f00 url(../images/background.png) repeat left top;</em><br><br>
+				<strong>background:</strong> #f00;<br>
+				<strong>background-color:</strong> #f00;<br>
+				<strong>background-image:</strong> url(../images/background.png);<br>
+				<strong>background-repeat:</strong> repeat;<br>
+				<strong>background-position:</strong> left top;
+			</code>
+			<!-- TODO: jsFiddle на бекграунд -->
+		</section>
+
+		<section>
+			<h2>Стилі display, visibility.</h2>
+			<p>Стиль display може змінити відображення блоку.</p>
+			<p>Як ми вже знаємо, теги діляться на блочні і строкові (а також табличні, які розглянемо пізніше).</p>
+			<p>Будь-який блочний елемент можна перетворити на строковий, а будь-який строковий - на блочний за допомогою властивості display.</p>
+			<code>
+				&lt;span style="<strong>display: block;</strong>"&gt; - будь-який елемент перетворює на блочний, він набуває всіх властивостей блочних елементів, його ширина по замовчуванню стає 100%, можна застосовувати вертикальні паддінги і маргіни.<br><br>
+				&lt;p style="<strong>display: inline;</strong>"&gt; - будь-який елемент перетворює на строковий, він набуває всіх властивостей строкових елементів, його розміри по замовчуванню визначається розмірами контенту (вмісту), вертикальні паддінги і маргіни будуть ігноруватися.<br><br>
+				&lt;div style="<strong>display: inline-block;</strong>"&gt; - будь-який елемент буде поводитися як строковий, але всередині буде мов блочний - будуть працювати розміри, вертикальні паддінги, але вертикальні маргіни працювати не будуть.
+			</code>
+			<p>Поексперементуйте у пісочниці: <a href="https://jsfiddle.net/poshtarboba/bfauo9pt/" target="_blank">jsFiddle</a>.</p>
+			<code>
+				&lt;h1 style="<strong>display: none;</strong>"&gt; - приховує будь-який елемент, так, ніби ви його видалили.<br><br>
+				&lt;h1 style="<strong>visibility: hidden;</strong>"&gt; - приховує будь-який елемент, але залишає виділене під нього місце.<br><br>
+				&lt;h1 style="<strong>visibility: visible;</strong>"&gt; - робить видимим прихований попереднім способом елемент (значення по-замовчуванню).
+			</code>
+			<p>Для приховування елементів зазвичай використовується стиль <strong>display: none;</strong>.</p>
+			<p>Не використовуйте стиль <strong>opacity: 0;</strong> для приховування елемента! Блок стає прозорим, але він продовжує залишатися на своєму місці, заважає розміщуватися іншим елементам.</p>
+			<p>До інших значень стиля display належать:</p>
+			<p>- елемент списка <strong>display: list-item;</strong>, цей стиль дозволяє використовувати маркери чи нумерацію ліворуч від кожного елемента списку;</p>
+			<p>- табличні значення <strong>display: table, table-row, table-cell;</strong> ми розглянемо під час вивчення таблиць;</p>
+			<p>- флекс-бокси мають значення <strong>display: flex, inline-flex;</strong>, застосовуються для гнучкого керування вигляду групи блоків;</p>
+			<p>- css-сітки - <strong>display: grid;</strong>.</p>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<ol>
+				<li>Продовжуйте роботу над проектами Колесов, Minecraft, Футболки, Iskander.</li>
+			</ol>
+		</section>
+
+	</div>
+</div>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/fe.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 10. Знайомство з Git.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<style>
+		p.example1 { margin-bottom:40px; padding:20px; font-size:140%; background:#c3e3f3;}
+		p.example1:before { content:">>>> ";}
+		p.example1:after { content:"!!!";}
+		p.example2 { margin-bottom:40px; padding:20px; font-size:140%; background:#c3e3f3;}
+		p.example2:before,
+		p.example2:after { content:""; display:block; height:20px; background:green;}
+		.example3 { padding:16px; font-size:140%; border:4px solid red;}
+		.example3.clr:after { height:20px; background:green;}
+		.example3>div { padding:16px; border:2px solid blue;}
+		.example3>div:first-child { float:left; width:250px; height:60px;}
+		.example3>div:last-child { float:right; width:400px; height:80px;}
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Знайомство з Git.</h1>
+
+		<section>
+			<h2>Інструмент розробника Git.</h2>
+			<p><strong>Git</strong> - система контроля версій.</p>
+			<p>Окрім гіта є ще декілька подібних систем, наприклад, Turtley SVN.</p>
+			<p>Git - це технологія, якою користуються сервіси типу GitHub, BitBucket, GitLab та інші.</p>
+			<p>Для використання консольної версії Git нам потрібно вивчити деякі команди консолі:</p>
+			<code>
+				<strong><kbd>Win</kbd> + <kbd>r</kbd>, cmd</strong> - швидкий виклик консолі.<br><br>
+				// навігація:<br>
+				<strong>dir</strong> - роздрукувати на екран вміст поточної папки<br>
+				<strong>d:</strong> - перейти на диск d:<br>
+				<strong>cd 2016-12</strong> - перейти в папку<br>
+				<strong>cd ..</strong> - перейти в папку вище<br>
+				<strong>cd ../../futbolki/images</strong><br>
+				<strong>mkdir назва_папки</strong> - створити папку в поточному каталозі<br><br>
+				// в ОС Linux та MacOS замість dir використовуйте:<br>
+				<strong>ls -l</strong><br><br>
+			</code>
+			<h3>Завдання.</h3>
+			<ol>
+				<li>За допомогою консолі в своїй робочій папці (в поточному місяці) створіть проект mine_sprite.</li>
+				<li>В проекті створіть папки html, psd.</li>
+				<li>Перевірте в файловому менеджері (провідник, Total Commander і т.п.) чи все вірно створилося.</li>
+			</ol>
+			<p>Володіння командами консолі в багатьох випадках може значно пришвидшити вашу роботу (наприклад, створення пакетних файлів з командами).</p>
+			<p>Можете користуватися консоллю у вашій IDE, як правило консоль одразу відкрита в папці проекту.</p>
+			<p>Перші команди гіта для індивідуального використання:</p>
+			<code>
+				<strong>git clone посилання</strong> - клонувати репозиторій з сервера на локальну машину.<br>
+				<strong>git clone посилання папка</strong> - клонувати репозиторій з сервера на локальну машину в конкретну папку.<br>
+				<strong>git status</strong> - перевірити поточний статус поточної гілки.<br>
+				<strong>git add .</strong> - добавити всі файли в коміт (точку збереження).<br>
+				<strong>git commit -m "текст-опис"</strong> - створити коміт (точку збереження) поточної гілки.<br>
+				<strong>git push origin master</strong> - закинути коміт на сервер.<br>
+			</code>
+			<p>В подальшому ми вивчемо ще декілька команд для колективної роботи над проектом, для створення гілок і т.п.</p>
+			<p><strong class="danger">Увага!</strong> На GitHub заливайте тільки вміст папки html, не заливайте архіви, PSD.</p>
+			<h3>Завдання.</h3>
+			<ol>
+				<li>Зареєструйтесь на <a href="https://github.com/" target="_blank">GitHub</a>.</li>
+				<li>Встановіть програму git (нам потрібна буде лише її консольна версія).</li>
+				<li>Створіть на GitHub проект mine_sprite.</li>
+				<li>Клонуйте цей проект собі в папку html відповідного проекта в своїй папці проектів.</li>
+				<li>Перевірте в файловому менеджері, чи все правильно клонувалося, в потрібну папку.</li>
+				<li>Перевірте, чи створилася папка .git в проекті.</li>
+				<li>Скопіюйте в поточний проект файли з проекта minecraft.</li>
+				<li>Заляйте оновлення на GitHub.</li>
+				<li>Перевірте на сайті наявність файлів, подивіться графік (Graphs &gt; Network).</li>
+			</ol>
+			<p>В подальшому домашні роботи можете заливати на GitHub та давати викладачу посилання на проекти.</p>
+			<p>Щоб викладач зміг прокоментувати ваш код - добавте його в колаборацію в налаштуваннях проекту.</p>
+			<p>Якщо необхідно внести коригування в домашню роботу - зробіть це і оновлення заляйте на GitHub.</p>
+		</section>
+
+		<section>
+			<h2>Типові алгоритми дій в Git.</h2>
+			<p>Деякі базові алгоритми виконання команд та дій для швидкого засвоєння Git.</p>
+			<h3>Створення нового проекту на GitHub.</h3>
+			<p>Ви починаєте новий проект. Найпростіше - створити його на сервері GitHub та клонувати собі на локальну машину:</p>
+			<code>
+				<strong>Створити новий проект на GitHub.</strong><br>
+				<strong>Створити в себе на комп'ютері папку проекту.</strong><br>
+				// копіюємо його собі на комп'ютер:<br>
+				<strong>Запустіть консоль і перейдіть в папку проекту.</strong><br>
+				<strong>git clone https://github.com/your_login/project_name.git html</strong>
+			</code>
+			<p>При цьому проект з GitHub буде склоновано у папку html.</p>
+			<h3>Створення нового проекту на localhost.</h3>
+			<p>Можна створити проект спочатку на localhost, після чого заляти на GitHub:</p>
+			<code>
+				<strong>Створити в себе на комп'ютері папку проекту.</strong><br>
+				<strong>В цій папці створіть папку html.</strong><br>
+				<strong>Запустіть консоль і перейдіть в створену папку html.</strong><br>
+				// створюємо проект Git:<br>
+				<strong>git init</strong><br>
+				<strong>Створити новий проект на GitHub.</strong><br>
+				<strong>git remote add origin https://github.com/your_login/project_name.git</strong>
+			</code>
+			<h3>Створення проекту Git з існуючої верстки.</h3>
+			<p>Буває так, що ви вже щось зверстали і лише тепер вирішили результати своєї праці заляти на Git.</p>
+			<p>Можете скористатися попереднім алгоритмом (створення проекту на localhost) або створити новий проект і добавити у нього файли:</p>
+			<code>
+				<strong>Закрийте IDE, папку проекту переіменуйте</strong>, добавивши символ підкреслення в кінець.<br>
+				<strong>Створіть нову папку з назвою проекту, в ній - папку html.</strong><br>
+				<strong>На GitHub створіть новий проект та клонуйте його собі в цю папку:</strong><br>
+				<strong>git clone https://github.com/your_login/project_name.git html</strong><br>
+				<strong>Скопіюйте потрібні файли з переіменованої папки в нову.</strong>
+			</code>
+			<h3>"Всё пропало, шеф!".</h3>
+			<p>Буває так, що щось напортили, і не знаєте як виправити ситуацію.</p>
+			<code>
+				<strong>Закрийте IDE, папку проекту переіменуйте</strong>, добавивши символ підкреслення в кінець.<br>
+				<strong>Створіть нову папку з назвою проекту, в ній - папку html.</strong><br>
+				// склонуйте з сервера останню версію в нову папку:<br>
+				<strong>git clone https://github.com/your_login/project_name.git html</strong><br>
+				<strong>Вручну проведіть синхронізацію клонованого проекту зі старою папкою.</strong>
+			</code>
+			<h3>Створення комітів, оновлення проекту на сервері.</h3>
+			<p>До цих пір ви все робили локально. Проект у вас вже є, і ви навіть внесли зміни у файли, добавили новий блок, виправили стилі, поправили верстку, переробили меню і т.п.</p>
+			<p>Час закинути оновлення на сервер:</p>
+			<code>
+				// перед кожною командою перевіряйте стан вашого проекту:<br>
+				<strong>git status</strong><br><br>
+				// готуємо коміт:<br>
+				<strong>git add .</strong><br>
+				<strong>git commit -m "Коментар до коміта"</strong><br>
+				// заливаємо оновлення на сервер:<br>
+				<strong>git push origin master</strong>
+			</code>
+			<h3>GitHub.io - хостінг ваших версток.</h3>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 5. Типи елементів, span та div, списки.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<style>
+		.example1 span,
+		.example1 em { background: yellow; border: 2px solid orange;}
+		.example2 { display: inline-block; width: 100%; box-sizing: border-box; background: yellow; border: 2px solid orange;}
+		.example3 { display: block; width: 360px; box-sizing: border-box; border: 2px solid blue;}
+		.example4 { color: red;}
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Деплоймент, типи елементів, span та div, списки.</h1>
+
+		<section>
+			<h2>Повторне використання коду.</h2>
+			<p>В сфері IT дуже часто доводиться повторно використовувати код.</p>
+			<p>Саме тому існує багато бібліотек коду, репозиторії, автоматизатори і т.п.</p>
+			<p>
+				Почати повторно використовувати код можна вже зараз: замість того, щоб щоразу створювати проект з нуля, створювати набір папок:
+				<code>
+					project_name/<br>
+					&nbsp;&nbsp;html/<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;css/<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;images/<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;js/<br>
+					&nbsp;&nbsp;psd/<br>
+					...
+				</code>
+				значно простішим та швидшим буде скопіювати один з попередніх проектів та повидаляти з нього зайве.
+			</p>
+			<!--
+				TODO: повторне використання коду на прикладі bootstrap
+				TODO: повторне використання коду в занятті з алгоритмами
+			-->
+		</section>
+
+		<section>
+			<h2>Деплоймент.</h2>
+			<p><strong>Деплоймент (розгортання проекту)</strong> - завантаження файлів на сервер.</p>
+			<p>
+				Наприклад, для заливання файлів на FTP потрібно:<br>
+				&nbsp;&nbsp; - відкрити FTP-менеджер;<br>
+				&nbsp;&nbsp; - створити з'єднання з сервером;<br>
+				&nbsp;&nbsp; - відкрити потрібні папки на локальній машині та на сервері;<br>
+				&nbsp;&nbsp; - вибрати потрібні файли;<br>
+				&nbsp;&nbsp; - заляти вибрані файли на FTP;<br>
+				&nbsp;&nbsp; - від'єднатися від сервера;<br>
+				&nbsp;&nbsp; - переключитися в IDE та згадати над чим ми працювали.
+			</p>
+			<p>IDE дозволяє значно спростити завантаження файлів на сервер, зробивши цю процедуру автоматичною чи напів-автоматичною: файл може автоматично заливатися на сервер після його зміни та збереження, або при кліку на потрібний пункт меню.</p>
+			<p>Деплоймент є сенс налаштовувати якщо ви плануєте довготривалу роботу над проектом. Якщо планується зверстати сторінку і один раз завантажити її на сервер - простіше скористатися FTP-менеджером.</p>
+			<h3>Завдання.</h3>
+			<ol>
+				<li>Скопіюйте минулий проект (Колесовъ) у новий, дайте йому назву "deploy".</li>
+				<li>На FTP у своїй папці створіть підпапку deploy.</li>
+				<li>Налаштуйте у своїй IDE деплоймент на сервер (дані FTP дивіться на <a href="index.html" target="_blank">головній сторінці</a> лекцій).</li>
+				<li>Внесіть зміни у html-файл, перевірте чи відбувся автоматичний деплоймент.</li>
+				<li>Створіть новий файл test.html з будь-яким вмістом, задеплойте його на сервер.</li>
+			</ol>
+			<p>В Sublime Text для деплоя потрібно встановити <a href="https://packagecontrol.io/packages/Simple%20FTP%20Deploy" target="_blank">плагін</a> та виконати деякі налаштування.</p>
+			<p>В IDE PHPStorm модуль деплоймента вже вбудований. Відкрийте папку з проектом "deploy", налаштуйте деплоймент:</p>
+			<div class="image">
+				<img src="../fe-img/fe_deployment_1.png" alt="FTP-options">
+				<p>Налаштування опцій FTP.</p>
+			</div>
+			<p>Зверніть увагу: у вас коренева папка проекту - deploy, а файли верстки в папці html. На сервер потрібно вивантажувати лише внутрішній вміст папки html.</p>
+			<p>Також потрібно налаштувати віддалену папку:</p>
+			<div class="image">
+				<img src="../fe-img/fe_deployment_2.png" alt="Deploy-options">
+				<p>Налаштування папок деплоя.</p>
+			</div>
+			<p>Якщо деякі файли не потрібно заливати на сервер - виключення можна прописати на вкладці "Excluded Paths" та в опціях:</p>
+			<code>
+				Tools &gt; Deployment &gt; Options... &gt; Exclude items by name
+			</code>
+			<p>Для завантаження файлів на сервер використовується пункт меню:</p>
+			<p>При цьому в менеджері проектів ви повинні знаходитися на тій папці чи файлі, який потрібно деплоїти.</p>
+			<code>
+				Tools &gt; Deployment &gt; Upload to Default Server
+			</code>
+			<p>Також можна клацнути правою кнопкою миші по вкладці файла вгорі і у контекстному меню обрати пункт деплоймента.</p>
+			<p>Для автоматичного деплоймента файлів встановіть галочку на пункті меню:</p>
+			<code>
+				Tools &gt; Deployment &gt; Automatic Deployment
+			</code>
+		</section>
+
+		<section>
+			<h2>Строкові і блочні елементи.</h2>
+			<p>Майже всі теги поділяються на строкові і блочні.</p>
+			<p><strong>Строкові елементи</strong> є частиною текстової строки. До строкових елементів відносяться <strong>&lt;span&gt;</strong>, <strong>&lt;b&gt;</strong>, <strong>&lt;i&gt;</strong>, <strong>&lt;a&gt;</strong>, <strong>&lt;img&gt;</strong>, <strong>&lt;strong&gt;</strong>, <strong>&lt;em&gt;</strong>, та інші, які будуть розглянуті на наступних заняттях.</p>
+			<p>Строкові елементи як правило змінюють представлення частини текста.</p>
+			<p>Розмір строкового елемента визначається його контентом:</p>
+			<code class="example1">
+				&lt;p&gt;Lorem &lt;span&gt;<span>ipsum dolor</span>&lt;/span&gt; sit amet, consectetur adipisicing elit.<br>
+				Consectetur nobis pariatur tempora? Consequatur cum deleniti, &lt;em&gt;<em>ex iure<br>
+				labore nesciunt praesentium</em>&lt;/em&gt; reiciendis repellendus. Aspernatur<br>
+				consequuntur dicta facere, laborum quaerat soluta voluptatem!&lt;/p&gt;
+			</code>
+			<p>Lorem ipsum... - текст-риба, текст-заглушка для заповнення абстрактним текстом контентної частини сайта. Якщо в IDE налаштовано плагін Emmet - текст-риба створюється так: наберіть слово lorem і натисніть клавішу <kbd>Tab</kbd>.</p>
+			<p><strong>Блочні елементи</strong> утворюють блок прямокутного розміру. Цей блок за замовчуванням займає всю доступну йому ширину (наприклад, ширину екрана браузера чи ширину батьківського елемента), а його висота визначається його контентом і змінюється в залежності від наповнення.</p>
+			<p>Блочні елементи можна уявляти у вигляді коробки, в яку можна класти інші коробки або строкові елементи - яблука, фотографії, кошенята.</p>
+			<code>
+				&lt;div&gt;<span class="example2">Lorem ipsum dolor sit amet,&lt;br&gt;<br>
+				consectetur adipisicing elit. Aliquam animi,&lt;br&gt;<br>
+				commodi dolore expedita labore</span>&lt;/div&gt;<br><br>
+				&lt;div style="width: 360px"&gt;
+				<span class="example3">
+				&lt;div&gt;
+				<span class="example2">Lorem ipsum dolor sit amet,&lt;br&gt;<br>
+				consectetur adipisicing elit. Aliquam animi,&lt;br&gt;<br>
+				commodi dolore expedita labore</span>
+				&lt;/div&gt;
+				</span>
+				&lt;/div&gt;
+			</code>
+			<p>До блочних елементів належать <strong>&lt;div&gt;</strong>, <strong>&lt;h1&gt;</strong>, <strong>&lt;h2&gt;</strong>..., <strong>&lt;p&gt;</strong>, та інші, які будуть розглянуті нижче і на наступних заняттях.</p>
+			<div class="image">
+				<img src="../fe-img/fe_div_box.jpg" alt="div">
+				<p>Коробка з різними предметами як аналогія блочного елемента.</p>
+			</div>
+			<p><span class="danger">Увага!</span> В строкові елементи не можна вставляти блочні елементи! Так само, як в кота не можна запхати коробку, тільки навпаки.</p>
+			<p><strong>Дочірні елементи</strong> - це ті елементи, які знаходяться всередині будь-якого тега. Можуть бути безпосередніми дочками, або певного порядку - другого, третього, залежить від глибини вкладення.</p>
+			<p><strong>Батьківські елементи</strong> - це елементи, які огортають поточний елемент, тобто, наш тег знаходиться всередині батьківських тегів по відношенню до нього. Батьківський елемент може бути безпосереднім, або першого порядку, або другого, третього і т.д.</p>
+		</section>
+
+		<section>
+			<h2>Теги SPAN, DIV.</h2>
+			<p>Тег <strong>&lt;span&gt;</strong> - строчний елемент, його необхідно використовувати в тих випадках, коли частина тексту в строці має інший стиль: колір, розмір, накреслення. Також &lt;span&gt; використовується для вставки різних декоративних елементів в строку, для виділення значень, що можуть динамічно змінюватися і т.п.</p>
+			<code>
+				Карточка <span class="example4">червоного кольору</span> означає видалення гравця з поля.<br><br>
+				.red { color: red; }<br><br>
+				&lt;p&gt;Карточка &lt;span class="red"&gt;червоного кольору&lt;/span&gt; означає видалення гравця з поля.&lt;/p&gt;
+			</code>
+			<p>Виділення тегом динамічного значення (число завантажується з бази даних за допомогою скрипта):</p>
+			<code>
+				Ціна: 48 грн.<br><br>
+				&lt;p class="price"&gt;Ціна: &lt;span&gt;0&lt;/span&gt; грн.&lt;/p&gt;<br><br>
+				$('.price span').text( getPriceFromDB() );
+			</code>
+			<p>Тег <strong>&lt;div&gt;</strong> - це основний блочний елемент, основний тип коробок. Він може виконувати як семантичну, так і декоративну роль.</p>
+			<p>Семантична роль полягає в тому, що тег &lt;div&gt; об'єднує, групує певні елементи однакових категорій, розділяє дані різних типів. Якщо поглянути на макет Колесова - в нього є такі елемеенти: хедер, футер, контентна частина, а в ній - текст і меню. Кожен з цих елементів - це блоки div.</p>
+			<p>Декоративна роль - розміщення декоративних елементів на сторінці, додаткових фонових зображень, фрагментів, виправлення помилок (фікси, костилі) і тому подібне.</p>
+			<div class="image">
+				<img src="../fe-img/fe_div_kolesov_1.jpg" alt="Full page">
+				<p>Поділ на основні блоки всієї сторінки.</p>
+			</div>
+			<div class="image">
+				<img src="../fe-img/fe_div_kolesov_2.jpg" alt="Resize part">
+				<p>Поділ блока <strong>.resize</strong>.</p>
+			</div>
+			<div class="image">
+				<img src="../fe-img/fe_div_kolesov_3.jpg" alt="Header part">
+				<p>Поділ блока <strong>.header</strong>.</p>
+			</div>
+			<div class="image">
+				<img src="../fe-img/fe_div_kolesov_4.jpg" alt="Content part">
+				<p>Поділ блока <strong>.content</strong>.</p>
+			</div>
+		</section>
+
+		<section>
+			<h2>Списки.</h2>
+			<p>В HTML є особлива група тегів - списки. Всі елементи цієї групи є блочними елементами.</p>
+			<p>Списки - це певний набір однотипних даних: перелік учнів чи книг, список новин, постів чи коментарів, список товарів на сторінці інтернет-магазину.</p>
+			<p>Бувають списки марковані (звичайні) <strong>&lt;ul&gt;</strong>, нумеровані (наприклад, список учнів в класі в алфавітному порядку) <strong>&lt;ol&gt;</strong> і список визначень <strong>&lt;dl&gt;</strong>.</p>
+			<iframe src="part_05a.html"></iframe>
+			<p>Звичайні несортовані списки найпоширеніші, тому їх треба вивчити в першу чергу. На сайті списки використовуються для організації навігаційного меню, сторінкової навігації, кнопок соціальних мереж, банерів партнерів, товарів, змісту, переліку посилань, і просто як список чогось.</p>
+			<p>Батьківським елементом списку є тег <strong>&lt;ul&gt;</strong> або <strong>&lt;ol&gt;</strong>. Елементами списку виступають блоки <strong>&lt;li&gt;</strong>.</p>
+			<p>Список визначень складається з пар тегів <strong>&lt;dt&gt;</strong> та <strong>&lt;dd&gt;</strong>, що чергуються. Типові списки визначень - FAQ, список характеристик.</p>
+			<p>Приклад HTML-кода списків:</p>
+			<code>
+				&lt;ul&gt;<br>
+				&nbsp;&nbsp;&lt;li&gt;Сметана&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;li&gt;Сир&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;li&gt;Ковбаса<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;варена&lt;/li&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;копчена&lt;/li&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>
+				&nbsp;&nbsp;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;li&gt;Хліб&lt;/li&gt;<br>
+				&lt;/ul&gt;<br><br>
+				&lt;ol&gt;<br>
+				&nbsp;&nbsp;&lt;li&gt;Іванов П.С.&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;li&gt;Петров С.І.&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;li&gt;Сидоров І.П.&lt;/li&gt;<br>
+				&lt;/ol&gt;<br><br>
+				&lt;h3&gt;FAQ:&lt;/h3&gt;<br>
+				&lt;dl&gt;<br>
+				&nbsp;&nbsp;&lt;dt&gt;Зламався ноут. Що робити?&lt;/dt&gt;<br>
+				&nbsp;&nbsp;&lt;dd&gt;Неси в сервісний центр.&lt;/dd&gt;<br>
+				&nbsp;&nbsp;&lt;dt&gt;Закрили файлообмінники, як бути?&lt;/dt&gt;<br>
+				&nbsp;&nbsp;&lt;dd&gt;Переходь на торренти.&lt;/dd&gt;<br>
+				&nbsp;&nbsp;&lt;dt&gt;Що робити якщо змерз?&lt;/dt&gt;<br>
+				&nbsp;&nbsp;&lt;dd&gt;Закутайся в пледик і пий чаї з імбирем, лимоном, малиною.&lt;/dd&gt;<br>
+				&lt;/dl&gt;<br><br>
+				&lt;dl&gt;<br>
+				&nbsp;&nbsp;&lt;dt&gt;Процесор:&lt;/dt&gt;<br>
+				&nbsp;&nbsp;&lt;dd&gt;Intel Core i5&lt;/dd&gt;<br>
+				&nbsp;&nbsp;&lt;dt&gt;Пам'ять:&lt;/dt&gt;<br>
+				&nbsp;&nbsp;&lt;dd&gt;8 Gb DDR3&lt;/dd&gt;<br>
+				&nbsp;&nbsp;&lt;dt&gt;Вінчестер:&lt;/dt&gt;<br>
+				&nbsp;&nbsp;&lt;dd&gt;1 Тб HDD&lt;/dd&gt;<br>
+				&lt;/dl&gt;
+			</code>
+			<p><span class="danger">Увага!</span> Ніякі інші елементи, включаючи <strong>&lt;div&gt;</strong>, <strong>&lt;br&gt;</strong>, <strong>&lt;p&gt;</strong> і т.д. не можуть знаходитися в тегах <strong>&lt;ul&gt;</strong>, <strong>&lt;ol&gt;</strong>, <strong>&lt;dl&gt;</strong> безпосередньо, тобто, бути безпосередніми доньками.</p>
+			<p>
+				UL - Untyped List;<br>
+				OL - Ordered List;<br>
+				DL - Definition List;<br><br>
+				LI - List Item;<br>
+				DT - Definition Title<br>
+				DD - Definition Description.
+			</p>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<ol>
+				<li>Код проекта Колесов поділити на блоки за допомогою тегів &lt;div&gt;.</li>
+				<li>Зробити порізку макета <a href="https://drive.google.com/open?id=0By5OeYSvSbNLUWJPY25SRXh4b2s">Minecraft</a> (<a href="../fe-files/psd/minecraft.jpg" target="_blank">jpg</a>), написати html-код.</li>
+				<li>Зробити порізку макета <a href="https://drive.google.com/open?id=0By5OeYSvSbNLZlVJbUozNlAydm8">Iskander</a> (<a href="../fe-files/psd/iskander.jpg" target="_blank">jpg</a>), написати html-код.</li>
+			</ol>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>

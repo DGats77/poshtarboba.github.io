@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 11. Гілки Git, спрайти.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Гілки Git, спрайти.</h1>
+
+		<section>
+			<h2>Гілки Git.</h2>
+			<p>Створити нову гілку і перейти в неї:</p>
+			<code>
+				git checkout -b назва_гілки
+			</code>
+			<p>Перейти в існуючу гілку:</p>
+			<code>
+				git checkout назва_гілки
+			</code>
+			<p>Вивести список гілок:</p>
+			<code>
+				git branch
+			</code>
+			<p>Заляти гілку на сервер:</p>
+			<code>
+				git push origin назва_гілки
+			</code>
+			<p>Об'єднання гілок:</p>
+			<code>
+				git merge назва_гілки
+			</code>
+			<h3>Завдання.</h3>
+			<ol>
+				<li>Створіть гілку test1, в html-файл пропишіть текст "test 1".</li>
+				<li>Перейдіть в головну гілку, створіть гілку test2, зробіть текст жовтого кольору.</li>
+				<li>Створіть нову гілку test3 від гілки test2, поміняйте розмір шрифта на 24px.</li>
+				<li>Перейдіть в гілку test2, об'єднайте її з гілкою test1 та результат заляйте на git.</li>
+			</ol>
+		</section>
+
+		<section>
+			<h2>Спрайти.</h2>
+			<p>Спрайти - це об’єднання елементів дизайну, іконок в один файл.</p>
+			<p>Це робиться для того, щоб оптимізувати швидкість завантаження веб-сторінки і економії ресурсів сервера: один файл завантажиться значно швидше, ніж десяток-два маленьких файлів, запит до сервера буде лише один замість декількох десятків.</p>
+			<p>Приклади спрайтів:</p>
+			<div class="image">
+				<img src="../fe-img/fe_sprite_1.jpg" alt="Sprite">
+				<p>Набір іконок.</p>
+			</div>
+			<div class="image">
+				<img src="../fe-img/fe_sprite_2.jpg" alt="Sprites of google">
+				<p>Спрайти гугла.</p>
+			</div>
+			<div class="image">
+				<img src="../fe-img/fe_sprite_3.jpg" alt="Very big sprite">
+				<p>Бувають спрайти, що містять дуже багато елементів.</p>
+			</div>
+			<div class="image">
+				<img src="../fe-img/fe_sprite_4.jpg" alt="Sprite socicons">
+				<p>Іконки соціальних мереж, зібрані у спрайт.</p>
+			</div>
+			<p>Один з варіантів створення спрайту:</p>
+			<p>1. Визначаємо які елементи будуть міститися у нас на спрайті і визначаємо розмір спрайта. Якщо в майбутньому у спрайт потрібно буде добавити елементи - збільшення розміру зображення не стане проблемою.</p>
+			<div class="image">
+				<img src="../fe-img/fe_sprite_5.png" alt="Change size">
+				<p>Змінення розміру спрайта: Image > Canvas size.</p>
+			</div>
+			<p>2. В фотошопі створюємо нове зображення потрібного розміру.</p>
+			<p><strong class="danger">Увага!</strong> Між елементами спрайту залишайте по 2 вільних пікселя. Закладіть ці відступи у розрахунок розміру зображення.</p>
+			<p>Наприклад, нам потрібно створити спрайт з 8 соціальних іконок, ми вирішили, що розмістимо їх по 4 у два ряда. Розмір кожної іконки - 32х32 пікселя. Отже, 32 * 4 = 128 пікселів в ширину, 64 пікселя в висоту. В рядах між іконками буде три відступи по 2 пікселя, отже, 128 + 6 = 134 пікселя. Між двома рядами всього один відступ, 64 + 2 = 66 пікселів. Створюємо зображення 134х66 пікселів.</p>
+			<p>3. На цьому порожньому зображенні лезом розмічаємо місця для наших майбутніх іконок:</p>
+			<div class="image">
+				<img src="../fe-img/fe_sprite_6.png" alt="Empty sprite">
+				<p>Заготовка.</p>
+			</div>
+			<p>4. Копіюємо елементи з різних файлів і вставляємо на наш спрайт, вирівнюючи відповідно до сітки.</p>
+			<p>5. Вимикаємо білий фон і зберігаємо спрайт у формат PNG.</p>
+			<p>Спрайт в форматі PSD теж бажано собі зберегти в папку з макетами - велика вірогідність, що вам доведеться щось добавляти, міняти.</p>
+			<div class="image">
+				<img src="../fe-img/fe_sprite_7.png" alt="Sprite">
+				<p>Елементи спрайта на прозорому фоні.</p>
+			</div>
+			<p>Не варто всі елементи зі всього сайту, з різних сторінок запихати в один великий спрайт. Краще намагатися розподілити елементи по декільком спрайтам, які будуть завантажуватися за потреби, а не завжди, на кожній сторінці.</p>
+		</section>
+
+		<section>
+			<h2>Використання спрайтів.</h2>
+			Для використання спрайтів в стилях нам потрібен блок фіксованого розміру, що відповідає розміру елемента на спрайті.
+			В прикладі вище іконки мають розмір 32х32 пікселя, отже, нам потрібно створити блоки такого ж розміру:
+			<code>
+				&lt;ul class="social"&gt;<br>
+				&nbsp;&nbsp;&lt;li&gt;&lt;a href="#" class="tw"&gt;Twitter&lt;/a&gt;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;li&gt;&lt;a href="#" class="fb"&gt;Facebook&lt;/a&gt;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;li&gt;&lt;a href="#" class="gp"&gt;Google Plus&lt;/a&gt;&lt;/li&gt;<br>
+				&lt;/ul&gt;<br><br>
+				.social li { display: inline-block;}<br>
+				.social a { display: block; width: 32px; height: 32px; text-indent: -9000px; background: url(../images/sprite_social_icons.png) no-repeat left top;}<br>
+				.social a.tw { background-position: 0 0;} /* (не обов’язково, left top задано зверху) */<br>
+				.social a.fb { background-position: -34px 0;}<br>
+				.social a.gp { background-position: -68px 0;}
+			</code>
+			<p>Координати задаються від’ємні:</p>
+			<div class="image">
+				<img src="../fe-img/fe_sprite_8.jpg" alt="Coordinates">
+				<p>Визначення координат елемента спрайта.</p>
+			</div>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<ol>
+				<li>Завдання робіть в окремій гілці <em>sprites</em> проекта mine_sprite.</li>
+				<li>Застосуйте спрайти у проекті Minecraft, об'єднайте соціконки, прапорець і значок скайпа в спрайт.</li>
+				<li>Застосуйте спрайти у проекті Iskander. Якщо ще не почали працювати над цим проектом - в першу чергу виріжте всі іконки і об'єднайте у спрайт.</li>
+			</ol>
+			<p><a href="https://www.youtube.com/watch?v=6g1Fss62uN0" target="_blank">Відеоурок по спрайтам</a>.</p>
+		</section>
+
+		<!--<section>
+			<h2>Таблиці HTML.</h2>
+			<p>Для виведення табличних даних в HTML існує декілька тегів:</p>
+			<code>
+				&lt;table&gt; - таблиця;<br>
+				&lt;tr&gt; - строка таблиці;<br>
+				&lt;td&gt; - чарунка таблиці;<br>
+				&lt;th&gt; - чарунка заголовка таблиці;<br>
+				&lt;thead&gt; - заголовок таблиці;<br>
+				&lt;tbody&gt; - тіло таблиці.
+			</code>
+			<code>
+				&lt;table&gt;<br>
+				&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Продукція&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Кількість&lt;/th&gt;<br>
+				&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Олівці&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;70 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Ручки&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;24 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Фломастери&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;35 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&lt;/table&gt;
+			</code>
+			<p>Результат буде дещо невиразним, без границь, оформлення:</p>
+			<table>
+				<tr>
+					<th>Продукція</th>
+					<th>Кількість</th>
+				</tr>
+				<tr>
+					<td>Олівці</td>
+					<td>70 шт.</td>
+				</tr>
+				<tr>
+					<td>Ручки</td>
+					<td>24 шт.</td>
+				</tr>
+				<tr>
+					<td>Фломастери</td>
+					<td>35 шт.</td>
+				</tr>
+			</table>
+			<code>
+				&lt;table style="width: 100%;"&gt;<br>
+				&nbsp;&nbsp;&lt;thead&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Продукція&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Кількість&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;thead&gt;<br>
+				&nbsp;&nbsp;&lt;tbody&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Олівці&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;70 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Ручки&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;24 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Фломастери&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;35 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;/tbody&gt;<br>
+				&lt;/table&gt;
+			</code>
+			<p>Для об'єднання комірок використовуються атрибути:</p>
+			<code>
+				&lt;td colspan="3"&gt;<br>
+				&lt;td rowspan="2"&gt;
+			</code>
+			<table style="width: 100%;" border="1px">
+				<thead>
+				<tr>
+					<th>Продукція</th>
+					<th colspan="2">Кількість</th>
+				</tr>
+				<tr>
+					<th>&nbsp;</th>
+					<th>Вчора</th>
+					<th>Сьогодні</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td rowspan="2">Олівці кольорові<br>і прості</td>
+					<td>70 шт.</td>
+					<td>23 шт.</td>
+				</tr>
+				<tr>
+					<td>64 шт.</td>
+					<td>11 шт.</td>
+				</tr>
+				<tr>
+					<td>Ручки</td>
+					<td>24 шт.</td>
+					<td>20 шт.</td>
+				</tr>
+				</tbody>
+			</table>
+
+			<code>
+				&lt;table style="width: 100%;"&gt;<br>
+				&nbsp;&nbsp;&lt;thead&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Продукція&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th colspan="2"&gt;Кількість&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;&nbsp;&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Вчора&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Сьогодні&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;/thead&gt;<br>
+				&nbsp;&nbsp;&lt;tbody&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td rowspan="2"&gt;Олівці кольорові&lt;br&gt;і прості&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;70 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;23 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;64 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;11 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Ручки&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;24 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;20 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;/tbody&gt;<br>
+				&lt;/table&gt;
+			</code>
+			<p>Атрибути тега &lt;table&gt;:</p>
+			<p><strong>cellspacing</strong> - задає зовнішні відступи довкола чарунок.</p>
+			<p><strong>cellpadding</strong> - задає внутрішні відступи всередині чарунок.</p>
+			<p>Зазвичай їх обнуляють. Можна зробити гарний бордер у таблиці, якщо їй задати у фон колір бордера, зовнішні відступи встановити на 1-2, чарункам задати потрібний фоновий колір.</p>
+			<p>&nbsp;</p>
+			<p>Років 7 тому всі сайти версталися таблицями.</p>
+		</section>
+
+		<section>
+			<h2>Таблиці CSS.</h2>
+			<p>Стилями можна перетворити будь-які блоки на таблиці. Використовуються такі стилі:</p>
+			<code>
+				display: table;<br>
+				display: table-cell;<br>
+				display: table-row;
+			</code>
+			<p>Якщо потрібно використати псевдо-табличну верстку для одного рядка - table-row можна опустити.</p>
+			<code>
+				&lt;p&gt;<br>
+				&nbsp;&nbsp;&lt;span&gt;Комірка 1&lt;/span&gt;<br>
+				&nbsp;&nbsp;&lt;span&gt;Комірка 2&lt;/span&gt;<br>
+				&nbsp;&nbsp;&lt;span&gt;Комірка 3&lt;/span&gt;<br>
+				&lt;/p&gt;<br><br>
+				p { display: table;}
+				span { display: table-cell;}
+			</code>
+		</section>
+
+		<p></p>
+		
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<p>Результати домашніх завдань заляйте на ftp в свої папки.</p>
+			<p>Корисне посилання про <a href="https://habrahabr.ru/post/180473/">види меню</a>.</p>
+			<h3>Рівень 1.</h3>
+			<p>1. Проект <a href="files/proj_tables.zip">Таблиці</a> <small>(<a href="files/proj_tables.jpg">jpg</a>)</small>.</p>
+		</section>-->
+
+	</div>
+</div>
+
+</body>
+</html>

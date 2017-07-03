@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 12. Таблиці, об'єднання гілок в Git.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Таблиці, об'єднання гілок в Git.</h1>
+
+		<section>
+			<h2>Таблиці HTML.</h2>
+			<p>Для виведення табличних даних в HTML існує декілька тегів:</p>
+			<code>
+				&lt;table&gt; - таблиця;<br>
+				&lt;tr&gt; - строка таблиці;<br>
+				&lt;td&gt; - чарунка таблиці;<br>
+				&lt;th&gt; - чарунка заголовка таблиці;<br><br>
+				// необов'язкові теги (браузер їх створює сам):<br>
+				&lt;thead&gt; - заголовок таблиці;<br>
+				&lt;tbody&gt; - тіло таблиці.
+			</code>
+			<p>Приклад таблиці:</p>
+			<code>
+				&lt;table&gt;<br>
+				&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Продукція&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Кількість&lt;/th&gt;<br>
+				&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Олівці&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;70 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Ручки&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;24 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Фломастери&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;35 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&lt;/table&gt;
+			</code>
+			<p>Результат буде дещо невиразним, без границь, оформлення:</p>
+			<table>
+				<tr>
+					<th>Продукція</th>
+					<th>Кількість</th>
+				</tr>
+				<tr>
+					<td>Олівці</td>
+					<td>70 шт.</td>
+				</tr>
+				<tr>
+					<td>Ручки</td>
+					<td>24 шт.</td>
+				</tr>
+				<tr>
+					<td>Фломастери</td>
+					<td>35 шт.</td>
+				</tr>
+			</table>
+			<p>Зазвичай таблицям задають ширину, найчастіше - 100%. Також - потрібні бордери.</p>
+			<p>В наступному коді також представлені блоки thead та tbody, протестуйте в <a href="https://jsfiddle.net/poshtarboba/8wj7pva5/" target="_blank">jsFiddle</a>:</p>
+			<code>
+				table { width: 100%; border: 1px solid silver; }<br>
+				th, td { border: 1px solid silver; }<br><br>
+				&lt;table&gt;<br>
+				&nbsp;&nbsp;&lt;thead&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Продукція&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Кількість&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;thead&gt;<br>
+				&nbsp;&nbsp;&lt;tbody&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Олівці&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;70 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Ручки&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;24 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Фломастери&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;35 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;/tbody&gt;<br>
+				&lt;/table&gt;
+			</code>
+			<p>Щоб рамка була не подвійна, а одинарна - добавте стиль <strong>border-collapse: collapse</strong>.</p>
+			<p>Для об'єднання комірок використовуються атрибути:</p>
+			<code>
+				&lt;td colspan="3"&gt;<br>
+				&lt;td rowspan="2"&gt;
+			</code>
+			<table style="width: 100%;" border="1px">
+				<thead>
+				<tr>
+					<th>Продукція</th>
+					<th colspan="2">Кількість</th>
+				</tr>
+				<tr>
+					<th>&nbsp;</th>
+					<th>Вчора</th>
+					<th>Сьогодні</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td rowspan="2">Олівці кольорові<br>і прості</td>
+					<td>70 шт.</td>
+					<td>23 шт.</td>
+				</tr>
+				<tr>
+					<td>64 шт.</td>
+					<td>11 шт.</td>
+				</tr>
+				<tr>
+					<td>Ручки</td>
+					<td>24 шт.</td>
+					<td>20 шт.</td>
+				</tr>
+				</tbody>
+			</table>
+
+			<code>
+				&lt;table style="width: 100%;"&gt;<br>
+				&nbsp;&nbsp;&lt;thead&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Продукція&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th colspan="2"&gt;Кількість&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;&nbsp;&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Вчора&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Сьогодні&lt;/th&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;/thead&gt;<br>
+				&nbsp;&nbsp;&lt;tbody&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td rowspan="2"&gt;Олівці кольорові&lt;br&gt;і прості&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;70 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;23 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;64 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;11 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Ручки&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;24 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;20 шт.&lt;/td&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+				&nbsp;&nbsp;&lt;/tbody&gt;<br>
+				&lt;/table&gt;
+			</code>
+			<p>Атрибути тега &lt;table&gt; (наразі не бажані до застосування):</p>
+			<p><strong>cellspacing</strong> - задає зовнішні відступи довкола чарунок.</p>
+			<p><strong>cellpadding</strong> - задає внутрішні відступи всередині чарунок.</p>
+			<p>&nbsp;</p>
+			<p>Років 7 тому всі сайти версталися таблицями, без div. Наразі так досі створюються e-mail.</p>
+		</section>
+
+		<section>
+			<h2>Таблиці CSS.</h2>
+			<p>Стилями можна перетворити будь-які блоки на таблиці. Використовуються такі стилі:</p>
+			<code>
+				display: table;<br>
+				display: table-cell;<br>
+				display: table-row;
+			</code>
+			<p>Якщо потрібно використати псевдо-табличну верстку для одного рядка - table-row можна опустити.</p>
+			<code>
+				&lt;p&gt;<br>
+				&nbsp;&nbsp;&lt;span&gt;Комірка 1&lt;/span&gt;<br>
+				&nbsp;&nbsp;&lt;span&gt;Комірка 2&lt;/span&gt;<br>
+				&nbsp;&nbsp;&lt;span&gt;Комірка 3&lt;/span&gt;<br>
+				&lt;/p&gt;<br><br>
+				p { display: table;}<br>
+				span { display: table-cell;}
+			</code>
+			<p>Зверніть увагу, що тег &lt;p&gt; в цьому випадку перестане займати всю ширину сторінки чи батьківського елемента і звузиться до мінімально можливої ширини. Задайте тегу width.</p>
+			<p>Якщо потрібно декілька рядків таблиці:</p>
+			<code>
+				&lt;div&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Комірка 1&lt;/span&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Комірка 2&lt;/span&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Комірка 3&lt;/span&gt;<br>
+				&nbsp;&nbsp;&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Комірка 4&lt;/span&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Комірка 5&lt;/span&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Комірка 6&lt;/span&gt;<br>
+				&nbsp;&nbsp;&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Комірка 7&lt;/span&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Комірка 8&lt;/span&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Комірка 9&lt;/span&gt;<br>
+				&nbsp;&nbsp;&lt;/p&gt;<br>
+				&lt;div&gt;<br><br>
+				div { display: table; }<br>
+				p { display: table-row; }<br>
+				span { display: table-cell; }
+			</code>
+		</section>
+
+		<p></p>
+		
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<ol>
+				<li>Проект <a href="../fe-files/psd/proj_tables.zip">Таблиці</a> <small>(<a href="../fe-files/psd/proj_tables.jpg">jpg</a>)</small>.</li>
+				<li>Проект виконуйте, створивши репозиторій Git.</li>
+			</ol>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>

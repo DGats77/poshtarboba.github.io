@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Заняття 2. Організація робочого простору, FTP, перші теги HTML.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<style>
+		.filerus strong:nth-child(1) { display: block; font-size: 40px; line-height: 50px; color: red;}
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Організація робочого простору, FTP, перші теги HTML.</h1>
+
+		<section>
+			<h2>Організація робочого простору.</h2>
+			<p>З часом у вас буде все більше і більше проектів, різноманітних робіт.</p>
+			<p>Щоб дотримуватися якогось порядку, не перетворити робочий стіл і вінчестер на хаотичне нагромадження файлів, прислухайтесь до порад.</p>
+			<p>Створіть папку <strong>work</strong> на диску D:\ (чи будь-якому іншому, не на C:\), для MacOS та Linux - в документах, домашньому каталозі.</p>
+			<div class="image">
+				<img src="../fe-img/part_02_1.png" alt="Field Work">
+				<p>Папка work та її вміст.</p>
+			</div>
+			<p>Подальша структура вашої робочої папки:</p>
+			<code>
+				<strong>D:\work\</strong><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2016-11<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2016-12<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2017-01<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2017-02<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2017-03<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;archive<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2015-09<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2015-10<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2015-11<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2015-12<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2015-01<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;lifehacks<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;my_projects<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;poleznosti
+			</code>
+			<p>В папках кожного місяця створюйте папки проектів:</p>
+			<code>
+				<strong>D:\work\2016-12\</strong><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;andrey_izoterika<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;andrey_strahovka<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;andrey_magazin_eurohimiya<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;futbolki<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;kolesov<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;project_name<br>
+			</code>
+			<p>Якщо потрібна звичайна верстка, без веб-серверів, зборщиків, то структура папки проекта має бути такою:</p>
+			<code>
+				<strong>D:\work\2016-12\futbolki\</strong><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;html &nbsp;&nbsp; <em>(папка з версткою)</em><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;psd &nbsp;&nbsp;&nbsp; <em>(папка з макетами)</em><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;tz &nbsp;&nbsp;&nbsp;&nbsp; <em>(папка з технічним завданням)</em><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;futbolki_20151204.zip &nbsp;&nbsp; <em>(архів для клієнта)</em><br>
+			</code>
+			<p class="filerus">
+				<strong>Увага!</strong>
+				<strong>Не використовуйте кирилицю, великі літери та пробіли</strong> в іменах файлів та шляхах.<br>
+				З кирилицею є великі проблеми якщо передаватимете файли в архіві на інший комп'ютер з іншою операційною системою чи заливатимете на FTP (linux).<br>
+				З великими літерами часто виникають проблеми на серверах.<br>
+				З пробілами часто бувають проблеми при вказуванні шляху до файлу.<br>
+				Тому завжди використовуйте в іменах папок та файлів лише:<br>
+				<strong class="success">маленькі англійські літери та дифіс чи підкреслення замість пробіла</strong>.
+			</p>
+			<p>Структура кожної папки проекту:</p>
+			<code>
+				<strong>D:\work\2016-12\futbolki\</strong><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;html<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;images<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;css<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;js<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index.html<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;psd<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;futbolki.psd<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;futbolki.zip<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;tz<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tz_futbolki.zip<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;техническое задание.doc<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;notes.txt
+			</code>
+		</section>
+
+		<section>
+			<h2>FTP.</h2>
+			<p>FTP - протокол передачі файлів. Дуже часто використовується для заливання файлів на сервер.</p>
+			<p>Для роботи протоколу використоється дві програми: FTP-клієнт та FTP-сервер, на клієнтському комп'ютері і на сервері відповідно.</p>
+			<p>Для роботи з FTP є багато різних програм. В більшості IDE вже є вбудований FTP-клієнт.</p>
+			<p>В крайньому випадку можна скористатися вбудованим FTP в оболонку Windows, ввівши в поле адреси посилання:</p>
+			<div class="image">
+				<img src="../fe-img/part_02_2.png" alt="Windows FTP">
+				<p>FTP-клієнт оболонки OS Windows.</p>
+			</div>
+			<p>Формат URL-адреси FTP-з'єднання та приклади:</p>
+			<code>
+				ftp://user_name:password@host<br>
+				ftp://user_name:password@host:port<br>
+				ftp://admin:fRoSDmWHiQav_@mysite.com:440<br>
+				ftp://moderator7:lalala@192.168.17.21
+			</code>
+			<p>Але є більш зручні програми, наприклад, Total Commander, FTP-менеджер викликається клавішами Ctrl + F:</p>
+			<div class="image">
+				<img src="../fe-img/part_02_3.png" alt="Total Commander FTP">
+				<p>FTP-менеджер в програмі Total Commander.</p>
+			</div>
+			<p>Безкоштовна програма <a href="https://filezilla-project.org/" target="_blank">FileZilla</a>:</p>
+			<div class="image">
+				<img src="../fe-img/part_02_4.png" alt="FileZilla">
+				<p>Інтерфейс програми FileZilla.</p>
+			</div>
+			<p>Для створення нового з'єднання клацніть на кнопку зліва зверху.</p>
+			<div class="image">
+				<img src="../fe-img/part_02_5.png" alt="FileZilla new connection.">
+				<p>Створення нового з'єднання у FileZilla.</p>
+			</div>
+			<p>
+				Клацніть на кнопку нового з'єднання та задайте наступні налаштування:<br>
+				- назву з'єднання (назву обирайте таку, щоб вам була зрозуміла);<br>
+				- хост у вигляді IP-адреси сервера або домен;<br>
+				- тип з'єднання FTP чи sFTP;<br>
+				- тип авторизації;<br>
+				- логін, пароль.
+			</p>
+			<h3>Завдання.</h3>
+			<ol>
+				<li>Приєднайтесь до сервера по протоколу FTP за допомогою вбуованої в ОС оболонки.</li>
+				<li>Створіть папку зі своїм ніком чи ім'ям (пам'ятайте про обмеження у використанні символів!).</li>
+				<li>Створіть з'єднання у програмах FileZilla чи Total Commander.</li>
+				<li>В своїй папці на сервері створіть підпапку з роком/місяцем (2016-03), в ній - папки проектів домашнього завдання.</li>
+				<li>В створені папки проектів закиньте свої домашні завдання.</li>
+			</ol>
+		</section>
+
+		<section>
+			<h2>Формат архівів.</h2>
+			<p>Завжди використовуйте лише архів формату <strong class="success">ZIP</strong>. Архіви в форматах RAR, 7z можуть не розпакуватися у замовника.</p>
+			<p>Завжди добавляйте дату до імені архіву.</p>
+			<p>Завжди давайте зрозумілі назви архівів, не плодіть файли html.zip, html(2).zip, html(3).zip...</p>
+			<code>
+				<strong style="font-size: 2em; line-height: 2em;" class="success">projectName_date.zip</strong><br>
+				futbolki_20151110.zip<br>
+				futbolki_20151110a.zip<br>
+				futbolki_20151110b.zip<br>
+				futbolki_20151110c.zip<br>
+			</code>
+		</section>
+
+		<section>
+			<h2>Абсолютні та відносні шляхи до файлів.</h2>
+			<p>Наприклад, у нас є посилання типу http://mysite.com/index.html</p>
+			<p>Логіка користувача комп'ютера підказує, що десь інсує файл index.html, який завантажується з сервера у наш браузер.</p>
+			<p>Якщо сервер працює під операційною системою Linux чи BSD, то, скоріш за все, цей файл буде знаходитися в папці з таким чи подібним шляхом:</p>
+			<code>/var/www/public-html/</code>
+			<p>Можна налаштувати веб-сервер так, щоб він брав файли для http://mycite.com/ з папки D:\work\frontend\magazin_futbolok\.</p>
+			<p>Папка, з якої беруться файли для веб-сейту - називається <strong>коренем, кореневим каталогом</strong>.</p>
+			<p>Таким чином, якщо у нас на сайті є зображення чи pdf-файл, то їх адреса буде приблизно такою:</p>
+			<code>
+				http://mysite.com/images/cat.jpg<br>
+				http://mycite.com/files/pdf/instruction.pdf
+			</code>
+			<p>а в реальності файли будуть зберігатися за адресою:</p>
+			<code>
+				/var/www/public-html/images/cat.jpg<br>
+				/var/www/public-html/files/pdf/instruction.pdf<br>
+				або<br>
+				d:\work\frontend\magazin_futbolok\images\cat.jpg<br>
+				d:\work\frontend\magazin_futbolok\pdf\instruction.pdf
+			</code>
+			<p>Кореневий каталог сайта це папка, в якій зберігаються всі файли сайта (доступні для фронтенда).</p>
+			<p>Кореневий каталог в операційних системах Linux, BSD, MacOS є <strong>/</strong> (слеш).</p>
+			<p>В цьому каталозі можна бачити папки var, home, usr, dev, bin і т.п.</p>
+			<p>В операційній системі Windows кожен диск є кореневим каталогом: C:\, D:\, E:\ і т.д.</p>
+			<p>В інтернеті кожен сайт має кореневий каталог <strong>/</strong>.</p>
+			<code>
+				localhost<br>
+				localhost/
+			</code>
+			<p>На одному комп'ютері (сервері) може розташовуватися багато сайтів, в кожного буде свій домен, свій кореневий каталог:</p>
+			<code>
+				d:\servers\denwer\home\localhost\<br>
+				d:\servers\denwer\home\magazin_futbolok\<br>
+				d:\servers\denwer\home\landing_honey\<br>
+				d:\servers\denwer\home\wp-blog\<br>
+				d:\servers\denwer\home\test1.ru\<br>
+				d:\servers\denwer\home\humor.km.ua\
+			</code>
+			<p><strong>Абсолютний шлях</strong> - повний шлях до файлу, ресурсу на конкретному комп'ютері чи веб-сайті:</p>
+			<code>
+				d:\work\frontend\magazin_futbolok\images\cat.jpg<br>
+				/var/www/public-html/images/cat.jpg<br>
+				http://mysite.com/images/cat.jpg
+			</code>
+			<p>Якщо ви будете використовувати абсолютні шляхи до файлів, то при перенесенні папки в інше місце, переіменуванні папки, відправленні zip-архіва сайта замовнику чи колезі, зміні домена сайта така адреса як правило стане неправильною:</p>
+			<code>
+				&lt;img src="d:\work\frontend\magazin_futbolok\images\cat.jpg" alt=""&gt;<br>
+				&lt;img src="http://futbolki2012.com/images/cat.jpg" alt=""&gt;
+			</code>
+			<p>На сайтах можна використовувати абсолютний шлях виду:</p>
+			<code>
+				&lt;img src="/images/cat.jpg" alt=""&gt;
+			</code>
+			<p>Фактично, такий скорочений шлях браузер автоматично перетворить на повний:</p>
+			<code>
+				&lt;img src="<strong>http://mysite.com</strong>/images/cat.jpg" alt=""&gt;
+			</code>
+			<p>але під час розробки сайту якщо ви не використовуєте локальний веб-сервер, це буде не зручно, всі файли будуть зсилатися на кореневі каталоги операційної системи.</p>
+			<p><strong class="danger">Примітка:</strong> в ОС Windows також використовуйте прямий слеш, а не зворотній:<br>
+				d:/work/frontend/magazin_futbolok/images/cat.jpg<br>
+				ця операційна система розуміє обидва варіанта слешів, прямий слеш є універсальним для всіх ОС та URI-адрес в інтернеті.
+			</p>
+			<p><strong>Відносний шлях</strong> - це шлях до файлів з поточного каталога.</p>
+			<p>Наприклад, ми відкрили папку d:\video\mults\, в цій папці є папка Simpsons\, в ній s06\, в останній - всі серії шостого сезону, серед яких файл s06e12.avi.<br>
+				відносний шлях до файла з поточного каталога d:\video\mults\ буде таким:</p>
+			<code>
+				Simpsons\s06\s06e12.avi
+			</code>
+			<p>Якщо ми зайдемо у папку Simpsons, то відносний шлях до того ж файлу буде таким:</p>
+			<code>
+				s06\s06e12.avi
+			</code>
+			<p>Якщо перейдемо на диск D:\, то відносний шлях буде таким:</p>
+			<code>
+				video\mults\Simpsons\s06\s06e12.avi
+			</code>
+			<p>Відносний шлях на сайті також відраховується з поточної сторінки. Для сторінки http://mysite.com/index.html відносний шлях до картинки з котом буде:</p>
+			<code>images/cat.jpg</code>
+			<p>Якщо ми перейдемо в каталог files:<br>
+				http://mysite.com/files/pdf/<br>
+				фактично буде відображено файл<br>
+				http://mysite.com/files/pdf/index.html,<br>
+				з цієї сторінки відносний шлях до інструкції буде просто назвою файлу:
+			</p>
+			<code>
+				instruction.pdf
+			</code>
+			<p>а з головної сторінки сайту відносний шлях буде:</p>
+			<code>
+				files/pdf/instruction.pdf
+			</code>
+			<p>Каталог <strong>../</strong> - це перехід в батьківську папку.</p>
+			<p>Нехай ми відкрили папку:</p>
+			<code>
+				d:\video\mults\Simpsons\
+			</code>
+			<p>Відносний шлях <strong>..\</strong> - це звернення до батьківського каталога<br>
+				d:\video\mults\<br>
+				Також можна використовувати і абсолютний шлях:<br>
+				d:\video\mults\Simpsons\..\<br>
+				те саме, що і<br>
+				d:\video\mults\
+			</p>
+			<p>Можна використати декілька звернень до батьківського каталога:<br>
+				d:\video\mults\Simpsons\s06\..\..\..\<br>
+				це звернення до папки<br>
+				d:\video\
+			</p>
+			<p>Якщо ми відкрили папку s06\, то відносний шлях<br>
+				..\..\..\<br>
+				також вкаже на папку video\</p>
+			<p>Тепер розглянемо відносні шляхи у межах сайту. Нехай ми переглядаємо веб-сторінку:</p>
+			<code>
+				http://mysite.com/files/pdf/index.html
+			</code>
+			<p>Для того, щоб помістити зображення на цю сторінку, використовується код з вказанням відносної або абсолютної адреси:</p>
+			<code>
+				&lt;img src="../../images/cat.jpg" alt=""&gt; - відносна адреса<br>
+				&lt;img src="/images/cat.jpg" alt=""&gt; - абсолютна адреса
+			</code>
+			<p>&nbsp;</p>
+			<p>Але не завжди посилання - це є файл в конкретній папці на сервері, комп'ютері. Зображення, файл може зберігатися у базі даних, у специфічних файлових системах, або ж мати приблизно таку реальну адресу:<br>
+				http://s261435zc.files.bin/45f894ca15a/20161204/03/azr/k3cf919do7cc79.jpg<br>
+				а буди доступним за "фіктивною" адресою:<br>
+				http://mysite.com/funpics/cat.jpg<br>
+				http://mysite.com/download?file=45159_cat.jpg
+			</p>
+			<p>Також сучасні технології передбачають створення окремої веб-сторінки з багатьох окремих файлів.</p>
+			<p>Так, сторінка http://mysite.com/index.html насправді може бути відсутня на сервері, а при зверненні до цієї адреси файл index.html буде збиратися як конструктор з окремих файлів:<br>
+				- main.php;<br>
+				- head.php;<br>
+				- header.php;<br>
+				- aside.php;<br>
+				- content.php;<br>
+				- footer.php;<br>
+				- widgets.php;<br>
+				- map.inc;<br>
+				і так далі.
+			</p>
+			<p>Тому розрізняють два такі поняття:</p>
+			<p><strong>URL</strong> (Unique Resource Location) - унікальне розміщення ресурса (справжня адреса файла).</p>
+			<p><strong>URI</strong> (Unique Resource Identificator) - унікальний ідентифікатор ресурса (посилання, за яким можна отримати файл).</p>
+			<p>Кожен URL є також і URI, але не навпаки, URI може зсилатися на ресурс, який не існуює у вигляді окремого файла, або ж є потоковими даними - стрім-відео реального часу, телеметрія, біржеві індекси і тому подібне.</p>
+		</section>
+
+		<section>
+			<h2>Перші теги HTML.</h2>
+			<p>На минулому занятті ми познайомилися з декількома ключовими елементами веб-сторінок:<br>
+				- заголовки;<br>
+				- важливий текст;<br>
+				- списки (несортовані та нумеровані);<br>
+				- зображення;<br>
+				- посилання.</p>
+			<p>Сьогодні елементи форматування моделі даних ми перетворимо на теги мови HTML.</p>
+			<p>Заголовки обрамляються тегами <strong>&lt;h1&gt;</strong>, <strong>&lt;h2&gt;</strong>, <strong>&lt;h3&gt;</strong>, <strong>&lt;h4&gt;</strong>, <strong>&lt;h5&gt;</strong>, <strong>&lt;h6&gt;</strong>.</p>
+			<p>Речення, абзаци, текст огортаються тегом <strong>&lt;p&gt;</strong> (кожне речення в окремому тезі).</p>
+			<p>Якщо в реченні потрібно зробити перенесення строки на новий рядок - використайте тег <strong>&lt;br&gt;</strong>, та у більшості випадків текст переноситься автоматично.</p>
+			<p>Важливий текст огортається тегами <strong>&lt;strong&gt;</strong> або <strong>&lt;b&gt;</strong> (за замовчуванням в браузері виділяється жирним шрифтом).</p>
+			<p>Поняття, визначення, термін огортаються тегами <strong>&lt;em&gt;</strong> або <strong>&lt;i&gt;</strong> (за замовчуванням в браузері виділяється наклонним шрифтом).</p>
+			<p>Списки огортаються тегами <strong>&lt;ul&gt;</strong> (несортований) або <strong>&lt;ol&gt;</strong> (нумерований).</p>
+			<p>Кожен елемент списку - <strong>&lt;li&gt;</strong> (list item).</p>
+			<p>Зображення вставляються на веб-сторінку тегом <strong>&lt;img&gt;</strong>, у якого повинні бути атрибути <strong>src</strong> та <strong>alt</strong>, що вказують на URI зображення та описують зображення.</p>
+			<p>Посилання вставляються на веб-сторінку тегом <strong>&lt;a&gt;</strong>, у якого повинен бути атрибут <strong>href</strong> - адреса, по якій буде здійснено перехід при кліку на посилання.</p>
+		</section>
+
+		<section>
+			<h2>Перетворення моделі даних на веб-сторінку.</h2>
+			<p>Окрім вищезазначених тегів кожна веб-сторінка повинна мати декілька обов'язкових тегів, що описують заголовок файлу та його кінець.</p>
+			<p>Скопіюйте ваш файл index.txt у файл index.html, відкрийте його у IDE чи блокноті (прослідкуйте щоб кодування файлу було UTF-8) і починайте добавляти теги, видаляючи форматування моделі даних:</p>
+			<code>
+				&lt;html&gt;<br>
+				&lt;head&gt;<br>
+				&nbsp;&nbsp;&lt;meta charset="utf-8"&gt;<br>
+				&lt;/head&gt;<br>
+				&lt;body&gt;<br>
+				&nbsp;&nbsp;&lt;h1&gt;Інформація про мене.&lt;/h1&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;&lt;i&gt;ФІО:&lt;/i&gt; &lt;b&gt;Бобир&lt;/b&gt; Олександр Анатолійович&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;&lt;i&gt;Дата народження:&lt;/i&gt; 5.10.1982&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;&lt;i&gt;Захоплення:&lt;/i&gt; коти, &lt;b&gt;програмування&lt;/b&gt;, мандри&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;Улюблені ігри:&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;ul&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Fallout;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Minecraft;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Might &amp;amp; Magic.&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;/ul&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;Мої друзі:&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;ol&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Іванов;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Петров;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Сидоров.&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;/ol&gt;<br>
+				&nbsp;&nbsp;&lt;img src="images/cat.jpg" alt="Кіт"&gt;&lt;br&gt;<br>
+				&nbsp;&nbsp;&lt;a href="http://google.com"&gt;google&lt;/a&gt;<br>
+				&lt;/body&gt;<br>
+				&lt;/html&gt;
+			</code>
+			<p>Збережіться та відкрийте створений файл у браузері, отримаємо ось таку веб-сторінку:</p>
+			<iframe src="part_02a.html"></iframe>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<ol>
+				<li>Створіть сторінку-візитівку вашого домашнього улюбленця, кумира, вигаданого персонажа чи будь-яку іншу.</li>
+				<li>Перетворіть модель даних сайту вашого бізнесу на веб-сторінки.</li>
+				<li>Перетворіть модель даних соцмережі домашніх тварин на веб-сторінки.</li>
+			</ol>
+			<h3>Додаткове завдання.</h3>
+			<p>Дослідіть код сторінок цієї лекції, сайтів Wikipedia, соцмереж. Знайдіть елементи, які ми сьогодні вивчили.</p>
+			<p>Код сторінки можна побачити клацнувши правою кнопкою миші на сторінці і вибравши пункт меню "Переглянути джерело сторінки", "Show source".</p>
+		</section>
+
+		<section class="homework">
+			<h2>Ресурси.</h2>
+			<p><a href="http://phpfaq.ru/newbie/paths" target="_blank">Различие между абсолютными и относительными путями</a>.</p>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>

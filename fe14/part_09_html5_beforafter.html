@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 9. HTML5, псевдоелементи.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<style>
+		p.example1 { margin-bottom:40px; padding:20px; font-size:140%; background:#c3e3f3;}
+		p.example1:before { content:">>>> ";}
+		p.example1:after { content:"!!!";}
+		p.example2 { margin-bottom:40px; padding:20px; font-size:140%; background:#c3e3f3;}
+		p.example2:before,
+		p.example2:after { content:""; display:block; height:20px; background:green;}
+		.example3 { padding:16px; font-size:140%; border:4px solid red;}
+		.example3.clr:after { height:20px; background:green;}
+		.example3>div { padding:16px; border:2px solid blue;}
+		.example3>div:first-child { float:left; width:250px; height:60px;}
+		.example3>div:last-child { float:right; width:400px; height:80px;}
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>HTML5, псевдоелементи.</h1>
+
+		<section>
+			<h2>Порядок стилів.</h2>
+			<!-- TODO: блочні стилі, текст, декорація, рідко вживані -->
+		</section>
+
+		<section>
+			<h2>Семантика HTML5.</h2>
+			<p>В HTML попередньої, четвертої редакції, всі блоки визначалися тегом &lt;div&gt;, всі списки, навігаційні меню, переліки - тегами &lt;ul&gt;, &lt;li&gt;. Пошуковим системам було важко розібратися де яка інформація, що до чого відноситься.</p>
+			<p>В HTML5 було внесено деякі зміни, більшість часто використовуваних блоків отримали свої аліаси (alias, псевдонім).</p>
+			<p>Для оформлення хедера введено тег &lt;header&gt;, для футера - &lt;footer&gt;, для бокової панельки - &lt;aside&gt;, і так далі.</p>
+			<div class="image">
+				<img src="../fe-img/fe_html5.jpg" alt="HTML5 boxes">
+				<p>Блоки HTML5.</p>
+			</div>
+			<code>
+				&lt;div class="header"&gt; &nbsp;&nbsp; ==> &nbsp;&nbsp; &lt;header&gt;<br>
+				&lt;div class="footer"&gt; &nbsp;&nbsp; ==> &nbsp;&nbsp; &lt;footer&gt;<br>
+				&lt;div class="content"&gt; &nbsp;&nbsp; ==> &nbsp;&nbsp; &lt;main&gt;<br>
+				&lt;div class="sidebar"&gt; &nbsp;&nbsp; ==> &nbsp;&nbsp; &lt;aside&gt;<br>
+				&lt;div class="section"&gt; &nbsp;&nbsp; ==> &nbsp;&nbsp; &lt;section&gt;<br>
+				&lt;div class="article"&gt; &nbsp;&nbsp; ==> &nbsp;&nbsp; &lt;article&gt;<br>
+				&lt;div class="nav-bar"&gt; &nbsp;&nbsp; ==> &nbsp;&nbsp; &lt;nav&gt;<br>
+				&lt;ul class="menu"&gt; &nbsp;&nbsp; ==> &nbsp;&nbsp; &lt;menu&gt;<br>
+				&lt;div class="image"&gt; &nbsp;&nbsp; ==> &nbsp;&nbsp; &lt;figure&gt;<br>
+				&lt;div class="image"&gt;&lt;p&gt; &nbsp;&nbsp; ==> &nbsp;&nbsp; &lt;figure&gt;&lt;figcaption&gt;
+			</code>
+			<p><span class="danger">Увага!</span> Списки, що не відносяться до навігаційних меню, списки соцмереж і тому подібне - так і залишаються тегами ul, ol. Також нікуди не ділися div та інші теги, їх застосовуйте як і раніше.</p>
+			<p>Стандарт HTML5 дозволяє не закривати деякі блоки, такі як &lt;/html&gt;, &lt;/body&gt;, &lt;/p&gt;, &lt;/li&gt;, &lt;/tr&gt;, &lt;/td&gt; і т.ін.; а теги &lt;html&gt;, &lt;head&gt;, &lt;body&gt; можна і не відкривати.</p>
+			<p>Валідний HTML5-код може виглядати ось так:</p>
+			<code>
+				&lt;!DOCTYPE html&gt;<br>
+				&lt;title&gt;Frontend. Заняття 6.&lt;/title&gt;<br>
+				&lt;meta charset="utf-8"&gt;<br>
+				&lt;meta name="format-detection" content="telephone=no"&gt;<br>
+				&lt;link type="text/css" rel="stylesheet" href="css/styles.css"&gt;<br>
+				&lt;div id="mainwrapper"&gt;<br>
+				&nbsp;&nbsp;&lt;div class="resize"&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Заняття 6.&lt;/h1&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;В HTML4 всі блоки визначалися тегом &amp;lt;<span class="black">div</span>&amp;gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;В HTML5 було внесено деякі зміни, більшість часто використовуваних блоків отримали свої аліаси (alias, псевдонім).<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="image"&gt;&lt;img src="cat.jpg" alt="cat"&gt;&lt;/div&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;Цей текст буде "висячим", не матиме батьківського тега  &amp;lt;<span class="black">p</span>&amp;gt;, залишати в коді "висячий" текст - поганий стиль верстки.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Далі наведено приклад списку:<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Елемент списку.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Ще один елемент списку.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="#"&gt;Посилання у списку&lt;/a&gt;.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;div&gt;Блок &amp;lt;<span class="black">div</span>&amp;gt; у списку.&lt;/div&gt;&lt;div&gt;Навіть два.&lt;/div&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Список другого рівня:<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Елемент списку другого рівня.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Ще один.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Останній параграф і закриваючі блоки &amp;lt;<span class="black">div</span>&amp;gt;.<br>
+				&nbsp;&nbsp;&lt;/div&gt;<br>
+				&lt;/div&gt;
+			</code>
+			<p>Але я дуже раджу всі теги писати і закривати їх, на те є декілька причин: дисциплінює верстальника, попереджає неочевидні помилки, при модифікації сторінки однозначно і повністю описує тег та інші.</p>
+			<p><a href="http://www.olunka.ru/18-tegov-ne-trebuyushhix-obyazatelnogo-zakrytiya/">Невелика статейка з топа видачі гугла по запиту на цю тему</a>.</p>
+		</section>
+
+		<section>
+			<h2>Псевдоелементи :before та :after.</h2>
+			<p>В CSS3 з’явилась можливість створювати псевдоелементи. Ці елементи відсутні в HTML-коді і повністю відносяться до оформлення даних.</p>
+			<p>Псевдоелементи вбудовуються всередину елемента, до якого застосовано стилі:<br>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong>:before</strong> - у початок елемента, перед всіма його дочірніми елементами;<br>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;<strong>:after</strong> - в кінець елемента, після всіх його дочірніх елементів.</p>
+			<p>Приклад застосування:</p>
+			<code>
+				&lt;p&gt;Привіт&lt;/p&gt;<br><br>
+				p { padding: 20px; background: #c3e3f3;}<br>
+				p:before { content: ">>>> ";}<br>
+				p:after { content: "!!!";}
+			</code>
+			<p>Результат:</p>
+			<p class="example1">Привіт</p>
+			<p>Але не кожен тег може мати псевдоелементи. Деякі теги самі по собі не можуть мати контенту, дочірніх елементів, а отже, і псевдоелементів. Застосування стилів до таких тегів, як &lt;img&gt;, &lt;br&gt;, &lt;hr&gt;, &lt;input&gt; буде безрезультативним.</p>
+			<p>Псевдоелементи за замовчуванням є інлайновими елементами. Основний їх атрибут - <strong>content</strong>. Якщо не задати цей атрибут - псевдоелемент не з’явиться на веб-сторінці.</p>
+			<p>Атрибут content доволі складний, може містити в собі символ чи строку тексту, зображення, лічильник, що буде змінювати значення з кожним наступним використанням псевдоелемента і т.п. Інформацію про всі варіанти можна подивитися на <a href="http://htmlbook.ru/css/content" target="_blank">htmlbook.ru/css/content</a> чи <a href="https://webref.ru/css/content" target="_blank">webref.ru/css/content</a>.</p>
+			<p>Але найчастіше в нас буде використовуватися порожній контент - <strong>content: "";</strong>, в псевдоелементи ми будемо вставляти фонові зображення.</p>
+			<p>Псевдоелементи, як і інші елементи, можуть змінити свою властивість display з inline на inline-block чи block. Ось приклад:</p>
+			<code>
+				&lt;p&gt;Привіт&lt;/p&gt;<br><br>
+				p { padding: 20px; background: #c3e3f3;}<br>
+				p:before,<br>p:after { content: ""; display: block; height: 20px; background: green;}
+			</code>
+			<p>Результат:</p>
+			<p class="example2">Привіт</p>
+			<p><strong>Завдання.</strong> Вставте псевдоелементами над текстом "Контроль" <a href="../fe-img/cut_here.png" target="_blank">картинку з ножицями</a>, а після - дрібним шрифтом напис: (квиток зберігайте до кінця поїздки).</p>
+			<p class="danger">УВАГА!!! Міняти треба тільки CSS, HTML-код не чіпайте, не добавляйте в нього картинку і текст!</p>
+			<iframe src="part_09a.html" style="height: 240px;"></iframe>
+			<code>
+				&lt;div&gt;<br>
+				&nbsp;&nbsp;&lt;h2&gt;Квитанція:&lt;/h2&gt;<br>
+				&nbsp;&nbsp;&lt;p class="info"&gt;Екскурсія для групи з &lt;strong&gt;20&lt;/strong&gt; школярів.&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;p class="price"&gt;Ціна: &lt;strong&gt;100 грн.&lt;/strong&gt;&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;p class="control"&gt;Контроль&lt;/p&gt;<br>
+				&lt;/div&gt;<br><br>
+				div { padding: 4px 20px; width: 170px; border: 1px solid #999;}<br>
+				h2 { margin: 0; padding: 10px 0;}<br>
+				p { margin: 0; padding: 10px 0;}<br>
+				.info { font-size: 120%; line-height: 1.3em;}<br>
+				.price { padding-bottom: 30px; font-style: italic;}
+			</code>
+			<p>За допомогою псевдоелемента :after можна легко очищувати прив’язки після елементів з властивостями float. В даному випадку просто додаємо клас з цим псевдоблоком батьківському елементу. У прикладі псевдоелементу спеціально задано висоту і фоновий колір для демонстрації, в реальності використовується нульова висота і не задається фон:</p>
+			<code>
+				&lt;div class="example <strong>clear</strong>"&gt;<br>
+				&nbsp;&nbsp;&lt;div class="box left"&gt;float: left;&lt;/div&gt;<br>
+				&nbsp;&nbsp;&lt;div class="box right"&gt;float: right;&lt;/div&gt;<br>
+				&nbsp;&nbsp;<span class="stroke">&lt;div class="clear"&gt;&lt;/div&gt;</span><br>
+				&lt;/div&gt;<br><br>
+				.example { padding: 16px; border: 4px solid red;}<br>
+				<strong>.clear:after { content: ""; display: block; <span class="danger">clear: both;</span></strong><br>&nbsp;&nbsp;height: 20px; background: green;}<br>
+				.example .box { border: 2px solid blue;}<br>
+				.example .left { float: left; width: 250px; height: 60px;}<br>
+				.example .right { float: right; width: 400px; height: 80px;}<br>
+			</code>
+			<p>Результат:</p>
+			<div class="example3 clr">
+				<div>float: left;</div>
+				<div>float: right;</div>
+			</div>
+			<p>У чужому коді ви можете зустріти цей очищуючий клас під назвами <strong>clr</strong>, <strong>clear</strong>, <strong>clearfix</strong>.</p>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<ol>
+				<li>Застосуйте теги HTML5 у проектах Майнкрафт, Бізнес-експерт.</li>
+				<li>Очищуйте флоати за допомогою псевдоелемента :after.</li>
+			</ol>
+			<p>Корисне посилання про <a href="https://habrahabr.ru/post/180473/" target="_blank">види меню</a>.</p>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>
