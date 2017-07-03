@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend.</title>
+	<meta charset="utf-8">
+	<style>
+		canvas { display: block; margin: 0 auto; border: 1px solid #aaa;}
+	</style>
+</head>
+<body>
+
+<canvas></canvas>
+
+<script>
+	let canv = document.querySelector('canvas');
+	canv.width = 700;
+	canv.height = 500;
+	let ctx = canv.getContext('2d');
+	ctx.fillStyle = 'lime';
+	ctx.strokeStyle = 'red';
+	ctx.strokeRect(590, 390, 100, 80);
+	ctx.fillRect(600, 400, 80, 60);
+	ctx.fillStyle = 'orange';
+	ctx.lineWidth = 5;
+	ctx.beginPath();
+	ctx.ellipse(350, 250, 150, 60, 0, 0, Math.PI * 2);
+	ctx.closePath();
+	ctx.fill();
+	ctx.stroke();
+	ctx.clearRect(350, 250, 151, 61);
+	ctx.beginPath();
+	ctx.ellipse(450, 350, 150, 60, 0, 0, Math.PI * 2);
+	ctx.closePath();
+	ctx.fillStyle = 'aqua';
+	ctx.fill();
+	ctx.stroke();
+	ctx.font = 'normal 30px Impact';
+	ctx.fillText('Привіт, світ!', 10, 36);
+	ctx.font = 'italic 300px Courier New';
+	ctx.strokeText('JS', 100, 300);
+	// image
+	var img = new Image();
+	img.onload = function(){
+		ctx.drawImage(this, 10, 60);
+		ctx.drawImage(this, 170, 60, 220, 60);
+		strokeCat(ctx);
+	};
+	img.src = 'http://www.flashbynight.com/tutes/lightbox/cat.jpg';
+
+
+
+	function strokeCat(ctx){
+		ctx.beginPath();
+		ctx.moveTo(0, 185);
+		ctx.lineTo(170, 220);
+		ctx.lineTo(0, 220);
+		ctx.lineTo(170, 50);
+		ctx.moveTo(0, 50);
+		ctx.closePath();
+		ctx.lineCap = 'round';
+		ctx.lineJoin = 'mitter';
+		//ctx.setLineDash([5, 10, 5, 20, 10, 10]);
+		ctx.strokeStyle = 'grey';
+		ctx.lineWidth = 10;
+		ctx.stroke();
+	}
+
+</script>
+
+
+
+
+</body>
+</html>

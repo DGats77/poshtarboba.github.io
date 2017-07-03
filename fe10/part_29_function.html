@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 29. Функції.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Функції.</h1>
+
+		<section>
+			<h2>1. Повернення результату функцією.</h2>
+			<p>Функція виконує деякі дії та за потреби може повернути результат своїх обчислень. Повернутий результат можна присвоїти у змінну або використати будь-яким іншим чином.</p>
+			<p>Згадайте "чорну" коробку з механізмом всередині і кнопкою. В цієї коробки може бути знизу отвір, через який випадає результат щоразу, як нажимаємо кнопку.</p>
+			<p>Для простоти розуміння - закресліть в коді виклик функції і над ним запишіть повернений результат. Такий остаточний вигляд прийме команда, в якій застосовано виклик функції.</p>
+			<code>
+				// створення функцій<br>
+				function <strong>hello()</strong>{<br>
+				&nbsp;&nbsp;return "Hello!";<br>
+				}<br><br>
+				function <strong>calc()</strong>{<br>
+				&nbsp;&nbsp;var result = a * b + c;<br>
+				&nbsp;&nbsp;console.log(result);<br>
+				&nbsp;&nbsp;return result;<br>
+				}<br><br>
+				function <strong>MashasLikes()</strong>{<br>
+				&nbsp;&nbsp;var likes = getLikesFromServer('Маша');<br>
+				&nbsp;&nbsp;return 'Маша отримала ' + likes + ' лайків до аватарки.';<br>
+				}<br><br>
+				// використання функцій:<br>
+				alert(<strong>hello()</strong>);<br>
+				var a = 5, b = 3, c = 7, d = <strong>calc()</strong>;<br>
+				document.getElementById('likes').innerText = <strong>MashasLikes()</strong>;
+			</code>
+			<h3>Завдання.</h3>
+			<ol>
+				<li>Створіть функцію error, що видає повідомлення (alert) про невірно введений пароль і повертає код помилки 403 (число).</li>
+				<li>Створіть функцію, що розраховує об'єм коробки, заданої змінними x, y та z і повертає результат розрахунку.</li>
+				<li>Створіть функцію, яка повертає значення true чи false в залежності чи є змінна x парною.</li>
+			</ol>
+		</section>
+
+		<section>
+			<h2>2. Аргументи функції.</h2>
+			<p>В функцію можна передавати деякі значення. Такі значення називаются аргументами функцій.</p>
+			<p>У якості аргументів можуть виступати певні значення, змінні, об'єкти, виклики функцій.</p>
+			<p>Уявіть, що зверху на нашій чорній коробці є загрузочні воронки, в які завантажуються витратні матеріали для виготовлення результату. Цих воронок може не бути взагалі (чарівна скринька), одна, дві та більше, в залежності від потреби.</p>
+			<p>Ми вже стикалися з функціями, що приймали в себе аргументи:</p>
+			<code>
+				alert('hello');<br>
+				console.log('результат:', a, b);<br>
+				parseInt('35px');<br>
+			</code>
+			<p>Приклад функції з двома аргументами:</p>
+			<code>
+				function fun(name, family){<br>
+				&nbsp;&nbsp;return "Пользователь: " + name + ' ' + family;<br>
+				}<br>
+				console.log(<strong>fun('Полиграф', 'Шариков')</strong>);
+			</code>
+			<p>Кількість аргументів у ініціалізації (створенні) функції може відрізнятися від кількості аргументів у виклику функції.</p>
+			<p>Протестуйте наступний код, проаналізуйте результат:</p>
+			<code>
+				function fun(a, b, c){<br>
+				&nbsp;&nbsp;console.log(a, b, c);<br>
+				}<br><br>
+				fun(5, 2);<br>
+				fun(5, 2, 3, 7);
+			</code>
+			<p>Якщо при виклику функції задано менше аргументів, ніж при її ініціалізації - можна робити перевірку і задавати значення по замовчуванню або виводити в консоль повідомлення про помилку і нестачу аргументів:</p>
+			<code>
+				function fun(a, b, c){<br>
+				&nbsp;&nbsp;if (a === undefined) { a = 1; }<br>
+				&nbsp;&nbsp;if (b === undefined) { b = 0; }<br>
+				&nbsp;&nbsp;if (c === undefined) { c = 'Hello!'; }<br>
+				&nbsp;&nbsp;...<br>
+				}
+			</code>
+			<h3>Завдання.</h3>
+			<ol>
+				<li>Закінчіть наступний код, щоб він розраховував значення по формулі. Виведіть значення змінної d в консоль.
+					<code>
+						function calc(){<br>
+						&nbsp;&nbsp;x * y + z;<br>
+						}<br><br>
+						var d = calc(5, 3, 7);
+					</code>
+				</li>
+				<li>Створіть функцію, що розраховує об'єм коробки і повертає результат розрахунку, x, y та z повинні передаватися аргументами.</li>
+				<li>Створіть функцію, що приймає в себе число і повертає назву дня тижня: 6 ==&gt; "субота". Використайте switch-case.</li>
+				<li>Створіть функцію, що виводить в консоль аргумент або напис "Аргументів не задано", якщо це дійсно так.</li>
+			</ol>
+			<h3>Документація.</h3>
+			<p>В документації ви часто будете зустрічати опис функції з квадратними дужками в круглих:</p>
+			<code>
+				function setPosition(x, y[, baseX, baseY]) { ... }<br>
+				function min(a, b[, c, ...]) { ... }
+			</code>
+			<p>При описі функцій це означає необов'язкові, додаткові аргументи. Функція буде працювати як з ними, так і без них:</p>
+			<code>
+				setPosition(250, 120);<br>
+				setPosition(250, 120, 40, 40);<br>
+				min(5, 15);<br>
+				min(7, 4, 12);<br>
+				min(3, 2, 4, 11, 6, 5, 9, 18);
+			</code>
+			<p>
+				Приклади<br>
+				<a href="https://developer.mozilla.org/uk/docs/Web/JavaScript/Reference/Global_Objects/Math/min" target="_blank">MDN Math.min()</a>;<br>
+				<a href="https://api.jquery.com/after/" target="_blank">jQuery fx.after()</a>;<br>
+				<a href="https://mootools.net/core/docs/1.6.0/Fx/Fx.Morph" target="_blank">MooTools Fx.Morph()</a>;<br>
+				<a href="https://mootools.net/core/docs/1.6.0/Request/Request.JSON" target="_blank">MooTools Request.JSON</a>.<br>
+			</p>
+		</section>
+
+		<section>
+			<h2>3. Іменовані та анонімні функції.</h2>
+			<p>Якщо функцію ініціалізують, задаючи їй ім'я - то це іменована функція.</p>
+			<p>Якщо функція ініціалізується без імені - це анонімна функція.</p>
+			<p>Анонімні функції як правило присвоюються в змінні, можуть ставати методами об'єктів, бути каллбек-функціями і т.п.</p>
+			<code>
+				function fun(...){ ... }<br>
+				var fun = function(...){ ... }
+			</code>
+			<h3>Завдання.</h3>
+			<ol>
+				<li>
+					Протестуйте наступний код, виправте помилку, зробіть висновки:
+					<code>
+						var a = A(3);<br>
+						var b = B(5);<br>
+						console.log(a, b);<br><br>
+						function A(x){ return x * 2; }<br>
+						var B = function(x){ return x + 3; }
+					</code>
+				</li>
+			</ol>
+		</section>
+
+		<section>
+			<h2>4. Область видимості змінних.</h2>
+			<p>Змінні, що створені в основному потоці, є глобальними, доступними по всьому скрипту (скриптам) нижче по коду.</p>
+			<p>Змінні, що створені всередині функції, видимі лише всередині функції.</p>
+			<p>Запустіть та проаналізуйте наступний код:</p>
+			<code>
+				var a = 5;<br>
+				function fun(){<br>
+				&nbsp;&nbsp;a = 14;<br>
+				&nbsp;&nbsp;var b = 8;<br>
+				&nbsp;&nbsp;console.log('In function:', a, b);<br>
+				}<br>
+				fun();<br>
+				console.log('In main stream:', a, b);
+			</code>
+			<p>Функції та змінні можуть знаходитися в різних файлах. Створіть новий проект з трьома js-файлами.</p>
+			<p>Підключіть скрипти в порядку зростання індекса, запустіть сторінку в браузері і перевірте консоль.</p>
+			<code>
+				// script1.js<br>
+				var aaa = 5;<br>
+				var fun3 = function(a, b){ return a + b; }<br><br>
+				// script2.js<br>
+				aaa = aaa - 1;<br>
+				function fun2(){ console.log(aaa); }<br>
+				var bbb = 7;<br><br>
+				// script3.js<br>
+				fun2();<br>
+				console.log(fun3(aaa, bbb));
+			</code>
+			<p>Якщо є і локальні і глобальні змінні з однаковим іменем - вони не перезаписуються та не конфліктують між собою:</p>
+			<code>
+				var a = 5;<br>
+				function fun(){<br>
+				&nbsp;&nbsp;var a = 8;<br>
+				&nbsp;&nbsp;console.log('In function:', a);<br>
+				}<br>
+				fun();<br>
+				console.log('In main stream:', a);
+			</code>
+		</section>
+
+		<section>
+			<h2>5. Чисті та брудні функції.</h2>
+			<p><strong>Чиста функція</strong> працює тільки з тими даними, які отримала у якості аргументів, не звертається до змінних, об'єктів поза межами свого визначення, не змінює зовнішні об'єкти.</p>
+			<p><strong>Брудна функція</strong> використовує зовнішні змінні, змнює об'єкти.</p>
+			<p>Функціональне програмування передбачає використання лише чистих функцій.</p>
+			<p>Чисті функції значно простіше відлагоджувати, тествати, їх можна швидко прогнати по юніт-тестам.</p>
+			<p>Брудні функції - джерело помилок, які важко відловити, відтворити.</p>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<ol>
+				<li>Створіть функцію, що приймає в себе строку виду "42 см" і повертає перетворене значення в метри: "0.42 м".</li>
+				<li>
+					Дано: 2 або 3 строкові змінні з номером дня, місяця та року: d = 04, m = 07, y = 1996.<br>
+					Створіть функцію, яка приймає 2 обов'язкових параметра d та m і необов'язковий y.<br>
+					Функція повинна повернути строку з датою в одному з двох форматів:
+					<code>
+						"04.07"<br>
+						"04.07.1996"
+					</code>
+				</li>
+				<li>
+					Дано кубічне рівняння (квадратичний тричлен ax<sup>2</sup> + bx + c = 0).<br>
+					Для знаходження коренів рівняння потрібно спочатку знайти дискримінант цього рівняння.<br>
+					Створіть функцію розрахунку дискримінанта (формула D = b<sup>2</sup> - 4ac).
+					<code>
+						function diskr(){ ... }<br>
+						var a = 5, b = 4, c = 7;<br>
+						console.log(diskr(a, b, c));<br>
+					</code>
+				</li>
+				<li>
+					Створіть функцію, що повертає тип даних змінної Ї українською мовою.
+					<code>
+						function типДаних(){ ... }<br><br>
+						var Ї;<br>
+						console.log(типДаних()); &nbsp;&nbsp; // "значення не задано"<br>
+						Ї = 'Привіт!';<br>
+						console.log(типДаних()); &nbsp;&nbsp; // "строка"<br>
+						Ї = 42;<br>
+						console.log(типДаних()); &nbsp;&nbsp; // "число"<br>
+						Ї = 1 / 0;<br>
+						console.log(типДаних()); &nbsp;&nbsp; // "безкінечність"<br>
+						Ї = null;<br>
+						console.log(типДаних()); &nbsp;&nbsp; // "порожнеча"<br>
+						Ї = {};<br>
+						console.log(типДаних()); &nbsp;&nbsp; // "об'єкт"<br>
+						Ї = типДаних;<br>
+						console.log(типДаних()); &nbsp;&nbsp; // "функція"<br>
+						// і завдання з зірочкою:<br>
+						Ї = 1 / 'Ї';<br>
+						console.log(типДаних()); &nbsp;&nbsp; // "не число!"
+					</code>
+				</li>
+				<li>
+					Скрипт отримує "з сервера" габарити коробки та вираховує об'єм.<br>
+					Виправте помилки та недоліки скрипта (функцію getFromServer не чіпайте).<br>
+					Переробіть функцію calcBox, щоб вона стала чистою.
+					<code>
+						&lt;p&gt;Результат вивести сюди&lt;/p&gt;<br><br>
+						function getFromServer(v){<br>
+						&nbsp;&nbsp;var res = Math.ceil(Math.random()*100) + ' см';<br>
+						&nbsp;&nbsp;console.info('Користувач запросив ' + v + ' розмір коробки: ' + res + '.');<br>
+						&nbsp;&nbsp;return res;<br>
+						}<br><br>
+						var x = getFromServer('x');<br>
+						var y = getFromServer('y');<br>
+						var z = getFromServer('z');<br>
+						function calcBox(){<br>
+						&nbsp;&nbsp;var res = 'Габарити коробки: ' + x + ' * ' + y + ' * ' + z + '.&lt;br&gt;';<br>
+						&nbsp;&nbsp;res += "Об'єм коробки: " + x * y * z + ' кубічних дециметрів.';<br>
+						&nbsp;&nbsp;document.getElementsByTagName('p')[0].innerHTML = res;<br>
+						}<br>
+						calcBox();<br>
+						console.info('Скрипт виконано.');
+					</code>
+				</li>
+			</ol>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>

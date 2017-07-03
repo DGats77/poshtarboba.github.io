@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 40. Навігація по DOM, стилі, вміст тега.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Навігація по DOM, стилі, вміст тега.</h1>
+
+		<section>
+			<h2>Ноди та елементи.</h2>
+			<p>HTML-код складається з вузлів двох типів: ноди і елементи.</p>
+			<p>Поексперементуємо на такому шматку кода:</p>
+			<code>
+				&lt;h1&gt;Hello&lt;/h1&gt;<br>
+				&lt;h2&gt;<br>
+				&nbsp;&nbsp;Заголовок<br>
+				&nbsp;&nbsp;&lt;span style="color: red;"&gt;з червоним&lt;/span&gt;<br>
+				&nbsp;&nbsp;текстом<br>
+				&lt;/h2&gt;<br>
+				&lt;div&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;Посилання на &lt;a href="http://google.com"&gt;google&lt;/a&gt;.&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;&lt;span&gt;1&lt;/span&gt; &lt;span&gt;2&lt;/span&gt; &lt;span&gt;3&lt;/span&gt;&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;1&lt;/span&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;2&lt;/span&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;3&lt;/span&gt;<br>
+				&nbsp;&nbsp;&lt;/p&gt;<br>
+				&lt;/div&gt;
+			</code>
+			<p>Виведіть в консоль дерево нод та дослідіть його:</p>
+			<code>
+				console.dir(document.body.childNodes);
+			</code>
+			<p>Спробуйте змінити nodeValue різних елементів.</p>
+			<p>Виведіть в консоль дерево елементів та дослідіть його:</p>
+			<code>
+				console.dir(document.body.children);
+			</code>
+		</section>
+
+		<section>
+			<h2>Навігація по DOM.</h2>
+			<p><a href="https://learn.javascript.ru/traversing-dom" target="_blank">Навигация по DOM-элементам</a>.</p>
+			<p>Окрім методів .getElement* та .querySelector* пошук елементів можна здійснювати наступним чином:</p>
+			<p><strong>.parentNode</strong> - батьківська нода.</p>
+			<p><strong>.childNodes</strong> - дочірні ноди.</p>
+			<p><strong>.firstChild</strong> - перша дочірня нода.</p>
+			<p><strong>.lastChild</strong> - остання дочірня нода.</p>
+			<p><strong>.previousSibling</strong> - попередня нода-сусід.</p>
+			<p><strong>.nextSibling</strong> - наступна нода-сусід.</p>
+			<p>Для навігації по елементам (тегам) існують такі властивості:</p>
+			<p><strong>.parentElement</strong> - батьківський елемент.</p>
+			<p><strong>.children</strong> - дочірні елементи.</p>
+			<p><strong>.firstElementChild</strong> - перший дочірній елемент.</p>
+			<p><strong>.lastElementChild</strong> - останній дочірній елемент.</p>
+			<p><strong>.previousElementSibling</strong> - попередій сусідній елемент.</p>
+			<p><strong>.nextElementSibling</strong> - наступний сусідній елемент.</p>
+		</section>
+
+		<section>
+			<h2>Стилі.</h2>
+			<p>До стилів елемента можна звернутися через властивість style:</p>
+			<code>
+				p.style.color = 'red';<br>
+				h2.style.padding = '10px 20px 15px';
+			</code>
+			<p>До стилів, які записуються через тире, можна звернутися через camelCase-варіант написання:</p>
+			<code>
+				p.style.backgroundColor = '#321204';<br>
+				p.style.borderRadius = '6px';
+			</code>
+			<p>Є одне виключення: до стиля float можна звернутися через cssFloat (у перших версіях JS слово float було зарезервоване для внутрішніх потреб).</p>
+			<code>
+				p.style.cssFloat = 'right';
+			</code>
+			<p>Зверніть увагу: стилі можна задавати лише одному, конкретному елементу. Щоб стилі застосувати до набору елементів - цей набір треба перебрати:</p>
+			<code>
+				// наступний код працювати не буде:<br>
+				document.getElementsByTagName('p').style.color = 'red';<br><br>
+				// потрібно перебрати всі елементи одним з наступних способів:<br>
+				var p = document.getElementsByTagName('p');<br>
+				for (var i=0; i < p.length; i++) {<br>
+				&nbsp;&nbsp;p[i].style.color = 'red';<br>
+				}<br><br>
+				Array.prototype.forEach.call(document.getElementsByTagName('p'),<br>
+				&nbsp;&nbsp;function(e){ e.style.color = 'red'; }<br>
+				);<br><br>
+				document.querySelectorAll('p').forEach(function(e){<br>
+				&nbsp;&nbsp;e.style.color = 'red';<br>
+				});
+			</code>
+			<p>Стилі записуються в теги інлайновим атрибутом:</p>
+			<code>
+				&lt;p style="color: red;"&gt;test&lt;/p&gt;
+			</code>
+			<p>Щоб обнулити такий стиль - просто запишіть пусту строку:</p>
+			<code>
+				p.style.color = '';<br>
+				p.style.padding = '';
+			</code>
+			<p>Щоб дізнатися який стиль застосовано до елемента з CSS-таблиць - скористайтесь функцією <strong>getComputedStyle</strong>:</p>
+			<code>
+				var p = document.querySelector('p');<br>
+				var css = getComputedStyle(p);<br>
+				console.log(css.paddingLeft);<br>
+				console.log(css.color);<br>
+				console.log(css.fontSize);
+			</code>
+			<p>Звертайтесь до кожного елемента стиля окремо, а не до групових стилів:</p>
+			<code>
+				// невірно:<br>
+				.padding<br>
+				.font<br>
+				.border<br><br>
+				// вірно:<br>
+				.paddingLeft<br>
+				.fontFamily<br>
+				.borderRightWidth<br>
+				.borderBottomColor
+			</code>
+		</section>
+
+		<section>
+			<h2>Вміст тега.</h2>
+			<p>Для того, щоб зчитати чи змінити вміст тега - є дві властивості:</p>
+			<code>
+				p.innerText;<br>
+				p.innerHTML;
+			</code>
+			<p>Перша властивість поверне значення текстових нод елемента.</p>
+			<p>Друга властивість поверне HTML-код, що міститься в елементі.</p>
+			<p>Ці властивості можна змінити:</p>
+			<code>
+				&lt;p&gt;&lt;span&gt;Hey!&lt;/span&gt;&lt;/p&gt;<br>
+				p.innerText = 'Ho!!';<br>
+				p.innerHTML = '&lt;strong&gt;Ho!!&lt;/strong&gt;';
+			</code>
+			<p>Остання строчка кода автоматично створить дочірній елемент strong у параграфа.</p>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<ol>
+				<li>.</li>
+			</ol>
+		</section>
+	</div>
+</div>
+
+</body>
+</html>

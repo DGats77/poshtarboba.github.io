@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 6. JsFiddle, стилі браузера, стилі шрифта, одиниці вимірювання, розміри та відступи.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<script src="js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>JsFiddle, стилі браузера, стилі шрифта, одиниці вимірювання, розміри та відступи.</h1>
+
+		<section>
+			<h2>1. Робота з jsFiddle.</h2>
+			<p><strong>jsFiddle</strong> - пісочниця для веб-девелоперів. Для повноцінної роботи необхідно зареєструватися і залогінитись.</p>
+			<p>Ця пісочниця являє собою 4 області: для введення блоків коду HTML, CSS, JS і для відображення результату.</p>
+			<div class="image">
+				<img src="images/part_06_1.png" alt="jsFiddle">
+				<p>Зображення 1. Інтерфейс сервісу jsFiddle.</p>
+			</div>
+			<p>Після того, як ви ввели потрібні данні - можна отримати досить коротке посилання на цю роботу, щоб поділитися ним з іншими.</p>
+			<p>jsFiddle використовують для запитань виду "чого в мене не працює, неправильно відображається", щоб показати реалізацію фрагментів верстки, для спільної роботи над проблемою.</p>
+			<p>Останнім часом з’явилася можливість спільної роботи - Collaboration.</p>
+			<p><strong>Завдання:</strong> <a href="https://jsfiddle.net/" target="_blank">зареєструватися і залогінитися на сайті</a>, спробувати вставляти шматки коду зі своїх проектів, перевірити як працює режим Collaboration.</p>
+			<p><a href="https://jsfiddle.net/poshtarboba/14q1e8LL/#&togetherjs=0koLgFGc0d" target="_blank">Link</a></p>
+			<p>Схожі сервіси:</p>
+			<ul>
+				<li><a href="http://codepen.io/" target="_blank">CodePen</a></li>
+				<li><a href="http://cssdeck.com/labs" target="_blank">CssDeck</a></li>
+				<li><a href="https://jsbin.com/" target="_blank">JS Bin</a></li>
+			</ul>
+		</section>
+
+		<section>
+			<h2>2. Стилі браузера (user agent stylesheet).</h2>
+			<p>По замовчуванню кожен браузер має власний набір стилів для всіх елементів.</p>
+			<p>Саме тому "голий" HTML виглядає не як текст в блокноті, а має деяке форматування: заголовки виконані більшим і жирним шрифтом, посилання виділені синім кольором, заголовки і параграфи мають відступи, списки також мають відступи та декоративні кружечки на початку кожного елемента списку.</p>
+			<div class="image">
+				<img src="images/part_06_2.png" alt="User agent styles">
+				<p>Зображення 2. Стилі браузера.</p>
+			</div>
+			<p>Проблема в тому, що ці стилі у різних браузерах можуть різнитися.</p>
+			<p>Перед тим, як почати писати стилі бажано провести обнулення стилів браузера.</p>
+			<p>Ось приклад обнуляючих стилів, включаючи веб-форми.</p>
+			<code>
+				html { margin:0; padding:0;}<br>
+				body { margin:0; padding:0; color:#666; font:normal 18px/28px Helvetice, Arial, sans-serif; background:#fff;}<br>
+				.clear { clear:both;}<br>
+				p { margin:0; padding:10px 0;}<br>
+				a { color:#0000ff; text-decoration:underline;}<br>
+				a:hover { color:#7777ff;}<br>
+				a img { border:none;}<br>
+				h1, h2, h3, h4, h5, h6 { margin:0; padding:0; font-weight:bold; color:#000;}<br>
+				h1 { padding:40px 0 24px; line-height:1.4em;}<br>
+				h2 { padding:0 0 12px;}<br>
+				strong { font-weight:bold;}<br>
+				em { font-style:italic;}<br>
+				form, menu, iframe { display:block; margin:0; padding:0; border:none;}<br>
+				ol, ul, dl, li, dt, dd { margin:0; padding:0; list-style:none;}<br>
+				* { outline:none;}
+			</code>
+		</section>
+
+		<section>
+			<h2>3. Стилі шрифта.</h2>
+			<p>Стилі шрифта:</p>
+			<code>
+				<strong>color:</strong> #fff;<br>
+				<strong>font-family:</strong> "Times New Romain", Helvetica, serif;<br>
+				<strong>font-weight:</strong> bold;<br>
+				<strong>font-style:</strong> italic;<br>
+				<strong>font-size:</strong> 16px;<br>
+				<strong>line-height:</strong> 1.4em;<br><br>
+				// комплексний стиль:<br>
+				<em><strong>font:</strong> normal 16px/1.4em "Times New Romain", Helvetica, serif;</em><br><br>
+				<strong>text-align:</strong> center;<br>
+				<strong>text-decoration:</strong> underline;
+
+			</code>
+		</section>
+
+		<section>
+			<h2>4. Одиниці вимірювання, формат кольору.</h2>
+			<p>Розміри можна задавати в пікселях, типографських точках (поінтах), метричних та імперських одиницях, відсотках.</p>
+			<code>
+				height: 20<strong>px</strong>;<br>
+				width: 50<strong>%</strong>;<br>
+				font-size: 16<strong>pt</strong>;<br>
+				line-height: 1.3<strong>em</strong>;<br>
+				padding: 1<strong>cm</strong> 0.2<strong>inc</strong> 0;
+			</code>
+			<p>Висоту у відсотках для елементів можна задавати тільки якщо вони спозиціоновані абсолютно чи фіксовано.</p>
+			<p>Після нуля одиниці виміру не ставляться.</p>
+			<p>Відсотки від розміру вікна браузера (viewport width, viewport height):</p>
+			<code>
+				width: 80<strong>vw</strong>;<br>
+				height: 50<strong>vh</strong>;
+			</code>
+			<p>Кутові одиниці виміру:</p>
+			<code>
+				transform: rotate(360<strong>deg</strong>);  // градуси<br>
+				transform: rotate(250<strong>grad</strong>);  // 360 градусів = 400grad, прямий кут = 100grad<br>
+				transform: rotate(3.14<strong>rad</strong>); // радіани<br>
+				transform: rotate(0.5<strong>turn</strong>); // 1 turn = 360 градусів<br>
+			</code>
+			<p>Колір можна задавати чотирма способами:</p>
+			<code>
+				color: <strong>green;</strong><br>
+				border-color: <strong>#333aaa;</strong><br>
+				background: <strong>rgb(127, 255, 0);</strong><br>
+				background-color: <strong>rgba(255, 0, 160, 0.3);</strong>
+			</code>
+			<p>Використовуйте маленькі літери.</p>
+			<p>Якщо при заданні кольора в шіснадцятковому вигляді пари цифр/букв повторюються - колір бажано записати у скороченому виді, трьома символами:</p>
+			<code>
+				color: #33ff99;<br>
+				color: #3f9;
+			</code>
+		</section>
+
+		<section>
+			<h2>5. Розміри елемента:</h2>
+			<p>Кожен елемент має ширину та висоту. Блочним елементам можна задавати розміри:</p>
+			<code>
+				<strong>width:</strong> 100%;<br>
+				<strong>height:</strong> 75px;
+			</code>
+			<p>Намагайтеся уникати використання height, нехай блоки самі собі виставляють висоту. Використовуйте внутрішні відступи padding та висоту строки line-height для керування висотою блоків.</p>
+			<p class="noheight">height: 40px;</p>
+		</section>
+
+		<section>
+			<h2>6. Відступи:</h2>
+			<p>Відступи бувають зовнішні та внутрішні.</p>
+			<code>
+				<strong>margin:</strong> 0 8px 10px 20%;<br>
+				<strong>padding:</strong> 10px 8px;<br>
+			</code>
+			<p>Відступи можуть мати 1, 2, 3, або 4 параметра, що записуються через пробіл:<br>1 - всі відступи однакові;<br>2 - вертикальні та горизонтальні відступи;<br>3 - верхній, горизонтальні, нижній відступи;<br>4 - верхній, правий, нижній, лівий відступи.</p>
+			<p>Внутрішні відступи збільшують розміри елемента.</p>
+			<p>В першу чергу намагайтесь використовувати padding.</p>
+			<div class="image">
+				<img src="images/rukojop.jpg" alt="margin-top">
+				<p>Зображення 3. margin-top: 100px; margin: 35px 0;</p>
+			</div>
+
+			<!-- особливості margin -->
+
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<p>Результати домашніх завдань заляйте на ftp в свої папки.</p>
+			<p>Продовжуйте роботу над проектами Колесов, Minecraft, Iskander.</p>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>

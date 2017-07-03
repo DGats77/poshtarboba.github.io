@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 15. Веб-форми (продовження), iframes.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<style>
+		.def, .def2 { padding: 40px 0;}
+		.def label { display: block;}
+		.def label span { display: inline-block; width: 100px; vertical-align: top;}
+		.def label input,
+		.def label textarea { width: 250px; outline: none;}
+		.special input + span { display: inline-block; padding: 0 4px;}
+		.special input:checked + span { background: #f00; color: #fff;}
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<div class="image">
+			<img src="images/rukojop.jpg" alt="margin-top">
+			<p>margin-top: 100px; margin: 35px 0;</p>
+		</div>
+		<p class="noheight">height: 40px;</p>
+		<div class="clear_example clr">
+			<div>float: left;</div>
+			<div>float: right;</div>
+		</div>
+
+		<h1>Веб-форми (продовження), iframes.</h1>
+
+		<section>
+			<h2>1. Елементи вебформ, добавлені в HTML5.</h2>
+			<p>В HTML5 добавили нові елементи вебформ, що дозволяє відмовитися від додаткових js-плагінів, які реалізовували календарі, ползунки та інші візуальні елементи.</p>
+			<p>Проте, станом на кінець 2016 року з їх підтримкою у браузерах є серйозні проблеми: браузери відображають елементи по-різному, а деякі елементи досі не підтримуються.</p>
+			<p>Звичайне текстове поле type="text" отримало декілька різновидів, що майже нічим від свого батьківського блока не відрізняються.</p>
+			<p>Це зроблено по-перше - для семантичної ідентифікації елементів, по-друге - на мобільних гаджетах при отриманні фокуса буде виникати більш зручна віртуальна клавіатура, де до основного набору клавіш будуть входити додаткові клавіші, наприклад, дня набору е-мейлів, ввода телефона і т.п.</p>
+			<p><strong>type="email"</strong> - поле для вводу адреси електронної пошти.</p>
+			<p><strong>type="tel"</strong> - поле для вводу телефона.</p>
+			<p><strong>type="url"</strong> - поле для вводу URL.</p>
+			<p><strong>type="search"</strong> - поле для пошуку.</p>
+			<p>Поля для вводу дати, часу і т.п.:</p>
+			<p><strong>type="date"</strong>.</p>
+			<p><strong>type="datetime"</strong>.</p>
+			<p><strong>type="time"</strong>.</p>
+			<p><strong>type="datetime-local"</strong>.</p>
+			<p><strong>type="month"</strong>.</p>
+			<p><strong>type="week"</strong>.</p>
+
+			<p>&nbsp;</p>
+
+			<p>Вибір кольору:</p>
+			<p><label><input type="color"> - type="color"</label></p>
+			<p>&nbsp;</p>
+
+			<p>Ввід числа:</p>
+			<p><label><input type="number"> - type="number"</label></p>
+			<p>&nbsp;</p>
+
+			<p>Ввід числа з певного діапазона:</p>
+			<p><label><input type="range" min="1" max="10"> - type="range"</label></p>
+			<code>
+				&lt;p&gt;&lt;input type="range" min="1" max="10"&gt;&lt;/p&gt;
+			</code>
+			<p>&nbsp;</p>
+
+			<p>Полоса прогресу (керування нею здійснюється за допомогою JavaScript):</p>
+			<p><progress value="20" max="100">Завантажено: 20%</progress></p>
+			<code>
+				&lt;p&gt;&lt;progress value="20" max="100"&gt;Завантажено: 20%&lt;/progress&gt;&lt;/p&gt;
+			</code>
+
+			<p>Список вибору:</p>
+			<p><label><input list="drop_list_1"></label></p>
+			<datalist id="drop_list_1">
+				<option value="Хмельницький">
+				<option value="Вінниця">
+				<option value="Львів">
+			</datalist>
+			<p>В даному випадку ми не вказали тип інпута - type="text", цей тип застосовується по-замовчуванню, наприклад, для поля ввода, яке записане в коді просто як &lt;input&gt;.</p>
+			<code>
+				&lt;label&gt;&lt;input list="drop_list_1"&gt;&lt;/label&gt;<br>
+				&lt;datalist id="drop_list_1"&gt;<br>
+				&nbsp;&nbsp;&lt;option value="Текст1"&gt;<br>
+				&nbsp;&nbsp;&lt;option value="Текст2"&gt;<br>
+				&lt;/datalist&gt;
+			</code>
+			<p>&nbsp;</p>
+		</section>
+		
+		<section>
+			<h2>4. Аудио та відео.</h2>
+			<p>Аудио та відео вставляються в код такими тегами:</p>
+			<code>
+				&lt;audio controls&gt;<br>
+				&nbsp;&nbsp;&lt;source src="audio/sound.ogg" type="audio/ogg; codecs=vorbis"&gt;<br>
+				&nbsp;&nbsp;&lt;source src="audio/sound.mp3" type="audio/mpeg"&gt;<br>
+				&nbsp;&nbsp;Ваш браузер застарів, неможливо відтворити звук.<br>
+				&nbsp;&nbsp;&lt;a href="sound/sound.mp3"&gt;Скачати трек&lt;/a&gt;.<br>
+				&lt;/audio&gt;<br>
+				&lt;video autoplay&gt;<br>
+				&nbsp;&nbsp;&lt;source src="video/video.mkv" type="video/mkv; codecs=matroska"&gt;<br>
+				&nbsp;&nbsp;&lt;source src="video/video.mp4" type="video/mpeg"&gt;<br>
+				&nbsp;&nbsp;Ваш браузер застарів, неможливо відтворити відео.<br>
+				&nbsp;&nbsp;&lt;a href="video/video.mp4"&gt;Скачати трек&lt;/a&gt;.<br>
+				&lt;/video&gt;
+			</code>
+			<p>Керувати аудио та відео можна за допомогою скриптів та деяких атрибутів:</p>
+			<p><strong>autoplay</strong> - автоматично запустити програвання після завантаження файлу чи веб-сторінки.</p>
+			<p><strong>controls</strong> - добавляє кнопки керування медіаплеєром.</p>
+			<p><strong>loop</strong> - програє медіафайл по колу, зациклено.</p>
+			<p><strong>preload</strong> - передзавантаження файла під час завантаження сторінки.</p>
+			<p><strong>src</strong> - якщо файл тільки один - можна не використовувати теги &lt;source&gt;, а задати цей файл через атрибут src.</p>
+		</section>
+
+		<section>
+			<h2>5. iframe</h2>
+			<p>Раніше було популярно робити сайти за технологією фреймів. Хедер, футер, бокова панель прописувались в окремих html-файлах, контентна частина також знаходилася в окремих файлах. Головний файл index.html містив в собі тільки 2, 3, 4 фрейма і підгружав в один з фреймів потрібний контент.</p>
+			<p>Зараз ця технологія не використовується з багатьох причин.</p>
+			<p><strong>iframe</strong> - нове переродження фреймів. Цей тег - це контейнер для інформації. У нього можна завантажити іншу веб-сторінку, сторінку з іншого сайту, pdf-документ, відео та інший контент.</p>
+			<p>Наприклад, відео з youtube вставляється через iframe, карти гугла також.</p>
+			<p>Основний атрибут - <strong>src</strong>, в значення цього атрибута прописується посилання на ресурс.</p>
+			<p><strong>Завдання:</strong> створіть html-документ (jsFiddle для цього не підходить) і створіть в ньому iframes:<br>
+				- з сайтом <a href="http://circle.com.ua/" target="_blank">circle.com.ua</a>;<br>
+				- <a href="http://circle.com.ua/lections/fe9/files/pdf.pdf" target="_blank">pdf-документом</a>;<br>
+				- відео з ютуба;<br>
+				- карту гугла.
+			</p>
+			<code>
+				iframe { width: 600px; height: 400px; border: 1px solid blue; }<br><br>
+				&lt;iframe src="http://circle.com.ua"&gt;&lt;/iframe&gt;
+			</code>
+			<p>Контейнер iframe є безпечним. Ви ніяким чином не можете вплинути на його вміст: змінити стилі елементів, застосувати скрипти, програмно зчитати його вміст.</p>
+			<p>Тому цим контейнером користуються платіжні системи, системи авторизації користувачів типу OpenID і т.п.</p>
+			<p>Проте, не кожен сайт можна запхати у iframe, можна <a href="http://coding.dp.ua/optimizatsiya/953-zapret-otkryitiya-sayta-v-iframe.html" target="_blank">заборонити</a> це робити зі своїм сайтом.</p>
+			<p>Приклад: сайт хмельницької міської ради у іframe.</p>
+			<iframe src="http://www.khmelnytsky.com/"></iframe>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<p>Результати домашніх завдань заляйте на ftp в свої папки.</p>
+			<h3>Рівень 1.</h3>
+			<p>1. Закінчіть макет вебформ.</p>
+		</section>
+
+		<section class="homework">
+			<h2>Додаткове завдання.</h2>
+			<p>
+				Скоро ми почнемо вивчати адаптивну верстку. До того часу потрібно зверстати <a href="files/psd/superposilka/superposilka_full.zip">макет СуперПосилки</a><br>
+				(jpg: <a href="files/psd/superposilka/full_home.jpg" target="_blank">home</a>,
+				<a href="files/psd/superposilka/full_home_popup.jpg" target="_blank">popup</a>,
+				<a href="files/psd/superposilka/full_faq.jpg" target="_blank">faq</a>,
+				<a href="files/psd/superposilka/full_typo.jpg" target="_blank">typo</a>,
+				<a href="files/psd/superposilka/full_contacts.jpg" target="_blank">contacts</a>,
+				<a href="files/psd/superposilka/full_order.jpg" target="_blank">order</a>)
+			</p>
+		</section>
+		
+		<section>
+			<h2>Додаткові матеріали.</h2>
+			<p><a href="https://habrahabr.ru/post/111767/" target="_blank">10 порад по веб-формах</a>.</p>
+			<p><a href="https://habrahabr.ru/post/155213/" target="_blank">Рекомендації по інтерфейсу форм</a>.</p>
+		</section>
+
+</div>
+
+</body>
+</html>

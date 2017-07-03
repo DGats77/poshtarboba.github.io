@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 2. Перші теги HTML, програма Adobe Photoshop</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<script src="js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Перші теги HTML, програма Adobe Photoshop.</h1>
+
+		<section>
+			<h2>1. Перші теги HTML.</h2>
+			<p>На минулому занятті ми познайомилися з декількома ключовими елементами веб-сторінок:<br>
+				- заголовки;<br>
+				- важливий текст;<br>
+				- списки (несортовані та нумеровані);<br>
+				- зображення;<br>
+				- посилання.</p>
+			<p>Сьогодні елементи форматування моделі даних ми перетворимо на теги мови HTML.</p>
+			<p>Заголовки обрамляються тегами <strong>&lt;h1&gt;</strong>, <strong>&lt;h2&gt;</strong>, <strong>&lt;h3&gt;</strong>, <strong>&lt;h4&gt;</strong>, <strong>&lt;h5&gt;</strong>, <strong>&lt;h6&gt;</strong>.</p>
+			<p>Речення, абзаци, текст огортаються тегом <strong>&lt;p&gt;</strong> (кожне речення в окремому тезі).</p>
+			<p>Якщо в реченні потрібно зробити перенесення строки на новий рядок - використайте тег <strong>&lt;br&gt;</strong>, та у більшості випадків текст переноситься автоматично.</p>
+			<p>Важливий текст огортається тегами <strong>&lt;strong&gt;</strong> або <strong>&lt;b&gt;</strong> (за замовчуванням в браузері виділяється жирним шрифтом).</p>
+			<p>Поняття, визначення, термін огортаються тегами <strong>&lt;em&gt;</strong> або <strong>&lt;i&gt;</strong> (за замовчуванням в браузері виділяється наклонним шрифтом).</p>
+			<p>Списки огортаються тегами <strong>&lt;ul&gt;</strong> (несортований) або <strong>&lt;ol&gt;</strong> (нумерований).</p>
+			<p>Кожен елемент списку - <strong>&lt;li&gt;</strong> (list item).</p>
+			<p>Зображення вставляються на веб-сторінку тегом <strong>&lt;img&gt;</strong>, у якого повинні бути атрибути <strong>src</strong> та <strong>alt</strong>, що вказують на URI зображення та описують зображення.</p>
+			<p>Посилання вставляються на веб-сторінку тегом <strong>&lt;a&gt;</strong>, у якого повинен бути атрибут <strong>href</strong> - адреса, по якій буде здійснено перехід при кліку на посилання.</p>
+		</section>
+
+		<section>
+			<h2>2. Абсолютні та відносні шляхи до файлів.</h2>
+			<p>Наприклад, у нас є посилання типу http://mysite.com/index.html</p>
+			<p>Логіка користувача комп'ютера підказує, що десь інсує файл index.html, який завантажується з сервера у наш браузер.</p>
+			<p>Якщо сервер працює під операційною системою Linux чи BSD, то, скоріш за все, цей файл буде знаходитися в папці з таким чи подібним шляхом:</p>
+			<code>/var/www/public-html/</code>
+			<p>Можна налаштувати веб-сервер так, щоб він брав файли для http://mycite.com/ з папки D:\work\frontend\magazin_futbolok\.</p>
+			<p>Папка, з якої беруться файли для веб-сейту - називається <strong>коренем, кореневим каталогом</strong>.</p>
+			<p>Таким чином, якщо у нас на сайті є зображення чи pdf-файл, то їх адреса буде приблизно такою:</p>
+			<code>
+				http://mysite.com/images/cat.jpg<br>
+				http://mycite.com/files/pdf/instruction.pdf
+			</code>
+			<p>а в реальності файли будуть зберігатися за адресою:</p>
+			<code>
+				/var/www/public-html/images/cat.jpg<br>
+				/var/www/public-html/files/pdf/instruction.pdf<br>
+				або<br>
+				d:\work\frontend\magazin_futbolok\images\cat.jpg<br>
+				d:\work\frontend\magazin_futbolok\pdf\instruction.pdf
+			</code>
+			<p>Кореневий каталог сайта це папка, в якій зберігаються всі файли сайта (доступні для фронтенда).</p>
+			<p>Кореневий каталог в операційних системах Linux, BSD, MacOS є <strong>/</strong> (слеш).</p>
+			<p>В цьому каталозі можна бачити папки var, home, usr, dev, bin і т.п.</p>
+			<p>В операційній системі Windows кожен диск є кореневим каталогом: C:\, D:\, E:\ і т.д.</p>
+			<p>В інтернеті кожен сайт має кореневий каталог <strong>/</strong>.</p>
+			<p>На одному комп'ютері (сервері) може розташовуватися багато сайтів, в кожного буде свій домен, свій кореневий каталог:</p>
+			<code>
+				d:\servers\denwer\home\localhost\<br>
+				d:\servers\denwer\home\magazin_futbolok\<br>
+				d:\servers\denwer\home\landing_honey\<br>
+				d:\servers\denwer\home\wp-blog\<br>
+				d:\servers\denwer\home\test1.ru\<br>
+				d:\servers\denwer\home\humor.km.ua\
+			</code>
+			<p><strong>Абсолютний шлях</strong> - повний шлях до файлу, ресурсу на конкретному комп'ютері чи веб-сайті:</p>
+			<code>
+				d:\work\frontend\magazin_futbolok\images\cat.jpg<br>
+				/var/www/public-html/images/cat.jpg<br>
+				http://mysite.com/images/cat.jpg
+			</code>
+			<p>Якщо ви будете використовувати абсолютні шляхи до файлів, то при перенесенні папки в інше місце, переіменуванні папки, відправленні zip-архіва сайта замовнику чи колезі, зміні домена сайта така адреса як правило стане неправильною:</p>
+			<code>
+				&lt;img src="d:\work\frontend\magazin_futbolok\images\cat.jpg" alt=""&gt;<br>
+				&lt;img src="http://futbolki2012.com/images/cat.jpg" alt=""&gt;
+			</code>
+			<p>На сайтах можна використовувати абсолютний шлях виду:</p>
+			<code>
+				&lt;img src="/images/cat.jpg" alt=""&gt;
+			</code>
+			<p>Фактично, такий скорочений шлях браузер автоматично перетворить на повний:</p>
+			<code>
+				&lt;img src="http://mysite.com/images/cat.jpg" alt=""&gt;
+			</code>
+			<p>але під час розробки сайту якщо ви не використовуєте локальний веб-сервер, це буде не зручно, всі файли будуть зсилатися на кореневі каталоги операційної системи.</p>
+			<p><strong class="danger">Примітка:</strong> в ОС Windows також використовуйте прямий слеш, а не зворотній:<br>
+				d:/work/frontend/magazin_futbolok/images/cat.jpg<br>
+				ця операційна система розуміє обидва варіанта слешів, прямий слеш є універсальним для всіх ОС та URI-адрес в інтернеті.
+			</p>
+			<p><strong>Відносний шлях</strong> - це шлях до файлів з поточного каталога.</p>
+			<p>Наприклад, ми відкрили папку d:\video\mults\, в цій папці є папка Simpsons\, в ній s06\, в останній - всі серії шостого сезону, серед яких файл s06e12.avi.<br>
+				відносний шлях до файла з поточного каталога d:\video\mults\ буде таким:</p>
+			<code>
+				Simpsons\s06\s06e12.avi
+			</code>
+			<p>Якщо ми зайдемо у папку Simpsons, то відносний шлях до того ж файлу буде таким:</p>
+			<code>
+				s06\s06e12.avi
+			</code>
+			<p>Якщо перейдемо на диск D:\, то відносний шлях буде таким:</p>
+			<code>
+				video\mults\Simpsons\s06\s06e12.avi
+			</code>
+			<p>Відносний шлях на сайті також відраховується з поточної сторінки. Для сторінки http://mysite.com/index.html відносний шлях до картинки з котом буде:</p>
+			<code>images/cat.jpg</code>
+			<p>Якщо ми перейдемо в каталог files:<br>
+				http://mysite.com/files/pdf/<br>
+				фактично буде відображено файл<br>
+				http://mysite.com/files/pdf/index.html,<br>
+				з цієї сторінки відносний шлях до інструкції буде просто назвою файлу:
+			</p>
+			<code>
+				instruction.pdf
+			</code>
+			<p>а з головної сторінки сайту відносний шлях буде:</p>
+			<code>
+				files/pdf/instruction.pdf
+			</code>
+			<p>Каталог <strong>../</strong> - це перехід в батьківську папку.</p>
+			<p>Нехай ми відкрили папку:</p>
+			<code>
+				d:\video\mults\Simpsons\
+			</code>
+			<p>Відносний шлях <strong>..\</strong> - це звернення до батьківського каталога<br>
+				d:\video\mults\<br>
+				Також можна використовувати і абсолютний шлях:<br>
+				d:\video\mults\Simpsons\..\<br>
+				те саме, що і<br>
+				d:\video\mults\
+			</p>
+			<p>Можна використати декілька звернень до батьківського каталога:<br>
+				d:\video\mults\Simpsons\s06\..\..\..\<br>
+				це звернення до папки<br>
+				d:\video\
+			</p>
+			<p>Якщо ми відкрили папку s06\, то відносний шлях<br>
+				..\..\..\<br>
+				також вкаже на папку video\</p>
+			<p>Тепер розглянемо відносні шляхи у межах сайту. Нехай ми переглядаємо веб-сторінку:</p>
+			<code>
+				http://mysite.com/files/pdf/index.html
+			</code>
+			<p>Для того, щоб помістити зображення на цю сторінку, використовується код з вказанням відносної або абсолютної адреси:</p>
+			<code>
+				&lt;img src="../../images/cat.jpg" alt=""&gt; - відносна адреса<br>
+				&lt;img src="/images/cat.jpg" alt=""&gt; - абсолютна адреса
+			</code>
+			<p>&nbsp;</p>
+			<p>Але не завжди посилання - це є файл в конкретній папці на сервері, комп'ютері. Зображення, файл може зберігатися у базі даних, у специфічних файлових системах, або ж мати приблизно таку реальну адресу:<br>
+				http://s261435zc.files.bin/45f894ca15a/20161204/03/azr/k3cf919do7cc79.jpg<br>
+				а буди доступним за "фіктивною" адресою:<br>
+				http://mysite.com/funpics/cat.jpg<br>
+				http://mysite.com/download?file=45159_cat.jpg
+			</p>
+			<p>Також сучасні технології передбачають створення окремої веб-сторінки з багатьох окремих файлів.</p>
+			<p>Так, сторінка http://mysite.com/index.html насправді може бути відсутня на сервері, а при зверненні до цієї адреси файл index.html буде збиратися як конструктор з окремих файлів:<br>
+				- main.php;<br>
+				- head.php;<br>
+				- header.php;<br>
+				- aside.php;<br>
+				- content.php;<br>
+				- footer.php;<br>
+				- widgets.php;<br>
+				- map.inc;<br>
+				і так далі.
+			</p>
+			<p>Тому розрізняють два такі поняття:</p>
+			<p><strong>URL</strong> (Unique Resource Location) - унікальне розміщення ресурса (справжня адреса файла).</p>
+			<p><strong>URI</strong> (Unique Resource Identificator) - унікальний ідентифікатор ресурса (посилання, за яким можна отримати файл).</p>
+			<p>Кожен URL є також і URI, але не навпаки, URI може зсилатися на ресурс, який не існуює у вигляді окремого файла, або ж є потоковими даними - стрім-відео реального часу, телеметрія, біржеві індекси і тому подібне.</p>
+		</section>
+
+		<section>
+			<h2>3. Перетворення моделі даних на веб-сторінку.</h2>
+			<p>Окрім вищезазначених тегів кожна веб-сторінка повинна мати декілька обов'язкових тегів, що описують заголовок файлу та його кінець.</p>
+			<p>Скопіюйте ваш файл index.txt у файл index.html, відкрийте його у IDE чи блокноті (прослідкуйте щоб кодування файлу було UTF-8) і починайте добавляти теги, видаляючи форматування моделі даних:</p>
+			<code>
+				&lt;html&gt;<br>
+				&lt;head&gt;<br>
+				&nbsp;&nbsp;&lt;meta charset="utf-8"&gt;<br>
+				&lt;/head&gt;<br>
+				&lt;body&gt;<br>
+				&nbsp;&nbsp;&lt;h1&gt;Інформація про мене.&lt;/h1&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;&lt;i&gt;ФІО:&lt;/i&gt; &lt;b&gt;Бобир&lt;/b&gt; Олександр Анатолійович&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;&lt;i&gt;Дата народження:&lt;/i&gt; 5.10.1982&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;&lt;i&gt;Захоплення:&lt;/i&gt; коти, &lt;b&gt;програмування&lt;/b&gt;, мандри&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;Улюблені ігри:&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;ul&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Fallout;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Minecraft;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Might &amp;amp; Magic.&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;/ul&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;Мої друзі:&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;ol&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Іванов;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Петров;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Сидоров.&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;/ol&gt;<br>
+				&nbsp;&nbsp;&lt;img src="images/cat.jpg" alt="Кіт"&gt;&lt;br&gt;<br>
+				&nbsp;&nbsp;&lt;a href="http://google.com"&gt;google&lt;/a&gt;<br>
+				&lt;/body&gt;<br>
+				&lt;/html&gt;
+			</code>
+			<p>Збережіться та відкрийте створений файл у браузері, отримаємо ось таку веб-сторінку:</p>
+			<iframe src="part_02a.html"></iframe>
+		</section>
+
+		<section>
+			<h2>4. Налаштування Adobe Photoshop.</h2>
+			<p>Запустіть програму Adobe Photoshop, скачайте і відкрийте <a href="files/psd/futbolki.zip">макет сайту з продажу футболок</a> <small>(<a href="files/psd/futbolki.jpg" target="_blank">jpg</a>)</small>.</p>
+			<p><strong>Ctrl + H</strong> - прибрати блакитні лінії (направляючі).</p>
+			<div class="image">
+				<img src="images/part_02_1.png" alt="Photoshop Screenshot">
+				<p>Зображення 4.1. Скріншот головного вікна Adobe Photoshop.</p>
+			</div>
+			<p>Для порізки спочатку нам необхідно трохи налаштувати фотошоп.</p>
+			<p>Першим чином включіть панель інструментів роботи з текстом:</p>
+			<code>
+				Window &gt; Character
+			</code>
+			<p>Ми будемо використовувати панелі <strong>Layers</strong>, <strong>Character</strong>, <strong>Paragraph</strong>, решту панелей можна прибрати, щоб вони нас не відволікали і не займали простору екрану.</p>
+			<p>Виберіть інструмент Move Tool (зліва перша іконка зверху), поставте галочку "Auto-Select" і в списку виберіть Layer. Це дозволить кліком мишки активізувати той шар, по якому елементу ми клацнули.</p>
+			<div class="image">
+				<img src="images/part_02_2.png" alt="Move Tool">
+				<p>Зображення 4.2. Налаштування інструменту Move Tool.</p>
+			</div>
+			<p>Налаштуйте використання одиниць вимірювання, встановивши значення <strong>Pixels</strong> в перших двох пунктах:</p>
+			<code>
+				Edit &gt; Preferences &gt; Units &amp; Rules...
+			</code>
+			<div class="image">
+				<img src="images/part_02_3.png" alt="Units and Rules">
+				<p>Зображення 4.3. Налаштування одиниць вимірювання.</p>
+			</div>
+			<p>За потреби можна переналаштувати розміщення тимчасових файлів фотошопа:</p>
+			<code>
+				Edit &gt; Preferences &gt; Performance...
+			</code>
+			<div class="image">
+				<img src="images/part_02_4.png" alt="Performance">
+				<p>Зображення 4.4. Налаштування розміщення тимчасових файлів.</p>
+			</div>
+		</section>
+
+		<section>
+			<h2>5. Основні інструменти верстальника.</h2>
+			<div class="image">
+				<img src="images/part_02_5.png" alt="Screenshot">
+				<p>Зображення 5.1. Інструменти верстальника.</p>
+			</div>
+			<p><strong>Move Tool (v), стрілочка</strong> - вибір елементів, шарів, їх переміщення по канві.</p>
+			<p><strong>Slice Tool (c), скальпель</strong> - вирізання елементів з макету (створює рамочки, які в подальшому будуть вирізані).</p>
+			<p><strong>Eyedropper Tool (i), піпетка</strong> - визначення кольору (не використовувати для тексту!).</p>
+			<p><strong>Horizontal Type Tool (t), текст</strong> - визначення параметрів шрифта, кольору тексту.</p>
+			<p><strong>Hand Tool (h, spacebar), рука</strong> - переміщення канви, якщо вона не влізає на екран.</p>
+			<p><strong>Zoom Tool (z, ctrl + +/-, alt + scroll), зум</strong> - збільшення/зменшення маштабу канви.</p>
+			<div class="image">
+				<img src="images/part_02_6.png" alt="Screenshot">
+				<p>Зображення 5.2. Панель шарів.</p>
+			</div>
+			<p><strong>Opacity, Fill</strong> - прозорість шару.</p>
+			<p><strong>Око</strong> - видимість шару, включити/відключити шар.</p>
+			<p><strong></strong></p>
+			<p><strong></strong></p>
+			<p><strong></strong></p>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<h3>Рівень 1.</h3>
+			<p>1. Створіть сторінку-візитівку вашого домашнього улюбленця, кумира, вигаданого персонажа чи будь-яку іншу.</p>
+			<h3>Рівень 2.</h3>
+			<p>1. Перетворіть модель даних сайту вашого бізнесу на веб-сторінки.</p>
+			<h3>Рівень 3.</h3>
+			<p>1. Перетворіть модель даних соцмережі домашніх тварин на веб-сторінки.</p>
+			<h3>Додаткове завдання.</h3>
+			<p>Дослідіть код сторінок цієї лекції, сайтів Wikipedia, соцмереж. Знайдіть елементи, які ми сьогодні вивчили.</p>
+			<p>Код сторінки можна побачити клацнувши правою кнопкою миші на сторінці і вибравши пункт меню "Переглянути джерело сторінки", "Show source".</p>
+		</section>
+
+		<section class="homework">
+			<h2>Ресурси.</h2>
+			<p><a href="http://phpfaq.ru/newbie/paths" target="_blank">Различие между абсолютными и относительными путями</a>.</p>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>

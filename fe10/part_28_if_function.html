@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 28. Розгалуження алгоритму if, введення в функції.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Розгалуження алгоритму if, введення в функції.</h1>
+
+		<section>
+			<h2>1. Розгалуження if, умови.</h2>
+			<p>Алгоритм розгалужується коли зустрічає умову.</p>
+			<p><strong>Умова</strong> - це питання, на яке можна дати відповідь "так" чи "ні".</p>
+			<p>В залежності від відповіді алгоритм слідує по одній з двох гілок, виконуючи відповідні команди.</p>
+			<p>Після виконання команд обидві гілки можуть зійтися або не сходитися до кінця роботи програми.</p>
+			<p>Одна з гілок може бути порожньою, не містити команд.</p>
+			<h3>Оператори.</h3>
+			<p>== - рівність;</p>
+			<p>=== - строга рівність;</p>
+			<p>!= - не рівність;</p>
+			<p>&lt;, &gt;, &lt;=, &gt;= - порівняння;</p>
+			<p>|| - або;</p>
+			<p>&& - та;</p>
+			<p>! - заперечення.</p>
+			<h3>Конструкція умови.</h3>
+			<code>
+				<strong>if ( умова ) {</strong><br>
+				&nbsp;&nbsp;// тіло умови, гілка true, виконуємо:<br>
+				&nbsp;&nbsp;команда;<br>
+				&nbsp;&nbsp;команда;<br>
+				&nbsp;&nbsp;...<br>
+				<strong>}</strong><br>
+				// гілка false відсутня<br><br>
+				<strong>if ( умова ) {</strong><br>
+				&nbsp;&nbsp;// тіло умови, гілка true, виконуємо:<br>
+				&nbsp;&nbsp;команда;<br>
+				&nbsp;&nbsp;команда;<br>
+				&nbsp;&nbsp;...<br>
+				<strong>} else {</strong><br>
+				&nbsp;&nbsp;// тіло умови, гілка false, виконуємо:<br>
+				&nbsp;&nbsp;команда;<br>
+				&nbsp;&nbsp;команда;<br>
+				&nbsp;&nbsp;...<br>
+				<strong>}</strong>
+			</code>
+			<p>Приклади умов:</p>
+			<code>
+				var a = 1;<br><br>
+				if (a === 1) {<br>
+				&nbsp;&nbsp;alert('Ha-ha-ha!');<br>
+				}<br><br>
+				if (a &gt; 1) {<br>
+				&nbsp;&nbsp;alert('Ha-ha-ha!');<br>
+				} else {<br>
+				&nbsp;&nbsp;alert('Ho-ho-ho!');<br>
+				}<br><br>
+			</code>
+			<p>Умови можна комбінувати, використовуючи скобки чи без них.</p>
+			<p><strong>Приорітетність</strong> - порядок виконання дій. Якщо у операторів однакова приоритетність - дії виконуються почергово зліва направо.</p>
+			<code>
+				операції в дужках ( )<br>
+				унарні оператори ++, --, -, !<br>
+				арифметичні оператори *, /, %, +, -<br>
+				оператори порівняння > < == і т.д.<br>
+				логічні оператори &&, ||<br>
+				тернарний оператор ? :<br>
+				оператор присвоювання<br><br>
+				if (a&gt;b && c&lt;6 || m=="none") { ... }<br>
+				if (a&gt;!b && (c&lt;6 || m=="none")) { ... }
+			</code>
+			<h3>Типи даних в умовах.</h3>
+			<p>Наступні типи даних в якості умови вважаються false:</p>
+			<code>
+				var a = 0,<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;b = '',<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;c = undefined,<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;d = NaN,<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;e = null;<br>
+				if (a) { console.log('a is true'); } else { console.log('a is false'); }<br>
+				if (b) { console.log('b is true'); } else { console.log('b is false'); }<br>
+				if (c) { console.log('c is true'); } else { console.log('c is false'); }<br>
+				if (d) { console.log('d is true'); } else { console.log('d is false'); }<br>
+				if (e) { console.log('e is true'); } else { console.log('e is false'); }
+			</code>
+			<p>Решта типів даних - це true:</p>
+			<code>
+				var a = 0.1,<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;b = '0',<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;c = [],<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;d = {},<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;e = function() {};<br>
+				if (a) { console.log('a is true'); } else { console.log('a is false'); }<br>
+				if (b) { console.log('b is true'); } else { console.log('b is false'); }<br>
+				if (c) { console.log('c is true'); } else { console.log('c is false'); }<br>
+				if (d) { console.log('d is true'); } else { console.log('d is false'); }<br>
+				if (e) { console.log('e is true'); } else { console.log('e is false'); }
+			</code>
+			<p>Уникайте помилок в умовах:</p>
+			<code>
+				var a = 0;<br>
+				console.log(a === 1);<br>
+				console.log(a == 1);<br>
+				console.log(a = 1);<br><br>
+				// умови, що завжди повертатимуть true та false, так як повертають 1 та 0:<br>
+				if (a = 1) { ... }<br>
+				if (a = 0) { ... }
+			</code>
+			<p>Умова магістра Йоди - в одиницю неможливо присвоїти значення змінної a. Інтерпритатор викличе помилку. Якщо ж переставити місцями змінну та одиницю - таку помилку важко знайти в коді, інтерпритатор не сповістить про помилку.</p>
+			<code>
+				if (1 == a) { ... }<br><br>
+				if (1 = a) { ... } /* error */
+			</code>
+			<h3>Тернарний оператор умови.</h3>
+			<p>Тернарний оператор в залежності від відповіді на умову повертає або значення_А, або значення_Б:</p>
+			<code>
+				<strong>умова ? значення_А : значення_Б</strong><br><br>
+				console.log(age &gt; 17 ? 'adult' : 'child');<br><br>
+				var s = a === b ? 42 : 13;<br><br>
+				// повний варіант умови:<br>
+				var s;<br>
+				if (a === b) {<br>
+				&nbsp;&nbsp;s = 42;<br>
+				} else {<br>
+				&nbsp;&nbsp;s = 13;<br>
+				}
+			</code>
+			<h3>Повернення результату операторами "або" і "та".</h3>
+			<p>Оператори "або", "та" не завжди повертають значення true чи false. Виконайте наступний код та проаналізуйте результат:</p>
+			<code>
+				console.groupCollapsed('Test OR with num');<br>
+				console.log(5 || 6);<br>
+				console.log(5 || 0);<br>
+				console.log(0 || 6);<br>
+				console.log(0 || 0);<br>
+				console.groupEnd();<br><br>
+				console.groupCollapsed('Test OR with str');<br>
+				console.log('hey' || 'ho');<br>
+				console.log('hey' || '');<br>
+				console.log('' || 'ho');<br>
+				console.log('' || '');<br>
+				console.groupEnd();<br><br>
+				console.groupCollapsed('Test AND with num');<br>
+				console.log(5 && 6);<br>
+				console.log(5 && 0);<br>
+				console.log(0 && 6);<br>
+				console.log(0 && 0);<br>
+				console.groupEnd();<br><br>
+				console.groupCollapsed('Test AND with str');<br>
+				console.log('hey' && 'ho');<br>
+				console.log('hey' && '');<br>
+				console.log('' && 'ho');<br>
+				console.log('' && '');<br>
+				console.groupEnd();
+			</code>
+			<p>Резюме (мова про операнди оператора):</p>
+			<code>
+				OR:<br>
+				&nbsp;&nbsp;перший true:&nbsp; повернути перший<br>
+				&nbsp;&nbsp;перший false: повернути другий<br>
+				AND:<br>
+				&nbsp;&nbsp;перший true:&nbsp; повернути другий<br>
+				&nbsp;&nbsp;перший false: повернути перший
+			</code>
+			<p>&nbsp;</p>
+			<p><strong>Switch (case)</strong>.</p>
+			<p>Якщо є декілька гілок розгалуження, то можна використовувати або конструкцію else-if, або switch (case):</p>
+			<code>
+				if (a == 1) {<br>
+				&nbsp;&nbsp;...<br>
+				} else if (a == 2) {<br>
+				&nbsp;&nbsp;...<br>
+				} else if (a == 'ok') {<br>
+				&nbsp;&nbsp;...<br>
+				} else {<br>
+				&nbsp;&nbsp;...<br>
+				}<br><br>
+				switch (a) {<br>
+				&nbsp;&nbsp;case 1:<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+				&nbsp;&nbsp;case 2:<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+				&nbsp;&nbsp;case 'ok':<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+				&nbsp;&nbsp;default:<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+				}
+			</code>
+			<p>Проте, ці два записи не є еквівалентними. Розглянемо ситуацію, коли внутрішні команди змінюють змінну a:</p>
+			<code>
+				var a = 4;<br>
+				if (a === 4) {<br>
+				&nbsp;&nbsp;a = 5;<br>
+				&nbsp;&nbsp;console.log('if 4');<br>
+				} else if (a === 5) {<br>
+				&nbsp;&nbsp;a = 6;<br>
+				&nbsp;&nbsp;console.log('if 5');<br>
+				}<br><br>
+				var a = 4;<br>
+				switch (a) {<br>
+				&nbsp;&nbsp;case 4:<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;a = 5;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;console.log('switch 4');<br>
+				&nbsp;&nbsp;case 5:<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;a = 6;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;console.log('switch 5');<br>
+				}
+			</code>
+			<p>Щоб ці дві конструкції зробити еквівалентними - в кожній умові switch потрібно використовувати команду <strong>break</strong>, що перериває роботу поточної конструкції:</p>
+			<code>
+				var a = 4;<br>
+				switch (a) {<br>
+				&nbsp;&nbsp;case 4:<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;a = 5;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;console.log('switch 4');<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+				&nbsp;&nbsp;case 5:<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;a = 6;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;console.log('switch 5');<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+				}
+			</code>
+		</section>
+
+		<section>
+			<h2>Введення в функції.</h2>
+			<p>Функція - це набір команд, об'єднаних для зручності в блок.</p>
+			<p>Функцію можна уявити у вигляді "чорного" ящика з кнопкою. Коли нажимаємо на кнопку - щось всередині відбувається.</p>
+			<p>Створимо функцію, яка виконує декілька дій:</p>
+			<ol>
+				<li>вираховує формулу k*x+b;</li>
+				<li>виводить в консоль результат;</li>
+				<li>записує у змінну r половину результату;</li>
+				<li>дає Маші шоколадку.</li>
+			</ol>
+			<p>Функцію будемо запускати по кнопці. Поексперементуйте у пісочниці.</p>
+			<p>Створюємо html-код та ініціалізуємо змінні.</p>
+			<code>
+				&lt;p&gt;У Маші &lt;span id="chok"&gt;0&lt;/span&gt; шоколадок.&lt;/p&gt;<br>
+				&lt;button id="but"&gt;Дати Маші шоколадку&lt;/button&gt;<br><br>
+				var k = 4,<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;x = 10,<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;b = 7,<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;r;
+			</code>
+			<p>Для взаємодії з елементами веб-сторінки їх потрібно спочатку знайти та занести у змінні.</p>
+			<code>
+				var Chok = document.getElementById('chok');<br>
+				var Butt = document.getElementById('but');
+			</code>
+			<p>Створюємо функцію. Замість трьох крапок впишіть потрібні команди, коментарі можна видалити.</p>
+			<code>
+				function giveChok() {<br>
+				&nbsp;&nbsp;// записати у змінну r результат обчислення формули<br>
+				&nbsp;&nbsp;...<br>
+				&nbsp;&nbsp;// вивести результат в консоль<br>
+				&nbsp;&nbsp;...<br>
+				&nbsp;&nbsp;// r поділити навпіл<br>
+				&nbsp;&nbsp;...<br>
+				&nbsp;&nbsp;// дати Маші шоколадку<br>
+				&nbsp;&nbsp;Chok.innerText = parseInt(Chok.innerText) + 1;<br>
+				}
+			</code>
+			<p>Запуск на виконання функції (нажимання кнопки на чорному ящику) називається викликом функції:</p>
+			<code>
+				Butt.onclick = function(){<br>
+				&nbsp;&nbsp;giveChok();<br>
+				&nbsp;&nbsp;console.log('Значення змінної r = ' + r);<br>
+				}
+			</code>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<ol>
+				<li>Створіть умову, яка буде завжди виконуватися. В тілі умови виводьте повідомлення "Привіт!".</li>
+				<li>
+					Подивіться на годинник і запишіть у змінну m кількість хвилин.<br>
+					В залежності від цього значення виведіть в консоль одне з повідомленнь:
+					<code>
+						Перша половина години<br>
+						Друга половина години
+					</code>
+					Змініть m так, щоб вивести інше повідомлення.
+				</li>
+				<li>
+					В корзині n яблук. Виведіть повідомлення, якщо корзина буде порожньою:
+					<code>
+						Нажаль, корзина порожня.
+					</code>
+					Умова повинна бути якнайкоротша.
+				</li>
+				<li>
+					Тернарним оператором виведіть на екран одне з двох повідомлень:
+					<code>
+						Корзина порожня.<br>
+						Корзина не порожня.
+					</code>
+					Тут і надалі міняйте змінну так, щоб протестувати всі варіанти.
+				</li>
+				<li>
+					Виведіть повідомлення, якщо в корзині від двох до п'яти яблук:
+					<code>
+						В корзині декілька яблук
+					</code>
+				</li>
+				<li>
+					Виведіть наступне повідомлення, якщо це правда:
+					<code>
+						Кількість яблук в корзині ділиться на 3 чи на 7.
+					</code>
+				</li>
+				<!-- придумати завдання на повернення результату операторами "або" і "та". -->
+				<li>
+					Створіть функцію, що об'єднує всі завдання з корзиною та яблуками.<br>
+					Результати виводьте в консоль, а не на екран. Результати кожного виклику бажано групувати.<br>
+					Декілька разів задайте змінній значення і викличте функцію.<br>
+					Приклад коду виклику функції, слідкуйте за консоллю:
+					<code>
+						var a = 0;<br>
+						fun();<br>
+						a = 2;<br>
+						fun();<br>
+						a = 8;<br>
+						fun();<br>
+						a = 14;<br>
+						fun();
+					</code>
+				</li>
+			</ol>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>

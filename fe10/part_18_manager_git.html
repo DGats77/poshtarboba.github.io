@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 18. Менеджери проектів, git.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Менеджери проектів, git.</h1>
+
+		<section>
+			<h2>1. Менеджери проектів.</h2>
+			<p><strong>Менеджер проектів</strong> - це програма чи хмарний сервіс, який забезпечує комунікацію в команді, дозволяє створювати задачі, відстежувати роботу кожного учасника команди, створювати базу знань по проектам і т.п.</p>
+			<p>Типові менеджери проектів:<br>
+			- <a href="https://www.pivotaltracker.com/" target="_blank">Pivotal tracker</a>;<br>
+			- <a href="http://www.redmine.org/" target="_blank">Redmine</a>;<br>
+			- <a href="https://trello.com/" target="_blank">Trello</a>.</p>
+			<p>Посилання:</p>
+			<p><a href="https://habrahabr.ru/post/276873/" target="_blank">43 полезных сервиса для управления проектами</a>.</p>
+			<p><a href="http://netology.ru/blog/311-kak-usledit-za-vsemi-i-vsem-shest-udobnykh-task-menedjerov-dlya-komandnoy-raboty" target="_blank">Шесть удобных таск-менеджеров для командной работы</a>.</p>
+			<p><a href="http://www.onlineprojects.ru/tags/onlajn_menedzhery_proektov/" target="_blank">Онлайн менеджеры проектов</a>.</p>
+		</section>
+
+		<section>
+			<h2>2. Git</h2>
+			<p><strong>Git</strong> - система керування контентом.</p>
+			<p>Окрім гіта є ще декілька, наприклад, Turtley SVN.</p>
+			<p>Git - це технологія, якою користуються сервіси типу GitHub, BitBucket та інші.</p>
+			<p>Зареєструйтесь на <a href="https://github.com/" target="_blank">GitHub</a> та встановіть програму git (нам потрібна буде лише її консольна версія).</p>
+			<p>Основні команди:</p>
+			<code>
+				// для навігації в windows:<br>
+				<strong>dir</strong> - роздрукувати на екран вміст поточної папки<br>
+				<strong>d:</strong> - перейти на диск d:<br>
+				<strong>cd 2016-12</strong> - перейти в папку<br>
+				<strong>cd ..</strong> - перейти в папку вище<br>
+				<strong>cd ../../futbolki/images</strong><br>
+				// для навігації в Linux / MacOS замість dir використовується:<br>
+				<strong>ls -l</strong><br>
+				<strong>mkdir назва_папки</strong> - створити папку в поточному каталозі<br><br>
+				// git<br>
+				<strong>git clone посилання</strong> - клонувати репозиторій з сервера на локальну машину.<br>
+				<strong>git status</strong> - перевірити поточний статус поточної гілки.<br>
+				<strong>git checkout -b нова_гілка</strong> - створити нову гілку.<br>
+				<strong>git checkout гілка</strong> - перейти на іншу гілку (спочатку створіть коміт в цій, якщо були зміни).<br>
+				<strong>git add .</strong> - добавити всі файли в коміт (точку збереження).<br>
+				<strong>git add test.html</strong> - добавити в коміт тільки один конкретний файл.<br>
+				<strong>git commit -m "текст-опис"</strong> - створити коміт (точку збереження) поточної гілки.<br>
+				<strong>git push origin гілка</strong> - закинути коміт на сервер.<br>
+				<strong>git pull origin гілка</strong> - зтягнути оновлення з сервера.<br>
+				<strong>git merge гіка</strong> - об'єднати поточну гілку зі вказаною.<br>
+				<strong>git reset --hard HEAD</strong> - якщо щось сталося і все дуже погано [картинка з ядерним вибухом]<br>
+				<strong>git cherry-pick комміт</strong> - дозволяє вибрати комміт, який можна запушити на сервер
+			</code>
+			<p><a href="https://git-scm.com/book/ru/v1/%D0%92%D0%B5%D1%82%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B2-Git-%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-%D0%B2%D0%B5%D1%82%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B8-%D1%81%D0%BB%D0%B8%D1%8F%D0%BD%D0%B8%D1%8F" target="_blank">Основи розгалужень в git</a>.</p>
+			<p><a href="https://git-scm.com/book/ru/v1" target="_blank">Весь мануал по гіту</a>.</p>
+			<p><a href="http://dev-lab.info/2013/08/%D1%88%D0%BF%D0%B0%D1%80%D0%B3%D0%B0%D0%BB%D0%BA%D0%B0-%D0%BF%D0%BE-git-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D0%B5-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B-%D1%81%D0%BB%D0%B8%D1%8F%D0%BD/" target="_blank">Шпаргалка по гіту</a>.</p>
+
+			<!-- аліаси гіта - в уголок маньяка -->
+
+			<h3>Алгоритми дій у колективному проекті.</h3>
+			<p><strong>Включаємося в роботу:</strong></p>
+			<code>
+				запускаємо консоль:<br>
+				<strong>win+r, cmd</strong><br>
+				переходимо на диск, де у нас робоча папка:<br>
+				<strong>D:</strong><br>
+				переходимо в робочу папку:<br>
+				<strong>cd work/frontend/2017-02</strong><br>
+				створюємо папку проекта:<br>
+				<strong>mkdir mebel</strong><br>
+				клонуємо репозиторій собі локально, створиться папка з репозиторієм:<br>
+				<strong>git clone https://github.com/...</strong><br>
+				переходимо в папку з репозиторієм:<br>
+				<strong>cd mebel_????</strong> (замість знаків питання підставте потрібне)<br>
+				створюємо свою гілку і переходимо в неї:<br>
+				<strong>git checkout -b назва_гілки</strong><br>
+				виконуємо свою частину роботи:<br>
+				<strong><em>верстаємо свій блок</em></strong><br>
+				перевіряємо поточний статус нашої гілки:<br>
+				<strong>git status</strong><br>
+				добавляємо змінені файли в коміт:<br>
+				<strong>git add .</strong> (крапка через пробіл від слова!)<br>
+				перевіряємо, чи всі файли добавилися:<br>
+				<strong>git status</strong><br>
+				створюємо коміт, в коментар пишемо те, що ми зробили, наприклад "section #advantages done":<br>
+				<strong>git commit -m "коментар"</strong><br>
+				під час створення першого коміту гіт може попросити вас ввести дані про себе: логін на гітхаб та email, на який ви реєструвалися. введіть ці дві команди за наведеним прикладом.<br>
+				заливаємо свою гілку на сервер:<br>
+				<strong>git push origin назва_гілки</strong><br>
+				переходимо на github.com; якщо з моменту клонування проекту в гілці master не було ніяких змін, то можна створювати запит на об'єднання своєї роботи з гілкою master: знаходимо вкладку <strong>Pull Request</strong>, нажимаємо кнопку <strong>Create Pull Request</strong>, в base: залишаємо гілку master, в compare: знаходимо у списку свою гілку, гортаємо сторінку та про всяк випадок перевіряємо свої зміни, нажимаємо кнопку Create Pull Request, потім ще раз таку саму кнопку.<br>
+				тімлід (старший розробник) перевірить вашу роботу і якщо все гаразд - об'єднає її з гілкою master.<br>
+				якщо ж у гілці master були зміни - то скористайтесь наступним алгоритмом:
+			</code>
+			<p><strong>Створюємо запит на додавання своєї роботи в гілку master:</strong></p>
+			<code>
+				перевіряємо поточний статус нашої гілки (і в якій гілці ми взагалі знаходимося):<br>
+				<strong>git status</strong><br>
+				якщо є змінені файли - потрібно зробити коміт:<br>
+				git add .<br>
+				git commit -m "коментар про те що я зробив"<br>
+				git status<br>
+				якщо пише щось типу "nothing to commit" - можна переключатися у іншу гілку:<br>
+				<strong>git checkout master</strong><br>
+				пробуємо підтягнути оновлення з сервера:<br>
+				<strong>git pull origin master</strong><br>
+				переключаємося в свою гілку:<br>
+				<strong>git checkout назва_гілки</strong><br>
+				якщо на сервері оновлень не було - переходьте до пункту заливки гілки на сервер.<br>
+				якщо на сервері були оновлення - підтягуємо їх у свою гілку:<br>
+				<strong>git merge master</strong><br>
+				вірогідно, під час об'єднання гілок виникнуть конфлікти, їх треба повиправляти:<br>
+				<strong><em>виправляємо конфлікти</em></strong><br>
+				перевіряємо статус гілки:<br>
+				<strong>git status</strong><br>
+				добавляємо змінені файли в коміт:<br>
+				<strong>git add .</strong> (крапка через пробіл від слова!)<br>
+				перевіряємо, чи всі файли добавилися:<br>
+				<strong>git status</strong><br>
+				створюємо коміт, в коментар пишемо те, що ми зробили, наприклад "resolved conflicts in section #advantages":<br>
+				<strong>git commit -m "коментар"</strong><br>
+				заливаємо свою гілку на сервер:<br>
+				<strong>git push origin назва_гілки</strong><br>
+				далі йдемо на github.com і створюємо Pull Request як у попередньому алгоритмі.
+			</code>
+		</section>
+		
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<h3>Рівень 1.</h3>
+			<p>1. Зареєструйтесь у менеджерах проектів, створіть по проекту в кожній системі, подосліджуйте можливості.</p>
+			<p>2. Створіть задачі різних типів, позакривайте їх, перегляньте статистику.</p>
+			<p>3. Створіть проект git в консолі, добавте в нього файли з Колесова. Створіть дві гілки, вносьте зміни в ці гілки.</p>
+			<p>4. Перейдіть у основну гілку і під'єднайте до неї дві інші гілки.</p>
+			<p>5. Створіть проект на GitHub, клонуйте його, закиньте в проект файли з Minecraft, внесіть зміни (поміняйте колір заголовка), закиньте на GitHub.</p>
+			<p>6. Створіть нову гілку, внесіть зміни (поміняйте розмір шрифта бокової панелі), закиньте на GitHub та змержіть з основною гілкою.</p>
+			<p>7. Створіть дві нові гілки, в обох гілках зробіть зміни в одному й тому ж місці (наприклад, змініть h1 на h2 в одній гілці та на h3 в іншій), спробуйте змержити ці гілки з основною гілкою.</p>
+			<h3>Рівень 2.</h3>
+			<p>1. Створіть нову гілку в проекті Minecraft, вносьте зміни:<br>
+				&nbsp;&nbsp;&nbsp;- задайте трохи більший розмір заголовку та синій колір датам в новинах, закиньте на GitHub;<br>
+				&nbsp;&nbsp;&nbsp;- задайте підкреслення посиланням головного меню, закиньте на GitHub;<br>
+				&nbsp;&nbsp;&nbsp;- поміняйте пару телефонів (і вгорі, і внизу), закиньте на GitHub.
+			</p>
+			<p>2. Уявіть, що ваші зміни значно об'ємніші, ви міняли/добавляли/видаляли не по 1-2 строки, а десятки-сотні строк коду за кожен коміт. Тімлід ставить задачу: терміново закинути на продакшн ті зміни, які ви зробили в першому коміті (більший заголовок та синій колір дат). Використайте cherry-pick щоб закинути тільки цей коміт на продакшн.</p>
+		</section>
+
+		<section class="homework">
+			<h2>Колективний проект.</h2>
+			<p>Дано <a href="files/git/mebel.zip">макет</a> (<a href="files/git/mebel.jpg" target="_blank">jpg</a>) та <a href="https://github.com/poshtarboba?tab=repositories" target="_blank">репозиторій <b>mebel_fe10</b></a>. Кожен студент повинен зверстати одну з секцій даного лендінга та заляти в репозиторій.</p>
+			<p>CSS-код не повинен дублюватися у однакових та подібних елементів.</p>
+			<h3>Проект "Коворкінг"</h3>
+			<p>Дано <a href="files/psd/coworking.zip">макет</a> (<a href="files/psd/coworking.jpg" target="_blank">jpg</a>) та <a href="https://github.com/poshtarboba?tab=repositories" target="_blank">репозиторій</a>. Кожен студент повинен зверстати одну з секцій даного лендінга та заляти в репозиторій.</p>
+			<p>CSS-код не повинен дублюватися у однакових та подібних елементів.</p>
+		</section>
+
+		<section class="homework">
+			<h2>Додаткове завдання.</h2>
+			<p>
+				Скоро ми почнемо вивчати адаптивну верстку. До того часу потрібно зверстати <a href="files/psd/superposilka/superposilka_full.zip">макет СуперПосилки</a><br>
+				(jpg: <a href="files/psd/superposilka/full_home.jpg" target="_blank">home</a>,
+				<a href="files/psd/superposilka/full_home_popup.jpg" target="_blank">popup</a>,
+				<a href="files/psd/superposilka/full_faq.jpg" target="_blank">faq</a>,
+				<a href="files/psd/superposilka/full_typo.jpg" target="_blank">typo</a>,
+				<a href="files/psd/superposilka/full_contacts.jpg" target="_blank">contacts</a>,
+				<a href="files/psd/superposilka/full_order.jpg" target="_blank">order</a>)
+			</p>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>

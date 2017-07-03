@@ -1,0 +1,5 @@
+DB: admin_fe_ajax
+
+user: admin_fe_ajax
+
+pw: 123Sk45

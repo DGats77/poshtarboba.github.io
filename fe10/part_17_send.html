@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 17. Відправка e-mail та даних форм.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Відправка e-mail та даних форм.</h1>
+
+		<section>
+			<h2>1. Бекенд.</h2>
+			<p>Розсилкою електронних листів займається бекенд-частина.</p>
+			<p>Для того, щоб з сервера відправлялися e-mail повідомлення, потрібно встановити та налаштувати програми типу sendmail.</p>
+			<p>Деякі хостінги забороняють розсилати e-mail повідомлення на будь-які адреси.</p>
+			<p>Для відправки електронних листів ми будемо використовувати PHP-скрипт, для цього нам потрібно ознайомитися з деякими термінами.</p>
+			<p><strong>Змінна</strong> - комірка пам'яті, в якій зберігається якесь значення. В PHP змінні починаються зі знака долара. Приклади змінних:</p>
+			<code>
+				$a = 5;<br>
+				$b = 3;<br>
+				$sum = $a + $b;<br>
+				$c = $a * $b;<br>
+				$hahaha = $c - $sum;
+			</code>
+			<p>$a, $b, $c, $sum, $hahaha - назви змінних, комірок пам'яті.</p>
+			<p>Щоб краще зрозуміти - уявіть бухгалтерську шафу з купою шухлядок, кожна з них підписана назвою.</p>
+			<p>В кожну шухлядку можна дещо покласти, можна відкрити шухлядку і перевірити що там лежить, можна це забрати, покласти щось інше.</p>
+			<p>Вище ми розглянули випадок з числами, в змінні записувалися числа. Окрім чисел в змінні можна записувати строки, масиви, об'єкти.</p>
+			<p>В наступному прикладі "запхаємо у підписані шухляди" строки (отримаємо строкові змінні) та об'єднаємо їх в одну:</p>
+			<code>
+				$d = "Цир";<br>
+				$e = "куль";<br>
+				$f = $d . $e;<br><br>
+				$fff = 'Hello';<br>
+				$wd = 'world';<br>
+				$result = $fff . " " . $wd;
+			</code>
+			<p>Як бачите, строки беруться у кавички. Можна використовувати або подвійні, або одинарні.</p>
+			<p>Якщо в строці потрібно використати лапки чи апостроф, то строки записуються так:</p>
+			<code>
+				$stroka = 'Газета "Правда"';<br>
+				$town = "Кам'янець Подільський";
+			</code>
+			<p>Бувають випадки, що в строці поєднуються і апостроф, і кавички, тоді їх треба екранувати зворотнім слешем:</p>
+			<code>
+				$stroka = 'Газета "Ранковий Кам\'янець"';<br>
+				$stroka = "Газета \"Ранковий Кам'янець\"";
+			</code>
+		</section>
+
+		<section>
+			<h2>2. Відправка e-mail.</h2>
+			<p>Спочатку давайте перевіримо, чи взагалі сервер налаштований і підтримує відправку листів. Створіть файл <strong>testmail.php</strong>:</p>
+			<code>
+				&lt;?php<br>
+				&nbsp;&nbsp;error_reporting(0);<br>
+				&nbsp;&nbsp;$mail = "poshtar.boba@gnail.com";<br>
+				&nbsp;&nbsp;$message = "Тестове повідомлення";<br>
+				&nbsp;&nbsp;$subject = "Тестовий лист з \"Circle Academy\"";<br>
+				&nbsp;&nbsp;mail($mail, $subject, $message, "Content-type: text/plain; charset=utf-8 \r\n");<br>
+				&nbsp;&nbsp;echo "Done";
+			</code>
+			<p>Задайте свою електронну адресу та збережіть файл на сервері в папці <strong><em>mail</em></strong>.</p>
+			<p>Щоб виконати скрипт перейдіть за посиланням <strong><em>http://circle.com.ua/users/fe10/ваш_логін/mail/testmail.php</em></strong>.</p>
+			<p>Через деякий час (секунди, хвилини, години, дні) на вашу електронну скриньку має прийти тестовий лист. Скоріш за все він опинеться в паці <em>smap</em>.</p>
+			<p>&nbsp;</p>
+			<p>Щоб відправити лист в форматі HTML, потрібно використати <em>Content-type: text/html;</em></p>
+			<code>
+				&lt;?php<br>
+				&nbsp;&nbsp;error_reporting(0);<br>
+				&nbsp;&nbsp;$mail = "poshtar.boba@gnail.com";<br>
+				&nbsp;&nbsp;$message = "&lt;h1 style=\"text-decoration: underline;\"&gt;Заголовок листа&lt;/h1&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p style=\"color: blue;\"&gt;Повідомлення.&lt;/p&gt;";<br>
+				&nbsp;&nbsp;$subject="Тестовий лист з \"Circle Academy\"";<br>
+				&nbsp;&nbsp;mail($mail, $subject, $message, "Content-type: text/html; charset=utf-8 \r\n");<br>
+				&nbsp;&nbsp;echo "Done";
+			</code>
+			<p>Зверніть увагу, що повідомлення складається тільки з елементів, що знаходяться всередині &lt;body&gt;.</p>
+			<p>Всі зображення потрібно завчасно завантажити на сервер і в коді листа прописати абсолютні посилання на них.</p>
+			<p>Замість вставки коду в PHP можна імпортувати цей код з html-файла:</p>
+			<code>
+				$message = file_get_contents('mail.html');
+			</code>
+			<p><strong class="danger">Увага!</strong> залиште у mail.html тільки контентну частину, все включно до &lt;body&gt; та закриваючі теги body, html повидаляйте!</p>
+		</section>
+
+		<section>
+			<!-- <p class="danger">Добавити макет з формочкою, method post</p> -->
+			<h2>3. Відправка даних форми на сервер.</h2>
+			<p>Дані форм пересилаються на сервер скрипту, що прописується в атрибуті <strong><em>action</em></strong> форми. Відправка здійснюється при натисканні кнопки submit.</p>
+			<p>Вже сам серверний скрипт вирішує що з цими даними робити: відправити листа, зберігти в базу даних і т.п.</p>
+			<p>Нехай скрипт, що буде приймати наші дані, буде називатися <strong>form.php</strong> і він буде відправляти дані з форми нам на електронну пошту:</p>
+			<code>
+				&lt;?php<br>
+				&nbsp;&nbsp;error_reporting(0);<br>
+				&nbsp;&nbsp;$mail = "poshtar.boba@gnail.com";<br>
+				&nbsp;&nbsp;$message = "&lt;h2>Повідомлення з сайта \"Бла-бла-бла\":<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;".$_POST['subj']." (форма ".$_POST['form'].")&lt;/h2>&lt;hr><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>&lt;strong>ПІП:&lt;/strong> ".$_POST['name']."&lt;/p><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>&lt;strong>Телефон:&lt;/strong> ".$_POST['phone']."&lt;/p><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>&lt;strong>E-mail:&lt;/strong> ".$_POST['email']."&lt;/p><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p>&lt;strong>Текст:&lt;/strong> ".$_POST['text']."&lt;/p>";<br>
+				&nbsp;&nbsp;$subject="Повідомлення з сайта \"Бла-бла-бла\"";<br>
+				&nbsp;&nbsp;mail($mail, $subject, $message, "Content-type: text/html; charset=utf-8 \r\n");<br>
+				&nbsp;&nbsp;echo "Done";
+			</code>
+			<p>У вашій формі повинні бути поля з іменами <strong><em>subj, form, name, phone, email, text</em></strong>.</p>
+			<p>Для звернення до значення value кожного поля використовується код <strong>$_POST['name']</strong>, де name - це ім'я елемента форми.</p>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<h3>Рівень 1.</h3>
+			<p>1. Протестуйте свої зверстані е-мейли.</p>
+			<h3>Рівень 2.</h3>
+			<p>1. Створіть форму-анкету на будь-яку тему з 15-20 полями різних типів і пришліть результати собі на е-мейл.</p>
+		</section>
+		
+		<!--<section>
+			<p>Бджілка-квіточка на прикладі аренди причіпів</p>
+		</section>-->
+
+	</div>
+</div>
+
+</body>
+</html>

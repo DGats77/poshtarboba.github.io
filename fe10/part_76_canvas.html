@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 29.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<style>
+
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Робота з Canvas.</h1>
+
+		<p>Canvas - контейнер для програмної реалізації графіки на веб-сторінці.</p>
+
+		<p>На відміну від формату SVG графіка на canvas виконується лише програмно, за допомогою JS.</p>
+		<p>На canvas можна реалізувати як 2D, так і 3D-графіку, можна включити підтримку OpenGL і навіть створювати ігри.</p>
+
+		<section>
+			<h2>Основні примітиви.</h2>
+			<p>Вставте на веб-сторінку тег &lt;canvas&gt;, всередину вставляється контент для старих браузерів:</p>
+			<code>
+				canvas { width: 400px; height: 300px; border: 1px solid #aaa;}<br><br>
+				&lt;canvas id="img1"&gt;<br>
+				&nbsp;&nbsp;&lt;img src="canvas_error.png" alt="Canvas error"&gt;<br>
+				&nbsp;&nbsp;Ваш браузер не підтримує роботу з динамічною графікою.<br>
+				&lt;/canvas&gt;<br><br>
+				&lt;canvas id="img2"&gt;<br>
+				&nbsp;&nbsp;&lt;!-- Статична картинка, графік, гіфка, відео, SVG ... --&gt;<br>
+				&lt;/canvas&gt;
+			</code>
+			<p>Для початку малювання потрібно <strong>взяти контекст полотна</strong>, тобто, вказати - по чому ми малюємо. Полотно - контейнер для малювання всередині тега canvas.</p>
+			<p>Цим способом довільне малювання по віконному додатку відбувається у більшості мов програмування: C++, Java, Delphi і т.п. (використовується API операційної системи).</p>
+			<code>
+				// var img1 = document.querySelector('#img1');<br>
+				var canvas1 = img1.getContext('2d');
+			</code>
+			<p>В чужому коді ви можете зустріти популярну назву змінної <strong>ctx</strong> (скорочення від context).</p>
+			<p>Якщо потрібна підтримка старих браузерів - можна виконати перевірку:</p>
+			<code>
+				if (img1.getContext){<br>
+				&nbsp;&nbsp;var canvas1 = img1.getContext('2d');<br>
+				} else {<br>
+				&nbsp;&nbsp;// браузер не підтримує canvas<br>
+				}
+			</code>
+			<p>Далі - алгоритм малювання примітивів.</p>
+			<p>Уявіть себе художником. Алгоритм дій:<br>
+				1. берете в руку червоний олівець;<br>
+				2. зафарбовуєте фон;<br>
+				3. берете в руку синій олівець;<br>
+				4. ставите його в точку [3см, 5см];<br>
+				5. малюєте лінію до точки [8см, 7см];<br>
+				6. ...</p>
+			<p>Подібним чином працює і алгоритм малювання по canvas:</p>
+			<code>
+				canvas1.fillStyle = "red"; // color<br>
+				canvas1.fillRect(10, 10, 200, 150);  // x, y, width, height<br>
+				canvas1.fillStyle = "rgba(0,200,0,0.5)";<br>
+				canvas1.ellipse(140, 100, 50, 80);<br>
+				canvas1.fill();<br>
+				canvas1.strokeRect(50, 50, 200, 150); // x, y, width, height<br>
+				canvas1.clearRect(80, 80, 30, 20); // x, y, width, height<br>
+				canvas1.fillStyle = "rgb(128,128,256)";<br>
+				canvas1.beginPath();<br>
+				canvas1.moveTo(140, 120);<br>
+				canvas1.lineTo(260, 160);<br>
+				canvas1.lineTo(160, 200);<br>
+				canvas1.closePath();<br>
+				canvas1.fill();<br>
+				canvas1.arc(50, 50, 40, 0, Math.PI * 2); // cx, cy, r, aStart, aFinish<br>
+				canvas1.arc(50, 50, 40, 0, (Math.PI / 180) * 45, true); // cx, cy, r, aStart, aFinish, anticlockwise<br>
+				// canvas1.rect(x, y, width, height);<br>
+				// canvas1.quadraticCurveTo(x1, y1, x, y);<br>
+				// bezierCurveTo(x1, y1, x2, y2, x, y);<br>
+				// canvas1.arcTo()
+			</code>
+			
+			<!-- TODO: перехід від піксельної сітки до процентної -->
+			
+			<h3>Примітиви.</h3>
+			
+			<p>Задаємо колір лінії та колір зафарбовування:</p>
+			<code>
+				canvas1.strokeStyle = "green";<br>
+				canvas1.fillStyle = "red";<br><br>
+				// інші формати кольору:<br>
+				canvas1.fillStyle = "#f00";<br>
+				canvas1.fillStyle = "rgb(255,0,0)";<br>
+				canvas1.fillStyle = "rgba(255,0,0,1)";
+			</code>
+			
+			<p>Задаємо тип ліній:</p>
+			<code>
+				canvas1.lineWidth = 10;<br>
+				canvas1.lineCap = 'round';<br>
+				canvas1.lineJoin = 'miter';<br>
+				canvas1.setLineDash([5, 15, 3, 10]);
+			</code>
+			
+			<p>Прямокутники (рамка, зафарбований, очистка області):</p>
+			<code>
+				canvas1.strokeRect(50,50,50,50);<br>
+				canvas1.fillRect(25,25,100,100);<br>
+				canvas1.clearRect(45,45,60,60);
+			</code>
+			
+			<p>Текст:</p>
+			<code>
+				canvas1.font = "italic 30px Arial";<br>
+				canvas1.fillStyle = "red";<br>
+				canvas1.fillText("Звичайний текст", 20, 50);<br>
+				canvas1.strokeStyle = "green";<br>
+				canvas1.strokeText("Текст у вигляді обводки", 20, 100);
+			</code>
+			
+			<p>Вставимо растрове зображення:</p>
+			<code>
+				var cat = new Image();<br>
+				cat.addEventListener("load", function(){<br>
+				&nbsp;&nbsp;canvas1.drawImage(cat, 50, 50); // image, x, y<br>
+				&nbsp;&nbsp;canvas1.drawImage(cat, 150, 150, 200, 120); // image, x, y, scaleX, scaleY<br>
+				}, false);<br>
+				cat.src = 'images/cat.jpg';
+			</code>
+			
+			<p>Path.</p>
+			<code>
+				canvas1.beginPath();<br>
+				canvas1.moveTo(30, 20);<br>
+				canvas1.lineTo(100, 80);<br>
+				canvas1.lineTo(150, 30);<br>
+				canvas1.closePath();<br>
+				canvas1.strokeStyle = "red";<br>
+        canvas1.stroke();
+			</code>
+			
+			<p>Path як об'єкт.</p>
+			<code>
+				var p = new Path2D("M 15 30 h 50 v 80 h -20 z");<br>
+				var r = Path2D(p); // copy from previous object p<br>
+				var rec = new Path2D();<br>
+				rec.rect(10, 10, 50, 50);<br>
+				var crc = new Path2D();<br>
+				// arc(x, y, radius, startAngle, endAngle, anticlockwise)<br>
+				crc.arc(100, 35, 25, 0, Math.PI * 2);<br>
+				canvas1.stroke(rec);<br>
+				canvas1.strokeStyle = "rgb(100,200,255)";<br>
+				canvas1.stroke(p);<br>
+				// .arcTo(x1, y1, x2, y2, radius)<br>
+				// .quadraticCurveTo(x1, y1, x2, y2)<br>
+				// .bezierCurveTo(x1, y1, x2, y2, x3, y3)
+			</code>
+		</section>
+
+		<section>
+			<h2>Стек станів, збереження та відновлення станів.</h2>
+			<p>Під час малювання можна використовувати стек станів - зберігати та відновлювати стани (кольори, прозорість, тип ліній і т.п.).</p>
+			<p>Кожне збереження записує стан у стек, кожне відновлення стану зчитує стан з кінця стеку (останній запис).</p>
+			<code>
+				function sets(fill, stroke, width, alpha){<br>
+				&nbsp;&nbsp;canvas1.fillStyle = fill;<br>
+				&nbsp;&nbsp;canvas1.strokeStyle = stroke;<br>
+				&nbsp;&nbsp;canvas1.lineWidth = width;<br>
+				&nbsp;&nbsp;canvas1.globalAlpha = alpha;<br>
+				}<br>
+				function drawRect(x){<br>
+				&nbsp;&nbsp;canvas1.beginPath();<br>
+				&nbsp;&nbsp;canvas1.rect(x, x / 2, 100, 100);<br>
+				&nbsp;&nbsp;canvas1.closePath();<br>
+				&nbsp;&nbsp;canvas1.fill();<br>
+				&nbsp;&nbsp;canvas1.stroke();<br>
+				}<br>
+				canvas1.fillStyle = "red";<br>
+				canvas1.save();<br>
+				drawRect(10);<br>
+				sets('green', 'navy', 3, 0.3);<br>
+				canvas1.save();<br>
+				drawRect(60);<br>
+				sets('blue', 'orange', 10, 0.8);<br>
+				drawRect(110);<br>
+				canvas1.restore();<br>
+				drawRect(160);<br>
+				canvas1.restore();<br>
+				drawRect(210);
+			</code>
+		</section>
+
+		<section>
+			<h2>Трансформації.</h2>
+			<p>Функція <strong>translate</strong> умовно зсуває координати полотна на задані значення.</p>
+			<p>Прямокутник буде намальовано не в нульових координатах, а в [100, 100]:</p>
+			<code>
+				canvas1.translate(100, 100);  // x, y<br>
+				canvas1.fillRect(0, 0, 50, 50);
+			</code>
+			<p>Обертання відбувається відносно нульової точки координат, обертається також все полотно:</p>
+			<code>
+				canvas1.fillStyle = "blue";<br>
+				canvas1.fillRect(30, 20, 80, 50);<br>
+				canvas1.rotate((Math.PI/180)*30);<br>
+				canvas1.fillStyle = "red";<br>
+				canvas1.fillRect(30, 20, 80, 50);
+			</code>
+			<p>Щоб фігура прокрутилася довкола свого центру - зсунемо канву на початок координат прямокутника і ще на половину його розмірів:</p>
+			<code>
+				canvas1.fillStyle = "blue";<br>
+				canvas1.fillRect(30, 20, 80, 50);<br>
+				canvas1.translate(70, 45); // 30 + 80/2, 20 + 50/2<br>
+				canvas1.rotate((Math.PI/180)*30);<br>
+				canvas1.fillStyle = "red";<br>
+				canvas1.fillRect(30, 20, 80, 50);<br>
+				canvas1.translate(-70, -45);
+			</code>
+			<p>В кінці оберту не забудьте повернути канву на початкове місце.</p>
+			<p>Приклад маштабування. Маштабуванням можна віддзеркалювати об'єкти по горизонталі, вертикалі чи одночасно по обом вісям, задаючи від'ємні значення.</p>
+			<code>
+				canvas1.fillStyle = "blue";<br>
+				canvas1.fillRect(10, 10, 50, 50);<br>
+				canvas1.fillStyle = "red";<br>
+				canvas1.globalAlpha = 0.5;<br>
+				canvas1.scale(2, 3);<br>
+				canvas1.fillRect(10, 10, 50, 50);<br>
+				canvas1.scale(-1, -1);<br>
+				canvas1.fillText("Hello", -100, -100);
+			</code>
+		</section>
+
+		<section>
+			<h2>Градієнтна заливка.</h2>
+			<p>Градієнт створюється у вигляді окремого об'єкта. До створеного об'єкта додаються стоп-точки.</p>
+			<p>На відміну від SVG-формату, canvas-градієнт створюється на саме полотно, а не на фігури:</p>
+			<code>
+				var grad = canvas1.createLinearGradient(20, 20, 150, 100);<br>
+				grad.addColorStop(0, 'red');<br>
+				grad.addColorStop(0.5, 'green');<br>
+				grad.addColorStop(1, '#00f');<br>
+				canvas1.fillStyle = grad;<br>
+				canvas1.fillRect(40, 40, 100, 100);
+			</code>
+			<p>Зручно буде створити функцію для створення градієнтів:</p>
+			<code>
+				canvas1.linearGrad = function(x1, y1, x2, y2, stops){<br>
+				&nbsp;&nbsp;var grad = this.createLinearGradient(x1, y1, x2, y2);<br>
+				&nbsp;&nbsp;for (var i = 0; i < stops.length; i++){<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;grad.addColorStop(stops[i][0], stops[i],[1]);<br>
+				&nbsp;&nbsp;}<br>
+				&nbsp;&nbsp;this.fillStyle = grad;<br>
+				}<br>
+				canvas1.linearGrad(20, 20, 150, 100, [<br>
+				&nbsp;&nbsp;[0, 'red'],<br>
+				&nbsp;&nbsp;[0.5, 'green'],<br>
+				&nbsp;&nbsp;[1, '#00f']<br>
+				]);<br>
+				canvas1.fillRect(40, 40, 100, 100);
+			</code>
+			<p>Радіальний градієнт задається дещо складніше:</p>
+			<code>
+				// context.createRadialGradient(x0, y0, r0, x1, y1, r1);<br>
+				var rgrad = canvas1.createRadialGradient(20, 20, 10, 20, 20, 100);<br>
+				rgrad.addColorStop(0, 'yellow');<br>
+				rgrad.addColorStop(1, 'blue');<br>
+				canvas1.fillStyle = rgrad;<br>
+				canvas1.fillRect(0, 0, 300, 200);
+			</code>
+		</section>
+
+		<section>
+			<h2>Анімація.</h2>
+			<p>На відміну від CSS- та SVG-анімації, анімація canvas відбувається покадрово.</p>
+			<p>Створюється кадр анімації, відображається на екрані певний час, затирається і малюється наступний кадр.</p>
+			<p>Проміжок часу між кадрами можна задати вручну за допомогою таймінгових функцій, або задати автоматичне перемальовування за допомогою функції <strong>window.requestAnimationFrame(callback)</strong>.</p>
+			<p>В останньому випадку розрахунки координат елементів зазвичай розраховують в залежності від поточного часу.</p>
+			<p>Анімація реалізується досить складними алгоритмами, приклад алгоритмів можна дослідити на сторінці <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations" target="_blank">https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations</a>.</p>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>

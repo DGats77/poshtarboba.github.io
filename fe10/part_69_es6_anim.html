@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 68. Огляд ES-2015/16, анімація елементів.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Огляд ES-2015/16, анімація елементів.</h1>
+
+		<section>
+			<h2>Огляд нових можливостей редакцій ES-2015/16.</h2>
+			<p>Багато нового для фронтенд-розробника буде дійсно корисним.</p>
+			<p>Дещо ввели для серверного JS.</p>
+			<p>Багато нового добавили для різноманітних компромісів, взаємодій з іншими мовами програмування (в основному, на серверній частині), полегшення використання JS програмістами на Java, C#, Python.</p>
+			<p><strong>let/const</strong>.</p>
+			<p>Об'являють змінну та константу в локальному просторі імен, обмеженому фігурними дужками {}.</p>
+			<p>Специфікація радить відмовитися від використання var.</p>
+			<code>
+				const x = 10;<br>
+				for (let i = 0; i < x; i++) { alert(i); }
+			</code>
+			<p>Корисно для серверної частини. В деяких випадках призведе до збільшення строк коду:</p>
+			<code>
+				for (var i = 0; i < x; i++) { ... }<br>
+				console.log('next index: ' + i);<br><br>
+				let i;<br>
+				for (i = 0; i < x; i++) { ... }<br>
+				console.log('next index: ' + i);
+			</code>
+			<hr>
+			<p><strong>for-of</strong>.</p>
+			<p>Зручний та очевидний перебір елементів масива:</p>
+			<code>
+				for (var i = 0; i < arr.length; i++) { arr[i] - кожен елемент масива }<br>
+				arr.forEach(function(e){ e - кожен елемент масива });<br>
+				<strong>for (const e of arr)</strong> { e - кожен елемент масива }
+			</code>
+			<hr>
+			<p><strong>Шаблони в апострофах</strong>.</p>
+			<p>Тепер для виокремлення строк можна використовувати не тільки одинарні та подвійні лапки, а й апостроф, що знаходиться під тільдою.</p>
+			<p>Строка в цих апострофах може містити шаблони зі змінними:</p>
+			<code>
+				const s = 'Masha';<br>
+				alert('Hello ' + s + '!');<br>
+				alert(<strong>`Hello ${s}!`</strong>);
+			</code>
+			<hr>
+			<p><strong>Упаковування та розпаковування об'єктів</strong>.</p>
+			<p>Корисна річ, зменшує писанину, покращує читаємість коду:</p>
+			<code>
+				const name = 'Masha';<br>
+				const age = 17;<br><br>
+				var obj = { name: name, age: age, x: 4 };<br>
+				const obj = <strong>{ name, age, x: 4 }</strong>;<br><br>
+				var x = obj.x;<br>
+				const <strong>{x} = obj</strong>;<br>
+				console.log(x); &nbsp;&nbsp; // 4
+			</code>
+			<hr>
+			<p><strong>Spreads</strong>.</p>
+			<p>Зручне розпаковування масивів:</p>
+			<code>
+				function fun(a, b, c, d) { alert(a + b + c + d); }<br>
+				const arr = [3, 4, 5, 6];<br>
+				fun(...arr);<br>
+				const brr = [1, 2, ...arr, 7, 8];
+			</code>
+			<hr>
+			<p><strong>Генератори yield</strong>.</p>
+			<p>Добавлені для сумісності з Python та Ruby.</p>
+			<hr>
+			<p><strong>Аргументи функцій по-замовчуванню</strong>.</p>
+			<code>
+				function fun(x, y){<br>
+				&nbsp;&nbsp;if (typeof y === 'undefined') { y = 42; }<br>
+				&nbsp;&nbsp;...<br>
+				}<br><br>
+				function fun(x, <strong>y = 42</strong>) {<br>
+				&nbsp;&nbsp;...<br>
+				}
+			</code>
+			<hr>
+			<p><strong>Стрілочні функції</strong>.</p>
+			<p>Стрілочні функції мають коріння в лямбда-виразах в інших мовах програмування.</p>
+			<code>
+				var fun = function(a, b, c) { return a + b + c; };<br>
+				var fun = <strong>(a, b, c) =></strong> { return a + b + c; };<br>
+				var fun = <strong>(a, b, c) =></strong> a + b + c;<br>
+				var kub = <strong>x =></strong> x * x * x;
+			</code>
+			<p>У стрілочних функції є особливості в this, arguments, їх не бажано використовувати як методи об'єктів.</p>
+			<hr>
+			<p><strong>Класи</strong>.</p>
+			<p>JS все-ж таки потроху йде в бік ООП, в ньому з'явилися класи.</p>
+			<p>Якщо ви на фронтенді активно створюєте прототипи і вигадуєте костилі для ООП - мабуть, ви дійшли до серйозного етапу своєї кар'єри, пишете браузерну гру чи онлайн-фотошоп. Так? Якщо ні - то, скоріш за все, ви знову на хибному шляху і все занадто ускладнюєте.</p>
+			<hr>
+			<p>Проміси, Fetch, нові типи даних...</p>
+		</section>
+
+		<section>
+			<h2>Анімація елементів.</h2>
+			<p>Потрібно плавно пеерсунути блок вправо на 100px не використовуючи CSS-анімацію та JS-бібліотеки.</p>
+			<p>Подумайте яким чином повинна відбуватися така анімація.</p>
+			<p>Спробуйте зробити анімацію елемента, аналогічну jQuery.slideToggle().</p>
+			<p>Зробіть схлопування блока, подібне до jQuery.slideUp(). Добавте розкривання блока, подібне до jQuery.slideUp()</p>
+			<code>
+				&lt;button&gt;move right 100px&lt;/button&gt;<br>
+				&lt;button&gt;slideToggle&lt;/button&gt;<br>
+				&lt;br&gt;&lt;br&gt;&lt;br&gt;<br>
+				&lt;div&gt;lorem ipsum ...&lt;/div&gt;<br><br>
+				div { padding: 12px 20px; width: 260px; border: 1px solid orange;}<br><br>
+				moveRight(selector, duration){<br>
+				&nbsp;&nbsp;???<br>
+				}<br><br>
+				slideToggle(selector, duration){<br>
+				&nbsp;&nbsp;???<br>
+				}
+			</code>
+		</section>
+		
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<ol>
+				<li>Закінчіть практичне завдання.</li>
+				<li>
+					При кліку по body зробіть щоб блок рухався в точку кліка.
+					<code>
+						&lt;button&gt;round&lt;/button&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;<br>
+						&lt;div&gt;hello&lt;/div&gt;<br><br>
+						body { margin: 0; min-height: 100vh;}<br>
+						div { position: absolute; left: 20px; top: 100px; font-size: 60px;}
+					</code>
+				</li>
+				<li>Зробіть рух блока по колу при кліку на кнопку.</li>
+				<li>При наведенні миші на блок плавно міняйте фоновий колір на рандомний безкінечно (по досягненні цільового кольору задайте новий рандомний колір і прагніть до нього).</li>
+			</ol>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>

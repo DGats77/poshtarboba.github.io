@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+	<title>Frontend. Заняття 8. Вага стилів, акуратність коду, border, html5.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<script src="js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Вага стилів, акуратність коду, border, html5.</h1>
+		<section>
+			<h2>1. Вага стилів.</h2>
+			<p>В межах однієї веб-сторнки може бути багато тегів з однаковими класами, та ідентифікатори не повинні повторюватися, вони є унікальними:</p>
+			<code>
+				&lt;div class="box" id="box"&gt;...&lt;/div&gt;<br>
+				&lt;div class="box" id="box2"&gt;...&lt;/div&gt;<br>
+				&lt;div class="box" id="box3"&gt;...&lt;/div&gt;
+			</code>
+			<p>Селектори в CSS-коді можуть містити назви тегів, класи та ідентифікатори:</p>
+			<code>
+				div { ... }<br>
+				div.box { ... }<br>
+				div#box { ... }<br>
+				#box { ... }<br>
+				.box { ... }<br>
+				#box1.box { ... }<br>
+				.box#box2 { ... }<br>
+				div.box#box { ... }
+			</code>
+			<p>Елементи селектора мають условну вагу. Для простоти розрахунку у елементів прийнято вважати такі значення:</p>
+			<code>
+				стилі браузера - 0<br>
+				* - 0.1<br>
+				тег - 1<br>
+				клас - 10<br>
+				id - 100<br>
+				інлайновий стиль (внутритеговий, індивідуальний) - 1000<br>
+				!important - 10000
+			</code>
+			<p>Та 10-кратні різниці - це лище умовність, 11 класів в селекторі не будуть мати більшу вагу за один ідентифікатор. І 20 теж, і 9000, будь-яка кількість класів слабші за один ідентифікатор.</p>
+			<p><strong>!important</strong> - костиль, який можна додавати до стилів для збільшення їх ваги. Це слово зі знаком оклику записується в кінець значення стиля через пробіл:</p>
+			<code>
+				.green { color: green !important;}<br>
+				.section h2 { color: blue;}<br><br>
+				&lt;section&gt;&lt;h2&gt;Блок 1 ...<br>
+				&lt;section&gt;&lt;h2&gt;Блок 2 ...<br>
+				&lt;section&gt;&lt;h2 class="green"&gt;Блок 3 ...<br>
+				&lt;section&gt;&lt;h2&gt;Блок 4 ...
+			</code>
+		</section>
+
+		<section>
+			<h2>2. Акуратність кода.</h2>
+			<p>Акуратний код легко читати та розбирати на окремі елементи.</p>
+			<p>Всі внутрішні елементи (діти першого порядку) по відношенню до батьківського повинні мати однаковий відступ.</p>
+			<p>Великі блоки можна відділяти в коді пустими строками для полегшення навігації по коду.</p>
+			<p>Часто для цього використовують коментарі виду:</p>
+			<code>
+				&lt;!-- Header begin --&gt;<br>
+				&lt;div class="header"&gt;<br>
+				&nbsp;&nbsp;...<br>
+				&lt;/div&gt;<br>
+				&lt;!-- Header end --&gt;
+			</code>
+			<p>Але я вважаю, що вдало названі блоки і задані класи цілком і повністю будуть описувати контент поточного блока.</p>
+			<p>Приклади хорошого і поганого оформлення кода:</p>
+			<div class="image">
+				<img src="images/part_08_1.png" alt="HTML code">
+				<p>Зображення 2.1. HTML-код, акуратний та аби як зроблений.</p>
+			</div>
+			<p>В HAML-коді (як і в багатьох сучасних мовах програмування) неакуратний код просто не буде працювати: вкладення тегів один в один визначається виключно відступами:</p>
+			<div class="image">
+				<img src="images/part_08_2.png" alt="HAML code">
+				<p>Зображення 2.2. HAML-код - завжди акуратний.</p>
+			</div>
+			<p>В сучасних IDE є функція, що автоматично відформатовує код. Наприклад, в phpStorm вона знаходиться в меню Code:</p>
+			<div class="image">
+				<img src="images/part_08_3.png" alt="Реформатування коду в phpStorm">
+				<p>Зображення 2.3. Реформатування коду в phpStorm.</p>
+			</div>
+			<p><strong>Принцип бритви Оккама</strong> - рос.: "не плоди сущее без необходимости", тобто, не треба створювати зайвих елементів, які не несуть ніякого змісту. Якщо 2 блока можна об’єднати в один - це варто зробити.</p>
+			<p>Звичайно, не треба прагнути до принципового мінімалізму, часто зменшення HTML-коду збільшує CSS-код і навпаки. Або деякі фрагменти можна зробити економно, але дуже неочевидними способами, в яких важко розібратися, які важко пристосувати до інших умов.</p>
+			<p><strong>Валідатор</strong> - це програма, що перевіряє правильність коду. В сучасних IDE його можна зустріти у версіях з коробки або скачати у вигляді плагіна.</p>
+			<div class="image">
+				<img src="images/part_08_4.png" alt="Валідний та невалідний код">
+				<p>Зображення 2.4. Валідний та невалідний код в phpStorm.</p>
+			</div>
+			<p>До появи зручних IED кожний файл потрібно було перевірити онлайн-валідатором.</p>
+			<p>Спробуйте на своїх файлах <a href="https://validator.w3.org/">валідатор для HTML</a> та <a href="http://jigsaw.w3.org/css-validator/">для CSS</a> щоб ознайомитися як він працює, яку інформацію видає, що пропонує змінити.</p>
+			<p><strong>Завдання:</strong> перевірити свій HTML-код і CSS. Зробіть деякі помили, приберіть атрибути <strong>alt</strong> у зображень і повторно зробіть перевірку.</p>
+		</section>
+
+
+		<section>
+			<h2>3. CSS border - границі блоків.</h2>
+			<p><strong>border: 2px solid #2e2e2e;</strong> - об’єднуючий стиль.</p>
+			<p><strong>border-width: 2px;</strong> - ширина границі.</p>
+			<p><strong>border-style: dashed;</strong> - тип границі, може приймайти значення <strong>solid</strong> (суцільна лінія), <strong>dashed</strong> (пунктир), <strong>dotted</strong> (крапочки) та ще декілька значень екзотичного характеру.</p>
+			<p><strong>border-color: #f00;</strong> - колір границі.</p>
+			<p><strong>border-color: #f00 #0f0 #ff0 #f0f;</strong> - можна задати окремі кольори для всіх границь, синтаксис подібний до стилів margin та padding.</p>
+			<p><strong>border-left, border-top, border-right, border-bottom</strong> - всі вищеописані параметри можна задати окремо для певної границі.</p>
+			<p><strong>border-left-width, border-bottom-color</strong> - є багато параметрів, що починаються з border-..., можна окремо задати для певної границі тип, колір, товщину.</p>
+			<p><strong>border-radius: 10px;</strong> - задання радіусів скруглення.</p>
+			<p><strong>border-radius: 10px 20px 30px 40px;</strong> - задання радіусів скруглення для кожного кута окремо починаючи з лівого верхнього і рухаючись за годинниковою стрілкою.</p>
+			<p><strong>border-radius: 10px/20px 20px/10px 30px/50px 40px/5px;</strong> - задання еліпсоподібних скруглень.</p>
+
+			<!-- кутики -->
+
+		</section>
+
+		<section>
+			<h2>4. Семантика HTML5.</h2>
+			<p>В HTML попередньої, четвертої редакції, всі блоки визначалися тегом &lt;div&gt;, всі списки, навігаційні меню, переліки - тегами &lt;ul&gt;, &lt;li&gt;. Пошуковим системам було важко розібратися де яка інформація, що до чого відноситься.</p>
+			<p>В HTML5 було внесено деякі зміни, більшість часто використовуваних блоків отримали свої аліаси (alias, псевдонім).</p>
+			<p>Для оформлення хедера введено тег &lt;header&gt;, для футера - &lt;footer&gt;, для бокової панельки - &lt;aside&gt;, і так далі.</p>
+			<div class="image">
+				<img src="images/part_08_5.jpg" alt="HTML5 boxes">
+				<p>Зображення 4.1. Блоки HTML5.</p>
+			</div>
+			<p>Стандарт HTML5 дозволяє не закривати деякі блоки, такі як &lt;/html&gt;, &lt;/body&gt;, &lt;/p&gt;, &lt;/li&gt;, &lt;/tr&gt;, &lt;/td&gt; і т.ін.; а теги &lt;html&gt;, &lt;head&gt;, &lt;body&gt; можна і не відкривати.</p>
+			<p>Валідний HTML5-код може виглядати ось так:</p>
+			<code>
+				&lt;!DOCTYPE html&gt;<br>
+				&lt;title&gt;Frontend. Заняття 6.&lt;/title&gt;<br>
+				&lt;meta charset="utf-8"&gt;<br>
+				&lt;meta name="format-detection" content="telephone=no"&gt;<br>
+				&lt;link type="text/css" rel="stylesheet" href="css/styles.css"&gt;<br>
+				&lt;div id="mainwrapper"&gt;<br>
+				&nbsp;&nbsp;&lt;div class="resize"&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Заняття 6.&lt;/h1&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;В HTML4 всі блоки визначалися тегом &amp;lt;<span class="black">div</span>&amp;gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;В HTML5 було внесено деякі зміни, більшість часто використовуваних блоків отримали свої аліаси (alias, псевдонім).<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="image"&gt;&lt;img src="cat.jpg" alt="cat"&gt;&lt;/div&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;Цей текст буде "висячим", не матиме батьківського тега  &amp;lt;<span class="black">p</span>&amp;gt;, залишати в коді "висячий" текст - поганий стиль верстки.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Далі наведено приклад списку:<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Елемент списку.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Ще один елемент списку.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="#"&gt;Посилання у списку&lt;/a&gt;.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;div&gt;Блок &amp;lt;<span class="black">div</span>&amp;gt; у списку.&lt;/div&gt;&lt;div&gt;Навіть два.&lt;/div&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Список другого рівня:<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Елемент списку другого рівня.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Ще один.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Останній параграф і закриваючі блоки &amp;lt;<span class="black">div</span>&amp;gt;.<br>
+				&nbsp;&nbsp;&lt;/div&gt;<br>
+				&lt;/div&gt;
+			</code>
+			<p>Але я дуже раджу всі теги писати і закривати їх, на те є декілька причин: дисциплінює верстальника, попереджає неочевидні помилки, при модифікації сторінки однозначно і повністю описує тег та інші.</p>
+			<p><a href="http://www.olunka.ru/18-tegov-ne-trebuyushhix-obyazatelnogo-zakrytiya/">Невелика статейка з топа видачі гугла по запиту на цю тему</a>.</p>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<p>Результати домашніх завдань заляйте на ftp в свої папки.</p>
+			<h3>Рівень 1.</h3>
+			<p>1. Застосуйте теги HTML5 у проекті Minecraft .</p>
+			<h3>Рівень 3.</h3>
+			<p>1. Проект <a href="files/psd/oil.zip">Масло</a> <small>(<a href="files/psd/oil.jpg" target="_blank">jpg</a>)</small>.</p>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>

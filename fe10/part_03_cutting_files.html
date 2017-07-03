@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 3. Порізка макета, організація робочого простору.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<script src="js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Порізка макета, організація робочого простору.</h1>
+
+		<section>
+			<h2>1. Порізка макета.</h2>
+			<p>Запустіть програму Adobe Photoshop і відкрийте <a href="files/psd/futbolki.zip">макет сайту з продажу футболок</a> <small>(<a href="files/psd/futbolki.jpg" target="_blank">jpg</a>)</small>.</p>
+			<p>Для вирізання елементів використовується інструмент "Скальпель" (гаряча клавіша C).</p>
+			<p>При вирізанні слайсів одразу задавайте їм імена (подвійний клік по слайсу чи клік із зажатим Ctrl).</p>
+			<p>Якщо в макеті є подібні елементи - виріжте один, дайте йому ім'я, далі - копіюйте цей слайс, тримаючи клавішу Alt.</p>
+			<p>В першу чергу вирізайте фотографії, іконки, логотипи, відключіть всі фони, щоб тло було "прозоре" (шахматний фон). Збережіть ці зображення, включіть всі фони і вимкніть шари з текстом та вирізаними зображеннями, розмітьте і збережіть всі фони.</p>
+			<p>Щоб видалити всі слайси - можна скористатися пунктом меню View &gt; Remove slices або Просмотр &gt; Удалить фрагменты.</p>
+		</section>
+
+		<section>
+			<h2>2. Збереження зображень, типи файлів.</h2>
+			<p>Для збереження вирізаних слайсів скористайтеся пунктом меню чи гарячими клавішами:</p>
+			<code>
+				File &gt; Save For Web...<br>
+				Файл &gt; Сохранить для Web и устройств...<br>
+				Ctrl + Alt + Shift + S
+			</code>
+			<p>У цьому вікні потрібно підібрати формати файлів, якість стиснення для кожного слайса.</p>
+			<p>Для зручності - виділяйте декілька подібних слайсів, утримуючи Shift.</p>
+			<p>Формати файлів:</p>
+			<p><strong>JPG</strong> - для фотографій, великих фонових зображень;</p>
+			<p><strong>PNG</strong> - для елементів дизайну, іконок, всіх елементів з прозорістю;</p>
+			<p><strong>GIF</strong> - для дуже маленьких елементів з малою кількістю кольорів.</p>
+			<p>Для формату JPG вибирайте якість 60-70 для невеликих, неякісних зображень, розпливчастих, блідих фонів, 80-90 - для чітких, крупних, хороших зображень.</p>
+			<p>Червоні кольори більше за інших створюють "артифакти" в форматі стиснення JPEG, тому при значних кількостях червоного кольору та різких переходів до контрасних до нього кольорів бажано підвищити якість збереження.</p>
+			<div class="image">
+				<img src="images/part_03_1.jpg" alt="Артифакти JPEG">
+				<p>Зображення 2.1. Артифакти JPEG.</p>
+			</div>
+			<p><strong>Імена файлам</strong> потрібно давати з розумом, таким чином, щоб подібні файли знаходилися поруч в списку файлів. Для цього використовуються префікси.</p>
+			<div class="image">
+				<img src="images/part_03_2.png" alt="File Names">
+				<p>Зображення 2.2. Іменування файлів, зліва - невірне.</p>
+			</div>
+		</section>
+
+		<section>
+			<h2>2. Організація робочого простору.</h2>
+			<p>З часом у вас буде все більше і більше проектів, різноманітних робіт.</p>
+			<p>Щоб дотримуватися якогось порядку, не перетворити робочий стіл і вінчестер на хаотичне нагромадження файлів, прислухайтесь до порад.</p>
+			<p>Створіть папку <strong>work</strong> на диску D:\ (чи будь-якому іншому, не на C:\), для MacOS та Linux - в документах, домашньому каталозі.</p>
+			<p>Створіть папку <strong>frontend</strong> в папці work (в англійській мові немає поняття веб-верстки, layouting стосується поліграфії, зазвичай пишуть щось типу html-coding).</p>
+			<p>На FTP створіть папку зі своїм іменем, прізвиськом і вважайте її аналогом папки verstka.</p>
+			<p><strong>Подальша структура вашої робочої папки verstka:</strong></p>
+			<code>
+				<strong>D:\work\frontend\</strong><br>
+				2016-11<br>
+				2016-12<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;andrey_izoterika<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;andrey_strahovka<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;andrey_magazin_eurohimiya<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;futbolki<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;html<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;psd<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tz<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>futbolki_20151204.zip</em><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;kolesov<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;project_name<br>
+				2017-01<br>
+				2017-02<br>
+				2017-03<br>
+				archive<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2015-09<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2015-10<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2015-11<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2015-12<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2015-01<br>
+				lifehacks<br>
+				my_projects<br>
+				poleznosti
+			</code>
+			<p>В цій папці для імен файлів <strong>ЗАВЖДИ</strong> використовуйте лише латинські літери в нижньому регістрі, не використовуйте пробіли (ставте підкреслення чи знак мінуса замість нього).</p>
+			<p>Структура кожної папки проекту:</p>
+			<code>
+				<strong>\futbolki\</strong><br>
+				html<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;images<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;css<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;js<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;index.html<br>
+				psd<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;futbolki.psd<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;futbolki.zip<br>
+				tz<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;tz_futbolki.zip<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;техническое задание.doc<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;notes.txt
+			</code>
+		</section>
+
+		<section>
+			<h2>2. Формат архівів.</h2>
+			<p>Завжди добавляйте дату до імені архіву.</p>
+			<p>Завжди давайте зрозумілі назви архівів, не плодіть файли html.zip, html(2).zip, html(3).zip...</p>
+			<code>
+				<strong style="font-size: 2em; line-height: 3em;">projectName_date.zip</strong><br>
+				futbolki_20151110.zip<br>
+				futbolki_20151110a.zip<br>
+				futbolki_20151110b.zip<br>
+				futbolki_20151110c.zip<br>
+			</code>
+			<p>Для архівування використовуємо лише формат <strong>ZIP</strong>, всі сучасні операційні системи мають інструменти для розпакування zip-архівів. Архіви в форматах RAR, 7z можуть не розпакуватися у замовника.</p>
+			<p>Коли я перевірю ваше домашнє завдання - то зроблю файл-репорт з описом ваших помилок чи похвалою, що все добре і правильно зроблено:</p>
+			<code>
+				futbolki_20151110.txt
+			</code>
+			<p>Якщо ви допустили якісь незначні помилки і розумієте їх, як їх виправити і уникнути в майбутньому - то нову, виправлену версію на сервер можна не заливати.</p>
+			<p>Якщо наробили купу помилок, то роботу необхідно переробити, виправити і заляти на сервер з новою датою архіва.</p>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<p>Результати домашніх завдань заляйте на ftp в свої папки.</p>
+			<h3>Рівень 1.</h3>
+			<p>1. Зробіть порізку макета сайту з продажу футболок (посилання на початку лекції).</p>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>

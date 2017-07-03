@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 7. Коментарі, фон, display, вирівнювання, hover.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<style>
+		p.test { font-size: 24px; line-height: 1.4em;}
+		p.test a:hover { color: green !important;}
+		p.test a:active { color: red !important;}
+		p.test a:visited { color: silver;}
+		p.test a:link { color:orange;}
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Коментарі, фон, display, вирівнювання, hover.</h1>
+
+		<section>
+			<h2>1. Коментарі.</h2>
+			<p>Коментар - це частина файлу, який не обробляється браузером.</p>
+			<p>У коментарях може знаходитися пояснення до коду або частина коду, яка з певних причин не повинна виконатися.</p>
+			<p>Приклади коментарів HTML (<a href="https://jsfiddle.net/poshtarboba/w52vhzLa/2/" target="_blank">jsFiddle</a>):</p>
+			<code>
+				&lt;!-- Блок користувача, відображається тільки коли користувач залогінився --&gt;<br>
+				<strong>&lt;div class="user"&gt;</strong><br>
+				&nbsp;&nbsp;<strong>...</strong><br><br>
+				<strong>&lt;p&gt;1&lt;/p&gt;<br>
+				&lt;p&gt;2</strong>&lt;!-- коментар всередині тега --&gt;<strong>&lt;/p&gt;</strong><br>
+				&lt;!--&lt;p&gt;3&lt;/p&gt;--&gt;<br>
+				<strong>&lt;p&gt;4&lt;/p&gt;</strong><br><br>
+				&lt;!-- Приклад неправильного коментаря: --&gt;<br>
+				<span class="danger">&lt;div</span> &lt;!-- class="test" --&gt;<span class="danger">&gt;test&lt;/div&gt;</span>
+			</code>
+			<p>Приклад коментарів CSS:</p>
+			<code>
+				/* стилі тексту */<br>
+				<strong>.text1 { color: red;</strong> /*font-style: italic;*/ <strong>}</strong><br>
+				/*.text2 { color: yellow; }*/<br>
+				<strong>.text3 { color: blue; }<br>
+				.text4 { color: green; font-style: italic; }</strong><br>
+				/*.text5 { color: pink; }<br>
+				.text6 { color: aqua; }<br>
+				.text7 { color: violet; }*/
+			</code>
+			<p>Чи потрібно коментувати код, пояснюючи що робить той чи інший блок?</p>
+			<p>Я зустрічав доволі фанатичних розробників, в їхньому коді пояснень більше, ніж самого коду.</p>
+			<p>В коді варто залишати:</p>
+			<ol>
+				<li>коментарі, які відповідають на питання "чому?", а не "що?", такі коментарі пояснюють незрозумілі ділянки, а не просто описують код;</li>
+				<li>коментарі перед великими блоками коду, в яких в декількох словах пояснюється що робить даний шмат коду. Це полегшує читання і навігацію по коду;</li>
+				<li>коментарі, що описують закоментовані шматки коду: чому цей шматок коду закоментований і коли слід безповоротно видалити цей шматок коду.</li>
+			</ol>
+		</section>
+
+		<section>
+			<h2>2. Фон</h2>
+			<p>Фон можна задавати одним комплексним стилем, або окремими стилями, що змнюють складові фону.</p>
+			<p>Якщо в блока немає фонового зображення - фон потрібно задавати комплексним стилем.</p>
+			<p>Якщо в блока вже є фонове зображення - можна застосовувати окремі стилі для зміни складових фону.</p>
+			<code>
+				<em><strong>background:</strong> #f00 url(../images/background.png) repeat left top;</em><br><br>
+				<strong>background:</strong> #f00;<br>
+				<strong>background-color:</strong> #f00;<br>
+				<strong>background-image:</strong> url(../images/background.png);<br>
+				<strong>background-repeat:</strong> repeat;<br>
+				<strong>background-position:</strong> left top;
+			</code>
+		</section>
+
+		<section>
+			<h2>3. Стилі display, visibility.</h2>
+			<p>Стиль display може змінити відображення блоку.</p>
+			<p>Як ми вже знаємо, теги діляться на блочні і строкові (а також табличні, які розглянемо пізніше).</p>
+			<p>Будь-який блочний елемент можна перетворити на строковий, а будь-який строковий - на блочний за допомогою властивості display.</p>
+			<code>
+				&lt;span style="<strong>display: block;</strong>"&gt; - будь-який елемент перетворює на блочний, він набуває всіх властивостей блочних елементів, його ширина по замовчуванню стає 100%, можна застосовувати вертикальні паддінги і маргіни.<br><br>
+				&lt;p style="<strong>display: inline;</strong>"&gt; - будь-який елемент перетворює на строковий, він набуває всіх властивостей строкових елементів, його розміри по замовчуванню визначається розмірами контенту (вмісту), вертикальні паддінги і маргіни будуть ігноруватися.<br><br>
+				&lt;div style="<strong>display: inline-block;</strong>"&gt; - будь-який елемент буде поводитися як строковий, але всередині буде мов блочний - будуть працювати розміри, вертикальні паддінги, але вертикальні маргіни працювати не будуть.
+			</code>
+			<p>Поексперементуйте у пісочниці: <a href="https://jsfiddle.net/poshtarboba/bfauo9pt/" target="_blank">jsFiddle</a>.</p>
+			<code>
+				&lt;h1 style="<strong>display: none;</strong>"&gt; - приховує будь-який елемент, так, ніби ви його видалили.<br><br>
+				&lt;h1 style="<strong>visibility: hidden;</strong>"&gt; - приховує будь-який елемент, але залишає виділене під нього місце.<br><br>
+				&lt;h1 style="<strong>visibility: visible;</strong>"&gt; - робить видимим прихований попереднім способом елемент (значення по-замовчуванню).
+			</code>
+			<p>Для приховування елементів зазвичай використовується стиль <strong>display: none;</strong>.</p>
+			<p>Не використовуйте стиль <strong>opacity: 0;</strong> для приховування елемента! Блок стає прозорим, але він продовжує залишатися на своєму місці, заважає розміщуватися іншим елементам.</p>
+			<p>До інших значень стиля display належать:</p>
+			<p>- елемент списка <strong>display: list-item;</strong>, цей стиль дозволяє використовувати маркери чи нумерацію ліворуч від кожного елемента списку;</p>
+			<p>- табличні значення <strong>display: table, table-row, table-cell;</strong> ми розглянемо під час вивчення таблиць;</p>
+			<p>- флекс-бокси мають значення <strong>display: flex, inline-flex;</strong>, застосовуються для гнучкого керування вигляду групи блоків;</p>
+			<p>- css-сітки - <strong>display: grid;</strong>.</p>
+		</section>
+
+		<section>
+			<h2>4. Вирівнювання</h2>
+			<p>Якщо потрібно розмістити блоки зліва чи справа - для них використовується стиль <strong>float</strong>.</p>
+			<p>Після використання стиля float як правило потрібно використати блок зі стилем <strong>clear</strong>.</p>
+			<code>
+				.left-box { float: left; }<br>
+				.right-box { float: right; }<br>
+				.clear { clear: both; }<br><br>
+				&lt;div class="wrap"&gt;<br>
+				&nbsp;&nbsp;&lt;div class="left-box">Блок зліва&lt;/div&gt;<br>
+				&nbsp;&nbsp;&lt;div class="right-box">Блок зправа&lt;/div&gt;<br>
+				&nbsp;&nbsp;&lt;div class="clear">&lt;/div&gt;<br>
+				&nbsp;&nbsp;&lt;p>Текст після блоків&lt;/p&gt;<br>
+				&lt;/div&gt;
+			</code>
+			<div class="clear_example clr">
+				<div>float: left;</div>
+				<div>float: right;</div>
+			</div>
+			<p>Clear не треба використовувати лише в тих випадках, коли текст повинен обтікати довкола блока. В сучасній комерційній верстці цей прийом використовується дуже рідко. Приклад можна глянути на <a href="https://uk.wikipedia.org/wiki/%D0%93%D0%BE%D0%BB%D0%BE%D0%B2%D0%BD%D0%B0_%D1%81%D1%82%D0%BE%D1%80%D1%96%D0%BD%D0%BA%D0%B0" target="_blank">вікіпедії</a> - текст обтікає довкола фотографій.</p>
+			<p>Приклади у пісочниці <a href="https://jsfiddle.net/poshtarboba/njo8c3x5/2/" target="_blank">jsFiddle</a>.</p>
+			<p>Щоб батьківський елемент не схлопувався - використовуються такі методи:</p>
+			<div class="image">
+				<img src="images/float.jpg" alt="float">
+				<p>Зображення 4.1. Флоати.</p>
+			</div>
+
+			<!--
+				добавити собі, картинку зверстати в jsFiddle:
+
+				По спецификации, плавающие блоки не влияют на обычные, но влияют на их инлайновое (текстовое) содержимое — заставляют контейнеры строк («line boxes») ужаться. Т.е. границы обычных блоков для плавающих ничего не значат — они запросто накладываются на блоки и проходят сквозь них, хоть внутрь, хоть наружу, хоть навылет. А вот текст накладываться на них не может и вынужден обтекать их снаружи, втискиваясь в оставшееся место.
+				Поскольку float-ы придуманы именно для обтекания врезок текстом, а не для горизонтальной раскладки блоков, это поведение — «не баг, а фича»: текст будет обтекать врезку ровно столько, сколько нужно, не дожидаясь конца блока или абзаца, в верстке не будет некрасивых дырок. Но из него напрямую следует «недержание» float-ов обычными блочными контейнерами, в которых текста недостаточно или вообще нет.
+
+				<img src="files/tmp/floats.jpg">
+			-->
+
+		</section>
+
+		<section>
+			<h2>5. Властивості :hover, :active, :visited, :link.</h2>
+			<p>До елементів в стилях можна додати реакцію на події миші (без пробілів):</p>
+			<code>
+				<strong>a:hover</strong> { color: green;} - посилання, на яке навели курсор миші.<br>
+				<strong>a:active</strong> { color: red;} - посилання, на яке клацнули, але ще не відпустили кнопку миші.<br>
+				<strong>a:visited</strong> { color: silver;} - посилання, яке вже відвідали.<br>
+				<strong>a:link</strong> { color:orange;} - не відвідуване посилання (аналог простого запису a {...}).<br>
+				a.first.active:hover {...} - якщо у елемента є класи, то :hover додаємо в кінець.<br>
+				a#id_element:hover {...} - аналогічно якщо в елемента є ID.<br>
+				a#first.active:hover {...},<br>a.active#first:hover {...} - змішані приклади (еквівалентні між собою).<br>
+				<strong>img:hover</strong> {...} - стиль буде застосовано, якщо курсор миші навели на зображення.<br>
+				<strong>h2:hover</strong> {...} - стиль буде застосовано, якщо курсор миші навели на заголовок.
+			</code>
+			<p>Не клікайте по наступному посиланню до вказівки викладача:</p>
+			<p class="test"><a href="https://www.google.com/search?tbm=isch&amp;q=html3">Тестове посилання</a>.</p>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<p>Результати домашніх завдань заляйте на ftp в свої папки.</p>
+			<h3>Рівень 1.</h3>
+			<p>1. Закінчіть проект Колесов.</p>
+			<h3>Рівень 2.</h3>
+			<p>1. Стилізуйте проект Minecraft.</p>
+			<h3>Рівень 3.</h3>
+			<p>1. Стилізуйте проект Iskander.</p>
+		</section>
+
+
+
+		<!-- phpstorm deploy -->
+
+
+	</div>
+</div>
+
+</body>
+</html>

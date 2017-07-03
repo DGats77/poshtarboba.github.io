@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 47. Host, cookie, localstorage.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Location, cookie, localstorage.</h1>
+
+		<section id="section1">
+			<h2>Location.</h2>
+			<p>Об'єкт <strong>window.location</strong> містить в собі інформацію про поточний URI сторінки.</p>
+			<p>Перейдіть за <a href="part_47_location_cookie.html?name=masha&age=17#section1" target="_blank">посиланням</a> та дослідіть в консолі об'єкт location на тій сторінці:</p>
+			<code>
+				console.dir(location);
+			</code>
+			<p>Спробуйте змінити компоненти об'єкта location:</p>
+			<code>
+				location.hash = '#section2';<br>
+				location.href = 'part_40_dom_css.html';<br>
+				location.host = 'google.com';
+			</code>
+		</section>
+
+		<section id="section2">
+			<h2>Cookie</h2>
+			<p><strong>Cookie</strong> - це спеціальні дані, що зберігаються у браузері.
+			<p>Куки зберігаються між сесіями. Ви можете перегрузити сторінку чи відкрити сторінку в новій вкладці - збережені куки будуть доступні.</p>
+			<p>Зазвичай ці дані зберігаються або в строковому вигляді, або в бінарному.</p>
+			<p>Cookie можна присилати сервером з кожним файлом: скриптом, зображенням, стилями, фреймом і т.д.<br>Ви можете знайти куки в заголовках файла в інструментах розробника.</p>
+			<p>Під час відвідування інтернет-магазину вам в браузер записуються куки про товари, які ви переглянули.</p>
+			<p>Коли ви мандруєте мережею - періодично бачите рекламу з тими ж товарами, що переглянули. Сайт-рекламодавець зчитує куки з вашого браузера і підгружає саме ці товари в банер.</p>
+			<p>Перевірте які куки зберігаються у вас в браузері на різних сайтах: поточна сторінка, соцмережі, інформаційні портали...</p>
+			<code>
+				document.cookie
+			</code>
+			<p>Всі куки ви можете переглянути в налаштуваннях браузера.</p>
+			<code>
+				Chrome:<br>
+				<em>Налаштування &gt; Конфіденційність &gt; Налаштування вмісту &gt; Усі файли cookie...</em><br><br>
+				Firefox:<br>
+				<em>Налаштування &gt; Приватність &gt; Видалити окремі cookie</em>
+			</code>
+			<p><strong class="danger">Увага!</strong> Cookie працює тільки на сервері. Тому для роботи нам необхідний або локальний сервер (localhost), або наш FTP (<em>http://circle.com.ua/users/fe*/ваш_нік/шлях_до_файла</em>). Можливо, підійде і веб-сервер, вбудований в IDE, спробуйте.</p>
+			<p>Куки складаються з пар даних "ключ = значення".</p>
+			<p>Для роботи з куками в чистому js немає спеціальних функцій чи методів. Можна скористатися сторонньою бібліотекою функцій <a href="js/cookie.js" target="_blank">cookie.js</a>.</p>
+			<p>Розгляньте запропоновані функції, опишіть що вони роблять.</p>
+			<p>Можливо, для роботи з куками вам знадобляться дві функції:</p>
+			<code>
+				encodeURIComponent(str);<br>
+				decodeURIComponent(URIstr);
+			</code>
+			<p>Перша функція заміняє "небезпечні" символи в строці на спецсимволи, наприклад, пробіл на %20.<br>Друга функція виконує зворотню дію.</p>
+			<h3>Завдання.</h3>
+			<ol>
+				<li>Підключіть до лекції скрипт <a href="js/cookie.js" target="_blank">cookie.js</a>.</li>
+				<li>Створіть декілька куків зі своїм іменем, курсом долара і т.п.</li>
+				<li>
+					Спробуйте напряму задати куки:
+					<code>
+						document.cookie = 'say=hello';
+					</code>
+				</li>
+				<li>Змініть значення куків.</li>
+				<li>Спробуйте видалити куки.</li>
+			</ol>
+		</section>
+
+		<section>
+			<h2>Localstorage.</h2>
+			<p>В редакції HTML5 з'явився новий об'єкт <strong>window.localStorage</strong>.</p>
+			<p>Локальне сховище даних має подібну функціональність, але дозволяє зберігати більше даних.</p>
+			<p>Окрім того, локальні сховища дозволяють створювати <a href="http://blog.darkcrimson.com/2010/05/local-databases/" target="_blank">локальні бази даних</a> та <a href="https://www.html5rocks.com/en/tutorials/file/filesystem/" target="_blank">локальні файли</a>.</p>
+			<p>Для роботи з локальним сховищем є декілька зручних методів:</p>
+			<code>
+				<strong>localStorage.setItem(key, value);</strong><br>
+				<strong>localStorage.getItem(key);</strong><br>
+				<strong>localStorage.removeItem(key);</strong><br>
+				<strong>localStorage.clear();</strong><br><br>
+				console.log(localStorage);<br><br>
+				var data = [5, 12, '32', 7, 'html', '99'];<br>
+				localStorage.setItem('bar', data);<br>
+				localStorage.setItem('hey', 'ho');<br><br>
+				var foo = localStorage.getItem('bar');<br>
+				console.log(foo);<br>
+				console.log(localStorage.getItem('hello'));<br><br>
+				localStorage.removeItem('bar');<br>
+				localStorage.clear();
+			</code>
+			<p>Окрім того, до елементів локального сховища можна звертатися як до властивостей об'єкта:</p>
+			<code>
+				localStorage.setItem('name', 'Masha');<br>
+				alert(localStorage.name);
+			</code>
+			<p>В локальне сховище можна зберігати масиви, об'єкти:</p>
+			<code>
+				var obj = { name: 'Masha', age: 17, gender: 'female' };<br>
+				localStorage.setItem('user', JSON.stringify(obj));<br><br>
+				var newObj = localStorage.getItem('user');<br><br>
+				newObj = JSON.parse(newObj);<br><br>
+				var newObj = JSON.parse(localStorage.getItem('user'));
+			</code>
+			<p>
+				Якщо потрібно задати термін дії для даних, що зберігаються - доведеться робити це вручну:<br>
+				- записати дані;<br>
+				- записати дату (в числовому форматі) - кінцевий термін "придатності даних";<br>
+				- при відкритті сторінки звіряти дату, якщо вона просрочена - видалити дані.
+			</p>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<ol>
+				<li>Підключіть файл <a href="js/cookie.js">cookie.js</a> у ваш проект.</li>
+				<li>Запишіть в куки: "car=Mercedes"; "planer=Boeing". Зчитайте значення цих куки, збережіть у змінні та виведіть в консоль. В консолі введіть document.cookie, подивіться всі куки.</li>
+				<li>Створіть 2 кнопки і поле вводу. По кліку на одну буде записано cookie з текстом поля вводу, по кліку на другу - виводити alert зі строкою. Закрийте вкладку, відкрийте знову, перевірте, чи зберіглося куки, клацнувши на другу кнопку.</li>
+				<li>Запишіть куки з часом дії 5 секунд, зчитайте його через 2 і через 7 секунд, виводьте в консоль.</li>
+				<li>При вході на сторінку перевіряйте наявність куки зі своїм іменем. Якщо воно є - виведіть у який-небудь блок, наприклад, &lt;p&gt; вітання: "Привіт, %username% !", якщо немає - зробіть видимими поле вводу і кнопку з пропозицією ввести ім’я користувача. По кліку на кнопку записати куки, вивести вітання і сховати елементи форми.</li>
+				<li>До попереднього завдання додаткова умова: термін дії куки має бути 1 хвилина. Не забудьте поновити куки при закритті сторінки.</li>
+				<li>Створіть масив довжиною 8 елементів з довільних чисел. Додайте на 4 та 7 місця строки зі своїм ім’ям та прізвищем, на 2 місце - об’єкт "Гарбуз" з трьома властивостями. Запишіть цей масив в localStorage, зчитайте його у змінну та виведіть у консоль.</li>
+				<li>Зробіть завдання 1..6 за допомогою localStorage.</li>
+				<li>
+					Дано бокове (вертикальне) меню.<br>
+					Потрібно зробити можливість змінювати позиції пунктів меню. Створіть кнопку, яка б переключала меню в режим редагування:<br>
+					біля кожного пункта меню повинно з'явитися дві кнопки зі стрілками вгору і вниз.<br>
+					При кліку на відповідну кнопку пункт меню повинен переміститися вгору чи вниз.<br>
+					Поточний порядок пунктів меню зберігайте у localstorage.
+				</li>
+			</ol>
+		</section>
+	</div>
+</div>
+
+</body>
+</html>

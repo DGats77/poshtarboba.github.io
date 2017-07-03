@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 41. Атрибути елементів, створення та перенесення елементів.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Атрибути елементів, створення та перенесення елементів.</h1>
+
+		<section>
+			<h2>Атрибути елементів.</h2>
+			<p>До деяких атрибутів можна звертатися напряму, вони вже є присутніми в об'єкті:</p>
+			<ul>
+				<li>e.id</li>
+				<li>e.name</li>
+				<li>e.href</li>
+				<li>e.className</li>
+				<li>e.checked</li>
+				<li>e.disabled</li>
+				<li>...</li>
+			</ul>
+			<p>Та кращий і універсальний спосіб роботи з атрибутами - це декілька методів:</p>
+			<code>
+				p.hasAttribute('title');<br>
+				p.getAttribute('id');<br>
+				p.setAttribute('title', 'Hello');<br>
+				p.removeAttribute('class');
+			</code>
+			<p>Використання властивостей об'єкта напряму загрожує неочевидними помилками. Протестуйте у jsFiddle:</p>
+			<code>
+				&lt;a href="/"&gt;test&lt;/a&gt;<br><br>
+				var a = document.links[0];<br>
+				console.log(a.getAttribute('href'));<br>
+				console.log(a.href);<br>
+				console.log(a.getAttribute('title'));<br>
+				console.log(a.title);
+				<br>
+			</code>
+			<p>Для роботи з атрибутами data- є спеціальна властивість <strong>.dataset</strong>:</p>
+			<code>
+				p.dataset.id = '32';<br>
+				p.dataset.big = 'true';<br>
+				img.dataset.src = 'image.jpg';
+			</code>
+			<h3>Завдання.</h3>
+			<ol>
+				<li>Створіть html-код з заголовком, посиланням, зображенням &lt;img src="..." width="32"&gt;.</li>
+				<li>Виведіть повідомлення якщо у зображення не буде атрибута alt.</li>
+				<li>Змініть зображення у картинки, задавши нове значення атрибута src.</li>
+				<li>Якщо посилання має протокол http - задайте йому червоний колір тексту, якщо https - зелений.</li>
+				<li>Приберіть атрибут width у зображення.</li>
+				<li>Перед зміною зображення картинки зберігайте старий url у атрибут data-src.</li>
+			</ol>
+		</section>
+
+		<section>
+			<h2>Робота з класами.</h2>
+			<p>Список класів зберігається у строковій властивості <strong>className</strong>, вони записані через пробіл.</p>
+			<p>Якщо у елемента може бути один клас, то з цією властивістю ще можна працювати: задати клас, зчитати клас, видалити клас.</p>
+			<p>Якщо ж класів може бути більше - строкова властивість вже не зручна, хотілося б мати щось типу масива.</p>
+			<p>Список класів міститься у властивості <strong>classList</strong> (DOMTokenList) що має наступні зручні методи:</p>
+			<code>
+				p.classList.contains('active');<br>
+				p.classList.add('big');<br>
+				p.classList.remove('hey');<br>
+				p.classList.toggle('show');<br>
+				p.classList.forEach(fun);
+			</code>
+			<h3>Завдання.</h3>
+			<ol>
+				<li>Створіть кнопку, параграф і список з 5 елементів. Задайте довільний текст елементам, одному елементу списка задайте клас active.</li>
+				<li>
+					Створіть стилі:
+					<code>
+						.hide { display: none; }<br>
+						.big { font-size: 24px; line-height: 1.3em; }<br>
+						.active { color: red; }
+					</code>
+				</li>
+				<li>Переберіть всі елементи списка і виведіть в повідомлення текст елемента, в якого є клас active. Видаліть цей клас.</li>
+				<li>Добавте клас big для параграфа.</li>
+				<li>При кліку на кнопку добавляйте чи видаляйте клас hide для параграфа, щоб він з'являвся та зникав.</li>
+			</ol>
+		</section>
+
+		<section>
+			<h2>Створення елементів.</h2>
+			<p>Створити елемент можна двома способами.</p>
+			<p>Можна його прописати у властивість innerHTML батьківського елемента:</p>
+			<code>
+				&lt;p&gt;&lt;/p&gt;<br><br>
+				var p = document.querySelector('p');<br>
+				p.innerHTML = '&lt;span class="big"&gt;SPAN&lt;/span&gt;';<br>
+				p.innerHTML += ' &lt;strong&gt;STRONG&lt;/strong&gt;';<br>
+				p.innerHTML = '&lt;em&gt;EM&lt;/em&gt; &lt;a href="http://google.com"&gt;test&lt;/a&gt; ' + p.innerHTML;
+			</code>
+			<p>Другий варіант - це явне створення елементів за допомогою метода документа:</p>
+			<code>
+				<strong>var змінна = document.createElement('назва_тега');</strong><br><br>
+				var p = document.createElement('p');<br>
+				var price = document.createElement('strong');
+			</code>
+			<p>При цьому елемент створюється у віртуальному просторі, а не в DOM, не відображається в браузері.</p>
+			<p>Але з цим елементом можна робити різні маніпуляції:</p>
+			<code>
+				p.innerHTML = 'Основна &lt;b&gt;мета&lt;/b&gt; нашої зустрічі...';<br>
+				p.setAttribute('title', 'Основна мета');<br>
+				p.id = 'heyHo';<br>
+				if (p.classList.contain('...')) { ... }<br>
+				console.dir(p.parentElement);
+			</code>
+			<p>Для того, щоб цей елемент вбудувати в DOM - використовуються методи:</p>
+			<code>
+				var div = document.querySelector('section#gallery');<br>
+				<strong>div.appendChild(p);</strong><br>
+				<strong>div.insertBefore(price, p);</strong>
+			</code>
+			<p>Перший метод добавляє елемент p в кінець елемента div (всередину).</p>
+			<p>Другий метод вставляє елемент price в елемент div перед елементом p.</p>
+			<p>Таким чином, щоб вставити елемент після якогось елемента, потрібно зробити такі маніпуляції:</p>
+			<code>
+				p - створений елемент;<br>
+				div - після цього блока потрібно вставити елемент p;<br>
+				div.parentElement.insertBefore(p, div.nextSiblingElement);
+			</code>
+			<p>При цьому, якщо після елемента div не буде інших елементів, то конструкція div.nextSiblingElement поверне null.</p>
+			<p>Якщо .insertBefore приймає null у якості другого аргумента - він добавить елемент в кінець батьківського.</p>
+			<p>Видалити елемент можна методами:</p>
+			<code>
+				p.parentElement.removeChild(p);<br>
+				var k = p.parentElement.removeChild(p);<br>
+				p.remove(); &nbsp;&nbsp; // не підтримується в IE
+			</code>
+			<p>У змінну k буде збережено видалений елемент, якщо він потрібен буде в майбутньому.</p>
+			<h3>Завдання.</h3>
+			<ol>
+				<li>Створіть пустий список елементів.</li>
+				<li>Добавте в нього 5 елементів, в кожного має бути свій id: id1, id2..., а в якості текста - нумерація 1, 2, 3...</li>
+				<li>Перед першим елементом списка вставте ще один id0.</li>
+				<li>Перед списком вставте параграф з текстом "Список:".</li>
+				<li>Після списка вставте параграф з текстом "Сума цифр: ..." (суму порахуйте програмно);</li>
+			</ol>
+		</section>
+
+		<section>
+			<h2>Перенесення елементів.</h2>
+			<p>Знайдений елемент можна перенести:</p>
+			<code>
+				var p = document.querySelectorAll('p')[11];<br>
+				var h2 = document.querySelector('h2');<br>
+				h2.parentElement.insertBefore(p, h2.nextElementSibling);<br><br>
+				document.body.appendChild(p);
+			</code>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<ol>
+				<li>.</li>
+			</ol>
+		</section>
+	</div>
+</div>
+
+</body>
+</html>

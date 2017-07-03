@@ -1,0 +1,78 @@
+@charset "utf-8";
+
+html { padding:0; margin:0;}
+body { position:relative; margin:0; padding:0; color:#666; font:normal 18px/28px Helvetice, Arial, sans-serif; background:#fff;}
+.clr:after { content:""; display:block; height:0; overflow:hidden; font-size:0; line-height:0; clear:both;}
+
+p { margin:0; padding:10px 0;}
+a { color:#00f; text-decoration:underline;}
+a:hover { color:#77f;}
+a img { border:none;}
+h1, h2, h3, h4, h5, h6 { margin:0; padding:0; font-weight:bold; color:#000;}
+h1 { padding:40px 0 24px; line-height:1.4em;}
+h2 { padding:0 0 12px;}
+h3 { padding:24px 0 12px;}
+.fl { float:left;}
+.fr { float:right;}
+.fn { float:none;}
+.tal { text-align:left;}
+.tac { text-align:center;}
+.tar { text-align:right;}
+.ucase { text-transform:uppercase;}
+.lcase { text-transform:none;}
+.bold { font-weight:bold;}
+.italic { font-style:italic;}
+.stroke { text-decoration: line-through; color: #bbb;}
+strong { font-weight:bold;}
+em { font-style:italic;}
+form, menu, iframe { display:block; margin:0; padding:0; border:none;}
+iframe { width: 100%; height: 80vh;  border: 2px solid #eeb;}
+ol, ul { margin: 0; padding-top: 10px;}
+li { padding-bottom: 10px;}
+sup, sub { font-size: 12px; line-height: 14px;}
+.noselect { -webkit-user-select: none; -moz-user-select: none; user-select: none;}
+/*input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] { display:block; padding:11px 12px; height:38px; width:100%; color:#606060; font:normal 14px/16px Helvetice, Arial, sans-serif; background:#fff; border:none; border-radius:4px; box-shadow:none; box-sizing:border-box; -webkit-appearance:none; -moz-appearance:none;}
+input.hidden { display:none;}
+textarea { display:block; padding:11px 12px; color:#606060; resize:none; overflow:auto; font:normal 14px/20px Helvetice, Arial, sans-serif; background:#fff; border:none; border-radius:4px; box-shadow:none; box-sizing:border-box; -webkit-appearance:none;}
+input[type="submit"] { font:normal 18px/21px Helvetice, Arial, sans-serif; color:#fff; text-transform:uppercase; cursor:pointer; border:none; border-radius:0; box-shadow:none; box-sizing:border-box; -webkit-appearance:none;}*/
+* { outline:none;}
+
+#mainwrapper { position:relative; overflow:hidden; width:100%; min-width:940px; background:#fff;}
+.resize { position:relative; margin:0 auto; width:920px; padding: 0 20px;}
+section { padding:40px 0;}
+code, .code, pre { display:block; margin:10px 0 20px; padding:16px 20px; font-family: monospace; background:#ffe; border:2px dashed #eeb;}
+pre { font-size: 70%; line-height: 16px;}
+strong { color:#000;}
+abbr { border-bottom:1px dashed #666; cursor:help;}
+strong abbr { border-bottom-color:#000;}
+.big { font-size: 150%;}
+.small { font-size: 80%;}
+.image { margin:10px 0 20px; padding:10px; text-align:center; border:1px solid #ccc;}
+.image img { max-width:100%;}
+.image p { padding-bottom:4px; font-style:italic;}
+.danger { font-weight:bold; color:#ff0000;}
+.black { color:#000;}
+.light { opacity: 0.5;}
+
+footer { padding:40px 0; border-top: 1px solid #aaa;}
+footer .nav { font-size:24px; line-height:1.4em;}
+
+.parts { list-style: none; padding-left: 0;}
+.main-info strong { display:inline-block; width:150px;}
+.main-info span { display:inline-block; width:350px;}
+
+.clear_example { padding:16px; font-size:140%; border:4px solid red;}
+.clear_example.clr:after { content: 'clear: both;'; height:20px; background:green; font-size: 16px; line-height: 20px; color: #fff;}
+.clear_example>div { padding:16px; border:2px solid blue;}
+.clear_example>div:first-child { float:left; width:250px; height:60px;}
+.clear_example>div:last-child { float:right; width:400px; height:80px;}
+.noheight { padding: 20px 0 40px; font-size: 40px; font-weight: bold; color: #f00; text-decoration: line-through;}
+
+.copycode { position: relative;}
+.js-copy { position: absolute; right: 20px; top: 20px; padding: 10px 20px; font-size: 20px; color: grey; text-decoration: none; border: 1px solid grey; cursor: pointer;}
+.defUl,
+.defUl li { list-style:disc;}
+.defUl { padding-left:40px;}

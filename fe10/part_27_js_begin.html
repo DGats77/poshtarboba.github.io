@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 27. Введення в JavaScript.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<h1>Введення в JavaScript.</h1>
+
+		<p><a href="http://javascript.ru/" target="_blank">http://javascript.ru</a></p>
+		<p><a href="http://learn.javascript.ru/" target="_blank">http://learn.javascript.ru</a></p>
+
+		<section>
+			<h2>1. Включення JS у веб-сторінку.</h2>
+			<p>Код JS може включатися безпосередньо у веб-сторінку в розділ &lt;head&gt; чи в тіло документа:</p>
+			<code>
+				&lt;html&gt;<br>
+				&lt;head&gt;<br>
+				&nbsp;&nbsp;&lt;script type="text/javascript"&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;var blahblah = 34;<br>
+				&nbsp;&nbsp;&lt;/script&gt;<br>
+				&lt;/head&gt;<br>
+				&lt;body&gt;<br>
+				&nbsp;&nbsp;&lt;script type="text/javascript"&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;document.write('&lt;p&gt;Hello!&lt;/p&gt;');<br>
+				&nbsp;&nbsp;&lt;/script&gt;<br>
+				&lt;/body&gt;<br>
+				&lt;/html&gt;
+			</code>
+			<p>Також JS може підключатися з файла, знову ж таки в розділі &lt;head&gt; чи в тілі документа:</p>
+			<code>
+				&lt;html&gt;<br>
+				&lt;head&gt;<br>
+				&nbsp;&nbsp;&lt;script type="text/javascript" src="<strong>js/my.js?update_05_01_2016_1</strong>"&gt;&lt;/script&gt;<br>
+				&lt;/head&gt;<br>
+				&lt;body&gt;<br>
+				&nbsp;&nbsp;&lt;script type="text/javascript" src="js/jQuery.min.js">&lt;/script&gt;<br>
+				&lt;/body&gt;<br>
+				&lt;/html&gt;
+			</code>
+			<p>Часто скрипти підключають в кінці веб-сторінки для того, щоб вони починалися грузитися в самому кінці.</p>
+			<p>Реакції на події можна включати у вигляді інлайнових скриптів, проте, це погана практика:</p>
+			<code>
+				&lt;button onclick="alert('Ви клацнули по кнопці.');"&gt;Клацни сюди!&lt;/button&gt;
+			</code>
+		</section>
+
+		<section>
+			<h2>2. Консоль розробника та вивід інформації для розробника.</h2>
+			<p>Консоль - зручний інструмент для відлагодження скриптів, пошуку помилок, виводу службової інформації.</p>
+			<p>Консоль викликається клавішою F12 (якщо у вас замість появи консолі пропав інтернет - спробуйте комбінацію fn + F12).</p>
+			<code>
+				alert('hello');<br>
+				console.log('hello');<br>
+				console.dir('hello');<br>
+				console.info('hello');<br>
+				console.warn('hello');<br>
+				console.error('hello');
+			</code>
+			<p>Різницю між log та dir можна побачити згодом, при роботі з об'єктами:</p>
+			<code>
+				&lt;p id="hey"&gt;Hello!&lt;/p&gt;<br><br>
+				var p = document.getElementById('hey');<br>
+				console.log(p);<br>
+				console.dir(p);
+			</code>
+		</section>
+
+		<section>
+			<h2>3. Змінні.</h2>
+			<p><strong>var</strong> x; - об’явлення (створення) змінної; від слова variable.</p>
+			<p>var y = 6; - об’явлення змінної та її ініціалізація - присвоєння їй певного значення.</p>
+			<p>y = 7; - присвоювання нового значення змінній.</p>
+			<p>Повертати значення - видати результат, стосується операторів, функцій.</p>
+			<p>Типи даних:</p>
+			<p><strong>int</strong> - цілі числа зі знаком.</p>
+			<p><strong>float</strong> - дробні числа.</p>
+			<p><strong>char</strong> - символи (1 байт).</p>
+			<p><strong>string</strong> - строкові константи.</p>
+			<p><strong>true, false</strong> - булеві значення.</p>
+			<p><strong>null, undefined, Infinity, NaN</strong> - спеціальні типи даних.</p>
+			<p>var PORT = '8080'; - константа.</p>
+			<p>&nbsp;</p>
+			<p>Строки потрібно брати у лапки (одинарні чи подвійні):</p>
+			<code>
+				var a = 'hello';<br>
+				var b = "world";<br>
+				// в JS краще використовувати одинарні лапки для строк без апострофів<br>
+				alert('It\'s my cat!');<br>
+				alert("It's my cat!");<br>
+				console.log('&lt;p class="big"&gt;');<br>
+				console.log("&lt;p class=\"big\"&gt;");
+			</code>
+			<p>Не плутайте змінні та строки:</p>
+			<code>
+				var hey = 'bugaga';<br>
+				alert('hey');<br>
+				alert(hey);<br>
+				alert(bugaga); // помилка
+			</code>
+			<p>&nbsp;</p>
+			<p><strong>typeof</strong> - повертає тип змінної.</p>
+			<code>
+				/* оператор */<br>
+				var s;<br>
+				console.log(typeof s); // "undefined"<br>
+				console.log(typeof 0); // "number"<br>
+				console.log(typeof 3.5); // "number"<br>
+				console.log(typeof true); // "boolean"<br>
+				console.log(typeof 'foo'); // "string"<br>
+				/* функція */<br>
+				console.log(typeof(0)); // "number"<br>
+				console.log(typeof(true)); // "boolean"<br>
+				console.log(typeof('foo')); // "string"
+			</code>
+		</section>
+
+		<section>
+			<h2>4. Оператори.</h2>
+			<p><strong>Коментарі:</strong></p>
+			<code>
+				/* Коментар на дві строки:<br>
+				document.write("hello!"); */<br>
+				var i=6; // коментар до кінця строки
+			</code>
+			<p>Чи потрібно коментувати код, пояснюючи що робить той чи інший блок, та чи інша строка?</p>
+			<p>Я зустрічав доволі фанатичних розробників, в їхньому коді пояснень більше, ніж самого коду.</p>
+			<p>В коді варто залишати:</p>
+			<ol>
+				<li>коментарі, які відповідають на питання "чому?", а не "що?", такі коментарі пояснюють незрозумілі ділянки, а не просто описують код;</li>
+				<li>коментарі перед великими блоками коду, в яких в декількох словах пояснюється що робить даний шмат коду. Це полегшує читання і навігацію по коду;</li>
+				<li>коментарі в складних структурах даних, які б пояснювали що містить кожне поле в неочевидних випадках;</li>
+				<li>коментарі, що описують закоментовані шматки коду: чому цей шматок коду закоментований і коли слід безповоротно видалити цей шматок коду.</li>
+			</ol>
+			<p><strong>Оператори:</strong></p>
+			<p>r = a + b; - додавання.</p>
+			<p>r = a - b; - віднімання.</p>
+			<p>r = a * b; - множення.</p>
+			<p>r = a / b; - ділення (звичайне, дробове).</p>
+			<p>r = a % b; - залишок від ділення (<em>19 % 4 = 3 тому що 16 / 4 = 4 і 3 у залишку</em>).</p>
+			<p>i++, ++i - інкремент числа (i = i + 1).</p>
+			<p>i--, --i - декремент числа (i = i - 1).</p>
+			<p>Протестуйте наступний код, що показує різницю між останніми операторами та проаналізуйте результати:</p>
+			<code>
+				console.clear();<br>
+				console.groupCollapsed('Testing ++ and --');<br><br>
+				var a = b = 5;<br>
+				console.log(a, b);<br>
+				console.log(a++, ++b, '++');<br>
+				console.log(a, b);<br>
+				console.log(a--, --b, '--');<br>
+				console.log(a, b);<br><br>
+				console.groupEnd();
+			</code>
+			<p>Якщо потрібно збільшити чи зменшити змінну на певне значення, то можна використовувати скорочену форму:</p>
+			<code>
+				a += 5; &nbsp;&nbsp; // a = a + 5;<br>
+				b -= a; &nbsp;&nbsp; // b = b - a;<br>
+				c *= b; &nbsp;&nbsp; // c = c * b;<br>
+				d /= 2; &nbsp;&nbsp; // d = d / 2;<br>
+				e %= 7; &nbsp;&nbsp; // e = e % 7;
+			</code>
+			<p>За допомогою оператора + можна об'єднувати строки (<em>конкатинація строк</em>):</p>
+			<code>
+				var a = 'Hello' + " " + 'world!';<br>
+				var b = a + '!!';<br>
+				console.log(a, b, c);
+			</code>
+			<p><strong class="danger">Увага!</strong> При додаванні строк і чисел останні перетворюються в строку.</p>
+			<code>
+				console.log('hello' + 5);<br>
+				console.log('2+5=' + 2 + 5);<br>
+				// використовуйте дужки для визначення пріоритетів операцій:<br>
+				console.log('2+5=' + (2 + 5));
+			</code>
+			<p>Перетворення типів даних:</p>
+			<code>
+				console.log(typeof (2 + ''));<br>
+				var k = 2 + '5';<br>
+				console.log(k, typeof k);
+			</code>
+			<p>При інших математичних діях строки намагаються перетворитися на число:</p>
+			<code>
+				var m = 7 - '5';<br>
+				var n = '7' * 5;<br>
+				var p = '8' / '2';<br>
+				var r = '34a' - 2;<br>
+				console.log(k, m, n, p, r);
+			</code>
+			<p>Перетворити строку в число можна функцією parseInt або плюсом:</p>
+			<code>
+				console.log(k, parseInt(k));<br>
+				console.log(k, +k);
+			</code>
+		</section>
+
+		<section>
+			<h2>Домашнє завдання.</h2>
+			<ol>
+				<li>
+					Створіть новий проект, в ньому - index.html, папку js і в ній - script.js. Підключіть файл скрипта в html.
+					<code>
+						js-first/<br>
+						&nbsp;&nbsp;css/styles.css<br>
+						&nbsp;&nbsp;js/script.js<br>
+						&nbsp;&nbsp;index.html
+					</code>
+				</li>
+				<li>При відкритті сторінки виведіть на екран повідомлення Hello!</li>
+				<li>
+					Створіть span у вигляді кнопки "Відправити".<br>
+					При кліку на нього в консоль повино видати інформаційне повідомлення:
+					<code>
+						"Користувач відправляє дані форми на сервер."
+					</code>
+				</li>
+				<li>Задайте ідентифікатор спану, виведіть його в консоль у вигляді html-коду та у вигляді об'єкта.</li>
+				<li>
+					Виведіть в консоль три повідомлення про реєстрацію нового користувача з відповідними мітками:
+					<code>
+						Логін masha977 вільний.<br>
+						Занадто простий пароль, бажано використати більше символів.<br>
+						Сервер не відповідає, дані неможливо отримати.
+					</code>
+				</li>
+				<li>Виведіть в консоль групу строк з кольорами райдуги.</li>
+				<li>
+					Створіть три змінних, задайте їм довільні числові значення.<br>
+					Виведіть в консоль повідомлення виду:
+					<code>
+						"5 * 8 + 4 = 44"
+					</code>
+				</li>
+			</ol>
+		</section>
+
+	</div>
+</div>
+
+</body>
+</html>
