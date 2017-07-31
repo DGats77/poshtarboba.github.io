@@ -1,0 +1,154 @@
+@font-face {
+	font-family: 'designosaur';
+	src: url('../fonts/designosaur_italic.woff2') format('woff2'),
+	url('../fonts/designosaur_italic.woff') format('woff'),
+	url('../fonts/designosaur_italic.otf') format('opentype'),
+	url('../fonts/designosaur_italic.svg#designosauritalic') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'bender';
+	src: url('../fonts/bender.woff2') format('woff2'),
+	url('../fonts/bender.woff') format('woff'),
+	url('../fonts/bender.otf') format('opentype'),
+	url('../fonts/bender.svg#benderregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'bender';
+	src: url('../fonts/bender_bold.woff2') format('woff2'),
+	url('../fonts/bender_bold.woff') format('woff'),
+	url('../fonts/bender_bold.otf') format('opentype'),
+	url('../fonts/bender_bold.svg#benderbold') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'bender';
+	src: url('../fonts/bender_italic.woff2') format('woff2'),
+	url('../fonts/bender_italic.woff') format('woff'),
+	url('../fonts/bender_italic.otf') format('opentype'),
+	url('../fonts/bender_italic.svg#benderitalic') format('svg');
+	font-weight: normal;
+	font-style: italic;
+}
+
+body { margin:0; padding:0; color:#6e6e6e; font:normal 22px/38px bender, Helvetice, Arial, sans-serif; background:#fff;}
+.clearfix:after { content:""; display:block; clear:both;}
+
+p { margin:0; padding:0; font-style: italic;}
+a { display: block; color:#b4d43e; text-decoration:none;}
+a:hover { color:#ffae2f;}
+a img { display: block; border:none;}
+a[name] { position: absolute; top: -55px; font-size: 0; line-height: 0;}
+h1, h2, h3, h4, h5, h6 { margin:0; padding:0; font-weight:bold; text-transform: uppercase; letter-spacing: 2px; color: #5c5c5c;}
+h2 { padding: 32px 0 20px; font-size: 30px; line-height: 48px;}
+ol, ul, menu, li { margin: 0; padding: 0; list-style: none;}
+.noselect { -webkit-user-select: none; -moz-user-select: none; user-select: none;}
+input { font: normal 22px/24px bender, Helvetice, Arial, sans-serif;}
+textarea { font: normal 22px/30px bender, Helvetice, Arial, sans-serif; resize: none;}
+* { outline:none; box-sizing: border-box;}
+
+#mainwrapper { min-width: 1280px; overflow: hidden;}
+.container { position: relative; margin: 0 auto; padding: 0 20px; width: 1280px;}
+.container:after { content:""; display:block; clear:both;}
+
+header .logo { float: left; padding: 32px 0;}
+header .tool_panel { float: right; padding: 24px 0 32px;}
+header .tool_panel a { color: #a0a0a0;}
+header .tool_panel a:hover { color: #ffae2f;}
+header .tool_panel a.profile { padding-bottom: 32px; text-transform: lowercase; display: inline-block;}
+header .tool_panel .lang { display: inline-block; padding-left: 60px; padding-bottom: 32px; line-height: 24px;}
+header .tool_panel .lang li { display: inline-block; position: relative;}
+header .tool_panel .lang li:not(:first-child) { padding-left: 24px;}
+header .tool_panel .lang li:not(:first-child):before { content: ""; position: absolute; left: 9px; top: 2px; width: 2px; height: 20px; background: #cbcbcb;}
+header form.search { position: relative; padding: 10px 0 10px 48px; line-height: 24px; border-top: 1px solid #b4d43e; border-bottom: 1px solid #b4d43e;}
+header form.search .search_line { display: block; width: 100%; font-style: italic; color: #6e6e6e; background: none; border: none;}
+header form.search [type="submit"] { position: absolute; left: 11px; top: 11px; width: 22px; height: 22px; background: url(../images/sprite.png) no-repeat left top; border: none; cursor: pointer;}
+header nav { position: relative; z-index: 10; left: 0; top: 0; width: 100%; border-top: 1px solid #f1f2f0; background: linear-gradient(to bottom,#aac93a 0px, #b4d43e 16px);}
+header nav.fixed { position: fixed; border-bottom: 2px solid #fff;}
+header menu { display: flex; justify-content: space-between;}
+header menu a { padding: 9px 0 11px; color: #fff; font-size: 30px; line-height: 32px; text-transform: lowercase;}
+header menu a:hover { color: #6e6e6e;}
+
+section.jumbotron { background: url(../images/bg1.jpg) no-repeat center top; background-size: cover;}
+section.jumbotron h1 { padding: 60px 0 76px; font: normal 145px/150px designosaur, Helvetice, Arial, sans-serif; color: #2d5f9b; letter-spacing: 8px; text-shadow: 2px 2px 0 #fff, -2px 2px 0 #fff, 2px -2px 0 #fff, -2px -2px 0 #fff, 0 16px 32px rgba(0, 0, 0, 0.4);}
+
+section.aboutus { padding-bottom: 48px;}
+
+section.slideshow { background: #b4d43e; overflow: hidden;}
+section.slideshow .container { background: url(../images/bg_kindey.png) no-repeat 412px 165px;}
+section.slideshow .pager { float: right; width: 376px;}
+section.slideshow .pager h2 { padding: 16px 0; color: #ffae2f; text-align: center; background: #fff;}
+section.slideshow .pager ul { position: relative;}
+section.slideshow .pager ul:after { content: ""; position: absolute; left: 0; top: 100%; width: 100%; height: 4000px; background: #fff;}
+section.slideshow .pager li a { position: relative; padding: 24px 12px 24px 100px; font-size: 28px; line-height: 40px; font-weight: bold;}
+section.slideshow .pager li a:before { content: ""; position: absolute; left: 65px; top: 35px; width: 12px; height: 12px; border-radius: 50%;}
+section.slideshow .pager li:not(.active) a { color: #a0a0a0; background: #fff;}
+section.slideshow .pager li:not(.active) a:hover { color: #b4d43e;}
+section.slideshow .pager li:not(.active) a:before { background: #b4d43e;}
+section.slideshow .pager li.active a { color: #fff; background: none;}
+section.slideshow .pager li.active a:before { background: #fff;}
+section.slideshow .slide { padding: 32px 0 64px; width: 380px; color: #fff;}
+section.slideshow .slide h3 { padding: 0 0 16px; font-size: 42px; line-height: 74px; color: #fff;}
+
+section .therapy { position: relative; padding: 0 0 40px; min-height: 414px;}
+section .therapy:before { content: ""; position: absolute; left: -2000px; bottom: 0; width: 5240px; height: 12px; background: #f1f2f0;}
+section .therapy:last-child:before { background: #aed0ea;}
+section .therapy:nth-child(odd) { padding-right: 492px;}
+section .therapy:nth-child(even) { padding-left: 492px;}
+section .therapy img { position: absolute; top: 0;}
+section .therapy:nth-child(odd) img { right: 0;}
+section .therapy:nth-child(even) img { left: 0;}
+
+section.transplantation { background: url(../images/bg2.jpg) no-repeat center center; background-size: cover;}
+section.transplantation .article { padding: 0 0 64px 480px;}
+
+section.contacts .members { float: right; padding: 0 80px 64px; width: 50%;}
+section.contacts .members h2 { color: #b4d43e;}
+section.contacts .members a { padding: 12px 0; font-weight: bold; color: #6e6e6e;}
+section.contacts .members a:hover { color: #ffae2f;}
+section.contacts .address { float: left; padding: 0 80px 64px; width: 50%; background: #b4d43e;}
+section.contacts .address h3 { padding: 32px 0 12px; color: #fff;}
+section.contacts .address p { color: #5c5c5c; font-style: normal; font-weight: bold;}
+section.contacts .address a { color: #5c5c5c;}
+section.contacts .writeme { display: block; margin: 32px 0 0; padding: 8px 0; width: 100%; font: italic 56px/60px bender, Helvetice, Arial, sans-serif; text-align: center; color: #fff; background: none; border: 2px solid #fff; cursor: pointer;}
+section.contacts .writeme:hover { color: #ffae2f; background: #fff;}
+
+footer { background: #5c5c5c;}
+footer .logo { float: left; padding: 32px 0;}
+footer .social { float: right; padding: 76px 0;}
+footer .social li { display: inline-block;}
+footer .social li:not(:first-child) { padding-left: 80px;}
+footer .social a { width: 62px; height: 62px; text-indent: -9000px; background: url(../images/sprite.png) no-repeat left top; opacity: 0.8;}
+footer .social a.tw { background-position: -24px 0;}
+footer .social a.fb { background-position: -88px 0;}
+footer .social a.yt { background-position: -152px 0;}
+footer .social a:hover { opacity: 1;}
+
+#overlay { position: fixed; z-index: 20; left: 0; top: 0; right: 0; bottom: 0; display: none; background: rgba(0, 0, 0, 0.8);}
+dialog { position: fixed; z-index: 22; left: 50%; top: 50%; right: auto; bottom: auto; transform: translate(-50%, -50%); display: none; margin: 0; padding: 32px 40px; background: #b4d43e; border: none;}
+dialog .close { position: absolute; right: 12px; top: 12px; width: 40px; text-align: center; color: #fff; font-weight: bold; cursor: pointer;}
+dialog .close:hover { color: #ffae2f; background: #fff;}
+dialog form { width: 400px;}
+dialog h2 { padding: 0; color: #fff; text-align: center;}
+dialog form p { padding: 0 0 12px;}
+dialog label span { display: block; color: #fff;}
+dialog label input,
+dialog label textarea { display: block; padding: 8px 12px; width: 100%; background: #fff; border: none;}
+dialog label textarea { height: 76px;}
+dialog input[type="submit"] { display: block; margin: 16px 0 0; padding: 8px 0; width: 100%; font: italic 32px/40px bender, Helvetice, Arial, sans-serif; text-align: center; color: #fff; background: none; border: 2px solid #fff; cursor: pointer;}
+dialog input[type="submit"]:hover { color: #ffae2f; background: #fff;}
+
+
+
+
+
+
+
+
+
+
+
