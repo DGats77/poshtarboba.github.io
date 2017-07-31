@@ -1,0 +1,162 @@
+body { margin:0; padding:0; color:#666; font:normal 20px/24px "Open Sans", Helvetica, Arial, sans-serif; background:#fff;}
+
+p { margin:0; padding:10px 0;}
+a { display: block; color:#3e8bca; text-decoration:none;}
+a:hover { color:#3e8bca;}
+a img { display: block; border:none;}
+h1, h2, h3, h4, h5, h6 { margin:0; padding:0; font-weight:normal; font-family: "Montserrat", Helvetica, Arial, sans-serif; color:#222;}
+h2 { font-size: 30px; line-height: 38px; text-align: center;}
+.sub-h2 { font-size: 20px; line-height: 30px; text-align: center; color: #999;}
+ol, ul, menu, li { margin: 0; padding: 0; list-style: none;}
+.noselect,
+[role="button"] { -webkit-user-select: none; -moz-user-select: none; user-select: none;}
+.btn,
+button,
+[role="button"],
+[type="submit"],
+[type="button"] { cursor: pointer;}
+
+* { outline:none; box-sizing: border-box;}
+
+.btn { display: inline-block; padding: 30px 60px; color: #666; font: normal 24px/30px "Montserrat", Helvetica, Arial, sans-serif; border: 1px solid transparent; border-radius: 4px;}
+.btn:hover { color: #222;}
+.btn.btn-primary { border-color: #222; color: #3e8bca;}
+.btn.btn-primary:hover { color: #fff; background: #3e8bca; border-color: #3e8bca;}
+@media (min-width: 1200px) {
+	.btn { padding: 8px 30px; font-size: 16px; line-height: 24px;}
+}
+
+
+
+
+header.header-index { background: url(../img/bg_header_index.jpg) no-repeat center top; background-size: cover;}
+header .top-line { position: relative; z-index: 5; border-bottom: 1px solid rgba(255, 255, 255, 0.15);}
+header .top-line .logo { margin: 30px 0 30px 45px;}
+header .top-line #menuhamburger { display: none;}
+header .top-line .menu-hamburger { position: absolute; right: 0; top: 0; width: 125px; height: 100%; border-left: 1px solid rgba(255, 255, 255, 0.15);}
+header .top-line .menu-hamburger i { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: #ddd; font-size: 60px; line-height: 68px;}
+header .top-line .menu-hamburger i.active { display: none; font-size: 40px; line-height: 45px;}
+header .top-line nav { position: absolute; top: 100%; display: none; padding: 0; width: 100%; font:normal 24px/38px "Montserrat", Helvetica, Arial, sans-serif; color: #fff; background: #222;}
+header .top-line #menuhamburger:checked ~ nav { display: block;}
+header .top-line #menuhamburger:checked ~ .menu-hamburger i.active { display: block;}
+header .top-line #menuhamburger:checked ~ .menu-hamburger i.passive { display: none;}
+header .top-line nav a { position: relative; padding: 25px 45px; opacity: 0.7; color: #fff; border-bottom: 1px solid rgba(255, 255, 255, 0.15);}
+header .top-line nav a:hover,
+header .top-line nav li.active a:hover { opacity: 1;}
+header .top-line nav li a:before { content: ""; position: absolute; right: 45px; top: 50%; transform:  translate(0, -50%); width: 1px; height: 1px; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid #3e8bca;}
+header .top-line nav .menu-signin { padding: 0;}
+header .top-line nav .menu-signin .separator { display: none;}
+header .top-line nav .menu-signin .signin-half { float: left; width: 50%;}
+header .top-line nav .menu-signin .signin-half:last-child { border-left: 1px solid rgba(255, 255, 255, 0.15);}
+@media (min-width: 1200px) {
+	header .top-line { border-bottom: none;}
+	header .top-line .logo { margin-bottom: 15px;}
+	header .top-line .menu-hamburger { display: none;}
+	header .top-line nav { position: relative; top: 0; display: block; padding: 30px 45px 15px 0; width: auto; font-size: 16px; line-height: 38px; background: none;}
+	header .top-line nav menu { display: inline-block;}
+	header .top-line nav li { display: inline-block; padding: 0 15px;}
+	header .top-line nav a { padding: 0; border-bottom: none;}
+	header .top-line nav li a:before { display: none;}
+	header .top-line nav .menu-signin { display: inline-block; padding-left: 30px;}
+	header .top-line nav .menu-signin a { display: inline-block; padding: 0 15px;}
+	header .top-line nav .menu-signin .separator { display: inline;}
+	header .top-line nav .menu-signin .signin-half { float: none; width: auto;}
+	header .top-line nav .menu-signin .signin-half:last-child { border-left: none;}
+}
+@media (min-width: 1400px) {
+	header .top-line nav .menu-signin { padding-left: 120px;}
+	header .top-line nav { font-size: 18px; line-height: 38px;}
+}
+
+header .discover-box { padding: 120px 45px 220px; text-align: center;}
+header .discover-box h1 { padding-bottom: 15px; font-size: 44px; line-height: 50px; font-weight: bold; color: #fff;}
+header .discover-box .sub-h1 { padding-bottom: 75px; font-size: 24px; line-height: 36px; color: #ccc;}
+@media (min-width: 992px) {
+	header .discover-box h1 { font-size: 55px; line-height: 62px;}
+	header .discover-box .sub-h1 { font-size: 26px; line-height: 38px;}
+}
+
+.search-index { position: relative; margin: 0 auto; width: 100%;}
+.search-index .btn-group { display: table; width: 100%; margin: 0 0 20px; padding: 0; font: normal 16px/18px "Montserrat", Helvetica, Arial, sans-serif; background: rgba(255, 255, 255, 0.15); border: 1px solid #fff; border-radius: 4px;}
+.search-index .btn-group span { position: relative; display: table-cell; padding: 15px 0; background: none; border: none; color: #fff; -webkit-appearance: none;}
+.search-index .btn-group span:not(:first-child) { border-left: 1px solid #fff;}
+.search-index .btn-group span:hover { background: rgba(255, 255, 255, 0.15);}
+.search-index .btn-group span.active { background: rgba(62, 139, 202, 1);}
+.search-index .btn-group span:first-child { border-radius: 4px 0 0 4px;}
+.search-index .btn-group span:last-child { border-radius: 0 4px 4px 0;}
+.search-index .btn-group span i { display: block;}
+.search-index .btn-group span.active:before { content: ""; position: absolute; left: 50%; bottom: -21px; margin-left: -8px; width: 1px; height: 1px; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 8px solid #fff;}
+.search-index form { position: relative; padding: 5px 145px 5px 5px; background: #fff; border-radius: 4px;}
+.search-index form input[type="submit"] { position: absolute; right: 5px; top: 5px; padding: 25px 0; width: 135px; font: normal 24px/30px "Montserrat", Helvetica, Arial, sans-serif; color: #fff; border: none; background: #3e8bca; border-radius: 4px;}
+.search-index form input[type="submit"]:hover { background: #222;}
+.search-index form label { display: block;}
+.search-index form label input { display: block; width: 100%; margin: 0; padding: 25px 15px; font:normal 24px/30px "Open Sans", Helvetica, Arial, sans-serif; color: #999; border: none; background: none;}
+@media (min-width: 768px) {
+	.search-index { max-width: 630px;}
+	.search-index .btn-group span i { display: inline-block; padding-right: 6px;}
+	.search-index form { padding-right: 105px;}
+	.search-index form input[type="submit"] { padding: 10px 0; width: 95px; font-size: 16px; line-height: 30px;}
+	.search-index form label input { padding: 10px 15px; font-size: 18px; line-height: 30px;}
+}
+@media (min-width: 1200px) {
+	.search-index:before { content: ""; position: absolute; left: 100%; bottom: 100%; width: 268px; height: 56px; background: url(../img/index_arrow.png) no-repeat center center;}
+}
+
+section { padding-top: 45px; padding-bottom: 45px;}
+
+.slideshow-wrap { position: relative; padding: 30px 0 75px;}
+.slideshow { position: relative; margin: 0 -15px;}
+.slideshow > li { position: relative; margin-bottom: 20px; padding: 0 15px;}
+.slideshow .btn-live { position: absolute; left: 45px; top: 30px; padding: 12px 20px; font: normal 18px/24px "Montserrat", Helvetica, Arial, sans-serif; color: #fff; text-transform: uppercase; background: none; border: 2px solid rgba(255, 255, 255, 0.5); border-radius: 4px;}
+.slideshow .btn-live:hover { color: #3e8bca; background: #fff;}
+.slideshow .btn-plus { position: absolute; right: 45px; top: 30px; width: 52px; height: 52px; opacity: 0.7; border: none; background: none;}
+.slideshow .btn-plus:hover { opacity: 1;}
+.slideshow .btn-plus:before,
+.slideshow .btn-plus:after { content: ""; position: absolute; background: #fff;}
+.slideshow .btn-plus:before { left: 50%; top: 0; margin-left: -1px; width: 2px; height: 100%;}
+.slideshow .btn-plus:after { left: 0; top: 50%; margin-top: -1px; width: 100%; height: 2px;}
+.slideshow .info { position: absolute; left: 15px; right: 15px; bottom: 0; padding: 50px 30px 20px; color: #fff; background: linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0.4) 20%, rgba(0,0,0,0.5) 100%);}
+.slideshow .info h3 { color: #fff; font-size: 30px; line-height: 40px;}
+.slideshow .info .additional { height: 0; overflow: hidden;}
+.slideshow .info p i { display: inline-block; padding-right: 6px;}
+@media (min-width: 768px) {
+	.slideshow > li { float: left; width: 33.33333333%;}
+	.slideshow .btn-live { left: 35px; top: 20px; padding: 5px 12px; font-size: 12px; line-height: 18px;}
+	.slideshow .btn-plus { right: 35px; top: 20px; width: 32px; height: 32px;}
+	.slideshow .info { padding: 15px 20px;}
+	.slideshow .info h3 { color: #fff; font-size: 20px; line-height: 30px;}
+	.slideshow .info p { padding: 0; font-size: 15px; line-height: 30px;}
+	.slideshow .info:hover .additional { padding-top: 10px; height: auto;}
+}
+
+section.bg-silver { padding: 45px 0; background: #f6f6f6;}
+
+.tree-col-box { padding: 30px 0 0;}
+.tree-col-box .tree-col-item { margin: 0 0 45px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);}
+.tree-col-box .tree-col-item img { border-radius: 8px 8px 0 0;}
+@media (min-width: 768px) {
+	.tree-col-box { display: table; margin: 0 -15px;}
+	.tree-col-box .tree-col-item { display: table-cell; vertical-align: top; border-spacing: 15px;}
+}
+
+
+
+
+
+
+
+
+
+
+footer { min-height: 300px; background: #222;}
+footer .totop { padding: 45px 0 0;}
+footer .totop .btn { display: inline-block; padding: 15px 45px; font: normal 24px/30px "Montserrat", Helvetica, Arial, sans-serif; color: #fff; border: 2px solid #fff; border-radius: 4px;}
+@media (min-width: 1200px) {
+	footer .totop { display: none;}
+}
+
+
+
+
+
+.slideshow-wrap:after { content: "(pager will be here)"; position: absolute; left: 0; bottom: 40px; width: 100%; text-align: center;}

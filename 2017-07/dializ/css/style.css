@@ -35,7 +35,7 @@
 	font-style: italic;
 }
 
-body { margin:0; padding:0; color:#6e6e6e; font:normal 22px/38px bender, Helvetice, Arial, sans-serif; background:#fff;}
+body { margin:0; padding:0; color:#6e6e6e; font:normal 22px/38px bender, Helvetica, Arial, sans-serif; background:#fff;}
 .clearfix:after { content:""; display:block; clear:both;}
 
 p { margin:0; padding:0; font-style: italic;}
@@ -47,8 +47,8 @@ h1, h2, h3, h4, h5, h6 { margin:0; padding:0; font-weight:bold; text-transform: 
 h2 { padding: 32px 0 20px; font-size: 30px; line-height: 48px;}
 ol, ul, menu, li { margin: 0; padding: 0; list-style: none;}
 .noselect { -webkit-user-select: none; -moz-user-select: none; user-select: none;}
-input { font: normal 22px/24px bender, Helvetice, Arial, sans-serif;}
-textarea { font: normal 22px/30px bender, Helvetice, Arial, sans-serif; resize: none;}
+input { font: normal 22px/24px bender, Helvetica, Arial, sans-serif;}
+textarea { font: normal 22px/30px bender, Helvetica, Arial, sans-serif; resize: none;}
 * { outline:none; box-sizing: border-box;}
 
 #mainwrapper { min-width: 1280px; overflow: hidden;}
@@ -98,7 +98,7 @@ header menu a:hover { color: #6e6e6e;}
 }
 
 section.jumbotron { background: url(../images/bg1.jpg) no-repeat center top; background-size: cover;}
-section.jumbotron h1 { padding: 60px 0 76px; font: normal 145px/150px designosaur, Helvetice, Arial, sans-serif; color: #2d5f9b; text-transform: none; letter-spacing: 8px; text-shadow: 2px 2px 0 #fff, -2px 2px 0 #fff, 2px -2px 0 #fff, -2px -2px 0 #fff, 0 16px 32px rgba(0, 0, 0, 0.4);}
+section.jumbotron h1 { padding: 60px 0 76px; font: normal 145px/150px designosaur, Helvetica, Arial, sans-serif; color: #2d5f9b; text-transform: none; letter-spacing: 8px; text-shadow: 2px 2px 0 #fff, -2px 2px 0 #fff, 2px -2px 0 #fff, -2px -2px 0 #fff, 0 16px 32px rgba(0, 0, 0, 0.4);}
 @media screen and (max-width: 999px) {
 	section.jumbotron h1 { font-size: 90px; line-height: 96px;}
 }
@@ -164,7 +164,7 @@ section.contacts .address { float: left; padding: 0 80px 64px; width: 50%; backg
 section.contacts .address h3 { padding: 32px 0 12px; color: #fff;}
 section.contacts .address p { color: #5c5c5c; font-style: normal; font-weight: bold;}
 section.contacts .address a { color: #5c5c5c;}
-section.contacts .writeme { display: block; margin: 32px 0 0; padding: 8px 0; width: 100%; font: italic 56px/60px bender, Helvetice, Arial, sans-serif; text-align: center; color: #fff; background: none; border: 2px solid #fff; cursor: pointer;}
+section.contacts .writeme { display: block; margin: 32px 0 0; padding: 8px 0; width: 100%; font: italic 56px/60px bender, Helvetica, Arial, sans-serif; text-align: center; color: #fff; background: none; border: 2px solid #fff; cursor: pointer;}
 section.contacts .writeme:hover { color: #ffae2f; background: #fff;}
 @media screen and (max-width: 1320px) {
 	section.contacts .container { padding-left: 0; padding-right: 0;}
@@ -212,7 +212,7 @@ dialog label span { display: block; color: #fff;}
 dialog label input,
 dialog label textarea { display: block; padding: 8px 12px; width: 100%; background: #fff; border: none;}
 dialog label textarea { height: 76px;}
-dialog input[type="submit"] { display: block; margin: 16px 0 0; padding: 8px 0; width: 100%; font: italic 32px/40px bender, Helvetice, Arial, sans-serif; text-align: center; color: #fff; background: none; border: 2px solid #fff; cursor: pointer;}
+dialog input[type="submit"] { display: block; margin: 16px 0 0; padding: 8px 0; width: 100%; font: italic 32px/40px bender, Helvetica, Arial, sans-serif; text-align: center; color: #fff; background: none; border: 2px solid #fff; cursor: pointer;}
 dialog input[type="submit"]:hover { color: #ffae2f; background: #fff;}
 @media screen and (max-width: 599px) {
 	dialog { left: 12px; top: 12px; right: 12px; bottom: auto; transform: translate(0, 0); padding-left: 20px; padding-right: 20px; width: auto;}
