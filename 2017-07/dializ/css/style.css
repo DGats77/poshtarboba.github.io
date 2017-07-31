@@ -54,6 +54,10 @@ textarea { font: normal 22px/30px bender, Helvetice, Arial, sans-serif; resize: 
 #mainwrapper { min-width: 1280px; overflow: hidden;}
 .container { position: relative; margin: 0 auto; padding: 0 20px; width: 1280px;}
 .container:after { content:""; display:block; clear:both;}
+@media screen and (max-width: 1320px) {
+	#mainwrapper { min-width: 100%;}
+	.container { width: 100%;}
+}
 
 header .logo { float: left; padding: 32px 0;}
 header .tool_panel { float: right; padding: 24px 0 32px;}
@@ -72,9 +76,32 @@ header nav.fixed { position: fixed; border-bottom: 2px solid #fff;}
 header menu { display: flex; justify-content: space-between;}
 header menu a { padding: 9px 0 11px; color: #fff; font-size: 30px; line-height: 32px; text-transform: lowercase;}
 header menu a:hover { color: #6e6e6e;}
+@media screen and (max-width: 799px) {
+	header .logo { position: relative; z-index: 2;}
+	header .tool_panel { position: relative; float: none; margin-bottom: -160px; padding-top: 100px; padding-bottom: 0; text-align: right;}
+	header .tool_panel .lang { display: block; padding-left: 0;}
+	header .tool_panel form { position: absolute; left: 0; top: 16px; width: 100%;}
+	header menu { display: block;}
+	header menu li:not(:last-child) { border-bottom: 1px solid #fff;}
+	header menu a { padding: 13px 0 15px;}
+}
+@media screen and (max-width: 599px) {
+	header .tool_panel { margin-bottom: 0;}
+	header .tool_panel a.profile { float: left; padding-bottom: 0;}
+	header .tool_panel .lang { float: right; padding-bottom: 0;}
+}
+@media screen and (max-width: 449px) {
+	header .logo img { width: 100%;}
+}
 
 section.jumbotron { background: url(../images/bg1.jpg) no-repeat center top; background-size: cover;}
-section.jumbotron h1 { padding: 60px 0 76px; font: normal 145px/150px designosaur, Helvetice, Arial, sans-serif; color: #2d5f9b; letter-spacing: 8px; text-shadow: 2px 2px 0 #fff, -2px 2px 0 #fff, 2px -2px 0 #fff, -2px -2px 0 #fff, 0 16px 32px rgba(0, 0, 0, 0.4);}
+section.jumbotron h1 { padding: 60px 0 76px; font: normal 145px/150px designosaur, Helvetice, Arial, sans-serif; color: #2d5f9b; text-transform: none; letter-spacing: 8px; text-shadow: 2px 2px 0 #fff, -2px 2px 0 #fff, 2px -2px 0 #fff, -2px -2px 0 #fff, 0 16px 32px rgba(0, 0, 0, 0.4);}
+@media screen and (max-width: 999px) {
+	section.jumbotron h1 { font-size: 90px; line-height: 96px;}
+}
+@media screen and (max-width: 999px) {
+	section.jumbotron h1 { font-size: 56px; line-height: 60px;}
+}
 
 section.aboutus { padding-bottom: 48px;}
 
@@ -93,6 +120,17 @@ section.slideshow .pager li.active a { color: #fff; background: none;}
 section.slideshow .pager li.active a:before { background: #fff;}
 section.slideshow .slide { padding: 32px 0 64px; width: 380px; color: #fff;}
 section.slideshow .slide h3 { padding: 0 0 16px; font-size: 42px; line-height: 74px; color: #fff;}
+@media screen and (max-width: 999px) {
+	section.slideshow .container { background-position: 160% 165px; }
+	section.slideshow .pager { float: none; width: 100%;}
+	section.slideshow .pager h2 { padding: 32px 0 0; color: #5c5c5c; text-align: left; background: none;}
+	section.slideshow .pager ul { display: none;}
+	section.slideshow .slide { width: 70%; padding-bottom: 32px;}
+}
+@media screen and (max-width: 799px) {
+	section.slideshow .container { background: none;}
+	section.slideshow .slide { width: 100%;}
+}
 
 section .therapy { position: relative; padding: 0 0 40px; min-height: 414px;}
 section .therapy:before { content: ""; position: absolute; left: -2000px; bottom: 0; width: 5240px; height: 12px; background: #f1f2f0;}
@@ -102,9 +140,18 @@ section .therapy:nth-child(even) { padding-left: 492px;}
 section .therapy img { position: absolute; top: 0;}
 section .therapy:nth-child(odd) img { right: 0;}
 section .therapy:nth-child(even) img { left: 0;}
+@media screen and (max-width: 999px) {
+	section .therapy:nth-child(odd),
+	section .therapy:nth-child(even) { padding-left: 0; padding-right: 0;}
+	section .therapy img { position: static; width: 280px;}
+
+}
 
 section.transplantation { background: url(../images/bg2.jpg) no-repeat center center; background-size: cover;}
 section.transplantation .article { padding: 0 0 64px 480px;}
+@media screen and (max-width: 999px) {
+	section.transplantation .article { padding-left: 0;}
+}
 
 section.contacts .members { float: right; padding: 0 80px 64px; width: 50%;}
 section.contacts .members h2 { color: #b4d43e;}
@@ -116,6 +163,17 @@ section.contacts .address p { color: #5c5c5c; font-style: normal; font-weight: b
 section.contacts .address a { color: #5c5c5c;}
 section.contacts .writeme { display: block; margin: 32px 0 0; padding: 8px 0; width: 100%; font: italic 56px/60px bender, Helvetice, Arial, sans-serif; text-align: center; color: #fff; background: none; border: 2px solid #fff; cursor: pointer;}
 section.contacts .writeme:hover { color: #ffae2f; background: #fff;}
+@media screen and (max-width: 1320px) {
+	section.contacts .container { padding-left: 0; padding-right: 0;}
+	section.contacts .writeme { font-size: 40px; line-height: 44px;}
+}
+@media screen and (max-width: 999px) {
+	section.contacts .members { float: none; width: 100%;}
+	section.contacts .address { float: none; width: 100%;}
+}
+@media screen and (max-width: 449px) {
+	section.contacts .writeme { font-size: 26px; line-height: 28px;}
+}
 
 footer { background: #5c5c5c;}
 footer .logo { float: left; padding: 32px 0;}
@@ -127,6 +185,18 @@ footer .social a.tw { background-position: -24px 0;}
 footer .social a.fb { background-position: -88px 0;}
 footer .social a.yt { background-position: -152px 0;}
 footer .social a:hover { opacity: 1;}
+@media screen and (max-width: 999px) {
+	footer .social li:not(:first-child) { padding-left: 24px;}
+}
+@media screen and (max-width: 799px) {
+	footer .logo { float: none;}
+	footer .social { float: none; padding-top: 0; padding-bottom: 40px; text-align: center;}
+	footer .social a { opacity: 1;}
+	footer .social li { padding-left: 12px; padding-right: 12px;}
+}
+@media screen and (max-width: 449px) {
+	footer .logo img { width: 100%;}
+}
 
 #overlay { position: fixed; z-index: 20; left: 0; top: 0; right: 0; bottom: 0; display: none; background: rgba(0, 0, 0, 0.8);}
 dialog { position: fixed; z-index: 22; left: 50%; top: 50%; right: auto; bottom: auto; transform: translate(-50%, -50%); display: none; margin: 0; padding: 32px 40px; background: #b4d43e; border: none;}
@@ -141,7 +211,10 @@ dialog label textarea { display: block; padding: 8px 12px; width: 100%; backgrou
 dialog label textarea { height: 76px;}
 dialog input[type="submit"] { display: block; margin: 16px 0 0; padding: 8px 0; width: 100%; font: italic 32px/40px bender, Helvetice, Arial, sans-serif; text-align: center; color: #fff; background: none; border: 2px solid #fff; cursor: pointer;}
 dialog input[type="submit"]:hover { color: #ffae2f; background: #fff;}
-
+@media screen and (max-width: 599px) {
+	dialog { left: 12px; top: 12px; right: 12px; bottom: auto; transform: translate(0, 0); padding-left: 20px; padding-right: 20px; width: auto;}
+	dialog form { width: 100%;}
+}
 
 
 
