@@ -76,6 +76,9 @@ header nav.fixed { position: fixed; border-bottom: 2px solid #fff;}
 header menu { display: flex; justify-content: space-between;}
 header menu a { padding: 9px 0 11px; color: #fff; font-size: 30px; line-height: 32px; text-transform: lowercase;}
 header menu a:hover { color: #6e6e6e;}
+@media screen and (max-width: 999px) {
+	a[name] { top: 0;}
+}
 @media screen and (max-width: 799px) {
 	header .logo { position: relative; z-index: 2;}
 	header .tool_panel { position: relative; float: none; margin-bottom: -160px; padding-top: 100px; padding-bottom: 0; text-align: right;}
