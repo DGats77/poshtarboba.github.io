@@ -197,6 +197,8 @@
 				slides[nextNum1].style.left = slideWidth + 'px';
 				slides[nextNum2].style.left = slideWidth * 2 + 'px';
 			}
+			pages.forEach(function(page){ page.classList.remove('active'); });
+			pages[activeNum].classList.add('active');
 		}
 
 		var duration = 200;
@@ -248,22 +250,13 @@
 			var yDiff = ySwipe - yUp;
 			if ( Math.abs(xDiff) > Math.abs(yDiff)) {
 				/*most significant*/
-				if (xDiff > 0) {
-					/* left swipe */
-					moveSlide('next');
-					document.querySelectorAll('h2').forEach(function(h2){ h2.innerHTML = 'next ' + Math.random(); });
-				} else {
-					/* right swipe */
-					moveSlide('prev');
-					document.querySelectorAll('h2').forEach(function(h2){ h2.innerHTML = 'prev ' + Math.random(); });
-				}
+				if (xDiff > 0) { /* left swipe */ moveSlide('next'); } else { /* right swipe */ moveSlide('prev'); }
 			} else {
 				if (yDiff > 0) { /* up swipe */ } else { /* down swipe */	}
 			}
 			xSwipe = null;
 			ySwipe = null;
 		}
-
 
 	});
 
