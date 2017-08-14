@@ -204,7 +204,6 @@
 		var frames = Math.round(duration / frameDuration);
 
 		function moveSlide(direction){
-			slideshow.style.overflow = 'hidden';
 			clearInterval(slideshow.animationIntervalID);
 			//setVisiblePositions();
 			var activeNum = getActiveNum();
@@ -218,6 +217,7 @@
 			var delta = slideWidth / frames;
 			if (direction === 'next') { delta *= -1; }
 			var frame = 0;
+			slideshow.style.overflow = 'hidden';
 			slideshow.animationIntervalID = setInterval(function(){
 				for (var i = 0; i < slides.length; i++){
 					slides[i].style.left = parseInt(slides[i].style.left) + delta + 'px';
@@ -226,14 +226,14 @@
 				if (frame >= frames) {
 					clearInterval(slideshow.animationIntervalID);
 					setVisiblePositions();
+					slideshow.style.overflow = '';
 				}
 			}, frameDuration);
-			slideshow.style.overflow = '';
 		}
 
 		/* swipe for mobile */
-		slideshow.addEventListener('touchstart', handleTouchStart, false);
-		slideshow.addEventListener('touchmove', handleTouchMove, false);
+		document.addEventListener('touchstart', handleTouchStart, false);
+		document.addEventListener('touchmove', handleTouchMove, false);
 		var xSwipe = null;
 		var ySwipe = null;
 		function handleTouchStart(e) {
@@ -244,8 +244,8 @@
 			if (!xSwipe || !ySwipe) { return; }
 			var xUp = e.touches[0].clientX;
 			var yUp = e.touches[0].clientY;
-			var xDiff = xDown - xUp;
-			var yDiff = yDown - yUp;
+			var xDiff = xSwipe - xUp;
+			var yDiff = ySwipe - yUp;
 			if ( Math.abs(xDiff) > Math.abs(yDiff)) {
 				/*most significant*/
 				if (xDiff > 0) {
