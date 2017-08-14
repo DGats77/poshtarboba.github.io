@@ -16,8 +16,7 @@
 <header class="header-index">
 	<div class="top-line clearfix">
 		<a href="/" class="logo pull-left"><img src="img/logo.png" alt="Prepler"></a>
-		<input type="checkbox" id="menuhamburger">
-		<label role="button" class="menu-hamburger" for="menuhamburger"><i class="ion-navicon passive"></i><i class="ion-close active"></i></label>
+		<button id="hamburger"><i class="ion-navicon status-passive"></i><i class="ion-close status-active"></i></button>
 		<nav class="pull-right">
 			<menu>
 				<li><a href="#">Schools</a></li>
@@ -28,7 +27,7 @@
 			</menu>
 			<p class="menu-signin clearfix">
 				<a href="#">Advertise</a>
-				<a href="#" class="signin-half">Sign in</a><span class="separator">|</span><a href="#" class="signin-half">Join</a>
+				<a href="#" class="signin-half signin-button">Sign in</a><span class="separator">|</span><a href="#" class="signin-half join-button">Join</a>
 			</p>
 		</nav>
 	</div>
@@ -334,34 +333,31 @@
 
 <div id="dialogoverlay"></div>
 
-<dialog id="signin" open>
-
-	<p>(blank for popup-dialog)</p>
-
-	<button class="close"></button>
+<div id="signin" class="dialog">
+	<button class="close"><i class="ion-close"></i></button>
 	<h2>Welcome to Prepler</h2>
-	<input type="radio" id="signintabtitle1" name="signintabtitle" checked>
-	<input type="radio" id="signintabtitle2" name="signintabtitle" checked>
-	<p class="labels">
+	<input type="radio" id="signintabtitle1" name="signintabtitle" class="signintabcheck" checked>
+	<input type="radio" id="signintabtitle2" name="signintabtitle" class="signintabcheck">
+	<p class="labels clearfix">
 		<label for="signintabtitle1">Sign in</label>
 		<label for="signintabtitle2">Create new account</label>
 	</p>
 	<div class="signintab" id="signintab1">
 		<form action="#" method="POST">
-			<p><label><input type="email" name="email" placeholder="enter email"></label></p>
-			<p><label><input type="password" name="password" placeholder="enter password"></label></p>
-			<p><input type="submit" value="Sign in"> <a href="" class="forgot-password">Forgot your password?</a></p>
+			<p><label><input class="input" type="email" name="email" placeholder="enter email"></label></p>
+			<p><label><input class="input" type="password" name="password" placeholder="enter password"></label></p>
+			<p><input type="submit" value="Sign in" class="btn btn-info"> <a href="" class="forgot-password">Forgot your password?</a></p>
 		</form>
 	</div>
 	<div class="signintab" id="signintab2">
 		<form action="#" method="POST">
 			<p class="row">
-				<label class="col-xs-12 col-sm-6"><input name="firstname" placeholder="first name *"></label>
-				<label class="col-xs-12 col-sm-6"><input name="lastname" placeholder="last name *"></label>
+				<label class="col-xs-12 col-sm-6"><input class="input" name="firstname" placeholder="first name *"></label>
+				<label class="col-xs-12 col-sm-6"><input class="input" name="lastname" placeholder="last name *"></label>
 			</p>
-			<p><label><input type="email" name="email" placeholder="enter email *"></label></p>
-			<p><label><input type="password" name="password" placeholder="create password *"></label></p>
-			<p><label><input type="password" name="cpassword" placeholder="confirm password *"></label></p>
+			<p><label><input class="input" type="email" name="email" placeholder="enter email *"></label></p>
+			<p><label><input class="input" type="password" name="password" placeholder="create password *"></label></p>
+			<p><label><input class="input" type="password" name="cpassword" placeholder="confirm password *"></label></p>
 			<p>
 				<label><select name="location">
 					<option value="0">choose your location</option>
@@ -381,7 +377,7 @@
 			<a href="#" class="googleplus" title="Connect with Google Plus account">Connect with Google Plus account</a>
 		</p>
 	</div>
-</dialog>
+</div>
 
 <script src="js/script.js"></script>
 </body>
