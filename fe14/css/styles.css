@@ -9,7 +9,7 @@ a img { border:none;}
 h1, h2, h3, h4, h5, h6 { margin:0; padding:0; font-weight:bold; color:#000;}
 h1 { padding:40px 0 24px; line-height:1.4em;}
 h2 { padding:0 0 12px;}
-h3 { padding:24px 0 12px;}
+h3 { padding:24px 0;}
 .fl { float:left;}
 .fr { float:right;}
 .fn { float:none;}
@@ -39,7 +39,7 @@ textarea { display:block; padding:11px 12px; color:#606060; resize:none; overflo
 input[type="submit"] { font:normal 18px/21px Helvetice, Arial, sans-serif; color:#fff; text-transform:uppercase; cursor:pointer; border:none; border-radius:0; box-shadow:none; box-sizing:border-box; -webkit-appearance:none;}*/
 * { outline:none;}
 
-#mainwrapper { position:relative; overflow:hidden; min-width:940px; background:#fff;}
+#mainwrapper { position:relative; overflow:hidden; min-width:940px;}
 .resize { position:relative; margin:0 auto; width:920px; padding: 0 20px;}
 section { padding:40px 0;}
 code, .code, pre { display:block; margin:10px 0 20px; padding:16px 20px; font-family: monospace; background:#ffe; border:2px dashed #eeb;}
@@ -56,6 +56,12 @@ strong abbr { border-bottom-color:#000;}
 .success { font-weight:bold; color:#090;}
 .black { color:#000;}
 .light { opacity: 0.5;}
+
+table.table { border-collapse: collapse;}
+table.table th,
+table.table td { padding: 4px 16px; border: 1px solid #999; vertical-align: top;}
+table.table th { text-align: left;}
+
 
 footer { padding: 40px 0; border-top: 1px solid #aaa;}
 footer .nav { font-size:24px; line-height:1.4em;}
@@ -77,8 +83,8 @@ footer .nav { font-size:24px; line-height:1.4em;}
 .defUl li { list-style:disc;}
 .defUl { padding-left:40px;}
 
-.js-toggle { position: relative; padding-left: 40px; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; user-select: none;}
-.js-toggle:after { content: 'Тема для самоопрацювання'; position: absolute; right: 40px; top: 0; font-size: 12px; line-height: 16px; color: #aaa; font-style: italic;}
-.js-toggle:before { content: ''; position: absolute; left: 0; top: 6px; width: 1px; height: 1px; border-top: 12px solid #aaa; border-left: 12px solid transparent; border-right: 12px solid transparent;}
+.js-toggle { position: relative; padding: 24px 0 24px 40px; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; user-select: none;}
+.js-toggle:after { content: 'Тема для самоопрацювання'; position: absolute; left: 0; top: 0; font-size: 10px; line-height: 16px; font-weight: normal; color: #aaa; font-style: italic;}
+.js-toggle:before { content: ''; position: absolute; left: 0; top: 50%; margin-top: -6px; width: 1px; height: 1px; border-top: 12px solid #aaa; border-left: 12px solid transparent; border-right: 12px solid transparent;}
 .js-toggle.active:before { border-top: none; border-bottom: 12px solid #aaa;}
 .js-toggle-box { display: none;}
