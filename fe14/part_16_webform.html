@@ -163,6 +163,16 @@
 				&lt;label&gt;&lt;input type="text" placeholder="Input text here"&gt;&lt;/label&gt;<br>
 				&lt;label&gt;&lt;textarea placeholder="Placeholder for &lt;textarea&gt;"&gt;&lt;/textarea&gt;&lt;/label&gt;
 			</code>
+			<p>Стилізація плейсхолдера:</p>
+			<code>
+				label input::-webkit-input-placeholder,<br>
+				label input::-ms-input-placeholder,<br>
+				label input::-moz-placeholder {<br>
+				&nbsp;&nbsp;color: silver;<br>
+				&nbsp;&nbsp;font-style: italic;<br>
+				&nbsp;&nbsp;opacity: 1;<br>
+				}
+			</code>
 			<p>Поля для ввода текста можна обмежити максимально допустимою кількістю символів, що користувач може ввести. Наприклад, для поля ввода телефона можна задати обмеження в 10-13 символів, для логіна при створенні аккаунта - 24, і т.п. За це відповідає атрибут <strong>maxlength</strong>:</p>
 			<p><label>Введіть рік народження: <input type="text" placeholder="Input year" maxlength="4"></label></p>
 			<code>
