@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Організація робочого простору</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="style.css">
+	<style>
+		.filerus strong:nth-child(1) { display: block; font-size: 40px; line-height: 50px; color: red;}
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<section>
+			<h1>Організація робочого простору.</h1>
+			<p>З часом у вас буде все більше і більше проектів, різноманітних робіт.</p>
+			<p>Щоб дотримуватися якогось порядку, не перетворити робочий стіл і вінчестер на хаотичне нагромадження файлів, прислухайтесь до порад.</p>
+			<p>Створіть папку <strong>work</strong> на диску D:\ (чи будь-якому іншому, не на C:\), для MacOS та Linux - в документах, домашньому каталозі.</p>
+			<div class="image">
+				<img src="img/fe_workspace_01.png" alt="Workspace">
+				<p>Папка work та її вміст.</p>
+			</div>
+			<p>Подальша структура вашої робочої папки:</p>
+			<code>
+				<strong>D:\work\</strong><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2016-11<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2016-12<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2017-01<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2017-02<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;2017-03<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;archive<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2015-09<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2015-10<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2015-11<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2015-12<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2015-01<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;lifehacks<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;my_projects<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;poleznosti
+			</code>
+			<p>В папках кожного місяця створюйте папки проектів:</p>
+			<code>
+				<strong>D:\work\2016-12\</strong><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;andrey_izoterika<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;andrey_strahovka<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;andrey_magazin_eurohimiya<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;futbolki<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;kolesov<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;project_name<br>
+			</code>
+			<p>Якщо потрібна звичайна верстка, без веб-серверів, зборщиків, то структура папки проекта має бути такою:</p>
+			<code>
+				<strong>D:\work\2016-12\futbolki\</strong><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;html &nbsp;&nbsp; <em>(папка з версткою)</em><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;psd &nbsp;&nbsp;&nbsp; <em>(папка з макетами)</em><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;tz &nbsp;&nbsp;&nbsp;&nbsp; <em>(папка з технічним завданням)</em><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;futbolki_20151204.zip &nbsp;&nbsp; <em>(архів для клієнта)</em><br>
+			</code>
+			<p class="filerus">
+				<strong>Увага!</strong>
+				<strong>Не використовуйте кирилицю, великі літери та пробіли</strong> в іменах файлів та шляхах.<br>
+				З кирилицею є великі проблеми якщо передаватимете файли в архіві на інший комп'ютер з іншою операційною системою чи заливатимете на FTP (linux).<br>
+				З великими літерами часто виникають проблеми на серверах.<br>
+				З пробілами часто бувають проблеми при вказуванні шляху до файлу.<br>
+				Тому завжди використовуйте в іменах папок та файлів лише:<br>
+				<strong class="success">маленькі англійські літери та дифіс чи підкреслення замість пробіла</strong>.
+			</p>
+			<p>Структура кожної папки проекту:</p>
+			<code>
+				<strong>D:\work\2016-12\futbolki\</strong><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;html<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;images<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;css<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;js<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index.html<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;psd<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;futbolki.psd<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;futbolki.zip<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;tz<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tz_futbolki.zip<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;техническое задание.doc<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;notes.txt
+			</code>
+		</section>
+
+	</div>
+</div>
+
+<script src="jquery-3.1.1.min.js"></script>
+<script src="fe.js"></script>
+
+</body>
+</html>
