@@ -49,13 +49,13 @@ abbr { cursor:help;}
 strong abbr { border-bottom-color:#000;}
 .big { font-size: 150%;}
 .small { font-size: 80%;}
-.image { margin:10px 0 20px; padding:10px; text-align:center; border:1px solid #ccc;}
-.image img { max-width:100%;}
-.image p { padding-bottom:4px; font-style:italic;}
 .danger { font-weight:bold; color:#f00;}
 .success { font-weight:bold; color:#090;}
 .black { color:#000;}
 .light { opacity: 0.5;}
+figure { margin:10px 0 20px; padding:10px; text-align:center; border:1px solid #ccc;}
+figure img { max-width:100%;}
+figure figcaption { padding-bottom:4px; font-style:italic;}
 
 footer { padding: 40px 0; border-top: 1px solid #aaa;}
 footer .nav { font-size:24px; line-height:1.4em;}
