@@ -60,9 +60,9 @@ figure figcaption { padding-bottom:4px; font-style:italic;}
 footer { padding: 40px 0; border-top: 1px solid #aaa;}
 footer .nav { font-size:24px; line-height:1.4em;}
 
-ol .self-education { position: relative; padding-top: 12px; font-size: 15px;}
-ol .self-education a { opacity: 0.7;}
-ol .self-education:before { content: 'Тема для самоопрацювання'; position: absolute; left: 0; top: 0; font-size: 10px; line-height: 16px; font-weight: normal; color: #aaa; font-style: italic;}
+.self-education { position: relative; font-size: 15px;}
+.self-education a { opacity: 0.7;}
+.self-education:before { content: '* '; color: #aaa;}
 .main-info strong { display:inline-block; width:150px;}
 .main-info span { display:inline-block; width:350px;}
 
