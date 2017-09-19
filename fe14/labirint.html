@@ -1,0 +1,92 @@
+<style>
+div { width: 420px; border-left: 1px solid #999; border-top: 1px solid #999;}
+p { margin: 0; font-size: 0; line-height: 0; }
+span { display: inline-block; width: 19px; height: 19px; border-right: 1px solid #999; border-bottom: 1px solid #999;}
+span.start { background: #080;}
+span.wall { background: #999;}
+span.gold { background: #fa0;}
+</style>
+
+<body>
+</body>
+
+<script>
+function getRandomN(n){ return Math.floor(Math.random() * n); }
+
+function setPoint(b){
+	while (1) {
+		var n = getRandomN(lab.length);
+		var m = getRandomN(lab[n].length);
+		if (lab[n][m] === '0') {
+			lab[n] = lab[n].substr(0,m) + b + lab[n].substr(m + 1);
+			break;
+		}
+	}
+}
+
+function getIndex(span){
+	var i = 0;
+	while (span) {
+		span = span.previousElementSibling;
+		i++;
+	}
+	return i - 1;
+}
+
+function moveTo(r){
+	var start = document.querySelector('.start');
+	var next;
+	if (r === 'up') { next = start.parentElement.previousElementSibling.querySelectorAll('span')[getIndex(start)];}
+	if (r === 'down') { next = start.parentElement.nextElementSibling.querySelectorAll('span')[getIndex(start)];}
+	if (r === 'left') { next = start.previousElementSibling;}
+	if (r === 'right') { next = start.nextElementSibling;}
+	if (next.className === 'wall') { return false; }
+	start.className = '';
+	if (next.className === 'gold') {
+		alert('Ви виграли!');
+	}
+	next.className = 'start';
+}
+
+var lab = [
+  '111111111111111111111',
+	'100010000010001000001',
+	'111010111010111011101',
+  '100010101000000000101',
+	'101110101010111110111',
+	'100000100010100000101',
+  '101111111110101110101',
+	'101000100000100010001',
+	'111011101110111111111',
+  '100010000010000000001',
+	'101111101010111111101',
+	'100000001010001000001',
+  '111111111111111111111'
+];
+
+setPoint('g');
+setPoint('s');
+
+var div = document.createElement('div');
+lab.forEach(function(s){
+	var p = document.createElement('p');
+	for (var i = 0; i < s.length; i++) {
+		var span = document.createElement('span');
+		if (s[i] === '1') { span.className = 'wall'; }
+		if (s[i] === 'g') { span.className = 'gold'; }
+		if (s[i] === 's') { span.className = 'start'; }
+		p.appendChild(span);
+	}
+	div.appendChild(p);
+});
+document.body.appendChild(div);
+
+document.body.onkeydown = function(e){
+	if (e.keyCode === 37) { moveTo('left'); } // left 
+	if (e.keyCode === 38) { moveTo('up'); } // up
+	if (e.keyCode === 39) { moveTo('right'); }	// right
+	if (e.keyCode === 40) { moveTo('down'); } // down
+}
+
+
+</script>
