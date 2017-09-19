@@ -16,11 +16,36 @@
 			<h1>Знайомство з Git</h1>
 			<p><strong>Git</strong> - система контроля версій.</p>
 			<p>Окрім гіта є ще декілька подібних систем, наприклад, Turtley SVN.</p>
-			<p>Git - це технологія, якою користуються сервіси типу GitHub, BitBucket, GitLab та інші.</p>
-			<p>Встановіть собі програму Git. Нам потрібна лише консольна версія. Після встановлення відкрийте консоль і перевірте, чи правильно встановилась програма, запустіть команду <strong>git</strong></p>
+			<p>Git - це технологія, якою користуються сервіси типу <a href="https://github.com/" target="_blank">GitHub</a>, <a href="https://bitbucket.org/" target="_blank">BitBucket</a>, <a href="https://about.gitlab.com/" target="_blank">GitLab</a> <a href="https://www.google.com.ua/search?q=github+alternatives" target="_blank">та інші</a>.</p>
 
+			<!-- TODO: приховати цей блок -->
+			<p>Встановіть собі програму Git. Нам потрібна лише консольна версія.</p>
+			<div>
+				<figure><img src="img/fe_git_start_01.png" alt="Вікно встановлення Git">
+					<figcaption>Всі галочки можна познімати</figcaption>
+				</figure>
+				<figure><img src="img/fe_git_start_02.png" alt="Вікно встановлення Git">
+					<figcaption>Git ми будемо використовувати з консолі</figcaption>
+				</figure>
+				<figure><img src="img/fe_git_start_03.png" alt="Вікно встановлення Git">
+					<figcaption>Зазвичай для авторизації використовують OpenSSL</figcaption>
+				</figure>
+				<figure><img src="img/fe_git_start_04.png" alt="Вікно встановлення Git">
+					<figcaption>Дані налаштування наразі не важливі</figcaption>
+				</figure>
+				<figure><img src="img/fe_git_start_05.png" alt="Вікно встановлення Git">
+					<figcaption>Git ми будемо використовувати з консолі</figcaption>
+				</figure>
+				<p>Після встановлення відкрийте консоль і перевірте, чи правильно встановилась програма, запустіть команду:</p>
+				<code>
+					C:\Users\admin><strong>git</strong>
+				</code>
+				<p>Можете користуватися консоллю у вашій IDE, як правило консоль одразу відкрита в папці проекту.</p>
+				<figure><img src="img/fe_git_start_06.png" alt="Консоль в PhpStorm">
+					<figcaption>Консоль (термінал) в PhpStorm</figcaption>
+				</figure>
+			</div>
 
-			<p>Можете користуватися консоллю у вашій IDE, як правило консоль одразу відкрита в папці проекту.</p>
 			<p>Перші команди гіта для індивідуального використання:</p>
 			<code>
 				<strong>git clone посилання</strong> - клонувати репозиторій з сервера на локальну машину.<br>
@@ -28,26 +53,64 @@
 				<strong>git status</strong> - перевірити поточний статус поточної гілки.<br>
 				<strong>git add .</strong> - добавити всі файли в коміт (точку збереження).<br>
 				<strong>git commit -m "текст-опис"</strong> - створити коміт (точку збереження) поточної гілки.<br>
-				<strong>git push origin master</strong> - закинути коміт на сервер.<br>
+				<strong>git push</strong> або <strong>git push origin master</strong> - закинути коміт на сервер.<br>
 			</code>
 			<p>В подальшому ми вивчемо ще декілька команд для колективної роботи над проектом, для створення гілок і т.п.</p>
 			<p><strong class="danger">Увага!</strong> На GitHub заливайте тільки вміст папки html, не заливайте архіви, PSD.</p>
 			<h3>Завдання.</h3>
 			<ol>
-				<li>Зареєструйтесь на <a href="https://github.com/" target="_blank">GitHub</a>.</li>
-				<li>Встановіть програму git (нам потрібна буде лише її консольна версія).</li>
-				<li>Створіть на GitHub проект mine_sprite.</li>
-				<li>Клонуйте цей проект собі в папку html відповідного проекта в своїй папці проектів.</li>
-				<li>Перевірте в файловому менеджері, чи все правильно клонувалося, в потрібну папку.</li>
+				<li>Зареєструйтесь на <a href="https://github.com/" target="_blank">GitHub</a></li>
+				<li>Створіть на GitHub проект vizitka, встановіть галочку "Initialize this repository with a README".</li>
+				<li>
+					Клонуйте цей проект собі в папку html відповідного проекта в своїй папці проектів:
+					<code>
+						d:\work\2017-09\vizitka><strong>git clone https://github.com/ваш_логін/vizitka html</strong><br>
+						або<br>
+						d:\work\2017-09\vizitka\html><strong>git clone https://github.com/ваш_логін/vizitka .</strong>
+					</code>
+				</li>
+				<li>Перевірте в проводнику або файловому менеджері чи все правильно клонувалося, в потрібну папку.</li>
 				<li>Перевірте, чи створилася папка .git в проекті.</li>
-				<li>Скопіюйте в поточний проект файли з проекта minecraft.</li>
-				<li>Заляйте оновлення на GitHub.</li>
-				<li>Перевірте на сайті наявність файлів, подивіться графік (Graphs &gt; Network).</li>
+				<li>Скопіюйте в поточний проект зображення.</li>
+				<li>Створіть текстовий файл і запишіть у нього вітання.</li>
+				<li>
+					Заляйте оновлення на GitHub:
+					<code>
+						<strong>git status</strong><br>
+						<strong>git add .</strong><br>
+						<strong>git status</strong><br>
+						<strong>git commit -m "first commit"</strong><br>
+						<br>
+						<strong>git push</strong><br>
+						або<br>
+						<strong>git push origin server</strong><br>
+						Перевірте на сайті чи залялися оновлення.
+						Поміняйте текст у текстовому файлі і повторно заляйте оновлення на сервер:
+						<strong>git add .</strong><br>
+						<strong>git commit -m "first commit"</strong><br>
+						<strong>git push</strong><br>
+					</code>
+					(git status - необов'язкова команда, але вона дозволяє вам контролювати те, що відбувається з вашими файлами)
+				</li>
+				<li>Подивіться на сайті графік: Insights &gt; Graphs &gt; Network.</li>
 			</ol>
+
+			!!!!!
+
+			<!--
+			TODO: перед колективним проектом
+			- гілки, пулл-реквести
+			- робота з задачами, вікі, форк, налаштування для колективної роботи
+			-->
+
+
 			<p>В подальшому домашні роботи можете заливати на GitHub та давати викладачу посилання на проекти.</p>
 			<p>Щоб викладач зміг прокоментувати ваш код - добавте його в колаборацію в налаштуваннях проекту.</p>
 			<p>Якщо необхідно внести коригування в домашню роботу - зробіть це і оновлення заляйте на GitHub.</p>
 		</section>
+
+
+		<!-- TODO: домашнє завдання -->
 
 	</div>
 </div>
