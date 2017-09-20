@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Знайомство з HTML</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="style.css">
+	<style>
+		.filerus strong:nth-child(1) { display: block; font-size: 40px; line-height: 50px; color: red;}
+	</style>
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<section>
+			<h1>Знайомство з HTML</h1>
+			<p>На минулому занятті ми познайомилися з декількома ключовими елементами веб-сторінок:<br>
+				- заголовки;<br>
+				- важливий текст;<br>
+				- списки (несортовані та нумеровані);<br>
+				- зображення;<br>
+				- посилання і т.п.</p>
+			<p>Настав час модель даних перетворити на теги мови HTML.</p>
+			<p>Заголовки обрамляються тегами <strong>&lt;h1&gt;</strong>, <strong>&lt;h2&gt;</strong>, <strong>&lt;h3&gt;</strong>, <strong>&lt;h4&gt;</strong>, <strong>&lt;h5&gt;</strong>, <strong>&lt;h6&gt;</strong>.</p>
+			<p>Речення, абзаци, текст огортаються тегом <strong>&lt;p&gt;</strong> (кожне речення в окремому тезі).</p>
+			<p>Якщо в реченні потрібно зробити перенесення строки на новий рядок - використайте тег <strong>&lt;br&gt;</strong>, та у більшості випадків текст переноситься автоматично.</p>
+			<p>Важливий текст огортається тегами <strong>&lt;strong&gt;</strong> або <strong>&lt;b&gt;</strong> (за замовчуванням в браузері виділяється жирним шрифтом).</p>
+			<p>Поняття, визначення, термін огортаються тегами <strong>&lt;em&gt;</strong> або <strong>&lt;i&gt;</strong> (за замовчуванням в браузері виділяється наклонним шрифтом).</p>
+			<p>Списки огортаються тегами <strong>&lt;ul&gt;</strong> (несортований) або <strong>&lt;ol&gt;</strong> (нумерований).</p>
+			<p>Кожен елемент списку - <strong>&lt;li&gt;</strong> (list item).</p>
+			<p>Зображення вставляються на веб-сторінку тегом <strong>&lt;img&gt;</strong>, у якого повинні бути атрибути <strong>src</strong> та <strong>alt</strong>, що вказують на URI зображення та описують зображення.</p>
+			<p>Посилання вставляються на веб-сторінку тегом <strong>&lt;a&gt;</strong>, у якого повинен бути атрибут <strong>href</strong> - адреса, по якій буде здійснено перехід при кліку на посилання.</p>
+		</section>
+
+		<section>
+			<h2>Перетворення моделі даних на веб-сторінку.</h2>
+			<p>Окрім вищезазначених тегів кожна веб-сторінка повинна мати декілька обов'язкових тегів, що описують заголовок файлу та його кінець.</p>
+			<p>Скопіюйте ваш файл index.txt у файл index.html, відкрийте його у IDE і починайте добавляти теги, видаляючи форматування моделі даних:</p>
+			<code>
+				&lt;html&gt;<br>
+				&lt;head&gt;<br>
+				&nbsp;&nbsp;&lt;meta charset="utf-8"&gt;<br>
+				&lt;/head&gt;<br>
+				&lt;body&gt;<br>
+				&nbsp;&nbsp;&lt;h1&gt;Бобир Олександр Анатолійович&lt;/h1&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;&lt;i&gt;Дата народження:&lt;/i&gt; 5.10.1982&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;p&gt;&lt;i&gt;Захоплення:&lt;/i&gt; коти, &lt;b&gt;програмування&lt;/b&gt;, мандри&lt;/p&gt;<br>
+				&nbsp;&nbsp;&lt;h2&gt;Улюблені ігри:&lt;/h2&gt;<br>
+				&nbsp;&nbsp;&lt;ul&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Fallout;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Minecraft;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Might &amp;amp; Magic.&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;/ul&gt;<br>
+				&nbsp;&nbsp;&lt;h3&gt;Мої друзі:&lt;/h3&gt;<br>
+				&nbsp;&nbsp;&lt;ol&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Іванов;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Петров;&lt;/li&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Сидоров.&lt;/li&gt;<br>
+				&nbsp;&nbsp;&lt;/ol&gt;<br>
+				&nbsp;&nbsp;&lt;img src="cat.jpg" alt="Кіт"&gt;&lt;br&gt;<br>
+				&nbsp;&nbsp;&lt;a href="https://www.facebook.com/poshtar.boba"&gt;Мій профіль у facebook&lt;/a&gt;<br>
+				&lt;/body&gt;<br>
+				&lt;/html&gt;
+			</code>
+			<p>Збережіться та відкрийте створений файл у браузері, отримаємо ось таку веб-сторінку:</p>
+			<iframe src="fe_html_start_iframe.html"></iframe>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<ol>
+				<li>Створіть сторінку-візитівку вашого домашнього улюбленця, кумира, вигаданого персонажа чи будь-яку іншу.</li>
+				<li>Перетворіть модель даних сайту вашого бізнесу на веб-сторінки.</li>
+				<li>Перетворіть модель даних соцмережі домашніх тварин на веб-сторінки.</li>
+			</ol>
+			<h3>Додаткове завдання.</h3>
+			<p>Дослідіть код сторінок цієї лекції, сайтів Wikipedia, соцмереж. Знайдіть елементи, які ми сьогодні вивчили.</p>
+			<p>Код сторінки можна побачити клацнувши правою кнопкою миші на сторінці і вибравши пункт меню "Переглянути джерело сторінки", "Show source".</p>
+		</section>
+
+	</div>
+</div>
+
+<script src="jquery-3.1.1.min.js"></script>
+<script src="fe.js"></script>
+
+</body>
+</html>
