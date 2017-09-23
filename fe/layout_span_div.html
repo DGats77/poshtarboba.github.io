@@ -5,10 +5,11 @@
 	<meta charset="utf-8">
 	<meta name="keywords" content="">
 	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="format-detection" content="telephone=no">
 	<link type="text/css" rel="stylesheet" href="style.css">
 	<style>
-		.example4 { color: red;}
+		.layout-span-div-1 { color: red;}
 	</style>
 </head>
 <body>
@@ -19,9 +20,9 @@
 			<h1>Теги SPAN, DIV</h1>
 			<p>Тег <strong>&lt;span&gt;</strong> - строчний елемент, його необхідно використовувати в тих випадках, коли частина тексту в строці має інший стиль: колір, розмір, накреслення. Також &lt;span&gt; використовується для вставки різних декоративних елементів в строку, для виділення значень, що можуть динамічно змінюватися і т.п.</p>
 			<code>
-				Карточка <span class="example4">червоного кольору</span> означає видалення гравця з поля.<br><br>
+				<span class="layout-span-div-1">Червона</span> карточка означає видалення гравця з поля.<br><br>
 				.red { color: red; }<br><br>
-				&lt;p&gt;Карточка &lt;span class="red"&gt;червоного кольору&lt;/span&gt; означає видалення гравця з поля.&lt;/p&gt;
+				&lt;p&gt;&lt;span class="red"&gt;Червона&lt;/span&gt; карточка означає видалення гравця з поля.&lt;/p&gt;
 			</code>
 			<p>Виділення тегом динамічного значення (число завантажується з бази даних за допомогою скрипта):</p>
 			<code>
@@ -32,21 +33,22 @@
 			<p>Тег <strong>&lt;div&gt;</strong> - це основний блочний елемент, основний тип коробок. Він може виконувати як семантичну, так і декоративну роль.</p>
 			<p>Семантична роль полягає в тому, що тег &lt;div&gt; об'єднує, групує певні елементи однакових категорій, розділяє дані різних типів. Якщо поглянути на макет Колесова - в нього є такі елемеенти: хедер, футер, контентна частина, а в ній - текст і меню. Кожен з цих елементів - це блоки div.</p>
 			<p>Декоративна роль - розміщення декоративних елементів на сторінці, додаткових фонових зображень, фрагментів, виправлення помилок (фікси, костилі) і тому подібне.</p>
-			<!-- TODO: make this -->
 			<figure>
-				<img src="../fe-img/fe_div_kolesov_1.jpg" alt="Full page">
+				<!-- TODO: переробити скріншот - клас .container -->
+				<!-- TODO: переробити скріншоти CounterStrike -->
+				<img src="img/layout_span_div_01.jpg" alt="Full page">
 				<figcaption>Поділ на основні блоки всієї сторінки.</figcaption>
 			</figure>
 			<figure>
-				<img src="../fe-img/fe_div_kolesov_2.jpg" alt="Resize part">
+				<img src="img/layout_span_div_02.jpg" alt="Resize part">
 				<figcaption>Поділ блока <strong>.resize</strong>.</figcaption>
 			</figure>
 			<figure>
-				<img src="../fe-img/fe_div_kolesov_3.jpg" alt="Header part">
+				<img src="img/layout_span_div_03.jpg" alt="Header part">
 				<figcaption>Поділ блока <strong>.header</strong>.</figcaption>
 			</figure>
 			<figure>
-				<img src="../fe-img/fe_div_kolesov_4.jpg" alt="Content part">
+				<img src="img/layout_span_div_04.jpg" alt="Content part">
 				<figcaption>Поділ блока <strong>.content</strong>.</figcaption>
 			</figure>
 		</section>

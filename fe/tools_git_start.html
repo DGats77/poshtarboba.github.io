@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Frontend. Знайомство з Git.</title>
+	<title>Frontend. Знайомство з Git</title>
 	<meta charset="utf-8">
 	<meta name="keywords" content="">
 	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="format-detection" content="telephone=no">
 	<link type="text/css" rel="stylesheet" href="style.css">
 </head>
@@ -16,24 +17,35 @@
 			<h1>Знайомство з Git</h1>
 			<p><strong>Git</strong> - система контроля версій.</p>
 			<p>Окрім гіта є ще декілька подібних систем, наприклад, Turtley SVN.</p>
-			<p>Git - це технологія, якою користуються сервіси типу <a href="https://github.com/" target="_blank">GitHub</a>, <a href="https://bitbucket.org/" target="_blank">BitBucket</a>, <a href="https://about.gitlab.com/" target="_blank">GitLab</a> <a href="https://www.google.com.ua/search?q=github+alternatives" target="_blank">та інші</a>.</p>
+			<p>
+				Git - це технологія, якою користуються сервіси типу
+				<a href="https://github.com/" target="_blank">GitHub</a>,
+				<a href="https://bitbucket.org/" target="_blank">BitBucket</a>,
+				<a href="https://about.gitlab.com/" target="_blank">GitLab</a>,
+				<a href="https://www.google.com.ua/search?q=github+alternatives" target="_blank">та інші</a>.
+			</p>
 
 			<!-- TODO: приховати цей блок -->
 			<p>Встановіть собі програму Git. Нам потрібна лише консольна версія.</p>
 			<div>
-				<figure><img src="img/fe_git_start_01.png" alt="Вікно встановлення Git">
+				<figure>
+					<img src="img/tools_git_start_01.png" alt="Вікно встановлення Git">
 					<figcaption>Всі галочки можна познімати</figcaption>
 				</figure>
-				<figure><img src="img/fe_git_start_02.png" alt="Вікно встановлення Git">
+				<figure>
+					<img src="img/tools_git_start_02.png" alt="Вікно встановлення Git">
 					<figcaption>Git ми будемо використовувати з консолі</figcaption>
 				</figure>
-				<figure><img src="img/fe_git_start_03.png" alt="Вікно встановлення Git">
+				<figure>
+					<img src="img/tools_git_start_03.png" alt="Вікно встановлення Git">
 					<figcaption>Зазвичай для авторизації використовують OpenSSL</figcaption>
 				</figure>
-				<figure><img src="img/fe_git_start_04.png" alt="Вікно встановлення Git">
+				<figure>
+					<img src="img/tools_git_start_04.png" alt="Вікно встановлення Git">
 					<figcaption>Дані налаштування наразі не важливі</figcaption>
 				</figure>
-				<figure><img src="img/fe_git_start_05.png" alt="Вікно встановлення Git">
+				<figure>
+					<img src="img/fe_git_start_05.png" alt="Вікно встановлення Git">
 					<figcaption>Git ми будемо використовувати з консолі</figcaption>
 				</figure>
 				<p>Після встановлення відкрийте консоль і перевірте, чи правильно встановилась програма, запустіть команду:</p>
@@ -41,7 +53,8 @@
 					C:\Users\admin><strong>git</strong>
 				</code>
 				<p>Можете користуватися консоллю у вашій IDE, як правило консоль одразу відкрита в папці проекту.</p>
-				<figure><img src="img/fe_git_start_06.png" alt="Консоль в PhpStorm">
+				<figure>
+					<img src="img/tools_git_start_06.png" alt="Консоль в PhpStorm">
 					<figcaption>Консоль (термінал) в PhpStorm</figcaption>
 				</figure>
 			</div>
@@ -57,16 +70,16 @@
 			</code>
 			<p>В подальшому ми вивчемо ще декілька команд для колективної роботи над проектом, для створення гілок і т.п.</p>
 			<p><strong class="danger">Увага!</strong> На GitHub заливайте тільки вміст папки html, не заливайте архіви, PSD.</p>
-			<h3>Завдання.</h3>
+			<h3>Завдання</h3>
 			<ol>
 				<li>Зареєструйтесь на <a href="https://github.com/" target="_blank">GitHub</a></li>
 				<li>Створіть на GitHub проект vizitka, встановіть галочку "Initialize this repository with a README".</li>
 				<li>
 					Клонуйте цей проект собі в папку html відповідного проекта в своїй папці проектів:
 					<code>
-						d:\work\2017-09\vizitka><strong>git clone https://github.com/ваш_логін/vizitka html</strong><br>
+						d:\work\<span class="js-month">2017-09</span>\vizitka><strong>git clone https://github.com/ваш_логін/vizitka html</strong><br>
 						або<br>
-						d:\work\2017-09\vizitka\html><strong>git clone https://github.com/ваш_логін/vizitka .</strong>
+						d:\work\<span class="js-month">2017-09</span>\vizitka\html><strong>git clone https://github.com/ваш_логін/vizitka .</strong>
 					</code>
 				</li>
 				<li>Перевірте в проводнику або файловому менеджері чи все правильно клонувалося, в потрібну папку.</li>
@@ -114,6 +127,15 @@
 
 	</div>
 </div>
+
+<script>
+	(function(){
+		/* поміняти дати у лекції на поточні */
+		function add0(n){ return n < 10 ? '0' + n : n; }
+		let d = new Date(), y = d.getFullYear(), m = d.getMonth() + 1;
+		document.querySelectorAll('.js-month').forEach(function(span){ span.innerHTML = y + '-' + add0(m); });
+	})();
+</script>
 
 <script src="jquery-3.1.1.min.js"></script>
 <script src="fe.js"></script>

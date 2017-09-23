@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="keywords" content="">
 	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="format-detection" content="telephone=no">
 	<link type="text/css" rel="stylesheet" href="style.css">
 	<style>
@@ -21,7 +22,7 @@
 			<p>Щоб дотримуватися якогось порядку, не перетворити робочий стіл і вінчестер на хаотичне нагромадження файлів, прислухайтесь до порад.</p>
 			<p>Створіть папку <strong>work</strong> на диску D:\ (чи будь-якому іншому, не на C:\), для MacOS та Linux - в документах, домашньому каталозі.</p>
 			<figure>
-				<img src="img/fe_workspace_01.png" alt="Workspace">
+				<img src="img/tools_workspace_01.png" alt="Workspace">
 				<figcaption>Папка work та її вміст.</figcaption>
 			</figure>
 			<p>Подальша структура вашої робочої папки:</p>
@@ -89,7 +90,7 @@
 		</section>
 		
 		<section>
-			<h2>Формат архівів.</h2>
+			<h2>Формат архівів</h2>
 			<p>Завжди використовуйте лише архів формату <strong class="success">ZIP</strong>. Архіви в форматах RAR, 7z можуть не розпакуватися у замовника.</p>
 			<p>Завжди добавляйте дату до імені архіву.</p>
 			<p>Завжди давайте зрозумілі назви архівів, не плодіть файли html.zip, html(2).zip, html(3).zip...</p>
@@ -114,7 +115,6 @@
 		d = '' + y + add0(m) + add0(d.getDate());
 		let m1 = document.querySelectorAll('.js-month1');
 		let m2 = document.querySelectorAll('.js-month2');
-		console.log(m1.length);
 		m1.forEach(function(span, i){
 			let year = y, month = m - m1.length + i + 1;
 			if (month < 1) { month += 12; year -= 1; }
@@ -125,7 +125,6 @@
 			if (month < 1) { month += 12; year -= 1; }
 			span.innerHTML = year + '-' + add0(month);
 		});
-		document.querySelectorAll('.js-month').forEach(function(span){ span.innerHTML = y + '-' + add0(m); });
 		document.querySelectorAll('.js-date').forEach(function(span){ span.innerHTML = d; });
 	})();
 </script>
