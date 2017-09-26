@@ -1,4 +1,4 @@
-body { position: relative; margin: 0; padding: 0; color: #666; font: normal 18px/28px Helvetice, Arial, sans-serif; background: #fff;}
+body { position: relative; margin: 0; padding: 0; color: #666; font: normal 18px/28px Helvetica, Arial, sans-serif; background: #fff;}
 .clr:after { content: ""; display: block; height: 0; overflow: hidden; font-size: 0; line-height: 0; clear: both;}
 
 p { margin: 0; padding: 10px 0;}
