@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Frontend. Розмір елементів</title>
+	<title>Frontend. Розміри елемента</title>
 	<meta charset="utf-8">
 	<meta name="keywords" content="">
 	<meta name="description" content="">
@@ -14,7 +14,7 @@
 	<div class="resize">
 
 		<section>
-			<h1>Розмір елементів</h1>
+			<h1>Розміри елемента</h1>
 			<p>Кожен елемент має ширину та висоту. Блочним елементам можна задавати розміри:</p>
 			<code>
 				<strong>width:</strong> 100%;<br>
@@ -22,6 +22,23 @@
 			</code>
 			<p>Намагайтеся уникати використання height, нехай блоки самі собі виставляють висоту. Використовуйте внутрішні відступи padding та висоту строки line-height для керування висотою блоків.</p>
 			<p class="noheight">height: 40px;</p>
+			<p>Не використовуйте висоту у відсотках. Така висота може працювати лише при абсолютному позиціонуванні елемента.</p>
+			<p class="noheight">height: 50%;</p>
+			<p>Додаткові стилі, що обмежують мінімальні та максимальні розміри блоків:</p>
+			<code>
+				min-width: 50px;<br>
+				max-width: 200px;<br>
+				min-height: 50px;<br>
+				min-width: 200px;
+			</code>
+			<p>Приклад застосування у <a href="https://jsfiddle.net/poshtarboba/b6t013hx/" target="_blank">jsFiddle</a>.</p>
+			<p>"Обнулення" стилів:</p>
+			<code>
+				min-width: 0;<br>
+				min-height: 0;<br>
+				max-width: none;<br>
+				max-height: none;
+			</code>
 		</section>
 
 	</div>
