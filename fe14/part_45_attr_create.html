@@ -128,9 +128,9 @@
 			<code>
 				p - створений елемент;<br>
 				div - після цього блока потрібно вставити елемент p;<br>
-				div.parentElement.insertBefore(p, div.nextSiblingElement);
+				div.parentElement.insertBefore(p, div.nextElementSibling);
 			</code>
-			<p>При цьому, якщо після елемента div не буде інших елементів, то конструкція div.nextSiblingElement поверне null.</p>
+			<p>При цьому, якщо після елемента div не буде інших елементів, то конструкція div.nextElementSibling поверне null.</p>
 			<p>Якщо .insertBefore приймає null у якості другого аргумента - він добавить елемент в кінець батьківського.</p>
 			<p>Видалити елемент можна методами:</p>
 			<code>
