@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Заняття 13. Position, специфічні теги та селектори.</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="mainwrapper">
+
+	<div class="resize">
+
+		<h1>Position, специфічні теги та селектори.</h1>
+
+		<section>
+			<h2>Стиль position.</h2>
+			<p>Стиль <strong>position</strong> дозволяє змінювати розташування елемента відносно свого початкового положення або відносно положення батьківських елементів.</p>
+			<code>
+				position: static;<br>
+				position: relative;<br>
+				position: absolute;<br>
+				position: fixed;
+			</code>
+			<p>При статичному позиціонуванні елемент можна зсувати зі свого місця тільки за допомогою відступів, елемент не є позиціонуємим:</p>
+			<code>
+				.box { margin-left: 40px;}
+			</code>
+			<p>Значення стиля <strong>relative</strong> дозволяє використовувати стилі <strong>left</strong>, <strong>top</strong>, <strong>right</strong> та <strong>bottom</strong> для зміщення елемента.</p>
+			<p>Для статичних елементів ці чотири стиля ігноруються.</p>
+			<p>Поексперементуйте в пісочниці:</p>
+			<code>
+				&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad corporis debitis, <strong>&lt;span&gt;error&lt;/span&gt;</strong> eum ex excepturi facilis fuga iure, libero nesciunt pariatur recusandae sapiente sequi voluptate voluptates? Alias error impedit molestiae?&lt;/p&gt;<br><br>
+				span {<br>
+				&nbsp;&nbsp;left: 20px;<br>
+				&nbsp;&nbsp;bottom: 10px;<br>
+				}
+			</code>
+			<p>Абсолютне позиціонування виділяє елемент з потоку в окремий шар, решта елементів перестають його бачити, цей елемент знаходиться над іншими елементами і не заважає їх.</p>
+			<p>Батьківські елементи також перестають бачити абсолютно спозиціоновані елементи. Якщо інших дітей у них немає - такі батьківські елементи схлопуються, їхня висота стає 0px.</p>
+			<p>Абсолютне позиціонування здебільшого повинно працювати в купі з не-статичним позиціонуванням батьківського елементу. Поексперементуйте:</p>
+			<code>
+				&lt;div class="a"&gt;<br>
+				&nbsp;&nbsp;&lt;div class="b"&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="c"&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="d"&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Lorem ipsum&lt;/p&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+				&nbsp;&nbsp;&lt;/div&gt;<br>
+				&lt;/div&gt;<br><br>
+				p { /*position: absolute;*/ left: 0; top: 0; margin: 0; }<br>
+				div { padding: 20px; border: 1px solid #999; }<br>
+				.a {}<br>
+				.b {}<br>
+				.c {}<br>
+				.d {}
+			</code>
+			<p>Фіксоване позиціонування схоже на абсолютне, але положення елемента вираховується відносно екрана браузера:</p>
+			<code>
+				&lt;p class="fixed"&gt;Lorem ipsum&lt;/p&gt;<br>
+				&lt;p&gt;<br>
+				&nbsp;&nbsp;dolor<br>
+				&nbsp;&nbsp;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;<br>
+				&nbsp;&nbsp;sit<br>
+				&nbsp;&nbsp;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;<br>
+				&nbsp;&nbsp;amet<br>
+				&nbsp;&nbsp;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;<br>
+				&nbsp;&nbsp;consectetur<br>
+				&nbsp;&nbsp;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;<br>
+				&nbsp;&nbsp;adipisicing<br>
+				&nbsp;&nbsp;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;<br>
+				&nbsp;&nbsp;elit<br>
+				&lt;/p&gt;<br><br>
+				p { margin: 0; }<br>
+				.fixed { position: fixed; right: 40px; bottom: 80px; }
+			</code>
+			<p>Фіксоване позиціонування не потребує особливих умов position для батьківських блоків.</p>
+			<p>Ще один стиль, який застосовується для позиціонованих елементів - <strong>z-index</strong>.</p>
+			<p>Цей стиль дозволяє керувати висотою шару елемента над поверхнею основного потоку, тобто, задавати який елемент буде знаходитися поверх якого елемента.</p>
+			<p>Задаються числові значення. В якого елемента z-index більший - той і буде умовно вище.</p>
+			<p>Але z-index - це не абсолютні значення, все залежить від батьківських елементів:</p>
+			<div class="image">
+				<img src="../fe-img/fe_z-index.jpg" alt="z-index">
+				<p>Правила застосування стиля z-index.</p>
+			</div>
+		</section>
+
+		<section>
+			<h2>Специфічні теги HTML.</h2>
+			<code>
+				&lt;abbr title="Розшифровка абревіатури"&gt; - абревіатура;<br>
+				&lt;address&gt; - географічна адреса, аналог до &lt;p class="address"&gt;...&lt;/p&gt;<br>
+				&lt;time&gt; - дані про час, дату, день тижня і тому подібне.<br>
+				&lt;q&gt;, &lt;blockquote&gt;, &lt;cite&gt; - цитати;<br>
+				&lt;code&gt; - тег для програмного коду, розмітки;<br>
+				&lt;pre&gt; - попередньо відформатований текст;<br>
+				&lt;sup&gt;, &lt;sub&gt; - верхній та нижній індекси.
+			</code>
+			<p>Ми вивчаємо <abbr title="HyperText Markup Language">HTML</abbr>.</p>
+			<p><time>1960-08-19</time> перший політ собак у космос.</p> 
+			<p><time datetime="2020-08-19T08:23:11+07:00">Сьогодні</time> річниця польоту.</p>
+			<code>
+				&lt;p&gt;Ми вивчаємо &lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;.&lt;/p&gt;<br>
+				&lt;p&gt;&lt;time&gt;1960-08-19&lt;/time&gt; перший політ собак у космос.&lt;/p&gt;<br>
+				&lt;p&gt;&lt;time datetime="2020-08-19T08:23:11+07:00"&gt;Сьогодні&lt;/time&gt; річниця польоту.&lt;/p&gt;
+			</code>
+			<p>Приклад цитати:</p>
+			<div style="margin-bottom: 20px; padding: 10px 20px; width: 350px; background: #ddd;">
+				<blockquote>Homo homini lupus est.</blockquote>
+				<p class="tar"><cite>В.І. Ленін.</cite></p>
+			</div>
+			<p style="margin-bottom: 20px; padding: 10px 20px; background: #ddd;">Клара Цеткін вигукнула у натовп: <q>Дайош восьмоє марта!!!</q></p>
+			<code>
+				&lt;div style="padding:10px 20px; width: 350px; background: #ddd;"&gt;<br><br>
+				&nbsp;&nbsp;&lt;blockquote&gt;Homo homini lupus est.&lt;/blockquote&gt;<br>
+				&nbsp;&nbsp;&lt;p class="tar"&gt;&lt;cite&gt;В.І. Ленін.&lt;/cite&gt;&lt;/p&gt;<br><br>
+				&lt;/div&gt;<br>
+				&lt;p&gt;Клара Цеткін вигукнула у натовп: &lt;q&gt;Дайош восьмоє марта!!!&lt;/q&gt;&lt;/p&gt;
+			</code>
+			<p>Верхній та нижній індекси: <strong>x<sup>2</sup>, H<sub>2</sub>SO<sub>4</sub></strong></p>
+			<code>
+				x&lt;sup&gt;2&lt;/sup&gt;, H&lt;sub&gt;2&lt;/sub&gt;SO&lt;sub&gt;4&lt;/sub&gt;<br><br>
+				Для індексів можна задавати шрифт трохи меньшого розміру, результат буде кращим:<br>
+				sup, sub { font-size: 0.6em;} // Результат нижче
+			</code>
+			<p><strong>x<sup style="font-size: 0.6em;">2</sup>, H<sub style="font-size: 0.6em;">2</sub>SO<sub style="font-size: 0.6em;">4</sub></strong></p>
+		</section>
+
+		<section>
+			<h2>Специфічні селектори CSS.</h2>
+			<p><strong>A B</strong> { ... } - задає стилі для всіх елементів B, що знаходяться всередині тега A на будь-якому рівні вкладення.</p>
+			<p><strong>A &gt; B</strong> { ... } - задає стилі лише для дочірніх елементів першого рівня.</p>
+			<p><strong>A ~ B</strong> { ... } - задає стилі для всіх елементів B, що слідують після елемента A.</p>
+			<p><strong>A + B</strong> { ... } - задає стилі для елемента B, що йде одразу після елемента A.</p>
+			<code>
+				&lt;p&gt;&lt;span&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;<br>
+				p a { color: green;}<br>
+				p > span { background: red;}<br>
+				p > a { background: green;} /* не буде працювати */<br>
+				<br>
+				&lt;p class="nobel"&gt;Some text.&lt;/p&gt;<br>
+				&lt;p&gt;...&lt;/p&gt;<br>
+				&lt;h2&gt;Header&lt;/h2&gt;<br>
+				.nobel ~ h2 { color: green;}<br>
+				.nobel + p { color: blue;}<br>
+				.nobel + h2 { color: navy;} /* не буде працювати */
+			</code>
+			<p><strong>[атрибут]</strong> - задає стилі для елементів, у яких задано атрибут.</p>
+			<p><strong>[атрибут="значення"]</strong> - задає стилі для елементів, у яких задано атрибут та конкретне значення.</p>
+			<p><strong>[href^="ftp://"]</strong> - вибирає елементи, у яких вказаний атрибут починається з вказаного значення.</p>
+			<p><strong>[href$=".png"]</strong> - вибирає елементи, у яких вказаний атрибут закінчується вказаним значенням.</p>
+			<p><strong>[href*="google"]</strong> - вибирає елементи, у яких значення вказаного атрибута містить строку, вказану у значенні.</p>
+			<p><strong>[class~="green"]</strong> - вибирає елементи у яких в значенні атрибута є задана підстрока, відділена пробілами від інших підстрок.</p>
+			<code>
+				Виділити червоним і жирним всі елементи, в яких використовуються внутрітегові стилі:<br>
+				[style] { color: red; font-weight: bold;}<br>
+				<br>
+				Добавити рамку до зображень, в яких атрибут alt має значення "Фото":<br>
+				img[alt="Фото"] { border: 2px solid #aaa;}<br>
+				<br>
+				Всі посилання на FTP зробити зеленого кольору:<br>
+				a[href^="ftp://"] { color: green;}<br>
+				<br>
+				Всі посилання на gif-файли зробити сірого кольору:<br>
+				a[href$=".gif"] { color: #777;}<br>
+				<br>
+				Сховати всі посилання, які містять в собі підстроку "yandex":<br>
+				a[href*="yandex"] { display: none;}<br>
+				<br>
+				Вибирає всі елементи в яких є клас "green" і задає їм зелений колір:<br>
+				[class~="green"] { color: green;}<br>
+				.green { color: green;} /* виконує ту саму дію */
+			</code>
+			<p>Селектори, що дозволяють вибрати конкретний елемент:</p>
+			<code>
+				.box:first-child { ... }<br>
+				.box:last-child { ... }<br>
+				.box:nth-child(2) { ... }<br>
+				.box:nth-child(8) { ... }<br>
+				.box:nth-child(odd) { ... }<br>
+				.box:nth-child(even) { ... }<br>
+				.box:nth-child(3n+2) { ... }<br>
+				.box:nth-child(-n+5) { ... }<br>
+				.box:not(p) { ... }<br>
+				li:not(.active, #info) { ... }
+			</code>
+			<p>Додаткові стилі для вибору першої букви і першої строчки:</p>
+			<code>
+				p:first-letter { color: red;}<br>
+				p:first-line { font-weight: bold;}
+			</code>
+		</section>
+
+		<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<ol>
+				<li>1. В макеті таблиць зробіть випадаючі меню. Всі іконки також краще зробити через абсолютне позиціонування псевдоелементів (тут Боба має пояснити чому, нагадайте, якщо забуде).</li>
+			</ol>
+		</section>
+
+		<section class="homework">
+			<h2>Додаткові матеріали.</h2>
+			<p><a href="http://jsfiddle.net/poshtarboba/qv1g5a3a/">jsFiddle: фіксований блок</a>.</p>
+			<p><a href="https://habrahabr.ru/post/189696/">Хабра: Абсолютное горизонтальное и вертикальное центрирование</a>.</p>
+			<p><a href="http://everstudent.ru/blog/htmlcss/30-css-seletors-to-memorize/">30 CSS-селекторов, которые вы должны запомнить</a>.</p>
+			<p><a href="https://habrahabr.ru/post/273471/">Коллекция практических советов и заметок по вёрстке</a></p>
+		</section>
+
+		<section>
+			<h2>Алгоритм по випадаючому меню</h2>
+			<p><em>
+				1. Визначити які елементи в нас задіяні: nav, menu, ul, li, a<br>
+				2. Прописати обнуляючі стилі для цих елементів.<br>
+				3. Розглянути спільні риси між однотипними елементами і прописати ці стилі для всіх елементів у поточному блоці.<br>
+				4. Закоментувати випадаючі меню і зробити меню першого рівня повністю.<br>
+				5. Проконтролювати, щоб всі елементи займали простір, який повинні займати за логікою, щоб не було елементів з нульовою висотою.<br>
+				6. Зняти коментарі з випадаючого меню - верстка при цьому поламається.<br>
+				7. Задати випадаючому меню стиль position: absolute; - верстка при цьому повернеться до нормального стану.<br>
+				8. Встановити випадаюче меню на його законне місце.<br>
+				9. Простежити які стилі для li, a унаслідувалися від батьківського (горизонтального меню).<br>
+				10. Перекрити ці стилі чи обмежити видимість стилів за допомогою елемента селектора "&gt;" (в інших проектах можна застосувати класи).<br>
+				11. Сховати меню і зробити, щоб воно з’являлося при наведенні миші на батьківський елемент.
+			</em></p>
+		</section>
+
+	</div>
+</div>
+
+<script src="jquery-3.1.1.min.js"></script>
+<script src="fe.js"></script>
+
+</body>
+</html>
