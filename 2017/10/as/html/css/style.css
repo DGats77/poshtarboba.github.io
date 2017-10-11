@@ -59,6 +59,7 @@ header .logo:hover {
 }
 header .logo img {
 	display: block;
+	height: 32px;
 }
 header .navbar {
 	min-height: 0;
