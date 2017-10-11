@@ -1,0 +1,185 @@
+body {
+	color: #bababa;
+	background: #3c3f41;
+}
+p {
+	margin: 0;
+	padding: 8px 0;
+}
+ul, menu {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.container {
+	background: #2b2b2b;
+}
+header {
+	background: #313335;
+	border-bottom: 1px solid #555;
+}
+footer {
+	background: #313335;
+	border-top: 1px solid #555;
+}
+h1, h2, h3, h4,
+.title,
+.rate {
+	/*color: #fff;*/
+	font-family: "Courier New", Menlo, Monaco, Consolas, monospace;
+	font-weight: bold;
+}
+.title {
+	font-size: 120%;
+}
+a {
+	color: #e8bf6a
+}
+a:hover {
+	color: #cc7832;
+}
+
+.content-wrap {
+	min-height: 100vh;
+	margin-bottom: -40px;
+	padding-bottom: 40px;
+}
+
+main > .container {
+	padding-top: 24px;
+}
+
+header .logo {
+	float: left;
+	padding: 12px 15px;
+	opacity: 0.7;
+}
+header .logo:hover {
+	opacity: 1;
+}
+header .logo img {
+	display: block;
+}
+header .navbar {
+	min-height: 0;
+	margin: 0 15px;
+	padding: 6px 0 0;
+}
+header .nav .login-button {
+	margin-left: 47px;
+}
+header .nav>li>a {
+	border: 1px solid transparent;
+}
+header .nav>li>a:focus,
+header .nav>li>a:hover {
+	background-color: transparent;
+	border: 1px solid #555;
+}
+
+footer {
+	font-size: 80%;
+}
+footer .copyright {
+	float: left;
+	margin: 0 15px;
+	padding: 12px 0;
+}
+footer .links {
+	float: right;
+	margin: 0 15px;
+	padding: 12px 0;
+}
+footer .links li + li {
+	margin-left: 15px;
+}
+
+.user_profile_aside,
+.user_profile_courses{
+	padding-bottom: 36px;
+}
+.user_profile .userpic img {
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 300px;
+	border: 6px solid #555;
+	border-radius: 50%;
+}
+.user_profile h1 {
+	text-align: center;
+}
+.user_profile .age {
+	text-align: center;
+	font-size: 80%;
+}
+.user_profile .role {
+	font-size: 120%;
+	text-align: center;
+}
+.user_profile .title {
+	padding-top: 24px;
+}
+.user_profile .links {
+	padding-left: 15px;
+}
+.user_profile .links li a {
+	display: inline-block;
+	padding: 4px 0;
+}
+.user_profile h2 {
+	font-size: 24px;
+}
+.user_profile .course {
+	padding-bottom: 24px;
+}
+.user_profile .course .time {
+	font-size: 80%;
+	margin: -12px 0 12px;
+}
+.user_profile .course .skills {
+	padding: 12px 0;
+}
+.user_profile .course .skills li {
+	background: rgba(85, 85, 85, 0.2);
+	margin-bottom: 6px;
+}
+.user_profile .course .skills li span {
+	display: inline-block;
+	padding: 0 4px;
+	white-space: nowrap;
+	background: rgba(165, 194, 97, 0.2);
+}
+.user_profile .course .homeworks p {
+	text-align: center;
+}
+.user_profile .course .homeworks .chart-bg {
+	stroke: #555;
+	fill: transparent;
+	stroke-width: 6px;
+}
+
+.user_profile .course .homeworks .chart-rate {
+	stroke: #a5c261;
+	fill: transparent;
+	stroke-width: 6px;
+}
+.user_profile .course .homeworks .chart {
+	position: relative;
+	margin: 0 auto;
+	max-width: 200px;
+}
+.user_profile .course .homeworks .chart .rate {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin-top: -32px;
+	width: 100%;
+	font-size: 48px;
+	line-height: 48px;
+}
+.user_profile .course .homeworks .chart .rate span {
+	font-size: 28px;
+	position: relative;
+	top: -13px;
+}
