@@ -17,7 +17,7 @@
 					<li><a href="#">Курси</a></li>
 					<li><a href="#">Команда</a></li>
 					<li><a href="#">Контакти</a></li>
-					<li class="login-button"><a href="#">Увійти</a></li>
+					<li class="login-button"><a href="#modalLogin" data-toggle="modal" data-target="#modalLogin">Увійти</a></li>
 				</menu>
 			</nav>
 		</header>
@@ -31,7 +31,7 @@
 						</div>
 						<h1>Борис Потапенко</h1>
 						<p class="age">24 роки</p>
-						<p class="role">студент, асистент</p>
+						<p class="role">студент, асистент, викладач</p>
 						<p class="title">Портфоліо:</p>
 						<ul class="links">
 							<li><a href="#">borispotap.as.io</a></li>
@@ -51,7 +51,8 @@
 							<h2>Проходить курс <a href="#">CMS Wordpress</a></h2>
 							<div class="row">
 								<div class="col-md-9 col-sm-8">
-									<p class="time"><time datetime="2016-02-02">в процесі навчання</time>, викладач <a href="#">Віталій Герц</a></p>
+									<p class="course-info"><time datetime="2016-02-02">в процесі навчання</time>, викладач <a href="#">Віталій Герц</a></p>
+									<p>Навички:</p>
 									<ul class="skills">
 										<li title="75%"><span style="width: 75%;">Основи</span></li>
 										<li title="85%"><span style="width: 85%;">Плагіни</span></li>
@@ -79,7 +80,8 @@
 							<h2>Пройшов курс <a href="#">Верстка</a></h2>
 							<div class="row">
 								<div class="col-md-9 col-sm-8">
-									<p class="time"><time datetime="2016-02-02">4 місяці тому</time>, викладач <a href="#">Аліса Енікеєва</a></p>
+									<p class="course-info"><time datetime="2016-02-02">4 місяці тому</time>, викладач <a href="#">Аліса Енікеєва</a></p>
+									<p>Навички:</p>
 									<ul class="skills">
 										<li title="75%"><span style="width: 75%;">HTML</span></li>
 										<li title="85%"><span style="width: 85%;">CSS</span></li>
@@ -94,7 +96,7 @@
 										<div class="chart">
 											<svg viewBox="0 0 100 100">
 												<circle class="chart-bg" cx="50" cy="50" r="45"></circle>
-												<circle class="chart-rate" cx="50" cy="50" r="45" stroke-dasharray="209, 1000" transform="translate(0 100) rotate(-90)"></circle>
+												<circle class="chart-rate" cx="50" cy="50" r="45" stroke-dasharray="209, 285" transform="translate(0 100) rotate(-90)"></circle>
 											</svg>
 											<!--
 												L = 2 * Math.PI * 45; L = 282.74
@@ -102,6 +104,37 @@
 											<p class="rate">74<span>%</span></p>
 										</div>
 										<p>Домашні завдання</p>
+									</div>
+								</div>
+							</div>
+						</section>
+						<section class="course">
+							<h2>Викладає курс <a href="#">Верстка</a></h2>
+							<div class="row">
+								<div class="col-md-9 col-sm-8">
+									<p class="course-info">Випустив 4 групи, 26 студентів</p>
+									<p>Навички студентів:</p>
+									<ul class="skills">
+										<li title="75%"><span style="width: 75%;">HTML</span></li>
+										<li title="85%"><span style="width: 85%;">CSS</span></li>
+										<li title="90%"><span style="width: 90%;">Photoshop</span></li>
+										<li title="60%"><span style="width: 60%;">Git</span></li>
+										<li title="3%"><span style="width: 3%;">Верстка e-mail</span></li>
+									</ul>
+								</div>
+								<div class="col-md-3 col-sm-4">
+									<div class="homeworks">
+										<div class="chart">
+											<svg viewBox="0 0 100 100">
+												<circle class="chart-bg" cx="50" cy="50" r="45"></circle>
+												<circle class="chart-rate" cx="50" cy="50" r="45" stroke-dasharray="209, 285" transform="translate(0 100) rotate(-90)"></circle>
+											</svg>
+											<!--
+												L = 2 * Math.PI * 45; L = 282.74
+											-->
+											<p class="rate">74<span>%</span></p>
+										</div>
+										<p>Домашні завдання студентів</p>
 									</div>
 								</div>
 							</div>
@@ -114,21 +147,61 @@
 
 	<footer class="clearfix">
 		<p class="copyright">&copy; Poshtar Boba, <span>2017</span></p>
-		<script>
-			(function(){
-				// добавити поточний рік в копірайт
-				let span = document.querySelector('footer .copyright span'),
-						y = parseInt(span.innerText),
-						ny = new Date().getFullYear();
-				if (y !== ny) { span.innerHTML = y + ' &ndash; ' + ny; }
-			})();
-		</script>
 		<ul class="links">
 			<li><a href="https://poshtarboba.github.io/">poshtarboba.github.io</a></li>
 		</ul>
 	</footer>
 
+	<div id="modalLogin" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Авторизація</h4>
+				</div>
+				<div class="modal-body">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#tabLogin">Вхід</a></li>
+						<li><a href="#tabSignup">Реєстрація</a></li>
+					</ul>
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="tabLogin">
+							вхід
+						</div>
+						<div role="tabpanel" class="tab-pane" id="tabSignup">
+							реєстрація
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+
+	<script>
+		(function(){
+			// добавити поточний рік в копірайт
+			let span = document.querySelector('footer .copyright span'),
+				y = parseInt(span.innerText),
+				ny = new Date().getFullYear();
+			if (y !== ny) { span.innerHTML = y + ' &ndash; ' + ny; }
+		})();
+	</script>
+
+	<script>
+		// таби у модалці логінації
+		(function($){
+			$('#modalLogin').find('.nav-tabs a').click(function(e){
+				e.preventDefault();
+				$(this).tab('show');
+			})
+		})(jQuery);
+	</script>
+
 </body>
 </html>

@@ -1,6 +1,7 @@
 body {
 	color: #bababa;
-	background: #3c3f41;
+	background: #3c3f41	repeating-linear-gradient(120deg, rgba(85, 85, 85, .2), rgba(85, 85, 85, .2) 1px, transparent 1px, transparent 6px) repeat left top;
+	background-size: 7px 12px;
 }
 p {
 	margin: 0;
@@ -13,14 +14,6 @@ ul, menu {
 }
 .container {
 	background: #2b2b2b;
-}
-header {
-	background: #313335;
-	border-bottom: 1px solid #555;
-}
-footer {
-	background: #313335;
-	border-top: 1px solid #555;
 }
 h1, h2, h3, h4,
 .title,
@@ -35,8 +28,9 @@ h1, h2, h3, h4,
 a {
 	color: #e8bf6a
 }
-a:hover {
+a:hover, a:focus {
 	color: #cc7832;
+	outline: none;
 }
 
 .content-wrap {
@@ -49,6 +43,10 @@ main > .container {
 	padding-top: 24px;
 }
 
+header {
+	background: #313335;
+	border-bottom: 1px solid #555;
+}
 header .logo {
 	float: left;
 	padding: 12px 15px;
@@ -80,6 +78,8 @@ header .nav>li>a:hover {
 
 footer {
 	font-size: 80%;
+	background: #313335;
+	border-top: 1px solid #555;
 }
 footer .copyright {
 	float: left;
@@ -93,6 +93,22 @@ footer .links {
 }
 footer .links li + li {
 	margin-left: 15px;
+}
+
+.modal-content {
+	background: #313335;
+}
+.modal-content .close {
+	color: inherit;
+}
+.modal-header {
+	border-bottom-color: #555;
+}
+.modal-footer {
+	border-top-color: #555;
+}
+.modal-body {
+	background: #2b2b2b;
 }
 
 .user_profile_aside,
@@ -134,9 +150,9 @@ footer .links li + li {
 .user_profile .course {
 	padding-bottom: 24px;
 }
-.user_profile .course .time {
+.user_profile .course .course-info {
 	font-size: 80%;
-	margin: -12px 0 12px;
+	margin: -12px 0 0;
 }
 .user_profile .course .skills {
 	padding: 12px 0;
