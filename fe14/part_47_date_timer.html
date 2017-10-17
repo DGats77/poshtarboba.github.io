@@ -164,9 +164,18 @@
 				&nbsp;&nbsp;setTimeout(function(){ console.log(p[i].innerText); }, (i + 1) * 1000);<br>
 				}
 			</code>
+			<p>Ця задача популярна на співбесідах:<br><em>"Що буде виведено в консоль?"</em></p>
+			<code>
+				const arr = [10, 12, 15, 21];<br>
+				for (var i = 0; i &lt; arr.length; i++) {<br>
+				&nbsp;&nbsp;setTimeout(function() {<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;console.log('Index: ' + i + ', element: ' + arr[i]);<br>
+				&nbsp;&nbsp;}, 3000);<br>
+				}
+			</code>
 			<p>Останній варіант має декілька варіантів правильного розв'язку:</p>
 			<code>
-				// використаємо let замість var:<br>
+				// використаємо let замість var (<a href="http://exploringjs.com/es6/ch_variables.html#sec_let-const-loop-heads" target="_blank">подробиці тут</a>):<br>
 				var p = document.querySelectorAll('p');<br>
 				for (let i = 0; i < 5; i++){<br>
 				&nbsp;&nbsp;setTimeout(function(){ console.log(p[i].innerText); }, (i + 1) * 1000);<br>
@@ -182,6 +191,24 @@
 				...<br><br>
 				// можна використати метод forEach, з ним також код буде працювати вірно. Спробуйте самі.
 			</code>
+			<h3>Завдання</h3>
+			<ol>
+				<li>Опишіть порядок виконання команд у наступних алгоритмах:
+					<code>
+						const arr = [10, 12, 15, 21];<br><br>
+						for (var i = 0; i &lt; arr.length; i++) {<br>
+						&nbsp;&nbsp;setTimeout((function(i) {<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;return function() { console.log(i, arr[i]); }<br>
+						&nbsp;&nbsp;})(i), 3000);<br>
+						}<br><br>
+						for (var i = 0; i &lt; arr.length; i++) {<br>
+						&nbsp;&nbsp;(function(i){<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;setTimeout(function() { console.log(i, arr[i]); }, 3000);<br>
+						&nbsp;&nbsp;})(i);<br>
+						}
+					</code>
+				<li>
+			<ol>
 		</section>
 
 		<section class="homework">
@@ -204,6 +231,18 @@
 				</li>
 				<li>Через 5 секунд після відкриття сторінки вивести на екран повідомлення "5 seconds!".</li>
 				<li>Зробити таймер, що починає відлік з 3:30, рахує посекундно у зворотньому напрямку і після досягнення значення 0:00 замість цифр видає текст "BOOM!!!" <em>(прим.: тероризм - це погано)</em>.</li>
+				<li>
+					Виправте код, щоб у консолі видавало цифри 1, 2, 3, 4, 5:
+					<code>
+						for (var i = 0; i &lt; 5; i++) {<br>
+						&nbsp;&nbsp;setTimeout(function() {<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;console.log(i + 1);<br>
+						&nbsp;&nbsp;}, i * 1000);<br>
+						}
+					</code>
+					Переробіть цей код так, щоб у ньому була рекурсія.<br>
+					Спробуйте застосувати setInterval.
+				</li>
 				<li>
 					Зробити годинник, що відображає в браузері поточні дату та час - день, місяць, рік, день тижня, години, хвилини, секунди. Синхронізацію проводити 1 раз на 5 хвилин.<br>
 					Рекомендації до виконання: раціонально створити масив змінних [Y, M, D, d, h, m, s] та 3 функції: синхронізацію з годинником комп’ютера; функцію, що повертає оформлену строку з датою та часом та функцію, яка буде робити розрахунки додавання секунди та перевірки хвилин, годин і т.п. на перевищення допустимих значень. В таймері setInterval потрібно зробити додавання секунди, виведення строки та 1 раз на 300 циклів проводити синхронізацію.<br>
