@@ -72,7 +72,16 @@
 			</code>
 			<p>Якщо у вас файл fonts.css розташований в тій же папці, що і шрифти, то в url шрифтів можна вказувати тільки ім’я файлу шрифта. Якщо він знаходиться в папці CSS, то необхідно вказати шлях до файлів шрифтів:</p>
 			<code>
-				src: url('../fonts/opensans-webfont.eot');
+				src: url('../fonts/opensans.eot');
+			</code>
+			<p>Наразі всі браузери підтримують шрифт woff, тому підключення можна скоротити:</p>
+			<code>
+				@font-face {<br>
+				&nbsp;&nbsp;font-family: 'open sans';<br>
+				&nbsp;&nbsp;src: url('../fonts/opensans.woff') format('woff');<br>
+				&nbsp;&nbsp;font-weight: normal;<br>
+				&nbsp;&nbsp;font-style: normal;<br>
+				}
 			</code>
 			<p><strong class="danger">Зверніть увагу!</strong> Коли підключаєте файл <strong>SVG</strong> - через решітку у імені файла необхідно вказати id шрифта:</p>
 			<figure>
@@ -82,32 +91,22 @@
 			<p>Якщо підключаєте декілька шрифтів з одним іменем та різним накресленням, наприклад, <strong>Open Sans Regular</strong> і <strong>Open Sans bold</strong> (їх імена відповідно open_sansregular і open_sansbold), то їх логічно підключити одним іменем, але різними стилями:</p>
 			<code>
 				@font-face {<br>
-				&nbsp;&nbsp;font-family: 'OpenSans';<br>
-				&nbsp;&nbsp;src: url('opensans-webfont.eot');<br>
-				&nbsp;&nbsp;src: url('opensans-webfont.eot?#iefix') format('embedded-opentype'),<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont.woff2') format('woff2'),<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont.woff') format('woff'),<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont.ttf') format('truetype'),<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont.svg#open_sansregular') format('svg');<br>
+				&nbsp;&nbsp;font-family: 'Open Sans';<br>
+				&nbsp;&nbsp;src: url('opensans.woff') format('woff');<br>
 				&nbsp;&nbsp;<strong>font-weight: normal;</strong><br>
 				&nbsp;&nbsp;font-style: normal;<br>
 				}<br>
 				@font-face {<br>
-				&nbsp;&nbsp;font-family: 'OpenSans';<br>
-				&nbsp;&nbsp;src: url('opensans-webfont-bold.eot');<br>
-				&nbsp;&nbsp;src: url('opensans-webfont-bold.eot?#iefix') format('embedded-opentype'),<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont-bold.woff2') format('woff2'),<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont-bold.woff') format('woff'),<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont-bold.ttf') format('truetype'),<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url('opensans-webfont-bold.svg#open_sansbold') format('svg');<br>
+				&nbsp;&nbsp;font-family: 'Open Sans';<br>
+				&nbsp;&nbsp;src: url('opensans-webfont-bold.woff') format('woff');<br>
 				&nbsp;&nbsp;<strong>font-weight: bold;</strong><br>
 				&nbsp;&nbsp;font-style: normal;<br>
 				}
 			</code>
 			<p>Після чого шрифт можна використовувати на сайті:</p>
 			<code>
-				body { font: normal 18px/1.3em "OpenSans", Helvetica, Arial, sans-serif;}<br>
-				h1 { font-family: "OpenSans", Helvetica, Arial, sans-serif;}
+				body { font: normal 18px/1.3em "Open Sans", Helvetica, Arial, sans-serif;}<br>
+				h1 { font-family: "Open Sans", Helvetica, Arial, sans-serif;}
 			</code>
 		</section>
 
