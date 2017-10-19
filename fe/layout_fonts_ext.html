@@ -70,14 +70,14 @@
 				&nbsp;&nbsp;font-style: normal;<br>
 				}
 			</code>
-			<p>Якщо у вас файл fonts.css розташований в тій же папці, що і шрифти, то в url шрифтів можна вказувати тільки ім’я файлу шрифта. Якщо він знаходиться в папці CSS, то необхідно вказати шлях до файлів шрифтів:</p>
+			<p>Але краще підключати шрифти у своїй CSS, скопіюйте код підключення і вставте в самий початок файлу стилів. При цьому необхідно вказати шлях до файлів шрифтів:</p>
 			<code>
-				src: url('../fonts/opensans.eot');
+				src: url('../fonts/opensans.woff');
 			</code>
 			<p>Наразі всі браузери підтримують шрифт woff, тому підключення можна скоротити:</p>
 			<code>
 				@font-face {<br>
-				&nbsp;&nbsp;font-family: 'open sans';<br>
+				&nbsp;&nbsp;font-family: 'Open Sans';<br>
 				&nbsp;&nbsp;src: url('../fonts/opensans.woff') format('woff');<br>
 				&nbsp;&nbsp;font-weight: normal;<br>
 				&nbsp;&nbsp;font-style: normal;<br>
@@ -98,7 +98,7 @@
 				}<br>
 				@font-face {<br>
 				&nbsp;&nbsp;font-family: 'Open Sans';<br>
-				&nbsp;&nbsp;src: url('opensans-webfont-bold.woff') format('woff');<br>
+				&nbsp;&nbsp;src: url('opensans.woff') format('woff');<br>
 				&nbsp;&nbsp;<strong>font-weight: bold;</strong><br>
 				&nbsp;&nbsp;font-style: normal;<br>
 				}
