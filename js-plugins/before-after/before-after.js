@@ -30,6 +30,16 @@ function beforeAfter(selector){
 				dragging(span.parentElement, slider.querySelector('.overflow'), e.pageX - spanOffsetX + span.offsetWidth / 2);
 			}
 		});
+		// touchScreen
+		span.ontouchstart = function(e){ dragStart(span, e.offsetX); };
+		window.addEventListener('touchend', function(){
+			if (span.classList.contains('move')) { dragEnd(span); }
+		});
+		window.addEventListener('touchmove', function(e){
+			if (span.classList.contains('move')) {
+				dragging(span.parentElement, slider.querySelector('.overflow'), e.pageX - spanOffsetX + span.offsetWidth / 2);
+			}
+		});
 	}
 
 	function createDiv(cls, parent){
