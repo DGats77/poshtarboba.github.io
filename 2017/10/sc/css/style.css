@@ -119,6 +119,14 @@ p.buttons > * {
 	color: #0cafe6;
 	border-color: #0cafe6;
 }
+.spreaker-radio { padding-top: 60px; height: 260px; overflow: hidden;}
+.slideshow-wrap,
+.peoples-wrap {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
 
 /* Archivo font */
 
@@ -389,6 +397,9 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 	#welcome:before {
 		height: 61px;
 	}
+	a[name] {
+		top: -61px;
+	}
 	header .logo {
 		padding: 12px 0;
 	}
@@ -475,7 +486,7 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 }
 .slideshow {
 	position: relative;
-	height: 260px;
+	height: 220px;
 }
 .slideshow li {
 	position: absolute;
@@ -555,6 +566,11 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 .slideshow ~ .btn-next:hover:before {
 	border-color: #fff;
 }
+@media (min-width: 420px) {
+	.slideshow {
+		height: 280px;
+	}
+}
 @media (min-width: 768px) {
 	.icon-op:before,
 	.icon-wp:before,
@@ -578,7 +594,7 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 		width: 460px;
 	}
 	.slideshow {
-		height: 380px;
+		height: 360px;
 	}
 	.slideshow li.prev {
 		left: 35%;
@@ -591,6 +607,9 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 	.under-title {
 		padding-left: 120px;
 		padding-right: 120px;
+	}
+	.slideshow {
+		height: 460px;
 	}
 	.slideshow img {
 		width: auto;
@@ -677,15 +696,15 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 }
 .follow-us li {
 	display: inline-block;
-	margin-right: 30px;
-	margin-bottom: 30px;
+	margin-right: 16px;
+	margin-bottom: 20px;
 }
 .follow-us li a {
 	position: relative;
 	overflow: hidden;
 	display: block;
-	width: 104px;
-	height: 104px;
+	width: 60px;
+	height: 60px;
 	text-indent: -2000px;
 	background: #e9f7fc;
 	border-radius: 50%;
@@ -698,6 +717,7 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 	margin: -24px 0 0 -24px;
 	width: 48px;
 	height: 48px;
+	transform: scale(0.6666);
 	background: url(../img/sprite.png) no-repeat left top;
 }
 .follow-us li a.social-telegram:before { background-position: -162px 0; }
@@ -861,6 +881,7 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 }
 #advantages p.buttons {
 	text-align: left;
+	margin-bottom: 32px;
 }
 #advantages ul.ecosphere {
 	position: relative;
@@ -889,6 +910,33 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 #advantages ul.ecosphere li:nth-child(2) { left: 188px; top: 40px; }
 #advantages ul.ecosphere li:nth-child(3) { left: 346px; top: 136px; }
 #advantages ul.ecosphere li:nth-child(4) { left: 188px; top: 220px; }
+#advantages .store {
+	position: relative;
+	margin: 0 auto;
+	width: 500px;
+	height: 500px;
+	max-height: 500px;
+	max-width: 95%;
+	overflow: hidden;
+}
+#advantages .store img {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: 0;
+	max-width: 80%;
+	transform: translate(-50%, -50%);
+}
+#advantages .store img.bg {
+	animation-name: store_bg;
+	animation-duration: 60s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+@keyframes store_bg {
+	from { transform: translate(-50%, -50%) rotate(0deg); }
+	to { transform: translate(-50%, -50%) rotate(360deg); }
+}
 @media (min-width: 640px) {
 }
 @media (min-width: 768px) {
@@ -924,6 +972,9 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 		top: 60%;
 		margin: 0;
 		transform: translate(-50%, -50%) scale(.9);
+	}
+	#advantages img.img {
+		width: 40%;
 	}
 }
 @media (max-width: 519px) {
@@ -1036,6 +1087,17 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 	background: #a4bfc8;
 	border-radius: 50%;
 }
+#roadmap li:before,
+#roadmap li > * {
+	opacity: 0;
+	transform: scale(0);
+}
+#roadmap li.animate:before,
+#roadmap li.animate > * {
+	opacity: 1;
+	transform: scale(1);
+	transition: all 800ms ease;
+}
 @media (min-width: 640px) {
 	#roadmap h2:before {
 		transform: scale(.625);
@@ -1093,17 +1155,68 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 		top: 50%;
 		margin-top: -6px;
 	}
+	#roadmap.animate li:before,
+	#roadmap.animate li > * {
+		opacity: 1;
+		transform: scale(1);
+	}
+	#roadmap.animate li.step1:before {
+		transition: all 800ms ease;
+	}
+	#roadmap.animate li.step2:before {
+		transition: all 800ms ease 200ms;
+	}
+	#roadmap.animate li.step3:before {
+		transition: all 800ms ease 400ms;
+	}
+	#roadmap.animate li.step4:before {
+		transition: all 800ms ease 600ms;
+	}
+	#roadmap.animate li.step5:before {
+		transition: all 800ms ease 800ms;
+	}
+	#roadmap.animate li.step6:before {
+		transition: all 800ms ease 1000ms;
+	}
+	#roadmap.animate li.step7:before {
+		transition: all 800ms ease 1200ms;
+	}
+	#roadmap.animate li.step1 > * {
+		transition: all 800ms ease 100ms;
+	}
+	#roadmap.animate li.step2 > * {
+		transition: all 800ms ease 300ms;
+	}
+	#roadmap.animate li.step3 > * {
+		transition: all 800ms ease 500ms;
+	}
+	#roadmap.animate li.step4 > * {
+		transition: all 800ms ease 700ms;
+	}
+	#roadmap.animate li.step5 > * {
+		transition: all 800ms ease 900ms;
+	}
+	#roadmap.animate li.step6 > * {
+		transition: all 800ms ease 1100ms;
+	}
 }
 @media (max-width: 519px) {
+	#roadmap ul.roadmap-steps {
+		background-position: 35px 50px;
+	}
 	#roadmap ul.roadmap-steps li {
-		padding-left: 120px;
+		padding-left: 95px;
 	}
 	#roadmap ul.roadmap-steps li:before {
 		top: -30px;
+		left: -25px;
 		transform: scale(.6);
 	}
 	#roadmap ul.roadmap-steps li.step7:before {
-		left: 235px;
+		left: 200px;
+	}
+	#roadmap ul.roadmap-steps li time {
+		left: 55px;
 	}
 }
 
@@ -1165,12 +1278,15 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 	display: inline-block;
 	margin-right: 10px;
 }
+#our_team ul.social li:last-child {
+	margin-right: 0;
+}
 #our_team ul.social li a {
 	position: relative;
 	overflow: hidden;
 	display: block;
-	width: 30px;
-	height: 30px;
+	width: 42px;
+	height: 42px;
 	text-indent: -2000px;
 	background: rgba(90, 115, 131, .2);
 	border-radius: 50%;
@@ -1184,7 +1300,7 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 	width: 48px;
 	height: 48px;
 	background: url(../img/sprite.png) no-repeat left top;
-	transform: scale(.27);
+	transform: scale(.5);
 }
 #our_team ul.social li a.social-telegram:before { background-position: -162px 0; }
 #our_team ul.social li a.social-facebook:before { background-position: -262px 0; }

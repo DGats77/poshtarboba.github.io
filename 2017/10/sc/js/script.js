@@ -48,8 +48,7 @@
 				$active = $a.last();
 			} else {
 				$a.each(function(){
-					let top = getAnchorOffsetTop($(this));
-					if (top <= scroll) { $active = $(this); }
+					if (getAnchorOffsetTop($(this)) <= scroll) { $active = $(this); }
 				});
 			}
 			$a.parent().removeClass('active');
@@ -60,17 +59,11 @@
 				top: $active.offset().top + $active.outerHeight() - scroll - 2 + 'px'
 			});
 		}
-	}).on('resize', function () {
-		$(window).trigger('scroll');
-	}).trigger('resize');
+	});
 
 	/* timer */
 	let $timer = $('.js-timer');
 	$timer.append('<span class="d">0</span> <span class="h">0</span> <span class="m">0</span> <span class="s">0</span>');
-	let $timerD = $timer.children('.d');
-	let $timerH = $timer.children('.h');
-	let $timerM = $timer.children('.m');
-	let $timerS = $timer.children('.s');
 	let finish = window.endOfTimer;
 	finish = new Date(finish.year, finish.month - 1, finish.day, finish.hrs, finish.min, finish.sec);
 	function setTimer(){
@@ -79,23 +72,50 @@
 			$timer.children().text('0');
 			clearInterval(window.endOfTimerID);
 		} else {
-			$timerD.text(Math.floor(delta / 24 / 3600));
-			$timerH.text(Math.floor(delta % (24 * 3600) / 3600));
-			$timerM.text(Math.floor(delta % 3600 / 60));
-			$timerS.text(delta % 60);
+			$timer.children('.d').text(Math.floor(delta / 24 / 3600));
+			$timer.children('.h').text(Math.floor(delta % (24 * 3600) / 3600));
+			$timer.children('.m').text(Math.floor(delta % 3600 / 60));
+			$timer.children('.s').text(delta % 60);
 		}
 	}
 	setTimer();
 	window.endOfTimerID = setInterval(setTimer, 200);
 
 	/* slideshow */
-
 	$.fn.mySlideshow = mySlideshowPlugin;
 	$('.slideshow, .peoples').mySlideshow();
 
+	/* scroll-animation */
+	$(window).on('scroll', function(){
+		let $roadmap = $('#roadmap');
+		let top = $(window).scrollTop();
+		let wh = $(window).height();
+		if (top > $roadmap.offset().top - wh / 2) {
+			$roadmap.addClass('animate');
+		}
+		if ($(window).width() < 1200) {
+			$roadmap.find('li').each(function(){
+				if (top > $(this).offset().top - wh / 1.2) {
+					$(this).addClass('animate');
+				}
+			});
+		}
+	});
+
+	/* some size */
+	$(window).on('resize', function(){
+		let $store = $('#advantages').find('.store');
+		$store.height($store.width());
+	});
+
+	/* triggers */
+	$(window)
+		.on('resize', function () { $(window).trigger('scroll'); })
+		.trigger('resize');
+
 })(jQuery);
 
-/* slidesho plugin */
+/* slideshow plugin */
 function mySlideshowPlugin(){
 	let options = {
 		interval: 5000
