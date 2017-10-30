@@ -81,6 +81,13 @@
 			<p><strong>viewBox</strong> - видима область, в умовних одиницях.</p>
 			<p><strong>style="enable-background:new 0 0 890.982 890.982;"</strong> - підкладка (рос. - подложка).</p>
 			<p>При створенні власних зображень задавайте розмір зображення і підкладки 100 х 100, для зручності обчислень (ну чи 100 х 250, 70 х 100, щоб один з розмірів був 100).</p>
+			<code>
+				&lt;svg viewBox="0 0 100 100"&gt;
+			</code>
+			<p>Згодом стандарти стають суворішими. Можливо, в майбутньому SVG не будуть відображатися без namespaces, тому не забувайте їх прописувати:</p>
+			<code>
+				&lt;svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
+			</code>
 			<p>Тепер можна працювати з тегами як з елементами DOM: задавати їм стилі, модифікувати їх, реагувати на події.</p>
 			<p>Першим чином поексперементуємо зі стилями. Їх можна напряму в теги прописувати:</p>
 			<code>
@@ -89,9 +96,9 @@
 			<p>Але краще працювати з класами, як і зі звичайними тегами:</p>
 			<code>
 				&lt;style&gt;<br>
-				&nbsp;&nbsp;.nosuk { ... }<br>
+				&nbsp;&nbsp;.someclass { ... }<br>
 				&lt;/style&gt;<br>
-				&lt;path class="nosuk" ...
+				&lt;path class="someclass" ...
 			</code>
 			<p>Та для формату SVG нам доведеться вивчити трохи нових стилів.</p>
 			<p><strong>fill</strong> - колір зафарбовування.</p>
@@ -141,8 +148,8 @@
 				text { font-size: 40px; line-heigh:48px; stroke: red; fill: blue; letter-spacing: 4px; text-transform: uppercase;}
 			</code>
 			<p><strong>&lt;image xlink:href="123.jpg"  width="678" height="435"/&gt;</strong></p>
-			<p>Щоб картинку можна було вставити, в тезі &lt;svg&gt; повинен бути атрибут xmlns:xlink="http://www.w3.org/1999/xlink".</p>
-			<p><strong>&lt;path d="M 50 50 L 32.5 12.3 z" />&gt;</strong></p>
+			<p>У даному випадку адреса картинки використовує namespace xlink, тому ящо не прописати цей xmlns:xlink в тезі svg - шлях до картинки не буде знайдено.</p>
+			<p><strong>&lt;path d="M 50 50 L 32.5 12.3 z" /&gt;</strong></p>
 			<p><strong>M 50 50</strong> - перемістити точку в позицію x=50, y=50.</p>
 			<p><strong>L 32.5 12.3</strong> - провести лінію до вказаної точки.</p>
 			<p><strong>m 50 -50</strong> - перемістити точку в нову позицію відносно попередньої координати x=+50, y=-50.</p>

@@ -204,5 +204,21 @@
 		})(jQuery);
 	</script>
 
+		<script>
+		// видали мене
+		(function($){
+			$('circle.chart-rate').each(function(){
+				$(this).attr('data-percent', $(this).attr('stroke-dasharray').split(', ')[0]);
+				$(this).attr('stroke-dasharray', '1, 1000');
+				$(this).attr('data-timer', setInterval(function($c){
+					let max = parseInt($c.attr('data-percent'));
+					let cur = parseInt($c.attr('stroke-dasharray').split(', ')[0]);
+					$c.attr('stroke-dasharray', cur + 2 + ', 1000');
+					if (cur >= max) { clearInterval(parseInt($c.attr('data-timer'))); }
+				}, 20, $(this)));
+			});
+		})(jQuery);
+	</script>
+
 </body>
 </html>
