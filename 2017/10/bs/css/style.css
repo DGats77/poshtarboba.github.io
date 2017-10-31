@@ -52,7 +52,7 @@ header nav .social { border-bottom: 1px solid #ddd;}
 #welcome { background: url(../img/welcome_bg.jpg) no-repeat center center; background-size: cover;}
 #welcome .center-box { padding: 60px 0 80px; text-align: center;}
 #welcome h1 { font-size: 32px; margin-bottom: 10px; line-height: 40px; color: #fff;}
-#welcome .under-title { margin-bottom: 40px; font-size: 18px; line-height: 30px; color: #fff;}
+#welcome .under-title { margin-bottom: 40px; font-size: 24px; line-height: 36px; color: #fff;}
 
 form.subscribe label { display: block; margin-bottom: 20px;}
 form.subscribe label input { display: block; padding: 15px; width: 100%; box-sizing: border-box; color: #666; font-size: 16px; line-height: 20px; background: #fff; border: none; border-radius: 3px;}
@@ -63,9 +63,15 @@ form.subscribe .hint { margin-top: 40px; color: #a6ade9;}
 #team { padding: 40px 0 0; text-align: center;}
 #team h2 { margin-bottom: 40px; font-size: 32px; line-height: 46px;}
 #team .column { margin-bottom: 60px;}
-#team .column img.photo { display: block; margin: 0 auto 24px; border-radius: 50%;}
+#team .column img.photo { position: relative; display: block; border-radius: 50%; transition: transform 500ms ease;}
+#team .column .photo-wrap { position: relative; display: inline-block; margin-bottom: 24px;}
+#team .column .photo-wrap:before { content: ""; position: absolute; z-index: 2; left: 0; top: 0; width: 100%; height: 100%; border-radius: 50%; background: #81b24e; opacity: 0; transition: all 500ms ease;}
+#team .column .photo-wrap p { position: absolute; z-index: 4; left: 0; top: 0; font-size: 14px; line-height: 20px; color: #fff; opacity: 0; transition: opacity 500ms ease;}
+#team .column .photo-wrap:hover:before { opacity: 0.7; transform: scale(1.2);}
+#team .column .photo-wrap:hover img.photo { transform: scale(1.2);}
+#team .column .photo-wrap:hover p { opacity: 1;}
 #team .column .title { font-size: 18px; line-height: 32px; font-weight: bold;}
-#team .column .role { margin-bottom: 24px; color: #81b24e;}
+#team .column .role { color: #81b24e;}
 
 #prefooter { padding: 40px 0 0; font-size: 14px; line-height: 20px; background: #f6f6f6; border-bottom: 1px solid transparent;}
 #prefooter a { display: inline-block;}
