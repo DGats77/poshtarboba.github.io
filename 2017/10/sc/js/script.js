@@ -107,6 +107,13 @@
 		$store.height($store.width());
 	});
 
+	/* form input focus */
+	$('.subscribe-form label input').on('focus', function(){
+		$(this).parents('form').addClass('focus');
+	}).on('blur', function(){
+		$(this).parents('form').removeClass('focus');
+	});
+
 	/* triggers */
 	$(window)
 		.on('resize', function () { $(window).trigger('scroll'); })

@@ -62,6 +62,12 @@ p.buttons > * {
 	p.buttons > * {
 		margin: 0 15px;
 	}
+	p.buttons > *:first-child {
+		margin-left: 0;
+	}
+	p.buttons > *:last-child {
+		margin-right: 0;
+	}
 }
 .blue-button {
 	padding: 15px 30px;
@@ -74,7 +80,7 @@ p.buttons > * {
 .blue-button:hover,
 .blue-button:focus {
 	color: #fff;
-	background: #2bbde0 linear-gradient(to right, #56d9e7, #05a5da);
+	background: #2bbde0 linear-gradient(to right, #65d5ce, #38aec2);
 }
 .long-button {
 	padding-left: 75px;
@@ -282,13 +288,14 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 	header nav ul.services {
 		right: auto;
 		float: right;
+		margin-left: 20px;
 		padding-top: 20px;
 		width: auto;
 		text-align: left;
 	}
 	header nav ul li {
 		display: inline-block;
-		margin-left: 26px;
+		margin-left: 20px;
 	}
 	header nav ul.sections li:first-child {
 		margin-left: 0;
@@ -757,8 +764,8 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 		text-align: left;
 	}
 	.follow-us li {
-		margin-right: 5px;
-		margin-bottom: 0;
+		margin-right: 16px;
+		margin-bottom: 8px;
 	}
 	.follow-us li a {
 		width: 48px;
@@ -766,6 +773,11 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 	}
 	.follow-us li a:before {
 		transform: scale(.41666);
+	}
+}
+@media (min-width: 992px) {
+	.follow-us li {
+		margin-right: 4px;
 	}
 }
 
@@ -785,20 +797,19 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 }
 .subscribe-form input[type="submit"] {
 	display: block;
-	padding: 12px 0;
+	padding: 14px 0;
 	width: 100%;
-	color: #0cafe6;
+	color: #fff;
 	font-size: 16px;
 	line-height: 20px;
 	font-weight: 500;
-	border: 2px solid #0cafe6;
-	background: #fff;
+	background: #23b9e2 linear-gradient(to right, #07a7dd, #43cee7);
+	border: none;
 	border-radius: 24px;
 }
 .subscribe-form input[type="submit"]:hover,
 .subscribe-form input[type="submit"]:focus {
-	color: #fff;
-	background: #0cafe6;
+	background: #2bbde0 linear-gradient(to right, #65d5ce, #38aec2);
 }
 .subscribe-form input.email {
 	display: block;
@@ -816,6 +827,11 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 		width: 100%;
 		background: #f4f4f4;
 		border-radius: 24px;
+		transition: all 400ms ease;
+	}
+	.subscribe-form form.focus {
+		background: #fff;
+		box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 	}
 	.subscribe-form label {
 		display: table-cell;
@@ -1116,6 +1132,10 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 		width: 220px;
 		height: auto;
 	}
+	#roadmap ul.roadmap-steps li strong {
+		font-size: 18px;
+		line-height: 24px;
+	}
 	#roadmap ul.roadmap-steps li.step1 { left: 248px; top: 72px; }
 	#roadmap ul.roadmap-steps li.step2 { left: 548px; top: 72px; }
 	#roadmap ul.roadmap-steps li.step3 { left: 848px; top: 72px; width: 180px; }
@@ -1285,8 +1305,8 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 	position: relative;
 	overflow: hidden;
 	display: block;
-	width: 42px;
-	height: 42px;
+	width: 32px;
+	height: 32px;
 	text-indent: -2000px;
 	background: rgba(90, 115, 131, .2);
 	border-radius: 50%;
@@ -1300,7 +1320,7 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 	width: 48px;
 	height: 48px;
 	background: url(../img/sprite.png) no-repeat left top;
-	transform: scale(.5);
+	transform: scale(.35);
 }
 #our_team ul.social li a.social-telegram:before { background-position: -162px 0; }
 #our_team ul.social li a.social-facebook:before { background-position: -262px 0; }
