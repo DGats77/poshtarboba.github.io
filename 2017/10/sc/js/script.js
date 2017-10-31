@@ -64,8 +64,7 @@
 	/* timer */
 	let $timer = $('.js-timer');
 	$timer.append('<span class="d">0</span> <span class="h">0</span> <span class="m">0</span> <span class="s">0</span>');
-	let finish = window.endOfTimer;
-	finish = new Date(finish.year, finish.month - 1, finish.day, finish.hrs, finish.min, finish.sec);
+	let finish = new Date(window.endOfTimer);
 	function setTimer(){
 		let delta = Math.round((finish.valueOf() - Date.now()) / 1000);
 		if (delta < 0) {
