@@ -37,6 +37,35 @@
 		#tabs li a { display: inline-block; padding: 8px 16px; text-decoration: none; color: #000;}
 		#tabs li a:hover { background: #ccc;}
 		#tabs li.active a { background: rgba(255, 0, 0, 0.3);}
+		
+		.to-top {
+			position: fixed;
+			right: 20px;
+			bottom: 80px;
+			width: 80px;
+			height: 80px;
+			font-size: 0;
+			line-height: 0;
+			background: white;
+			border: 1px solid silver;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.to-top:before {
+			content: "";
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			width: 1px;
+			height: 1px;
+			border-left: 24px solid transparent;
+			border-right: 24px solid transparent;
+			border-bottom: 24px solid #999;
+			transform: translate(-50%, -50%);
+		}
+		.to-top:focus {
+			outline: none;
+		}
 	</style>
 </head>
 <body>
