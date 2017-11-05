@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Motivator</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="format-detection" content="telephone=no">
+	<style>
+		body { margin: 0; overflow: hidden;}
+		.motivator { width: 100vw; height: 100vh;
+			background: url(http://nyan-cat.com/images/nyan-cat-background-large.jpg) no-repeat left top;
+			background-size: 110% 110%;}
+		.text { text-align: center; color: white;
+			font: normal 28px/40px Arial, Helvetica, sans-serif;
+			position: absolute; left: 50%; top: 50%;
+			transform: translate(-50%, -50%);
+			}
+		h1 { margin-top: 0; font: 900 120px/120px "Arial Black", Helvetica, sans-serif;}
+		p { margin: 0;}
+		.cat { position: absolute; width: 60px; height: 54px;
+			background: url(cat.png) no-repeat center center;
+			background-size: cover;
+			transition: all 1s ease;
+		}
+	</style>
+</head>
+<body>
+
+<div class="cat"></div>
+
+<div class="motivator">
+	<div class="text">
+		<h1>Obey</h1>
+		<p>Lorem ipsum dolor sit amen</p>
+	</div>
+</div>
+
+<script src="jquery-3.2.1.min.js"></script>
+<script src="motivator.js"></script>
+
+</body>
+</html>
+
