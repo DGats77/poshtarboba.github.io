@@ -21,14 +21,28 @@
 
 	function getParams(paramsString) {
 		let paramsArray = paramsString.substr(1).split('&');
+
 		let params = {};
+
 		for (let i = 0; i < paramsArray.length; ++i) {
-			let param = paramsArray[i].split('=', 2);
-			if (param.length !== 2) continue;
+			let param = paramsArray[i]
+				.split('=', 2);
+
+			if (param.length !== 2)
+				continue;
+
 			params[param[0]] = decodeURIComponent(param[1].replace(/\+/g, " "));
 		}
+
 		return params;
 	}
+
+	/* video size */
+	let $video = $('#video').find('iframe');
+	$video.attr('data-ratio', $video.width() / $video.height()).css({'max-width': $video.width(), width: '100%'});
+	$(window).on('resize', function () {
+		$video.height(Math.round($video.width() / parseFloat($video.attr('data-ratio'))));
+	});
 
 	/* hamburger button */
 	$('.hamburger').on('click', function () {
@@ -43,7 +57,7 @@
 
 	/* navigation: scroll to section */
 	$('nav .sections a').on('click', function (e) {
-		if (window.location.pathname !== '/') {
+		if (window.location.pathname != '/') {
 			return;
 		}
 		e.preventDefault();
@@ -117,10 +131,6 @@
 		if (top > $roadmap.offset().top - wh / 2) {
 			$roadmap.addClass('animate');
 		}
-		let $ecosphere = $('#advantages').find('.ecosphere').eq(0).addClass('animate');
-		if (top > $ecosphere.offset().top - wh / 1.2) {
-			$ecosphere.addClass('active');
-		}
 		if ($(window).width() < 1200) {
 			$roadmap.find('li').each(function () {
 				if (top > $(this).offset().top - wh / 1.2) {
@@ -130,62 +140,10 @@
 		}
 	});
 
-	/* bluebuttons hover effect */
-	/* yes, this big code only for change gradient on buttons :) */
-
-	let blueButtonTimer = 400;
-	let bbClors = {
-		c1: { r: 7, g: 167, b: 221 },
-		c2: { r: 67, g: 206, b: 231 },
-		c1h: { r: 101, g: 213, b: 206 },
-		c2h: { r: 56, g: 174, b: 194 }
-	};
-	function stopBBanim($button){
-		clearInterval(parseInt($button.attr('data-tid')));
-	}
-	function setGradient($button, t){
-		function calcColor(n, c, p){
-			return Math.round((bbClors['c' + n + 'h'][c] - bbClors['c' + n][c]) * p + bbClors['c' + n][c]);
-		}
-		$button.attr('data-timer', t);
-		let p = t / blueButtonTimer;
-		let c1 = calcColor(1, 'r', p) + ', ' + calcColor(1, 'g', p) + ', ' + calcColor(1, 'b', p);
-		let c2 = calcColor(2, 'r', p) + ', ' + calcColor(2, 'g', p) + ', ' + calcColor(2, 'b', p);
-		$button.css('background-image', 'linear-gradient(to right, rgb(' + c1 + '), rgb(' + c2 + '))');
-	}
-	$(document.body).on('mouseenter', '.blue-button', function(){
-		if (!$(this).attr('data-timer')) { $(this).attr('data-timer', 0); }
-		if ($(this).attr('data-tid')) { stopBBanim($(this)); }
-		$(this).attr('data-tid', setInterval(function($button){
-			let t = parseInt($button.attr('data-timer')) + 20;
-			setGradient($button, t);
-			if (t >= blueButtonTimer) { stopBBanim($button); }
-		}, 20, $(this)));
-	}).on('mouseleave', '.blue-button', function(){
-		if (!$(this).attr('data-timer')) { $(this).attr('data-timer', blueButtonTimer); }
-		if ($(this).attr('data-tid')) { stopBBanim($(this)); }
-		$(this).attr('data-tid', setInterval(function($button){
-			let t = parseInt($button.attr('data-timer')) - 20;
-			setGradient($button, t);
-			if (t <= 0) { stopBBanim($button); }
-		}, 20, $(this)));
-	});
-
 	/* some size */
 	$(window).on('resize', function () {
 		let $store = $('#advantages').find('.store');
 		$store.height($store.width());
-	});
-
-	/* ecosphere */
-	$(window).on('resize', function () {
-		let $ecosphere = $('#advantages').find('.ecosphere');
-		$ecosphere.css('transform', 'scale(1)');
-		let e_width = $ecosphere.width();
-		let p_width = $ecosphere.parent().width();
-		if (e_width > p_width) {
-			$ecosphere.css('transform', 'scale(' + p_width / e_width + ')');
-		}
 	});
 
 	/* form input focus */
@@ -204,8 +162,8 @@
 
 
 	setTimeout(function () {
-		let params = getParams(window.location.search);
-		if (params.customer_posted === true || params.customer_posted === 'true') {
+		var params = getParams(window.location.search);
+		if (params.customer_posted == true || params.customer_posted == 'true') {
 			$.toast({
 				heading: 'Success',
 				text: 'Thanks for subscribing',

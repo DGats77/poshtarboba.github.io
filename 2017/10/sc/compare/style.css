@@ -80,7 +80,7 @@ p.buttons > * {
 .blue-button:hover,
 .blue-button:focus {
 	color: #fff;
-	/*background: #2bbde0 linear-gradient(to right, #65d5ce, #38aec2);*/
+	background: #2bbde0 linear-gradient(to right, #65d5ce, #38aec2);
 }
 .long-button {
 	padding-left: 75px;
@@ -548,11 +548,11 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 	cursor: pointer;
 }
 .slideshow ~ .btn-prev {
-	left: 12px;
+	left: 0;
 	transform: rotate(225deg);
 }
 .slideshow ~ .btn-next {
-	right: 12px;
+	right: 0;
 	transform: rotate(45deg);
 }
 .slideshow ~ .btn-prev:before,
@@ -620,6 +620,12 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 	}
 	.slideshow img {
 		width: auto;
+	}
+	.slideshow ~ .btn-prev {
+		left: -10px;
+	}
+	.slideshow ~ .btn-next {
+		right: -10px;
 	}
 }
 @media (min-width: 1200px) {
@@ -890,37 +896,18 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 	text-align: left;
 	margin-bottom: 32px;
 }
-#advantages .ecosphere-wrap {
-	position: relative;
-	min-height: 200px;
-}
 #advantages ul.ecosphere {
-	position: absolute;
-	left: 50%;
-	margin-top: -40px;
-	margin-left: -258px;
+	position: relative;
+	margin: 40px auto 0;
 	width: 516px;
 	height: 358px;
 	color: #fff;
+	background: url(advantages_hex.png) no-repeat left top;
 }
 #advantages ul.ecosphere li {
 	position: absolute;
-	padding-top: 32px;
-	width: 198px;
-	height: 175px;
+	width: 140px;
 	text-align: center;
-}
-#advantages ul.ecosphere.animate li {
-	transform: scale(0);
-	opacity: 0;
-}
-#advantages ul.ecosphere.animate li:nth-child(1) { transition: all 400ms ease; }
-#advantages ul.ecosphere.animate li:nth-child(2) { transition: all 400ms ease 200ms; }
-#advantages ul.ecosphere.animate li:nth-child(3) { transition: all 400ms ease 400ms; }
-#advantages ul.ecosphere.animate li:nth-child(4) { transition: all 400ms ease 600ms; }
-#advantages ul.ecosphere.animate.active li {
-	transform: scale(1);
-	opacity: 1;
 }
 #advantages ul.ecosphere li strong {
 	font-size: 20px;
@@ -932,10 +919,10 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 	line-height: 20px;
 	opacity: .75;
 }
-#advantages ul.ecosphere li:nth-child(1) { left: 0; top: 94px; background: url(advantages_hex_1.png) no-repeat center center;}
-#advantages ul.ecosphere li:nth-child(2) { left: 157px; top: 0; background: url(advantages_hex_2.png) no-repeat center center;}
-#advantages ul.ecosphere li:nth-child(3) { left: 315px; top: 94px; background: url(advantages_hex_3.png) no-repeat center center;}
-#advantages ul.ecosphere li:nth-child(4) { left: 158px; top: 187px; background: url(advantages_hex_4.png) no-repeat center center;}
+#advantages ul.ecosphere li:nth-child(1) { left: 30px; top: 136px; }
+#advantages ul.ecosphere li:nth-child(2) { left: 188px; top: 40px; }
+#advantages ul.ecosphere li:nth-child(3) { left: 346px; top: 136px; }
+#advantages ul.ecosphere li:nth-child(4) { left: 188px; top: 220px; }
 #advantages .store {
 	position: relative;
 	margin: 0 auto;
@@ -963,6 +950,10 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 	from { transform: translate(-50%, -50%) rotate(0deg); }
 	to { transform: translate(-50%, -50%) rotate(360deg); }
 }
+@media (min-width: 640px) {
+}
+@media (min-width: 768px) {
+}
 @media (min-width: 992px) {
 	#advantages .reverse .col-md-6 {
 		float: right;
@@ -974,7 +965,8 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 		float: right;
 	}
 	#advantages ul.ecosphere {
-		margin-top: 20px;
+		float: right;
+		margin: 20px 0 0;
 	}
 }
 @media (min-width: 1200px) {
@@ -983,17 +975,35 @@ header nav li.localize a.lang-sp:before { background-position: 0 -51px; }
 	}
 }
 @media (max-width: 619px) {
+	#advantages .ecosphere-wrap {
+		position: relative;
+		height: 360px;
+	}
+	#advantages ul.ecosphere {
+		position: absolute;
+		left: 50%;
+		top: 60%;
+		margin: 0;
+		transform: translate(-50%, -50%) scale(.9);
+	}
 	#advantages img.img {
 		width: 40%;
 	}
 }
-@media (min-width: 420px) {
+@media (max-width: 519px) {
 	#advantages .ecosphere-wrap {
-		min-height: 400px;
+		height: 320px;
 	}
 	#advantages ul.ecosphere {
-		margin-top: 40px;
-
+		transform: translate(-50%, -50%) scale(.7);
+	}
+}
+@media (max-width: 419px) {
+	#advantages .ecosphere-wrap {
+		height: 280px;
+	}
+	#advantages ul.ecosphere {
+		transform: translate(-50%, -50%) scale(.5);
 	}
 }
 
