@@ -6,13 +6,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="format-detection" content="telephone=no">
 	<style>
-		.green { padding: 0 4px; background: #D1FFCD;}
-		.red { padding: 0 4px; background: #FFDED1;}
+		.green { background: #D1FFCD;}
+		.red { background: #FFDED1;}
+		code { display: block; margin: 8px 0 16px; padding: 8px 16px; background: #fafafa; border: 1px dashed #eee;}
 	</style>
 </head>
 <body>
 
-	<p><b>2017.10.08</b></p>
+	<h2>2017.10.08</h2>
 	
 	<p>
 		4 new background-images:<br>
@@ -22,14 +23,43 @@
 		- <span class="green">advantages_hex_4.png</span><br>
 		You can remove old image <span class="red">advantages_hex.png</span><br>
 	</p>
+
+	<h3>For clarity: <a href="https://github.com/poshtarboba/poshtarboba.github.io/commit/bc8f5a3b3309a9fc7e6a9c00508cb2c780271b53" target="_blank">GitHub Changed Log</a></h3>
+
 	
+		<h2>JS:</h2>
+	<p><span class="red">/* video size */</span> - is not actually, remove this block. Now it make in CSS.</p>
 	<p>
-		<b>CSS:</b>
+		/* scroll-animation */ - added some code:
+		<code>
+			if (top > $roadmap.offset().top - wh / 2) {<br>
+  		&nbsp;&nbsp;$roadmap.addClass('animate');<br>
+  		}<br>
+			<span class="green">
+			let $ecosphere = $('#advantages').find('.ecosphere').eq(0).addClass('animate');<br>
+			if (top > $ecosphere.offset().top - wh / 1.2) {<br>
+			&nbsp;&nbsp;$ecosphere.addClass('active');<br>
+			}
+			</span><br>
+  		if ($(window).width() < 1200) {
+			...
+		</code>
 	</p>
+	
+	<p>Added new big block: <span class="green">/* bluebuttons hover effect */</span></p>
+	
+	<p>Added new block: <span class="green">/* ecosphere */</span></p>
+	
+	<h2>CSS:</h2>
+	<p>String 83:<br>.blue-button:hover dont need <span class="red">background</span></p>
+	<p>String 551, 555:<br>.slideshow ~ .btn-prev <em>and</em> .slideshow ~ .btn-next { left or right: <s class="red">0</s> <span class="green">12px</span>;}</p>
+	<p>String 624:<br>remove <span class="red">.slideshow ~ .btn-prev</span> <em>and</em> and <span class="red">.slideshow ~ .btn-next</span> in @media (min-width: 992px).</p>
+	<p>I recommend completely <span class="red">repla</span><span class="green">cing</span> the section #advantages.</p>
 
-	<p>
-		<b>JS:</b>
-	</p>
 
+	<br><br><br><br>
+	<p>That's all. Have a nice day.</p>
+	<br><br><br><br>
+	
 </body>
 </html>
