@@ -1,48 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 <head>
-	<title>Frontend. Заняття 27.</title>
+	<title>Frontend. Препроцесори</title>
 	<meta charset="utf-8">
 	<meta name="keywords" content="">
 	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="format-detection" content="telephone=no">
-	<link type="text/css" rel="stylesheet" href="css/styles.css">
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<style>
-
-	</style>
+	<link type="text/css" rel="stylesheet" href="style.css">
 </head>
 <body>
 <div id="mainwrapper">
 	<div class="resize">
 
-		<!-- TODO: BEM https://ru.bem.info/methodology/ -->
-		
-		<!-- TODO: Perfect Pixel -->
-	
-		<h1>Препроцесори та зборщики.</h1>
-		
-		<!--
-		
-		Руководство по LESS для новичков
-		http://www.webmasters.by/articles/html-coding/2858-less.html
-		
-		You might not need a CSS preprocessor
-		https://blog.hospodarets.com/you-might-not-need-a-css-preprocessor/
-		
-		CSS-модули
-		https://habrahabr.ru/post/270103/
-		
-		-->
+		<h1>Препроцесори</h1>
 
-		<p>Препроцесори в першу чергу з'явилися через недосконалість та надлишковість мов розмітки, стилів.</p>
-		<p>Суть роботи препроцесора: отримати файл, написаний згідно зі стандартів оформлення коду для даного препроцесора і створити з нього повноцінний файл стилів, html, js.</p>
-		<p>В своїй більшості препроцесори - це окремі програми чи плагіни до IDE, які потрібно встановлювати окремо (чи вони йдуть в комплекті потужних IDE).</p>
-		<p>Як правило, після кожної зміни файлів препроцесор повинен зкомпілювати нові файли. Для зручності можна налаштувати IDE щоб препроцесор проводив компіляцію файлів автоматично при втраті фокуса чи збереженні файлів.</p>
+		<section>
+			<h2>Препроцесінг, постпроцесінг, зборка</h2>
+			<p>Препроцесори отримують на вхід файл, написаний спеціальною мовою, перетворюють його в файли html, css, js.</p>
+			<p>Постпроцесори отримують html, css, js файли і модифікують їх, оптимізують, добавляють певні конструкції.</p>
+			<p>Зборщики займаються керуванням препроцесінгу, постпроцесінгу, контролюють версії файлів, залежності. Популярні зборщики: webpack, gulp, grunt.</p>
+			<h3>Препроцесори</h3>
+			<p>Препроцесори в першу чергу з'явилися через недосконалість та надлишковість мов розмітки та програмування.</p>
+			<p>Наведіть недоліки html, css, js.</p>
+			<p>Суть роботи препроцесора: отримати файл, написаний згідно зі стандартів оформлення коду для даного препроцесора і створити з нього повноцінний файл стилів, html, js.</p>
+			<p>В своїй більшості препроцесори - це окремі програми чи плагіни до IDE, які потрібно встановлювати окремо (чи вони йдуть в комплекті потужних IDE).</p>
+			<p>Як правило, після кожної зміни файлів препроцесор повинен зкомпілювати нові файли. Для зручності можна налаштувати IDE щоб препроцесор проводив компіляцію файлів автоматично при втраті фокуса чи збереженні файлів.</p>
+			<p>
+				Типові препроцесори:<br>
+				- <strong>html</strong>: Haml, Jade<br>
+				- <strong>CSS</strong>: Less, Sass (Scss), Stylus<br>
+				- <strong>JS</strong>: CoffeScript, Dart
+			</p>
+			<h3>Постпроцесори</h3>
+			<p>Раніше в CSS потрібно було добавляти багато вендорних префіксів (в часи переходу від CSS2 до CSS3). Розробник писав тільки один стиль, а постпроцесор добавляв префікси, що пришвидшувало розробку і берегло нерви:</p>
+			<code>
+				.box { border-radius: 5px; }<br>
+				.button { background: linear-gradient(to bottom, #1e5799,#7db9e8); }
+			</code>
+			<p>Даний код постпроцесор перетворював у:</p>
+			<code>
+				.box {<br>
+				&nbsp;&nbsp;-webkit-border-radius: 5px;<br>
+				&nbsp;&nbsp;-moz-border-radius: 5px;<br>
+				&nbsp;&nbsp;-ms-border-radius: 5px;<br>
+				&nbsp;&nbsp;-o-border-radius: 5px;<br>
+				&nbsp;&nbsp;border-radius: 5px;<br>
+				}<br>
+				.button {<br>
+				&nbsp;&nbsp;background: #1e5799;<br>
+				&nbsp;&nbsp;background: -webkit-linear-gradient(top, #1e5799 0%,#7db9e8 100%);<br>
+				&nbsp;&nbsp;background: -moz-linear-gradient(top, #1e5799 0%, #7db9e8 100%);<br>
+				&nbsp;&nbsp;background: -ms-linear-gradient(to top, #1e5799 0%, #7db9e8 100%);<br>
+				&nbsp;&nbsp;background: -o-linear-gradient(to top, #1e5799 0%, #7db9e8 100%);<br>
+				&nbsp;&nbsp;background: linear-gradient(to bottom, #1e5799 0%,#7db9e8 100%);<br>
+				&nbsp;&nbsp;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 );<br>
+				}
+			</code>
+			<p>Також постпроцесори можуть реформатувати, мініфікувати, проводити <a href="https://uk.wikipedia.org/wiki/%D0%9E%D0%B1%D1%84%D1%83%D1%81%D0%BA%D0%B0%D1%86%D1%96%D1%8F" target="_blank">обфускацію коду</a> та робити інші корисні зміни.</p>
+			<p>Наразі функція реформатування є у більшості IDE, мініфікація та обфускація проводиться зборщиком, префіксів залишилося дуже мало (user-select, flex), тому постпроцесори зараз вже не популярні.</p>
+		</section>
 
 		<section>
 			<h2>Препроцесори HTML</h2>
 			<p>Jade, Haml - найпопулярніші препроцесори для коду HTML.</p>
+			<p>З появою <a href="https://emmet.io/" target="_blank">Emmet</a> кодити стало значно простіше, тому зараз html-препроцесори використовуються не часто.</p>
 			<p>Їх синтактис майже однаковий. Приклад коду:</p>
 			<code>
 				section<br>
@@ -54,7 +76,7 @@
 				section<br>
 				&nbsp;&nbsp;article<br>
 				&nbsp;&nbsp;input[name="text"][value="Hello"]<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;...
+				&nbsp;&nbsp;...
 			</code>
 			<p>У даних препроцесорах важливу роль грають відступи (таби чи пробіли на початку строки). Саме відступи регулюють вкладення тегів один в один, помилка з відступами призведе або до помилки компіляції, або до невірної розмітки.</p>
 			<p>Після компіляції буде створено такий HTML-код:</p>
@@ -80,7 +102,7 @@
 			<p>Coffeescript - препроцесор для JavaScript. Код для цього препроцесора схожий на Ruby, Python, Haskel, тому спеціалістам, що пишуть на цих мовах, coffee-код читати простіше.</p>
 			<p>Код для цього препроцесора в деяких моментах значно коротший за аналоги на JS.</p>
 			<p>Є онлайн-конвертор <a href="http://js2.coffee/" target="_blank">js2.coffee</a> для перетворення JS в Coffeescript.</p>
-			<p><em>Java - марка кави, тому етимологічно JavaScript і Coffeescript є досить близькими.</em></p>
+			<p><em>Java - марка кави, тому етимологічно JavaScript і CoffeeScript є досить близькими.</em></p>
 		</section>
 
 		<section>
@@ -95,17 +117,23 @@
 			<p>SASS2 для Ruby і Stylus мають спрощений синтаксис, ієрархію визначають відступи, не потрібні двокрапка, крапка з комою, фігурні лапки:</p>
 			<code>
 				body<br>
-				&nbsp;&nbsp;background-color background<br>
+				&nbsp;&nbsp;background-color: background<br>
 				&nbsp;&nbsp;a<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;color lightblue<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&.visited<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color navy
+				&nbsp;&nbsp;&nbsp;&nbsp;color: lightblue<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&:visited<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: navy<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&.big<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size: 115%<br>
+				.box<br>
+				&nbsp;&nbsp;padding: 8px 16px<br>
+				&nbsp;&nbsp;p<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;margin-bottom: 12px
 			</code>
 			<p>Препроцесори Less та SCSS більш близькі до звичайного CSS. Звичайний CSS-файл задовільняє всім умовам коду цих препроцесорів.</p>
 			<p>Препроцесор Less найпростіше підключити в свій проект. Цей препроцесор може працювати в декількох режимах: прекомпіляція, компіляція на льоту і компіляція на стороні клієнта.</p>
 			<p>Розглянемо останній варіант. В проект підключається скипт <a href="http://lesscss.org/" target="_blank">less.js</a>, після завантаження він переглядає в заголовку теги</p>
 			<code>
-				&lt;link type="text/less" rel="stylesheet" href="css/styles.less">
+				&lt;link type="<strong>text/less</strong>" rel="stylesheet" href="<strong>css/styles.less</strong>"&gt;
 			</code>
 			<p>і компілює з них звичайні CSS-файли. Зверніть увагу на атрибут type.</p>
 
@@ -171,7 +199,7 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;&.active a<br>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: red<br>
 			</code>
-			<p>Використання методології BOM не сприяє застосуванню препроцесорів в плані створення ієрархії.</p>
+			<p>Використання методології BEM не сприяє застосуванню препроцесорів в плані створення ієрархії.</p>
 
 			<h3>Змінні</h3>
 			<p>Всі препроцесори підтримують змінні. В Less вони задаються і використовуються таким чином:</p>
@@ -254,10 +282,10 @@
 			<p>Звичайні матиматичні дії:</p>
 			<code>
 				.a(@b) {<br>
-					padding: @b @b + 8px;<br>
+				padding: @b @b + 8px;<br>
 				}<br>
 				.ccc {<br>
-					width: 20% - 8px;<br>
+				width: 20% - 8px;<br>
 				}
 			</code>
 			<p>Функції:</p>
@@ -285,9 +313,9 @@
 				pi()</p>
 			<p><strong>Робота з кольором:</strong></p>
 			<p>Отримати складову кольору:<br>
-			red(color)<br>
-			green(color)<br>
-			blue(color)</p>
+				red(color)<br>
+				green(color)<br>
+				blue(color)</p>
 			<p>Світліше, темніше:<br>
 				lighten(color, 10%)<br>
 				darken(color, 20%)</p>
@@ -302,11 +330,24 @@
 				grayscale(color, 0.1) // майже не зміняться кольори</p>
 			<p>Контраст:<br>
 				contrast(color)</p>
-
 		</section>
 
+		<section class="homework">
+			<h2>Домашнє завдання</h2>
+			<ol>
+				<li>Зробіть стилі проекту Minecraft за допомогою Less або Sass (останній входить до складу Node.js, можете встановити собі цю платформу).</li>
+				<li>Намагайтесь використовувати препроцесори у ваших наступних проектах.</li>
+			</ol>
+			<p><a href="http://www.webmasters.by/articles/html-coding/2858-less.html" target="_blank">Руководство по LESS для новичков</a></p>
+			<p><a href="https://blog.hospodarets.com/you-might-not-need-a-css-preprocessor/" target="_blank">Можливо, вам не потрібні препроцесори</a>.</p>
+			<p><a href="https://habrahabr.ru/post/270103/" target="_blank">CSS-модули</a></p>
+		</section>
+		
 	</div>
 </div>
+
+<script src="jquery-3.1.1.min.js"></script>
+<script src="fe.js"></script>
 
 </body>
 </html>
