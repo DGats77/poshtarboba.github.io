@@ -1,0 +1,360 @@
+body {
+	margin: 0;
+	color: #3f4c5d;
+	font: normal 18px/28px "Open Sans", Helvetica, Arial, sans-serif;
+	background: #fff;
+}
+.tabs-controls:after,
+.row:after,
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+* {
+	box-sizing: border-box;
+}
+*:focus {
+	outline: none;
+}
+a {
+	display: inline-block;
+}
+button {
+	cursor: pointer;
+}
+iframe {
+	display: block;
+	width: 100%;
+	border: none;
+}
+
+
+
+/* grid */
+.container {
+	margin: 0 auto;
+	padding-left: 15px;
+	padding-right: 15px;
+	max-width: 1200px;
+}
+.row {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+.col-2, .col-3, .col-4, .col-6, .col-lg-4 {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.col-2, .col-3, .col-4, .col-6 {
+	float: left;
+}
+.col-2 {
+	width: 16.666666%;
+}
+.col-3 {
+	width: 25%;
+}
+.col-4 {
+	width: 33.333333%;
+}
+.col-6 {
+	width: 50%;
+}
+@media (min-width: 1200px) {
+	.col-lg-4 {
+		float: left;
+		width: 33.333333%
+	}
+}
+
+
+
+
+header {
+	color: #fff;
+	background: #171a21 linear-gradient(to bottom, #171a21, #1b1e25, #2e3138);
+}
+header .wrap {
+	display: table;
+	width: 100%;
+}
+header .wrap > * {
+	display: table-cell;
+	vertical-align: middle;
+}
+header .logo {
+	padding: 8px 0 7px;
+	width: 117px;
+}
+header .advert-name {
+	position: relative;
+	width: 100%;
+}
+header .advert-name strong {
+	position: absolute;
+	left: 60px;
+	right: 60px;
+	top: 16px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+header .controls {
+	white-space: nowrap;
+}
+header .controls button {
+	position: relative;
+	display: inline-block;
+	width: 44px;
+	height: 44px;
+	font-size: 0;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+header .controls button:before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 32px;
+	height: 32px;
+	background: url(../img/sprite.png) no-repeat left top;
+}
+header .controls button.settings:before {
+	background-position: -34px 0;
+}
+header .controls button.logout:before {
+	background-position: 0 0;
+}
+header .controls button.settings:hover:before {
+	background-position: -34px -34px;
+}
+header .controls button.logout:hover:before {
+	background-position: 0 -34px;
+}
+
+
+.tabs-controls {
+	position: relative;
+	z-index: 2;
+	margin: 0 0 -1px;
+	padding: 0;
+	list-style: none;
+}
+.tabs-controls li {
+	float: left;
+	padding: 4px 24px;
+	border: 1px solid #e0e0e0;
+	border-radius: 5px 5px 0 0;
+	cursor: pointer;
+}
+.tabs-controls li:not(:first-child) {
+	border-left: none;
+}
+.tabs-controls li.active {
+	color: #fff;
+	background: #ff5a00 linear-gradient(to right, #ff5a00, #ff8b10);
+	border-color: #ff5a00;
+}
+.tab-content {
+	border: 1px solid #e0e0e0;
+	padding: 0 15px;
+}
+
+
+
+
+/* big form */
+.form {
+	margin: 0 auto;
+	max-width: 500px;
+}
+.form textarea {
+	resize: none;
+	min-width: 100%;
+	max-width: 100%;
+	min-height: 82px;
+	max-height: 82px;
+}
+.form p.title {
+	font-size: 120%;
+	font-weight: bold;
+}
+.form p.title small {
+	display: block;
+	font-size: 60%;
+	font-weight: normal;
+	color: #bdbdbd;
+}
+.form p.title:not(:first-of-type) {
+	margin-top: 40px;
+}
+.form label {
+	display: block;
+	position: relative;
+}
+.form label small {
+	display: block;
+	font-size: 60%;
+	line-height: 1.4em;
+	color: #bdbdbd;
+}
+.form .control-text label span,
+.form .control-datetime label span,
+.form .control-select label span {
+	display: block;
+	margin-bottom: 4px;
+}
+.form .control-text input,
+.form .control-text textarea,
+.form .control-range input,
+.form .control-datetime input,
+.form .control-select select {
+	display: block;
+	padding: 4px 8px;
+	width: 100%;
+	font: normal 16px/24px "Open Sans", Helvetica, Arial, sans-serif;
+	color: #7b728c;
+	background: #fff;
+	border: 1px solid #e0e0e0;
+	border-radius: 6px;
+}
+.form .control-text input:focus,
+.form .control-text textarea:focus,
+.form .control-range input:focus,
+.form .control-datetime input:focus {
+	border-color: #ff5a00;
+}
+.form .control-check-left input,
+.form .control-radio-left input {
+	display: none;
+}
+.form .control-check-left label,
+.form .control-radio-left label {
+	padding-left: 45px;
+	cursor: pointer;
+	line-height: 24px;
+}
+.form .control-check-left label:before,
+.form .control-radio-left label:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 22px;
+	height: 22px;
+	border: 1px solid #e0e0e0;
+	border-radius: 6px;
+}
+.form .control-radio-left label:before {
+	border-radius: 50%;
+}
+.form .control-check-left input:checked ~ label:after,
+.form .control-radio-left input:checked ~ label:after {
+	content: "";
+	position: absolute;
+}
+.form .control-check-left input:checked ~ label:after {
+	left: 5px;
+	top: -1px;
+	width: 18px;
+	height: 10px;
+	border-left: 4px solid #ff5a00;
+	border-bottom: 4px solid #ff5a00;
+	transform: rotate(-45deg);
+}
+.form .control-radio-left input:checked ~ label:after {
+	left: 5px;
+	top: 5px;
+	width: 14px;
+	height: 14px;
+	background: #ff5a00 linear-gradient(to right, #ff5a00, #ff8b10);
+	border-radius: 50%;
+}
+.form .control-range:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.form .control-range label {
+	display: inline-block;
+}
+.form .control-range em,
+.form .control-range label {
+	float: right;
+}
+.form .control-range input {
+	width: 80px;
+	text-align: center;
+}
+.form .control-range em {
+	position: relative;
+	top: 5px;
+	display: inline-block;
+	padding: 0;
+	width: 24px;
+	height: 24px;
+	font-size: 0;
+	background: #fff;
+	border: 1px solid #e0e0e0;
+	border-radius: 50%;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.form .control-range em.more {
+	margin-left: 8px;
+}
+.form .control-range em.less {
+	margin-right: 8px;
+}
+.form .control-range em:hover {
+	border-color: #ff5a00;
+}
+.form .control-range em:before,
+.form .control-range em:after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 12px;
+	height: 2px;
+	background: #bdbdbd;
+}
+.form .control-range em:after {
+	width: 2px;
+	height: 12px;
+}
+.form .control-range em.less:after {
+	display: none;
+}
+.form .control-range em:hover:before,
+.form .control-range em:hover:after {
+	background: #ff5a00;
+}
+.form .control-datetime input {
+	cursor: pointer;
+}
+.form .tabs-controls {
+	margin-top: 40px;
+}
+.form .day-info.passive strong,
+.form .day-info.passive .control-datetime {
+	opacity: 0.5;
+}
+.form .max-redemption label.infinity:before {
+	content: "∞";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 24px;
+	color: #7b728c;
+	background: #fff;
+}

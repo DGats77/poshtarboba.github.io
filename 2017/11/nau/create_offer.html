@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Advert Dashboard</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<header>
+		<div class="container">
+			<div class="wrap">
+				<div class="logo">
+					<a href="/"><img src="img/logo.png" alt="nau.io"></a>
+				</div>
+				<div class="advert-name">
+					<strong>Name of agent ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque aut debitis deleniti</strong>
+				</div>
+				<div class="controls">
+					<button class="settings">Settings</button>
+					<button class="logout">Logout</button>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<div class="container">
+
+			<h1>Create Offer</h1>
+
+			<form action="#" class="form">
+
+				<p class="title">Name and Description</p>
+				<p class="control-text"><label><span>Offer name</span> <input name=""></label></p>
+				<p class="control-text"><label><span>Offer description</span> <textarea name=""></textarea></label></p>
+				<p><label class="control-file"><span>Add picture</span> <input name="" type="file"></label></p>
+
+				<p class="title">Category &amp; Type</p>
+				<p class="control-radio-left"><input name="r1" type="radio" id="radio_ct1" checked><label for="radio_ct1"><span>Delivery</span></label></p>
+				<p class="control-radio-left"><input name="r1" type="radio" id="radio_ct2"><label for="radio_ct2"><span>Another</span></label></p>
+				<p class="control-check-left"><input name="" type="checkbox" id="check_ct3"><label for="check_ct3"><span>Or checkbox ??</span></label></p>
+
+				<p class="title">Offer Type</p>
+				<p class="control-radio-left"><input name="r2" type="radio" id="radio_ot1" checked><label for="radio_ot1"><span>Discount</span> <small>Description for this item</small></label></p>
+				<p class="control-radio-left"><input name="r2" type="radio" id="radio_ot2"><label for="radio_ot2"><span>Second Free</span> <small>Description for this item</small></label></p>
+				<p class="control-radio-left"><input name="r2" type="radio" id="radio_ot3"><label for="radio_ot3"><span>Bonus or Gift</span> <small>Description for this item</small></label></p>
+				<p class="control-range"><span>Set discount (%)</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="99" data-default="10" value="10" class="js-numeric"></label><em role="button" class="less">-</em></p>
+
+				<p class="title">Working Dates</p>
+				<p class="row control-datetime">
+					<label class="col-6"><span>from</span> <input name="" readonly class="js-datepicker" value="Sat 2017/09/04"></label>
+					<label class="col-6"><span>to</span> <input name="" readonly class="js-datepicker" value="Mon 2018/09/03"></label>
+				</p>
+
+				<ul class="tabs-controls">
+					<li data-target="tab_wdt1">Simple</li>
+					<li data-target="tab_wdt2">Detailed</li>
+				</ul>
+
+				<div class="tab-content" id="tab_wdt1">
+					<p class="title">Working Days</p>
+					<p class="control-check-left"><input name="" type="checkbox" id="check_wd8" checked><label for="check_wd8"><span>Working Days</span></label></p>
+					<p class="control-check-left"><input name="" type="checkbox" id="check_wd9"><label for="check_wd9"><span>Weekend</span></label></p>
+					<p class="title">Working Time</p>
+					<p class="row control-datetime">
+						<label class="col-6"><span>from</span> <input name="" readonly class="js-timepicker" value="00:00"></label>
+						<label class="col-6"><span>to</span> <input name="" readonly class="js-timepicker" value="23:59"></label>
+					</p>
+				</div>
+
+				<div class="tab-content" id="tab_wdt2">
+					<p class="title">Working Days &amp; Time <small>You can set working time more flexibility</small></p>
+					<p class="row">
+						<span class="col-2">Work</span>
+						<span class="col-2">Day</span>
+						<span class="col-4">From</span>
+						<span class="col-4">To</span>
+					</p>
+					<p class="row day-info">
+						<span class="col-2">
+							<span class="control-check-left"><input name="" type="checkbox" id="check_wd1" checked><label for="check_wd1">&nbsp;</label></span>
+						</span>
+						<strong class="col-2">Mon</strong>
+						<span class="col-4 control-datetime">
+							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+						</span>
+						<span class="col-4 control-datetime">
+							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+						</span>
+					</p>
+					<p class="row day-info">
+						<span class="col-2">
+							<span class="control-check-left"><input name="" type="checkbox" id="check_wd2" checked><label for="check_wd2">&nbsp;</label></span>
+						</span>
+						<strong class="col-2">Tue</strong>
+						<span class="col-4 control-datetime">
+							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+						</span>
+						<span class="col-4 control-datetime">
+							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+						</span>
+					</p>
+					<p class="row day-info">
+						<span class="col-2">
+							<span class="control-check-left"><input name="" type="checkbox" id="check_wd3" checked><label for="check_wd3">&nbsp;</label></span>
+						</span>
+						<strong class="col-2">Wed</strong>
+						<span class="col-4 control-datetime">
+							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+						</span>
+						<span class="col-4 control-datetime">
+							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+						</span>
+					</p>
+					<p class="row day-info">
+						<span class="col-2">
+							<span class="control-check-left"><input name="" type="checkbox" id="check_wd4" checked><label for="check_wd4">&nbsp;</label></span>
+						</span>
+						<strong class="col-2">Thu</strong>
+						<span class="col-4 control-datetime">
+							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+						</span>
+						<span class="col-4 control-datetime">
+							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+						</span>
+					</p>
+					<p class="row day-info">
+						<span class="col-2">
+							<span class="control-check-left"><input name="" type="checkbox" id="check_wd5" checked><label for="check_wd5">&nbsp;</label></span>
+						</span>
+						<strong class="col-2">Fri</strong>
+						<span class="col-4 control-datetime">
+							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+						</span>
+						<span class="col-4 control-datetime">
+							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+						</span>
+					</p>
+					<p class="row day-info">
+						<span class="col-2">
+							<span class="control-check-left"><input name="" type="checkbox" id="check_wd6"><label for="check_wd6">&nbsp;</label></span>
+						</span>
+						<strong class="col-2">Sat</strong>
+						<span class="col-4 control-datetime">
+							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+						</span>
+						<span class="col-4 control-datetime">
+							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+						</span>
+					</p>
+					<p class="row day-info">
+						<span class="col-2">
+							<span class="control-check-left"><input name="" type="checkbox" id="check_wd7"><label for="check_wd7">&nbsp;</label></span>
+						</span>
+						<strong class="col-2">Sun</strong>
+						<span class="col-4 control-datetime">
+							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+						</span>
+						<span class="col-4 control-datetime">
+							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+						</span>
+					</p>
+				</div>
+
+				<p class="title">Working Area</p>
+				<p class="control-select">
+					<label>
+						<span>Your place</span>
+						<select name="">
+							<option value="Place 1" selected>Place 1</option>
+							<option value="Place 2">Place 2</option>
+							<option value="Place 3">Place 3</option>
+						</select>
+					</label>
+				</p>
+
+				<p class="title">Setting Map Radius</p>
+				{ insert map here }
+				<iframe src="" style="background: #ff5a00 linear-gradient(to right, #ff5a00, #ff8b10);"></iframe>
+
+				<p class="title">Max Redemption per User <small>Zero is infinity</small></p>
+				<p class="control-range max-redemption"><span>Overral</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
+				<p class="control-range max-redemption"><span>Daily</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
+				<p class="control-range max-redemption"><span>Weekly</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
+				<p class="control-range max-redemption"><span>Monthly</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
+
+				<p class="title">Other Limits</p>
+				<p class="control-range"><span>Minimal user level</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="99" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
+
+				<p class="title">Reward Options</p>
+				<p class="control-range"><span>Reward for redemption</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="10" value="10" class="js-numeric"></label><em role="button" class="less">-</em></p>
+				<p class="control-range"><span>Token reservation</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="55" value="55" class="js-numeric"></label><em role="button" class="less">-</em></p>
+
+				<p class="tokens-total"><strong>235</strong> You have tokens on your account</p>
+				<p><input type="submit" value="Create Offer"></p>
+
+			</form>
+
+		</div>
+	</main>
+
+	<script>
+		(function(){
+
+			function getParent(elem, className){
+				let p = elem.parentElement;
+				while (p && !p.classList.contains(className)) p = p.parentElement;
+				return p;
+			}
+
+			/* tabs */
+			document.querySelectorAll('.tabs-controls').forEach(function(ul){
+				ul.firstElementChild.classList.add('active');
+				for (let i = 0; i < ul.children.length; i++) {
+					if (!ul.children[i].classList.contains('active')) document.getElementById(ul.children[i].dataset.target).style.display = 'none';
+					ul.children[i].addEventListener('click', function(){
+						let ul = this.parentElement;
+						for (let j = 0; j < ul.children.length; j++) {
+							ul.children[j].classList.remove('active');
+							document.getElementById(ul.children[j].dataset.target).style.display = 'none';
+						}
+						this.classList.add('active');
+						document.getElementById(this.dataset.target).style.display = 'block';
+					});
+				}
+			});
+
+			/* "Working Days & Time" checking days */
+			document.querySelectorAll('.day-info').forEach(function(p){
+				let cb = p.querySelector('[type="checkbox"]');
+				if (!cb.checked) p.classList.add('passive');
+				cb.addEventListener('change', dayCheck);
+				function dayCheck(){
+					let p = getParent(this, 'day-info');
+					if (p) p.classList[cb.checked ? 'remove' : 'add']('passive');
+				}
+			});
+
+			/* control range */
+			document.querySelectorAll('.js-numeric').forEach(function(input){
+				input.addEventListener('keyup', function(){
+					numericValidate(this);
+				});
+				input.addEventListener('change', function(){
+					if (this.value === '') {
+						let def = parseInt(input.dataset.default);
+						if (isNaN(def)) def = 0;
+						this.value = def;
+					}
+				});
+				let p = getParent(input, 'control-range');
+				if (p) {
+					p.querySelector('.less').addEventListener('mousedown', numericClick);
+					p.querySelector('.more').addEventListener('mousedown', numericClick);
+					/* TODO: when no mouseup - numbers must change each moment */
+				}
+			});
+			function numericValidate(input){
+				if (input.value === '') return;
+				let def = parseInt(input.dataset.default);
+				let min = parseInt(input.dataset.min);
+				let max = parseInt(input.dataset.max);
+				let val = parseInt(input.value);
+				if (isNaN(def)) def = 0;
+				if (isNaN(min)) min = 0;
+				if (isNaN(max)) max = 100;
+				if (isNaN(val)) val = def;
+				input.value = Math.min(Math.max(val, min), max);
+			}
+			function numericClick(){
+				let p = getParent(this, 'control-range');
+				if (p) {
+					let input = p.querySelector('input');
+					input.value = parseInt(input.value) + (this.classList.contains('more') ? 1 : -1);
+					numericValidate(input);
+				}
+			}
+
+			/* max-redemption infinity */
+			function checkInfinity(input){
+				input.parentElement.classList[input.value === '0' ? 'add' : 'remove']('infinity');
+			}
+			document.querySelectorAll('.max-redemption input').forEach(function(input){
+				checkInfinity(input);
+				console.log(input);
+				input.addEventListener('keydown', function(){ checkInfinity(input); });
+				input.addEventListener('keypress', function(){ checkInfinity(input); });
+				input.addEventListener('keyup', function(){ checkInfinity(input); });
+				input.addEventListener('change', function(){ checkInfinity(input); });
+				let p = getParent(input, 'max-redemption');
+				if (p) {
+					p.querySelector('.less').addEventListener('mouseup', function(){ checkInfinity(input); });
+					p.querySelector('.more').addEventListener('mouseup', function(){ checkInfinity(input); });
+				}
+			});
+
+		})();
+	</script>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+	<script src="js/script.js"></script>
+
+</body>
+</html>
