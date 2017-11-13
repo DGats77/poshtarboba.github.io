@@ -413,6 +413,7 @@ header .controls button.logout:hover:before {
 	user-select: none;
 }
 .tabs-steps li {
+	position: relative;
 	float: left;
 	width: 25%;
 	text-align: center;
@@ -436,4 +437,23 @@ header .controls button.logout:hover:before {
 .tabs-steps li.active em {
 	color: #fff;
 	background: #ff5a00 linear-gradient(to right, #ff5a00, #ff8b10);
+}
+.tabs-steps li:not(:last-child):before {
+	content: "";
+	position: absolute;
+	left: 80%;
+	top: 18px;
+	width: 30%;
+	border-top: 1px solid #e0e0e0;
+}
+.tabs-steps li:not(:last-child):after {
+	content: "";
+	position: absolute;
+	left: 110%;
+	top: 16px;
+	width: 4px;
+	height: 4px;
+	border-top: 1px solid #e0e0e0;
+	border-right: 1px solid #e0e0e0;
+	transform: rotate(45deg);
 }
