@@ -33,175 +33,209 @@
 
 			<form action="#" class="form">
 
-				<p class="title">Name and Description</p>
-				<p class="control-text"><label><span>Offer name</span> <input name=""></label></p>
-				<p class="control-text"><label><span>Offer description</span> <textarea name=""></textarea></label></p>
-				<p><label class="control-file"><span>Add picture</span> <input name="" type="file"></label></p>
-
-				<p class="title">Category &amp; Type</p>
-				<p class="control-radio-left"><input name="r1" type="radio" id="radio_ct1" checked><label for="radio_ct1"><span>Delivery</span></label></p>
-				<p class="control-radio-left"><input name="r1" type="radio" id="radio_ct2"><label for="radio_ct2"><span>Another</span></label></p>
-				<p class="control-check-left"><input name="" type="checkbox" id="check_ct3"><label for="check_ct3"><span>Or checkbox ??</span></label></p>
-
-				<p class="title">Offer Type</p>
-				<p class="control-radio-left"><input name="r2" type="radio" id="radio_ot1" checked><label for="radio_ot1"><span>Discount</span> <small>Description for this item</small></label></p>
-				<p class="control-radio-left"><input name="r2" type="radio" id="radio_ot2"><label for="radio_ot2"><span>Second Free</span> <small>Description for this item</small></label></p>
-				<p class="control-radio-left"><input name="r2" type="radio" id="radio_ot3"><label for="radio_ot3"><span>Bonus or Gift</span> <small>Description for this item</small></label></p>
-				<p class="control-range"><span>Set discount (%)</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="99" data-default="10" value="10" class="js-numeric"></label><em role="button" class="less">-</em></p>
-
-				<p class="title">Working Dates</p>
-				<p class="row control-datetime">
-					<label class="col-6"><span>from</span> <input name="" readonly class="js-datepicker" value="Sat 2017/09/04"></label>
-					<label class="col-6"><span>to</span> <input name="" readonly class="js-datepicker" value="Mon 2018/09/03"></label>
-				</p>
-
-				<ul class="tabs-controls">
-					<li data-target="tab_wdt1">Simple</li>
-					<li data-target="tab_wdt2">Detailed</li>
+				<ul class="tabs-steps js-tabs">
+					<li data-target="tab_step1"><em>1</em> Main<br>Information</li>
+					<li data-target="tab_step2"><em>2</em> Working Dates<br>&amp; Times</li>
+					<li data-target="tab_step3"><em>3</em> Working<br>Area</li>
+					<li data-target="tab_step4"><em>4</em> Additional<br>Settings</li>
 				</ul>
 
-				<div class="tab-content" id="tab_wdt1">
-					<p class="title">Working Days</p>
-					<p class="control-check-left"><input name="" type="checkbox" id="check_wd8" checked><label for="check_wd8"><span>Working Days</span></label></p>
-					<p class="control-check-left"><input name="" type="checkbox" id="check_wd9"><label for="check_wd9"><span>Weekend</span></label></p>
-					<p class="title">Working Time</p>
+				<div id="tab_step1">
+					<p class="title">Name and Description</p>
+					<p class="control-text"><label><span>Offer name</span> <input name=""></label></p>
+					<p class="control-text"><label><span>Offer description</span> <textarea name=""></textarea></label></p>
+					<p><label class="control-file"><span>Add picture</span> <input name="" type="file"></label></p>
+
+					<p class="title">Category &amp; Type</p>
+					<p class="control-radio-left"><input name="r1" type="radio" id="radio_ct1" checked><label for="radio_ct1"><span>Delivery</span></label></p>
+					<p class="control-radio-left"><input name="r1" type="radio" id="radio_ct2"><label for="radio_ct2"><span>Another</span></label></p>
+					<p class="control-check-left"><input name="" type="checkbox" id="check_ct3"><label for="check_ct3"><span>Or checkbox ??</span></label></p>
+
+					<p class="title">Offer Type</p>
+					<p class="control-radio-left"><input name="r2" type="radio" id="radio_ot1" checked><label for="radio_ot1"><span>Discount</span> <small>Description for this item</small></label></p>
+					<p class="control-radio-left"><input name="r2" type="radio" id="radio_ot2"><label for="radio_ot2"><span>Second Free</span> <small>Description for this item</small></label></p>
+					<p class="control-radio-left"><input name="r2" type="radio" id="radio_ot3"><label for="radio_ot3"><span>Bonus or Gift</span> <small>Description for this item</small></label></p>
+					<p class="control-range"><span>Set discount (%)</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="99" data-default="10" value="10" class="js-numeric"></label><em role="button" class="less">-</em></p>
+
+					<p class="tab-footer">
+						<span class="btn-brand pull-right" data-tab-target="tab_step2">next step &gt;</span>
+					</p>
+				</div>
+
+				<div id="tab_step2">
+					<p class="title">Working Dates</p>
 					<p class="row control-datetime">
-						<label class="col-6"><span>from</span> <input name="" readonly class="js-timepicker" value="00:00"></label>
-						<label class="col-6"><span>to</span> <input name="" readonly class="js-timepicker" value="23:59"></label>
+						<label class="col-6"><span>from</span> <input name="" readonly class="js-datepicker" value="Sat 2017/09/04"></label>
+						<label class="col-6"><span>to</span> <input name="" readonly class="js-datepicker" value="Mon 2018/09/03"></label>
+					</p>
+
+					<ul class="tabs-controls js-tabs">
+						<li data-target="tab_wdt1">Simple</li>
+						<li data-target="tab_wdt2">Detailed</li>
+					</ul>
+
+					<div class="tab-content" id="tab_wdt1">
+						<p class="title">Working Days</p>
+						<p class="control-check-left"><input name="" type="checkbox" id="check_wd8" checked><label for="check_wd8"><span>Working Days</span></label></p>
+						<p class="control-check-left"><input name="" type="checkbox" id="check_wd9"><label for="check_wd9"><span>Weekend</span></label></p>
+						<p class="title">Working Time</p>
+						<p class="row control-datetime">
+							<label class="col-6"><span>from</span> <input name="" readonly class="js-timepicker" value="00:00"></label>
+							<label class="col-6"><span>to</span> <input name="" readonly class="js-timepicker" value="23:59"></label>
+						</p>
+					</div>
+
+					<div class="tab-content" id="tab_wdt2">
+						<p class="title">Working Days &amp; Time <small>You can set working time more flexibility</small></p>
+						<p class="row">
+							<span class="col-2">Work</span>
+							<span class="col-2">Day</span>
+							<span class="col-4">From</span>
+							<span class="col-4">To</span>
+						</p>
+						<p class="row day-info">
+							<span class="col-2">
+								<span class="control-check-left"><input name="" type="checkbox" id="check_wd1" checked><label for="check_wd1">&nbsp;</label></span>
+							</span>
+							<strong class="col-2">Mon</strong>
+							<span class="col-4 control-datetime">
+								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+							</span>
+							<span class="col-4 control-datetime">
+								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+							</span>
+						</p>
+						<p class="row day-info">
+							<span class="col-2">
+								<span class="control-check-left"><input name="" type="checkbox" id="check_wd2" checked><label for="check_wd2">&nbsp;</label></span>
+							</span>
+							<strong class="col-2">Tue</strong>
+							<span class="col-4 control-datetime">
+								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+							</span>
+							<span class="col-4 control-datetime">
+								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+							</span>
+						</p>
+						<p class="row day-info">
+							<span class="col-2">
+								<span class="control-check-left"><input name="" type="checkbox" id="check_wd3" checked><label for="check_wd3">&nbsp;</label></span>
+							</span>
+							<strong class="col-2">Wed</strong>
+							<span class="col-4 control-datetime">
+								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+							</span>
+							<span class="col-4 control-datetime">
+								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+							</span>
+						</p>
+						<p class="row day-info">
+							<span class="col-2">
+								<span class="control-check-left"><input name="" type="checkbox" id="check_wd4" checked><label for="check_wd4">&nbsp;</label></span>
+							</span>
+							<strong class="col-2">Thu</strong>
+							<span class="col-4 control-datetime">
+								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+							</span>
+							<span class="col-4 control-datetime">
+								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+							</span>
+						</p>
+						<p class="row day-info">
+							<span class="col-2">
+								<span class="control-check-left"><input name="" type="checkbox" id="check_wd5" checked><label for="check_wd5">&nbsp;</label></span>
+							</span>
+							<strong class="col-2">Fri</strong>
+							<span class="col-4 control-datetime">
+								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+							</span>
+							<span class="col-4 control-datetime">
+								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+							</span>
+						</p>
+						<p class="row day-info">
+							<span class="col-2">
+								<span class="control-check-left"><input name="" type="checkbox" id="check_wd6"><label for="check_wd6">&nbsp;</label></span>
+							</span>
+							<strong class="col-2">Sat</strong>
+							<span class="col-4 control-datetime">
+								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+							</span>
+							<span class="col-4 control-datetime">
+								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+							</span>
+						</p>
+						<p class="row day-info">
+							<span class="col-2">
+								<span class="control-check-left"><input name="" type="checkbox" id="check_wd7"><label for="check_wd7">&nbsp;</label></span>
+							</span>
+							<strong class="col-2">Sun</strong>
+							<span class="col-4 control-datetime">
+								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+							</span>
+							<span class="col-4 control-datetime">
+								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+							</span>
+						</p>
+					</div>
+
+					<p class="tab-footer">
+						<span class="btn-brand pull-left" data-tab-target="tab_step1">&lt; prev step</span>
+						<span class="btn-brand pull-right" data-tab-target="tab_step3">next step &gt;</span>
 					</p>
 				</div>
 
-				<div class="tab-content" id="tab_wdt2">
-					<p class="title">Working Days &amp; Time <small>You can set working time more flexibility</small></p>
-					<p class="row">
-						<span class="col-2">Work</span>
-						<span class="col-2">Day</span>
-						<span class="col-4">From</span>
-						<span class="col-4">To</span>
+				<div id="tab_step3">
+					<p class="title">Working Area</p>
+					<p class="control-select">
+						<label>
+							<span>Your place</span>
+							<select name="">
+								<option value="Place 1" selected>Place 1</option>
+								<option value="Place 2">Place 2</option>
+								<option value="Place 3">Place 3</option>
+							</select>
+						</label>
 					</p>
-					<p class="row day-info">
-						<span class="col-2">
-							<span class="control-check-left"><input name="" type="checkbox" id="check_wd1" checked><label for="check_wd1">&nbsp;</label></span>
-						</span>
-						<strong class="col-2">Mon</strong>
-						<span class="col-4 control-datetime">
-							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
-						</span>
-						<span class="col-4 control-datetime">
-							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
-						</span>
-					</p>
-					<p class="row day-info">
-						<span class="col-2">
-							<span class="control-check-left"><input name="" type="checkbox" id="check_wd2" checked><label for="check_wd2">&nbsp;</label></span>
-						</span>
-						<strong class="col-2">Tue</strong>
-						<span class="col-4 control-datetime">
-							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
-						</span>
-						<span class="col-4 control-datetime">
-							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
-						</span>
-					</p>
-					<p class="row day-info">
-						<span class="col-2">
-							<span class="control-check-left"><input name="" type="checkbox" id="check_wd3" checked><label for="check_wd3">&nbsp;</label></span>
-						</span>
-						<strong class="col-2">Wed</strong>
-						<span class="col-4 control-datetime">
-							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
-						</span>
-						<span class="col-4 control-datetime">
-							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
-						</span>
-					</p>
-					<p class="row day-info">
-						<span class="col-2">
-							<span class="control-check-left"><input name="" type="checkbox" id="check_wd4" checked><label for="check_wd4">&nbsp;</label></span>
-						</span>
-						<strong class="col-2">Thu</strong>
-						<span class="col-4 control-datetime">
-							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
-						</span>
-						<span class="col-4 control-datetime">
-							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
-						</span>
-					</p>
-					<p class="row day-info">
-						<span class="col-2">
-							<span class="control-check-left"><input name="" type="checkbox" id="check_wd5" checked><label for="check_wd5">&nbsp;</label></span>
-						</span>
-						<strong class="col-2">Fri</strong>
-						<span class="col-4 control-datetime">
-							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
-						</span>
-						<span class="col-4 control-datetime">
-							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
-						</span>
-					</p>
-					<p class="row day-info">
-						<span class="col-2">
-							<span class="control-check-left"><input name="" type="checkbox" id="check_wd6"><label for="check_wd6">&nbsp;</label></span>
-						</span>
-						<strong class="col-2">Sat</strong>
-						<span class="col-4 control-datetime">
-							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
-						</span>
-						<span class="col-4 control-datetime">
-							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
-						</span>
-					</p>
-					<p class="row day-info">
-						<span class="col-2">
-							<span class="control-check-left"><input name="" type="checkbox" id="check_wd7"><label for="check_wd7">&nbsp;</label></span>
-						</span>
-						<strong class="col-2">Sun</strong>
-						<span class="col-4 control-datetime">
-							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
-						</span>
-						<span class="col-4 control-datetime">
-							<label><input name="" readonly class="js-timepicker" value="00:00"></label>
-						</span>
+
+					<p class="title">Setting Map Radius</p>
+					{ insert map here }
+					<iframe src="" style="height: 400px; background: #ff5a00 linear-gradient(to right, #ff5a00, #ff8b10);"></iframe>
+
+					<p class="tab-footer">
+						<span class="btn-brand pull-left" data-tab-target="tab_step2">&lt; prev step</span>
+						<span class="btn-brand pull-right" data-tab-target="tab_step4">next step &gt;</span>
 					</p>
 				</div>
 
-				<p class="title">Working Area</p>
-				<p class="control-select">
-					<label>
-						<span>Your place</span>
-						<select name="">
-							<option value="Place 1" selected>Place 1</option>
-							<option value="Place 2">Place 2</option>
-							<option value="Place 3">Place 3</option>
-						</select>
-					</label>
-				</p>
+				<div id="tab_step4">
+					<p class="title">Max Redemption per User <small>Zero is infinity</small></p>
+					<p class="control-range max-redemption"><span>Overral</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
+					<p class="control-range max-redemption"><span>Daily</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
+					<p class="control-range max-redemption"><span>Weekly</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
+					<p class="control-range max-redemption"><span>Monthly</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
 
-				<p class="title">Setting Map Radius</p>
-				{ insert map here }
-				<iframe src="" style="background: #ff5a00 linear-gradient(to right, #ff5a00, #ff8b10);"></iframe>
+					<p class="title">Other Limits</p>
+					<p class="control-range"><span>Minimal user level</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="99" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
 
-				<p class="title">Max Redemption per User <small>Zero is infinity</small></p>
-				<p class="control-range max-redemption"><span>Overral</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
-				<p class="control-range max-redemption"><span>Daily</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
-				<p class="control-range max-redemption"><span>Weekly</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
-				<p class="control-range max-redemption"><span>Monthly</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
+					<p class="title">Reward Options</p>
+					<p class="control-range"><span>Reward for redemption</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="10" value="10" class="js-numeric"></label><em role="button" class="less">-</em></p>
+					<p class="control-range"><span>Token reservation</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="55" value="55" class="js-numeric"></label><em role="button" class="less">-</em></p>
 
-				<p class="title">Other Limits</p>
-				<p class="control-range"><span>Minimal user level</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="99" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
+					<p class="tokens-total"><strong>235</strong> You have tokens on your account</p>
 
-				<p class="title">Reward Options</p>
-				<p class="control-range"><span>Reward for redemption</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="10" value="10" class="js-numeric"></label><em role="button" class="less">-</em></p>
-				<p class="control-range"><span>Token reservation</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="55" value="55" class="js-numeric"></label><em role="button" class="less">-</em></p>
-
-				<p class="tokens-total"><strong>235</strong> You have tokens on your account</p>
-				<p><input type="submit" value="Create Offer"></p>
+					<p class="tab-footer">
+						<span class="btn-brand pull-left" data-tab-target="tab_step3">&lt; prev step</span>
+						<input type="submit" class="btn-brand pull-right" value="Create Offer">
+					</p>
+				</div>
 
 			</form>
 
 		</div>
 	</main>
 
+	<script src="js/datetimepicker.js"></script>
 	<script>
 		(function(){
 
@@ -212,7 +246,7 @@
 			}
 
 			/* tabs */
-			document.querySelectorAll('.tabs-controls').forEach(function(ul){
+			document.querySelectorAll('.js-tabs').forEach(function(ul){
 				ul.firstElementChild.classList.add('active');
 				for (let i = 0; i < ul.children.length; i++) {
 					if (!ul.children[i].classList.contains('active')) document.getElementById(ul.children[i].dataset.target).style.display = 'none';
@@ -226,6 +260,13 @@
 						document.getElementById(this.dataset.target).style.display = 'block';
 					});
 				}
+			});
+			/* data-tab-target */
+			document.querySelectorAll('[data-tab-target]').forEach(function(button){
+				button.addEventListener('click', function(){
+					document.querySelector('[data-target="' + this.dataset.tabTarget + '"]').dispatchEvent(new Event('click'));
+					document.querySelector('.tabs-steps').scrollIntoView(true);
+				});
 			});
 
 			/* "Working Days & Time" checking days */
@@ -301,7 +342,6 @@
 	</script>
 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-	<script src="js/script.js"></script>
 
 </body>
 </html>
