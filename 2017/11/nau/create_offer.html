@@ -5,7 +5,7 @@
 	<title>Advert Dashboard</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
 
@@ -65,8 +65,8 @@
 				<div id="tab_step2">
 					<p class="title">Working Dates</p>
 					<p class="row control-datetime">
-						<label class="col-6"><span>from</span> <input name="" readonly class="js-datepicker" value="Sat 2017/09/04"></label>
-						<label class="col-6"><span>to</span> <input name="" readonly class="js-datepicker" value="Mon 2018/09/03"></label>
+						<label class="col-6"><span>from</span> <input name="" readonly class="js-datepicker" value="" placeholder="Select date"></label>
+						<label class="col-6"><span>to</span> <input name="" readonly class="js-datepicker" value="" placeholder="Select date"></label>
 					</p>
 
 					<ul class="tabs-controls js-tabs">
@@ -326,7 +326,6 @@
 			}
 			document.querySelectorAll('.max-redemption input').forEach(function(input){
 				checkInfinity(input);
-				console.log(input);
 				input.addEventListener('keydown', function(){ checkInfinity(input); });
 				input.addEventListener('keypress', function(){ checkInfinity(input); });
 				input.addEventListener('keyup', function(){ checkInfinity(input); });
@@ -338,10 +337,15 @@
 				}
 			});
 
+			/* date and time pickers */
+			datePicker('.js-datepicker');
+			timePicker('.js-timepicker');
+
 		})();
 	</script>
 
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
+	<link href="css/datetimepicker.css" rel="stylesheet" type="text/css">
 
 </body>
 </html>

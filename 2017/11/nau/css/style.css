@@ -175,7 +175,7 @@ header .controls button.logout:hover:before {
 	float: left;
 	padding: 4px 24px;
 	border: 1px solid #e0e0e0;
-	border-radius: 5px 5px 0 0;
+	border-radius: 6px 6px 0 0;
 	cursor: pointer;
 }
 .tabs-controls li:not(:first-child) {
@@ -396,7 +396,6 @@ header .controls button.logout:hover:before {
 /* tabs-step */
 .tab-footer {
 	padding: 16px 0;
-	border-top: 1px solid #e0e0e0;
 }
 .tabs-steps:after,
 .tab-footer:after {
