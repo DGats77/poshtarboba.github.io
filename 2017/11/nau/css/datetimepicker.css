@@ -43,7 +43,7 @@
 	opacity: 0.3;
 }
 #datepicker td.today {
-	background: rgba(255, 90, 0, 0.4);
+	background: rgba(255, 90, 0, 0.2);
 }
 #datepicker td.selected {
 	background: #ff5a00;
@@ -76,7 +76,7 @@
 	float: right;
 }
 #timepicker td.active {
-	background: rgba(255, 90, 0, 0.4);
+	background: rgba(255, 90, 0, 0.2);
 }
 #timepicker td.sep {
 	width: 40px;

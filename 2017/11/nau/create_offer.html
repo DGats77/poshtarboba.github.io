@@ -44,7 +44,8 @@
 					<p class="title">Name and Description</p>
 					<p class="control-text"><label><span>Offer name</span> <input name=""></label></p>
 					<p class="control-text"><label><span>Offer description</span> <textarea name=""></textarea></label></p>
-					<p><label class="control-file"><span>Add picture</span> <input name="" type="file"></label></p>
+					<p>Offer picture<br><label class="control-file"><span class="text-add">Add picture</span> <input name="" type="file" class="js-imgupload"><img src="" alt=""><span class="text-hover">Drag it here</span></label></p>
+
 
 					<p class="title">Category &amp; Type</p>
 					<p class="control-radio-left"><input name="r1" type="radio" id="radio_ct1" checked><label for="radio_ct1"><span>Delivery</span></label></p>
@@ -296,7 +297,10 @@
 				if (p) {
 					p.querySelector('.less').addEventListener('mousedown', numericClick);
 					p.querySelector('.more').addEventListener('mousedown', numericClick);
-					/* TODO: when no mouseup - numbers must change each moment */
+					p.querySelector('.less').addEventListener('mouseleave', function(){ this.classList.remove('action'); });
+					p.querySelector('.more').addEventListener('mouseleave', function(){ this.classList.remove('action'); });
+					p.querySelector('.less').addEventListener('mouseup', function(){ this.classList.remove('action'); });
+					p.querySelector('.more').addEventListener('mouseup', function(){ this.classList.remove('action'); });
 				}
 			});
 			function numericValidate(input){
@@ -312,12 +316,20 @@
 				input.value = Math.min(Math.max(val, min), max);
 			}
 			function numericClick(){
-				let p = getParent(this, 'control-range');
+				this.classList.add('action');
+				numericClickAction(this, 500);
+			}
+			function numericClickAction(button, t){
+				console.log(t);
+				if (!button.classList.contains('action')) return;
+				let p = getParent(button, 'control-range');
 				if (p) {
 					let input = p.querySelector('input');
-					input.value = parseInt(input.value) + (this.classList.contains('more') ? 1 : -1);
+					input.value = parseInt(input.value) + (button.classList.contains('more') ? 1 : -1);
 					numericValidate(input);
 				}
+				t = Math.max(Math.round(t / 1.2), 20);
+				setTimeout(numericClickAction, t, button, t);
 			}
 
 			/* max-redemption infinity */
@@ -340,6 +352,42 @@
 			/* date and time pickers */
 			datePicker('.js-datepicker');
 			timePicker('.js-timepicker');
+
+			/* image uploader */
+			document.querySelectorAll('.js-imgupload').forEach(function(input){
+				input.addEventListener('change', function(){
+					let err = false;
+					let size = this.files[0].size;
+					let type = this.files[0].type;
+					if (size > 512000) err = imageUploaderError(this, 'The file must be less than 512 kb');
+					if (size < 1024) err = imageUploaderError(this, 'The file must be greater than 1 kb');
+					if (type !== 'image/png' && type !== 'image/jpeg') err = imageUploaderError(this, 'You can use only jpeg or png');
+					if (!err) {
+						let img = this.parentElement.querySelector('img');
+						img.src = window.URL.createObjectURL(this.files[0]);
+						this.parentElement.querySelector('.text-add').style.display = 'none';
+						this.parentElement.querySelector('img').style.display = 'block';
+					}
+				});
+			});
+			function imageUploaderError(input, msg){
+				input.value = '';
+				input.parentElement.querySelector('.text-add').style.display = 'block';
+				input.parentElement.querySelector('img').style.display = 'none';
+				alert(msg);
+				return true;
+			}
+			window.addEventListener('dragover', function() {
+				document.querySelectorAll('.control-file').forEach(function(box){
+					box.classList.add('hover')
+				});
+				return false;
+			});
+			window.addEventListener('drop', function() {
+				document.querySelectorAll('.control-file').forEach(function(box){
+					box.classList.remove('hover')
+				});
+			});
 
 		})();
 	</script>
