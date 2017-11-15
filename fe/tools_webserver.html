@@ -54,7 +54,20 @@
 			<code>
 				... \xampp\apache\conf\extra\httpd-vhosts.conf
 			</code>
-			<p>Тут прописані віртуальні хости, їх вже може бути декілька, або один - localhost. Зробіть відступ в 1-2 пустих строки і добавте новий блок в кінець файла:</p>
+			<p>Тут прописані віртуальні хости, їх вже може бути декілька, або один - localhost. Якщо localhost закоментований - його необхідно створити:</p>
+			<code>
+				&lt;VirtualHost *:80&gt;<br>
+				&nbsp;&nbsp;ServerName localhost<br>
+				&nbsp;&nbsp;DocumentRoot "C:/xampp/htdocs/"<br>
+				&nbsp;&nbsp;ErrorLog "logs/localhost-error.log"<br>
+				&nbsp;&nbsp;CustomLog "logs/localhost-access.log" common<br>
+				&nbsp;&nbsp;&lt;Directory "C:/xampp/htdocs/"&gt;<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;Require all granted<br>
+				&nbsp;&nbsp;&lt;/Directory&gt;<br>
+				&lt;/VirtualHost&gt;
+			</code>
+			<p><strong class="danger">Увага!</strong> Перевірте правильність шляхів!</p>
+			<p>Зробіть відступ в 1-2 пустих строки і добавте новий блок в кінець файла:</p>
 			<code>
 				&lt;VirtualHost *:80&gt;<br>
 				&nbsp;&nbsp;ServerName minecraft.local<br>
