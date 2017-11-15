@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>test</title>
+	<meta name="format-detection" content="telephone=no">
+	<style>
+		p.center {
+			margin-bottom: 32px;
+			max-width: 550px;
+			text-align: center;
+		}
+		.btn {
+			display: inline-block;
+			padding: 18px 75px;
+			color: #fff;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 24px;
+			line-height: 30px;
+			text-decoration: none;
+			background: #23b9e2 linear-gradient(to right, #07a7dd, #43cee7);
+			border: none;
+			border-radius: 33px;
+			box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
+			transition: background 1s ease;
+		}
+		.btn:hover {
+			color: #fff;
+		}
+		.btn.noanim:hover {
+			background: #2bbde0 linear-gradient(to right, #65d5ce, #38aec2);
+		}
+		code {
+			display: block;
+			margin: 10px 0 20px;
+			padding: 16px 20px;
+			font-family: monospace;
+			background: #ffe;
+			border: 2px dashed #eeb;
+		}
+	</style>
+</head>
+<body>
+
+<h1>Анімація CSS-градієнта</h1>
+
+<p>Іноді маленька анімація потребує великих зусиль.</p>
+<p>Так, можна було спробувати через @keyframes, але цікаво було - скільки кода вийде на JS. <small>(TODO: зробити через @keyframes)</small><p>
+<p>До рефакторинга лістинг був удвічі довший.</p>
+
+<br>
+
+<p class="center"><a href="#" class="btn noanim">without animation background</a></p>
+<p class="center"><a href="#" class="btn">with animation background</a></p>
+<p class="center"><a href="#" class="btn">with animation background</a></p>
+
+<br><br>
+
+<p>JS-скрипт:</p>
+<code>
+	let btnDuration = 400;<br>
+	let bClors = {<br>
+	&nbsp;&nbsp;c1: { r: 7, g: 167, b: 221 },<br>
+	&nbsp;&nbsp;c2: { r: 67, g: 206, b: 231 },<br>
+	&nbsp;&nbsp;c1h: { r: 101, g: 213, b: 206 },<br>
+	&nbsp;&nbsp;c2h: { r: 56, g: 174, b: 194 }<br>
+	};<br>
+	function stopAnim($button){<br>
+	&nbsp;&nbsp;clearInterval(parseInt($button.dataset.tid));<br>
+	}<br>
+	function setGradient($button, t){<br>
+	&nbsp;&nbsp;function calcColor(n, c, p){<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;return Math.round((bClors['c' + n + 'h'][c] - bClors['c' + n][c]) * p + bClors['c' + n][c]);<br>
+	&nbsp;&nbsp;}<br>
+	&nbsp;&nbsp;$button.dataset.timer = t;<br>
+	&nbsp;&nbsp;let p = t / btnDuration;<br>
+	&nbsp;&nbsp;let c1 = calcColor(1, 'r', p) + ', ' + calcColor(1, 'g', p) + ', ' + calcColor(1, 'b', p);<br>
+	&nbsp;&nbsp;let c2 = calcColor(2, 'r', p) + ', ' + calcColor(2, 'g', p) + ', ' + calcColor(2, 'b', p);<br>
+	&nbsp;&nbsp;$button.style.backgroundImage = 'linear-gradient(to right, rgb(' + c1 + '), rgb(' + c2 + '))';<br>
+	}<br>
+	document.querySelectorAll('.btn').forEach(function($button){<br>
+	&nbsp;&nbsp;if ($button.classList.contains('noanim')) return;<br>
+	&nbsp;&nbsp;$button.onmouseenter = function(){<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;if (!this.dataset.timer) this.dataset.timer = 0;<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;if (this.dataset.tid) stopAnim(this);<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;this.dataset.tid = setInterval(function($button){<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let t = parseInt($button.dataset.timer) + 20;<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setGradient($button, t);<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (t &gt;= btnDuration) stopAnim($button);<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;}, 20, this);<br>
+	&nbsp;&nbsp;};<br>
+	&nbsp;&nbsp;$button.onmouseleave = function(){<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;if (!this.dataset.timer) this.dataset.timer = btnDuration;<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;if (this.dataset.tid) stopAnim(this);<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;this.dataset.tid = setInterval(function($button){<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let t = parseInt($button.dataset.timer) - 20;<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setGradient($button, t);<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (t &lt;= 0) stopAnim($button);<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;}, 20, this);<br>
+	&nbsp;&nbsp;};<br>
+	});
+</code>
+
+<script>
+	document.querySelectorAll('a').forEach(function(a){
+		a.onclick = function(){ return false };
+	});
+
+	(function(){
+		let btnDuration = 400;
+		let bClors = {
+			c1: { r: 7, g: 167, b: 221 },
+			c2: { r: 67, g: 206, b: 231 },
+			c1h: { r: 101, g: 213, b: 206 },
+			c2h: { r: 56, g: 174, b: 194 }
+		};
+		function stopAnim($button){
+			clearInterval(parseInt($button.dataset.tid));
+		}
+		function setGradient($button, t){
+			function calcColor(n, c, p){
+				return Math.round((bClors['c' + n + 'h'][c] - bClors['c' + n][c]) * p + bClors['c' + n][c]);
+			}
+			$button.dataset.timer = t;
+			let p = t / btnDuration;
+			let c1 = calcColor(1, 'r', p) + ', ' + calcColor(1, 'g', p) + ', ' + calcColor(1, 'b', p);
+			let c2 = calcColor(2, 'r', p) + ', ' + calcColor(2, 'g', p) + ', ' + calcColor(2, 'b', p);
+			$button.style.backgroundImage = 'linear-gradient(to right, rgb(' + c1 + '), rgb(' + c2 + '))';
+		}
+		document.querySelectorAll('.btn').forEach(function($button){
+			if ($button.classList.contains('noanim')) return;
+			$button.onmouseenter = function(){
+				if (!this.dataset.timer) this.dataset.timer = 0;
+				if (this.dataset.tid) stopAnim(this);
+				this.dataset.tid = setInterval(function($button){
+					let t = parseInt($button.dataset.timer) + 20;
+					setGradient($button, t);
+					if (t >= btnDuration) stopAnim($button);
+				}, 20, this);
+			};
+			$button.onmouseleave = function(){
+				if (!this.dataset.timer) this.dataset.timer = btnDuration;
+				if (this.dataset.tid) stopAnim(this);
+				this.dataset.tid = setInterval(function($button){
+					let t = parseInt($button.dataset.timer) - 20;
+					setGradient($button, t);
+					if (t <= 0) stopAnim($button);
+				}, 20, this);
+			};
+		});
+	})();
+</script>
+
+</body>
+</html>
+
