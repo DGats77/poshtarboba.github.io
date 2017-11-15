@@ -56,21 +56,28 @@
 			</code>
 			<p>Тут прописані віртуальні хости, їх вже може бути декілька, або один - localhost. Зробіть відступ в 1-2 пустих строки і добавте новий блок в кінець файла:</p>
 			<code>
-				&lt;VirtualHost minecraft.local:80&gt;<br>
+				&lt;VirtualHost *:80&gt;<br>
 				&nbsp;&nbsp;ServerName minecraft.local<br>
 				&nbsp;&nbsp;DocumentRoot "D:/work/2017-12/wp-minecraft/html"<br>
-				&nbsp;&nbsp;ErrorLog "logs/minecraft.local-error_log"<br>
-				&nbsp;&nbsp;CustomLog "logs/minecraft.local-access_log" common<br>
-				&nbsp;&nbsp;&lt;Directory "E:/work/frontend/2017-08/wp.local"&gt;<br>
+				&nbsp;&nbsp;ErrorLog "logs/minecraft.local-error.log"<br>
+				&nbsp;&nbsp;CustomLog "logs/minecraft.local-access.log" common<br>
+				&nbsp;&nbsp;&lt;Directory "D:/work/2017-12/wp-minecraft/html"&gt;<br>
 				&nbsp;&nbsp;&nbsp;&nbsp;Require all granted<br>
 				&nbsp;&nbsp;&lt;/Directory&gt;<br>
 				&lt;/VirtualHost&gt;
 			</code>
-			<p><strong>VirtualHost minecraft.local:80</strong> URL-адреса і порт.</p>
 			<p><strong>ServerName</strong> - назва сервера, URL.</p>
 			<p><strong>DocumentRoot</strong> - шлях до домашнього каталога проекта.</p>
 			<p><strong>*Log</strong> - шлях до лог-файлів (в даному випадку вони будуть в папці веб-сервера).</p>
 			<p><strong>Directory</strong> - відкриває дозволи на доступ до файлів папки.</p>
+			<p>Потрібно відредагувати ще один файл:</p>
+			<code>
+				C:\windows\system32\drivers\etc\hosts
+			</code>
+			<p>В кінець файла допишіть:</p>
+			<code>
+				127.0.0.1 minecraft.local
+			</code>
 			<p>Після збереження файлу можна запускати веб-сервер і тестувати. Якщо веб-сервер був запущений до цього - його треба рестартнути, або зупинити і запустити знову.</p>
 			<p>Тестуємо. Введіть в браузері URL:</p>
 			<code>
