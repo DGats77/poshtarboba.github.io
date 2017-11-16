@@ -75,6 +75,7 @@ function datePicker(selector){
 					picker.querySelector('.controls strong').innerText = months[tdate.getMonth()] + ', ' + tdate.getFullYear()
 				} else {
 					input.value = days[day(tdate.getDay())] + ' ' + tdate.getFullYear() + '/' + zero(tdate.getMonth() + 1) + '/' + zero(tdate.getDate());
+					input.dispatchEvent(new Event('change'));
 					input.focus();
 					removePickers();
 				}
@@ -154,13 +155,12 @@ function timePicker(selector){
 			let hval = h ? zero(parseInt(h.innerText)) : '__';
 			let mval = m ? m.innerText : ':__';
 			picker.querySelector('.controls strong').innerText = hval + mval;
-			if (h && m) {
-				input.value = picker.querySelector('.controls strong').innerText;
-				input.focus();
-				removePickers();
-			}
-			if (e.target.classList.contains('midnight')) {
-				input.value = e.target.innerText;
+			let val;
+			if (h && m) val = picker.querySelector('.controls strong').innerText;
+			if (e.target.classList.contains('midnight')) val = e.target.innerText;
+			if (val) {
+				input.value = val;
+				input.dispatchEvent(new Event('change'));
 				input.focus();
 				removePickers();
 			}
