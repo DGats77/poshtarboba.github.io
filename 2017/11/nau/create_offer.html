@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Advert Dashboard</title>
+	<title>Create Offer</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no">
 	<link rel="stylesheet" href="css/style.css" type="text/css">
@@ -41,22 +41,40 @@
 				</ul>
 
 				<div id="tab_step1">
-					<p class="title">Name and Description</p>
-					<p class="control-text"><label><span>Offer name</span> <input name=""></label></p>
-					<p class="control-text"><label><span>Offer description</span> <textarea name=""></textarea></label></p>
-					<p>Offer picture<br><label class="control-file"><span class="text-add">Add picture</span> <input name="" type="file" class="js-imgupload"><img src="" alt=""><span class="text-hover">Drag it here</span></label></p>
 
+					<p class="title">Name and Description</p>
+					<p class="control-text valid-not-empty"><label><span class="label">Offer name</span> <input name=""></label></p>
+					<p class="hint">Please, enter the Offer name.</p>
+					<p class="control-text valid-not-empty"><label><span class="label">Offer description</span> <textarea name=""></textarea></label></p>
+					<p class="hint">Please, enter the Offer description.</p>
+					<p><span class="label">Offer picture</span><br><label class="control-file"><span class="text-add">Add picture</span> <input name="" type="file" class="js-imgupload"><img src="" alt=""><span class="text-hover">Drag it here</span></label></p>
 
 					<p class="title">Category &amp; Type</p>
-					<p class="control-radio-left"><input name="r1" type="radio" id="radio_ct1" checked><label for="radio_ct1"><span>Delivery</span></label></p>
-					<p class="control-radio-left"><input name="r1" type="radio" id="radio_ct2"><label for="radio_ct2"><span>Another</span></label></p>
-					<p class="control-check-left"><input name="" type="checkbox" id="check_ct3"><label for="check_ct3"><span>Or checkbox ??</span></label></p>
 
-					<p class="title">Offer Type</p>
-					<p class="control-radio-left"><input name="r2" type="radio" id="radio_ot1" checked><label for="radio_ot1"><span>Discount</span> <small>Description for this item</small></label></p>
-					<p class="control-radio-left"><input name="r2" type="radio" id="radio_ot2"><label for="radio_ot2"><span>Second Free</span> <small>Description for this item</small></label></p>
-					<p class="control-radio-left"><input name="r2" type="radio" id="radio_ot3"><label for="radio_ot3"><span>Bonus or Gift</span> <small>Description for this item</small></label></p>
-					<p class="control-range"><span>Set discount (%)</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="99" data-default="10" value="10" class="js-numeric"></label><em role="button" class="less">-</em></p>
+					<!--<p class="control-radio-left"><input name="r1" type="radio" id="radio_ct1" checked><label for="radio_ct1"><span class="label">Delivery</span></label></p>
+					<p class="control-radio-left"><input name="r1" type="radio" id="radio_ct2"><label for="radio_ct2"><span class="label">Another</span></label></p>
+					<p class="control-check-left"><input name="" type="checkbox" id="check_ct3"><label for="check_ct3"><span class="label">Or checkbox ??</span></label></p>-->
+					<p class="control-select valid-not-empty">
+						<label>
+							<span class="label">Offer category</span>
+							<select id="offer_category" name="category_id">
+								<option value="" selected>Select a category</option>
+								<option value="2ffaf6e1-bfa1-4af6-8755-6ccf2266cb6b">Retail &amp; Services</option>
+								<option value="5e860198-f40a-4031-8fc6-f3e67f9d6b0c">Attractions &amp; Leisure</option>
+								<option value="69d4ccac-0a2b-423b-97c9-7f560c5c8bdb">Other &amp; Online</option>
+								<option value="aea58d61-5ad5-4f79-9a2c-819245f56696">Food &amp; Drinks</option>
+								<option value="b1c1bdc8-5704-4517-8992-5c68df4b9bc9">Beauty &amp; Fitness</option>
+							</select>
+						</label>
+					</p>
+					<p class="hint">Please, select a category.</p>
+
+
+					<p>Offer type</p>
+					<p class="control-radio-left"><input name="r2" type="radio" id="radio_ot1" checked><label for="radio_ot1"><span class="label">Discount</span> <small>Description for this item</small></label></p>
+					<p class="control-radio-left"><input name="r2" type="radio" id="radio_ot2"><label for="radio_ot2"><span class="label">Second Free</span> <small>Description for this item</small></label></p>
+					<p class="control-radio-left"><input name="r2" type="radio" id="radio_ot3"><label for="radio_ot3"><span class="label">Bonus or Gift</span> <small>Description for this item</small></label></p>
+					<p class="control-range" id="discount_value"><span class="label">Set discount (%)</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="99" data-default="10" value="10" class="js-numeric"></label><em role="button" class="less">-</em></p>
 
 					<p class="tab-footer">
 						<span class="btn-brand pull-right" data-tab-target="tab_step2">next step &gt;</span>
@@ -64,11 +82,12 @@
 				</div>
 
 				<div id="tab_step2">
-					<p class="title">Working Dates</p>
-					<p class="row control-datetime">
-						<label class="col-6"><span>from</span> <input name="" readonly class="js-datepicker" value="" placeholder="Select date"></label>
-						<label class="col-6"><span>to</span> <input name="" readonly class="js-datepicker" value="" placeholder="Select date"></label>
+					<p class="title">Working dates</p>
+					<p class="row control-datetime valid-dates">
+						<label class="col-6"><span class="label">from</span> <input name="" readonly class="js-datepicker" value="" placeholder="Select date"></label>
+						<label class="col-6"><span class="label">to</span> <input name="" readonly class="js-datepicker" value="" placeholder="Select date"></label>
 					</p>
+					<p class="hint">Please, select a valid range of dates.</p>
 
 					<ul class="tabs-controls js-tabs">
 						<li data-target="tab_wdt1">Simple</li>
@@ -76,18 +95,18 @@
 					</ul>
 
 					<div class="tab-content" id="tab_wdt1">
-						<p class="title">Working Days</p>
-						<p class="control-check-left"><input name="" type="checkbox" id="check_wd8" checked><label for="check_wd8"><span>Working Days</span></label></p>
-						<p class="control-check-left"><input name="" type="checkbox" id="check_wd9"><label for="check_wd9"><span>Weekend</span></label></p>
-						<p class="title">Working Time</p>
+						<p class="title">Working days</p>
+						<p class="control-check-left"><input name="" type="checkbox" id="check_wd8" checked><label for="check_wd8"><span class="label">Working Days</span></label></p>
+						<p class="control-check-left"><input name="" type="checkbox" id="check_wd9"><label for="check_wd9"><span class="label">Weekend</span></label></p>
+						<p class="title">Working time</p>
 						<p class="row control-datetime">
-							<label class="col-6"><span>from</span> <input name="" readonly class="js-timepicker" value="00:00"></label>
-							<label class="col-6"><span>to</span> <input name="" readonly class="js-timepicker" value="23:59"></label>
+							<label class="col-6"><span class="label">from</span> <input name="" readonly class="js-timepicker" value="" id="time_wd8f" placeholder="__:__"></label>
+							<label class="col-6"><span class="label">to</span> <input name="" readonly class="js-timepicker" value="" id="time_wd8t" placeholder="__:__"></label>
 						</p>
 					</div>
 
 					<div class="tab-content" id="tab_wdt2">
-						<p class="title">Working Days &amp; Time <small>You can set working time more flexibility</small></p>
+						<p class="title">Working days &amp; time <small>You can set working time more flexibility</small></p>
 						<p class="row">
 							<span class="col-2">Work</span>
 							<span class="col-2">Day</span>
@@ -96,86 +115,86 @@
 						</p>
 						<p class="row day-info">
 							<span class="col-2">
-								<span class="control-check-left"><input name="" type="checkbox" id="check_wd1" checked><label for="check_wd1">&nbsp;</label></span>
+								<span class="control-check-left"><input name="" type="checkbox" id="check_wd1" data-relation="check_wd8" checked><label for="check_wd1">&nbsp;</label></span>
 							</span>
 							<strong class="col-2">Mon</strong>
 							<span class="col-4 control-datetime">
-								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+								<label><input name="" readonly class="js-timepicker" value="" data-relation="time_wd8f_wd" placeholder="__:__"></label>
 							</span>
 							<span class="col-4 control-datetime">
-								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+								<label><input name="" readonly class="js-timepicker" value="" data-relation="time_wd8t_wd" placeholder="__:__"></label>
 							</span>
 						</p>
 						<p class="row day-info">
 							<span class="col-2">
-								<span class="control-check-left"><input name="" type="checkbox" id="check_wd2" checked><label for="check_wd2">&nbsp;</label></span>
+								<span class="control-check-left"><input name="" type="checkbox" id="check_wd2" data-relation="check_wd8" checked><label for="check_wd2">&nbsp;</label></span>
 							</span>
 							<strong class="col-2">Tue</strong>
 							<span class="col-4 control-datetime">
-								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+								<label><input name="" readonly class="js-timepicker" value="" data-relation="time_wd8f_wd" placeholder="__:__"></label>
 							</span>
 							<span class="col-4 control-datetime">
-								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+								<label><input name="" readonly class="js-timepicker" value="" data-relation="time_wd8t_wd" placeholder="__:__"></label>
 							</span>
 						</p>
 						<p class="row day-info">
 							<span class="col-2">
-								<span class="control-check-left"><input name="" type="checkbox" id="check_wd3" checked><label for="check_wd3">&nbsp;</label></span>
+								<span class="control-check-left"><input name="" type="checkbox" id="check_wd3" data-relation="check_wd8" checked><label for="check_wd3">&nbsp;</label></span>
 							</span>
 							<strong class="col-2">Wed</strong>
 							<span class="col-4 control-datetime">
-								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+								<label><input name="" readonly class="js-timepicker" value="" data-relation="time_wd8f_wd" placeholder="__:__"></label>
 							</span>
 							<span class="col-4 control-datetime">
-								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+								<label><input name="" readonly class="js-timepicker" value="" data-relation="time_wd8t_wd" placeholder="__:__"></label>
 							</span>
 						</p>
 						<p class="row day-info">
 							<span class="col-2">
-								<span class="control-check-left"><input name="" type="checkbox" id="check_wd4" checked><label for="check_wd4">&nbsp;</label></span>
+								<span class="control-check-left"><input name="" type="checkbox" id="check_wd4" data-relation="check_wd8" checked><label for="check_wd4">&nbsp;</label></span>
 							</span>
 							<strong class="col-2">Thu</strong>
 							<span class="col-4 control-datetime">
-								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+								<label><input name="" readonly class="js-timepicker" value="" data-relation="time_wd8f_wd" placeholder="__:__"></label>
 							</span>
 							<span class="col-4 control-datetime">
-								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+								<label><input name="" readonly class="js-timepicker" value="" data-relation="time_wd8t_wd" placeholder="__:__"></label>
 							</span>
 						</p>
 						<p class="row day-info">
 							<span class="col-2">
-								<span class="control-check-left"><input name="" type="checkbox" id="check_wd5" checked><label for="check_wd5">&nbsp;</label></span>
+								<span class="control-check-left"><input name="" type="checkbox" id="check_wd5" data-relation="check_wd8" checked><label for="check_wd5">&nbsp;</label></span>
 							</span>
 							<strong class="col-2">Fri</strong>
 							<span class="col-4 control-datetime">
-								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+								<label><input name="" readonly class="js-timepicker" value="" data-relation="time_wd8f_wd" placeholder="__:__"></label>
 							</span>
 							<span class="col-4 control-datetime">
-								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+								<label><input name="" readonly class="js-timepicker" value="" data-relation="time_wd8t_wd" placeholder="__:__"></label>
 							</span>
 						</p>
 						<p class="row day-info">
 							<span class="col-2">
-								<span class="control-check-left"><input name="" type="checkbox" id="check_wd6"><label for="check_wd6">&nbsp;</label></span>
+								<span class="control-check-left"><input name="" type="checkbox" id="check_wd6" data-relation="check_wd9"><label for="check_wd6">&nbsp;</label></span>
 							</span>
 							<strong class="col-2">Sat</strong>
 							<span class="col-4 control-datetime">
-								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+								<label><input name="" readonly class="js-timepicker" value="" data-relation="time_wd8f_we" placeholder="__:__"></label>
 							</span>
 							<span class="col-4 control-datetime">
-								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+								<label><input name="" readonly class="js-timepicker" value="" data-relation="time_wd8t_we" placeholder="__:__"></label>
 							</span>
 						</p>
 						<p class="row day-info">
 							<span class="col-2">
-								<span class="control-check-left"><input name="" type="checkbox" id="check_wd7"><label for="check_wd7">&nbsp;</label></span>
+								<span class="control-check-left"><input name="" type="checkbox" id="check_wd7" data-relation="check_wd9"><label for="check_wd7">&nbsp;</label></span>
 							</span>
 							<strong class="col-2">Sun</strong>
 							<span class="col-4 control-datetime">
-								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+								<label><input name="" readonly class="js-timepicker" value="" data-relation="time_wd8f_we" placeholder="__:__"></label>
 							</span>
 							<span class="col-4 control-datetime">
-								<label><input name="" readonly class="js-timepicker" value="00:00"></label>
+								<label><input name="" readonly class="js-timepicker" value="" data-relation="time_wd8t_we" placeholder="__:__"></label>
 							</span>
 						</p>
 					</div>
@@ -187,19 +206,21 @@
 				</div>
 
 				<div id="tab_step3">
-					<p class="title">Working Area</p>
-					<p class="control-select">
+					<p class="title">Working area</p>
+					<p class="control-select valid-not-empty">
 						<label>
-							<span>Your place</span>
+							<span class="label">Your place</span>
 							<select name="">
-								<option value="Place 1" selected>Place 1</option>
+								<option value="" selected>Select a place</option>
+								<option value="Place 1">Place 1</option>
 								<option value="Place 2">Place 2</option>
 								<option value="Place 3">Place 3</option>
 							</select>
 						</label>
 					</p>
+					<p class="hint">Please, select a place.</p>
 
-					<p class="title">Setting Map Radius</p>
+					<p class="title">Setting map radius</p>
 					{ insert map here }
 					<iframe src="" style="height: 400px; background: #ff5a00 linear-gradient(to right, #ff5a00, #ff8b10);"></iframe>
 
@@ -210,20 +231,20 @@
 				</div>
 
 				<div id="tab_step4">
-					<p class="title">Max Redemption per User <small>Zero is infinity</small></p>
-					<p class="control-range max-redemption"><span>Overral</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
-					<p class="control-range max-redemption"><span>Daily</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
-					<p class="control-range max-redemption"><span>Weekly</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
-					<p class="control-range max-redemption"><span>Monthly</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
+					<p class="title">Max redemption per user <small>Zero is infinity</small></p>
+					<p class="control-range max-redemption"><span class="label">Overral</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
+					<p class="control-range max-redemption"><span class="label">Daily</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
+					<p class="control-range max-redemption"><span class="label">Weekly</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
+					<p class="control-range max-redemption"><span class="label">Monthly</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
 
-					<p class="title">Other Limits</p>
-					<p class="control-range"><span>Minimal user level</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="99" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
+					<p class="title">Other limits</p>
+					<p class="control-range"><span class="label">Minimal user level</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="99" data-default="0" value="0" class="js-numeric"></label><em role="button" class="less">-</em></p>
 
-					<p class="title">Reward Options</p>
-					<p class="control-range"><span>Reward for redemption</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="10" value="10" class="js-numeric"></label><em role="button" class="less">-</em></p>
-					<p class="control-range"><span>Token reservation</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="55" value="55" class="js-numeric"></label><em role="button" class="less">-</em></p>
+					<p class="title">Reward options</p>
+					<p class="control-range"><span class="label">Reward for redemption</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="10" value="10" class="js-numeric"></label><em role="button" class="less">-</em></p>
+					<p class="control-range"><span class="label">Token reservation</span> <em role="button" class="more">+</em><label><input name="" data-min="0" data-max="999999" data-default="55" value="55" class="js-numeric"></label><em role="button" class="less">-</em></p>
 
-					<p class="tokens-total"><strong>235</strong> You have tokens on your account</p>
+					<p class="tokens-total"><strong>235</strong> <span>You have tokens on your account</span></p>
 
 					<p class="tab-footer">
 						<span class="btn-brand pull-left" data-tab-target="tab_step3">&lt; prev step</span>
@@ -240,154 +261,261 @@
 	<script>
 		(function(){
 
-			function getParent(elem, className){
-				let p = elem.parentElement;
-				while (p && !p.classList.contains(className)) p = p.parentElement;
-				return p;
-			}
-
 			/* tabs */
-			document.querySelectorAll('.js-tabs').forEach(function(ul){
-				ul.firstElementChild.classList.add('active');
-				for (let i = 0; i < ul.children.length; i++) {
-					if (!ul.children[i].classList.contains('active')) document.getElementById(ul.children[i].dataset.target).style.display = 'none';
-					ul.children[i].addEventListener('click', function(){
-						let ul = this.parentElement;
-						for (let j = 0; j < ul.children.length; j++) {
-							ul.children[j].classList.remove('active');
-							document.getElementById(ul.children[j].dataset.target).style.display = 'none';
-						}
-						this.classList.add('active');
-						document.getElementById(this.dataset.target).style.display = 'block';
-					});
-				}
-			});
-			/* data-tab-target */
-			document.querySelectorAll('[data-tab-target]').forEach(function(button){
-				button.addEventListener('click', function(){
-					document.querySelector('[data-target="' + this.dataset.tabTarget + '"]').dispatchEvent(new Event('click'));
-					document.querySelector('.tabs-steps').scrollIntoView(true);
-				});
-			});
+			createTabs('.js-tabs');
 
 			/* "Working Days & Time" checking days */
-			document.querySelectorAll('.day-info').forEach(function(p){
-				let cb = p.querySelector('[type="checkbox"]');
-				if (!cb.checked) p.classList.add('passive');
-				cb.addEventListener('change', dayCheck);
-				function dayCheck(){
-					let p = getParent(this, 'day-info');
-					if (p) p.classList[cb.checked ? 'remove' : 'add']('passive');
-				}
-			});
+			checkingDays('.day-info');
 
 			/* control range */
-			document.querySelectorAll('.js-numeric').forEach(function(input){
-				input.addEventListener('keyup', function(){
-					numericValidate(this);
-				});
-				input.addEventListener('change', function(){
-					if (this.value === '') {
-						let def = parseInt(input.dataset.default);
-						if (isNaN(def)) def = 0;
-						this.value = def;
-					}
-				});
-				let p = getParent(input, 'control-range');
-				if (p) {
-					p.querySelector('.less').addEventListener('mousedown', numericClick);
-					p.querySelector('.more').addEventListener('mousedown', numericClick);
-					p.querySelector('.less').addEventListener('mouseleave', function(){ this.classList.remove('action'); });
-					p.querySelector('.more').addEventListener('mouseleave', function(){ this.classList.remove('action'); });
-					p.querySelector('.less').addEventListener('mouseup', function(){ this.classList.remove('action'); });
-					p.querySelector('.more').addEventListener('mouseup', function(){ this.classList.remove('action'); });
-				}
-			});
-			function numericValidate(input){
-				if (input.value === '') return;
-				let def = parseInt(input.dataset.default);
-				let min = parseInt(input.dataset.min);
-				let max = parseInt(input.dataset.max);
-				let val = parseInt(input.value);
-				if (isNaN(def)) def = 0;
-				if (isNaN(min)) min = 0;
-				if (isNaN(max)) max = 100;
-				if (isNaN(val)) val = def;
-				input.value = Math.min(Math.max(val, min), max);
-			}
-			function numericClick(){
-				this.classList.add('action');
-				numericClickAction(this, 500);
-			}
-			function numericClickAction(button, t){
-				console.log(t);
-				if (!button.classList.contains('action')) return;
-				let p = getParent(button, 'control-range');
-				if (p) {
-					let input = p.querySelector('input');
-					input.value = parseInt(input.value) + (button.classList.contains('more') ? 1 : -1);
-					numericValidate(input);
-				}
-				t = Math.max(Math.round(t / 1.2), 20);
-				setTimeout(numericClickAction, t, button, t);
-			}
-
-			/* max-redemption infinity */
-			function checkInfinity(input){
-				input.parentElement.classList[input.value === '0' ? 'add' : 'remove']('infinity');
-			}
-			document.querySelectorAll('.max-redemption input').forEach(function(input){
-				checkInfinity(input);
-				input.addEventListener('keydown', function(){ checkInfinity(input); });
-				input.addEventListener('keypress', function(){ checkInfinity(input); });
-				input.addEventListener('keyup', function(){ checkInfinity(input); });
-				input.addEventListener('change', function(){ checkInfinity(input); });
-				let p = getParent(input, 'max-redemption');
-				if (p) {
-					p.querySelector('.less').addEventListener('mouseup', function(){ checkInfinity(input); });
-					p.querySelector('.more').addEventListener('mouseup', function(){ checkInfinity(input); });
-				}
-			});
+			controlRange('.js-numeric');
 
 			/* date and time pickers */
 			datePicker('.js-datepicker');
 			timePicker('.js-timepicker');
 
 			/* image uploader */
-			document.querySelectorAll('.js-imgupload').forEach(function(input){
-				input.addEventListener('change', function(){
-					let err = false;
-					let size = this.files[0].size;
-					let type = this.files[0].type;
-					if (size > 512000) err = imageUploaderError(this, 'The file must be less than 512 kb');
-					if (size < 1024) err = imageUploaderError(this, 'The file must be greater than 1 kb');
-					if (type !== 'image/png' && type !== 'image/jpeg') err = imageUploaderError(this, 'You can use only jpeg or png');
-					if (!err) {
-						let img = this.parentElement.querySelector('img');
-						img.src = window.URL.createObjectURL(this.files[0]);
-						this.parentElement.querySelector('.text-add').style.display = 'none';
-						this.parentElement.querySelector('img').style.display = 'block';
+			imageUploader('.js-imgupload');
+
+			/* max-redemption infinity */
+			maxRedemptionInfinity('.max-redemption input');
+
+			/* synchronization of wokr time */
+			wokrTimeSynchronization();
+
+			/* offer type = discount */
+			offerTypeDiscount();
+
+			/* validations */
+			allValidations();
+
+
+
+
+
+			/* functions */
+
+			function getParent(elem, className){
+				let p = elem.parentElement;
+				while (p && !p.classList.contains(className)) p = p.parentElement;
+				return p;
+			}
+
+			function createTabs(selector){
+				document.querySelectorAll(selector).forEach(function(ul){
+					ul.firstElementChild.classList.add('active');
+					for (let i = 0; i < ul.children.length; i++) {
+						if (!ul.children[i].classList.contains('active')) document.getElementById(ul.children[i].dataset.target).style.display = 'none';
+						ul.children[i].addEventListener('click', function(){
+							let ul = this.parentElement;
+							for (let j = 0; j < ul.children.length; j++) {
+								ul.children[j].classList.remove('active');
+								document.getElementById(ul.children[j].dataset.target).style.display = 'none';
+							}
+							this.classList.add('active');
+							document.getElementById(this.dataset.target).style.display = 'block';
+						});
 					}
 				});
-			});
-			function imageUploaderError(input, msg){
-				input.value = '';
-				input.parentElement.querySelector('.text-add').style.display = 'block';
-				input.parentElement.querySelector('img').style.display = 'none';
-				alert(msg);
-				return true;
+				/* data-tab-target */
+				document.querySelectorAll('[data-tab-target]').forEach(function(button){
+					button.addEventListener('click', function(){
+						document.querySelector('[data-target="' + this.dataset.tabTarget + '"]').dispatchEvent(new Event('click'));
+						document.querySelector('.tabs-steps').scrollIntoView(true);
+					});
+				});
 			}
-			window.addEventListener('dragover', function() {
-				document.querySelectorAll('.control-file').forEach(function(box){
-					box.classList.add('hover')
+
+			function checkingDays(selector){
+				document.querySelectorAll(selector).forEach(function(p){
+					let cb = p.querySelector('[type="checkbox"]');
+					if (!cb.checked) p.classList.add('passive');
+					cb.addEventListener('change', dayCheck);
+					function dayCheck(){
+						let p = getParent(this, 'day-info');
+						if (p) p.classList[cb.checked ? 'remove' : 'add']('passive');
+					}
 				});
-				return false;
-			});
-			window.addEventListener('drop', function() {
-				document.querySelectorAll('.control-file').forEach(function(box){
-					box.classList.remove('hover')
+			}
+
+			function controlRange(selector){
+				document.querySelectorAll(selector).forEach(function(input){
+					input.addEventListener('keyup', function(){
+						numericValidate(this);
+					});
+					input.addEventListener('change', function(){
+						if (this.value === '') {
+							let def = parseInt(input.dataset.default);
+							if (isNaN(def)) def = 0;
+							this.value = def;
+						}
+					});
+					let p = getParent(input, 'control-range');
+					if (p) {
+						p.querySelector('.less').addEventListener('mousedown', numericClick);
+						p.querySelector('.more').addEventListener('mousedown', numericClick);
+						p.querySelector('.less').addEventListener('mouseleave', function(){ this.classList.remove('action'); });
+						p.querySelector('.more').addEventListener('mouseleave', function(){ this.classList.remove('action'); });
+						p.querySelector('.less').addEventListener('mouseup', function(){ this.classList.remove('action'); });
+						p.querySelector('.more').addEventListener('mouseup', function(){ this.classList.remove('action'); });
+					}
 				});
-			});
+				function numericValidate(input){
+					if (input.value === '') return;
+					let def = parseInt(input.dataset.default);
+					let min = parseInt(input.dataset.min);
+					let max = parseInt(input.dataset.max);
+					let val = parseInt(input.value);
+					if (isNaN(def)) def = 0;
+					if (isNaN(min)) min = 0;
+					if (isNaN(max)) max = 100;
+					if (isNaN(val)) val = def;
+					input.value = Math.min(Math.max(val, min), max);
+					input.dispatchEvent(new Event('change'));
+				}
+				function numericClick(){
+					this.classList.add('action');
+					numericClickAction(this, 500);
+				}
+				function numericClickAction(button, t){
+					if (!button.classList.contains('action')) return;
+					let p = getParent(button, 'control-range');
+					if (p) {
+						let input = p.querySelector('input');
+						input.value = parseInt(input.value) + (button.classList.contains('more') ? 1 : -1);
+						input.dispatchEvent(new Event('change'));
+						numericValidate(input);
+					}
+					t = Math.max(Math.round(t / 1.3), 20);
+					setTimeout(numericClickAction, t, button, t);
+				}
+			}
+
+			function maxRedemptionInfinity(selector){
+				document.querySelectorAll(selector).forEach(function(input){
+					checkInfinity(input);
+					input.addEventListener('keydown', function(){ checkInfinity(input); });
+					input.addEventListener('keyup', function(){ checkInfinity(input); });
+					input.addEventListener('change', function(){ checkInfinity(input); });
+				});
+				function checkInfinity(input){
+					input.parentElement.classList[input.value === '0' ? 'add' : 'remove']('infinity');
+				}
+			}
+
+			function imageUploader(selector){
+				document.querySelectorAll(selector).forEach(function(input){
+					input.addEventListener('change', function(){
+						let err = false;
+						let size = this.files[0].size;
+						let type = this.files[0].type;
+						if (size > 512000) err = imageUploaderError(this, 'The file must be less than 512 kb');
+						if (size < 1024) err = imageUploaderError(this, 'The file must be greater than 1 kb');
+						if (type !== 'image/png' && type !== 'image/jpeg') err = imageUploaderError(this, 'You can use only jpeg or png');
+						if (!err) {
+							let img = this.parentElement.querySelector('img');
+							img.src = window.URL.createObjectURL(this.files[0]);
+							this.parentElement.querySelector('.text-add').style.display = 'none';
+							this.parentElement.querySelector('img').style.display = 'block';
+						}
+					});
+				});
+				function imageUploaderError(input, msg){
+					input.value = '';
+					input.parentElement.querySelector('.text-add').style.display = 'block';
+					input.parentElement.querySelector('img').style.display = 'none';
+					alert(msg);
+					return true;
+				}
+				window.addEventListener('dragover', function() {
+					document.querySelectorAll('.control-file').forEach(function(box){
+						box.classList.add('hover')
+					});
+					return false;
+				});
+				window.addEventListener('drop', function() {
+					document.querySelectorAll('.control-file').forEach(function(box){
+						box.classList.remove('hover')
+					});
+				});
+			}
+
+			function wokrTimeSynchronization(){
+				document.getElementById('check_wd8').addEventListener('change', checkRelations);
+				document.getElementById('check_wd9').addEventListener('change', checkRelations);
+				document.getElementById('time_wd8f').addEventListener('change', timeRelations);
+				document.getElementById('time_wd8t').addEventListener('change', timeRelations);
+				document.querySelectorAll('[data-relation^="time_wd8f_"]').forEach(function(input){
+					input.addEventListener('change', function(){ document.getElementById('time_wd8f').value = this.value; });
+				});
+				document.querySelectorAll('[data-relation^="time_wd8t_"]').forEach(function(input){
+					input.addEventListener('change', function(){ document.getElementById('time_wd8t').value = this.value; });
+				});
+				function checkRelations(){
+					let state = this.checked;
+					document.querySelectorAll('[data-relation="' + this.getAttribute('id') + '"]').forEach(function(checkbox){
+						checkbox.checked = state;
+						checkbox.dispatchEvent(new Event('change'));
+					});
+				}
+				function timeRelations(){
+					let val = this.value;
+					if (document.getElementById('check_wd8').checked){
+						document.querySelectorAll('[data-relation="' + this.getAttribute('id') + '_wd"]').forEach(function(input){
+							input.value = val;
+							input.dispatchEvent(new Event('change'));
+						});
+					}
+					if (document.getElementById('check_wd9').checked){
+						document.querySelectorAll('[data-relation="' + this.getAttribute('id') + '_we"]').forEach(function(input){
+							input.value = val;
+							input.dispatchEvent(new Event('change'));
+						});
+					}
+				}
+			}
+
+			function offerTypeDiscount(){
+				document.querySelectorAll('[id^="radio_ot"]').forEach(function(radio){
+					radio.addEventListener('change', function(){
+						document.getElementById('discount_value').style.visibility = document.getElementById('radio_ot1').checked ? 'visible' : 'hidden';
+					});
+				});
+			}
+
+			function allValidations(){
+
+				validationOnFly();
+				validationOnTabChange();
+				offerSubmitValidation();
+
+				function validationOnFly(){
+					document.querySelectorAll('.valid-not-empty').forEach(function(box){
+						box.querySelector('input, textarea, select').addEventListener('blur', function(){
+							box.classList[this.value === '' ? 'add' : 'remove']('invalid');
+						});
+					});
+					document.querySelectorAll('.valid-dates').forEach(function(box){
+						box.getElementsByTagName('input')[1].addEventListener('blur', function(){
+							if (!document.getElementById('datepicker')){
+								let date1 = box.getElementsByTagName('input')[0].value;
+								let date2 = this.value;
+								date1 = date1 ? new Date(date1) : '';
+								date2 = date2 ? new Date(date2) : '';
+								box.classList[date1 && date2 && date2 >= date1  ? 'remove' : 'add']('invalid');
+							}
+						});
+					});
+				}
+				function validationOnTabChange(){
+
+				}
+				function offerSubmitValidation(){
+
+				}
+
+			}
+
 
 		})();
 	</script>

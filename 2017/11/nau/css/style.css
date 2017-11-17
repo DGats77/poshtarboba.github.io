@@ -92,6 +92,10 @@ iframe {
 }
 
 
+h1 {
+	text-align: center;
+}
+
 
 
 header {
@@ -229,9 +233,9 @@ header .controls button.logout:hover:before {
 	line-height: 1.4em;
 	color: #bdbdbd;
 }
-.form .control-text label span,
-.form .control-datetime label span,
-.form .control-select label span {
+.form .control-text label span.label,
+.form .control-datetime label span.label,
+.form .control-select label span.label {
 	display: block;
 	margin-bottom: 4px;
 }
@@ -252,7 +256,8 @@ header .controls button.logout:hover:before {
 .form .control-text input:focus,
 .form .control-text textarea:focus,
 .form .control-range input:focus,
-.form .control-datetime input:focus {
+.form .control-datetime input:focus,
+.form .control-select select:focus {
 	border-color: #ff5a00;
 }
 .form .control-check-left input,
@@ -440,6 +445,51 @@ header .controls button.logout:hover:before {
 	margin: 0 auto;
 	padding: 8px;
 	max-width: 100%;
+}
+.form .hint {
+	visibility: hidden;
+	margin: -16px 0 -12px;
+	padding: 0;
+	font-size: 80%;
+	line-height: 1.4em;
+	font-style: italic;
+	color: #ff8a0e;
+}
+.form .invalid + .hint {
+	visibility: visible;
+}
+.form .invalid input,
+.form .invalid textarea,
+.form .invalid select {
+	border-color: #ff8a0e;
+}
+
+.form select option:first-child {
+	font-style: italic;
+	color: #e0e0e0;
+}
+
+
+.tokens-total {
+	position: relative;
+	padding: 24px 0 20px 72px;
+}
+.tokens-total:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translate(0, -50%);
+	width: 44px;
+	height: 38px;
+	background: url(../img/logo.png) no-repeat left top;
+}
+.tokens-total strong {
+	display: block;
+	font-size: 120%;
+}
+.tokens-total span {
+	font-size: 80%;
 }
 
 
