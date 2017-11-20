@@ -455,7 +455,12 @@ header .controls button.logout:hover:before {
 	font-style: italic;
 	color: #ff8a0e;
 }
-.form .invalid + .hint {
+.form .hint.working-dt-hint {
+	margin-top: -8px;
+	margin-bottom: 8px;
+}
+.form .invalid + .hint,
+.form .day-info.invalid ~ .hint {
 	visibility: visible;
 }
 .form .invalid input,
@@ -468,7 +473,6 @@ header .controls button.logout:hover:before {
 	font-style: italic;
 	color: #e0e0e0;
 }
-
 
 .tokens-total {
 	position: relative;
@@ -522,6 +526,7 @@ header .controls button.logout:hover:before {
 	line-height: 20px;
 }
 .tabs-steps li em {
+	position: relative;
 	display: block;
 	margin: 0 auto 8px;
 	padding-top: 8px;
@@ -533,6 +538,22 @@ header .controls button.logout:hover:before {
 	line-height: 1em;
 	background: #e0e0e0;
 	border-radius: 50%;
+}
+.tabs-steps li em:before {
+	content: "";
+	position: absolute;
+	left: -4px;
+	top: -4px;
+	right: -4px;
+	bottom: -4px;
+	border: 4px solid transparent;
+	border-radius: 50%;
+}
+.tabs-steps li.valid em:before {
+	border-color: rgba(65, 219, 0, 0.4);
+}
+.tabs-steps li.invalid em:before {
+	border-color: rgba(255, 95, 0, 0.4);
 }
 .tabs-steps li.active em {
 	color: #fff;

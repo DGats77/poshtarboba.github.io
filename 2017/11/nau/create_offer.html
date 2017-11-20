@@ -67,7 +67,7 @@
 							</select>
 						</label>
 					</p>
-					<p class="hint">Please, select a category.</p>
+					<p class="hint">Please, select the category.</p>
 
 
 					<p>Offer type</p>
@@ -87,7 +87,7 @@
 						<label class="col-6"><span class="label">from</span> <input name="" readonly class="js-datepicker" value="" placeholder="Select date"></label>
 						<label class="col-6"><span class="label">to</span> <input name="" readonly class="js-datepicker" value="" placeholder="Select date"></label>
 					</p>
-					<p class="hint">Please, select a valid range of dates.</p>
+					<p class="hint">Please, select the valid range of dates.</p>
 
 					<ul class="tabs-controls js-tabs">
 						<li data-target="tab_wdt1">Simple</li>
@@ -197,6 +197,7 @@
 								<label><input name="" readonly class="js-timepicker" value="" data-relation="time_wd8t_we" placeholder="__:__"></label>
 							</span>
 						</p>
+						<p class="hint working-dt-hint">Please, select the days and set the time.</p>
 					</div>
 
 					<p class="tab-footer">
@@ -314,6 +315,7 @@
 							}
 							this.classList.add('active');
 							document.getElementById(this.dataset.target).style.display = 'block';
+							ul.dispatchEvent(new Event('tabchanged'));
 						});
 					}
 				});
@@ -331,9 +333,16 @@
 					let cb = p.querySelector('[type="checkbox"]');
 					if (!cb.checked) p.classList.add('passive');
 					cb.addEventListener('change', dayCheck);
+					dayCheck.call(cb);
 					function dayCheck(){
 						let p = getParent(this, 'day-info');
-						if (p) p.classList[cb.checked ? 'remove' : 'add']('passive');
+						if (p) {
+							p.classList[cb.checked ? 'remove' : 'add']('passive');
+							let inputs = p.querySelectorAll('.js-timepicker');
+							let passive = p.classList.contains('passive');
+							inputs[0].value = passive ? '00:00' : '';
+							inputs[1].value = passive ? '23:59' : '';
+						}
 					}
 				});
 			}
@@ -508,14 +517,86 @@
 					});
 				}
 				function validationOnTabChange(){
-
+					document.querySelector('.tabs-steps').addEventListener('tabchanged', function(){
+						let li = this.querySelector('li.active').previousElementSibling;
+						let index = 0;
+						while (li) { li = li.previousElementSibling; index++; }
+						if (index > 0) validTab1();
+						if (index > 1) validTab2();
+						if (index > 2) validTab3();
+					});
 				}
 				function offerSubmitValidation(){
 
 				}
-
+				function validNotEmpty(parent){
+					let err = 0;
+					parent.querySelectorAll('.valid-not-empty').forEach(function(box){
+						let val = box.querySelector('input, textarea, select').value;
+						box.classList[val === '' ? 'add' : 'remove']('invalid');
+						if (box.classList.contains('invalid')) err++;
+					});
+					return err;
+				}
+				function validDates(parent){
+					let err = 0;
+					parent.querySelectorAll('.valid-dates').forEach(function(box){
+						if (!document.getElementById('datepicker')){
+							let date1 = box.getElementsByTagName('input')[0].value;
+							let date2 = box.getElementsByTagName('input')[1].value;
+							date1 = date1 ? new Date(date1) : '';
+							date2 = date2 ? new Date(date2) : '';
+							box.classList[date1 && date2 && date2 >= date1  ? 'remove' : 'add']('invalid');
+							if (box.classList.contains('invalid')) err++;
+						}
+					});
+					return err;
+				}
+				function validTimes(parent){
+					let err = 0;
+					let tab = parent.querySelector('#tab_wdt2');
+					tab.querySelectorAll('.day-info').forEach(function(box){
+						let cb = box.querySelector('[type="checkbox"]');
+						let inp = box.querySelectorAll('.js-timepicker');
+						let invalid = cb.checked && (inp[0].value === '' || inp[1].value === '');
+						box.classList[invalid ? 'add' : 'remove']('invalid');
+						if (box.classList.contains('invalid')) err++;
+					});
+					return err;
+				}
+				function validTab1(){
+					let li = document.querySelectorAll('.tabs-steps li')[0];
+					li.classList.remove('valid');
+					li.classList.remove('invalid');
+					let err = validNotEmpty(document.querySelector('#tab_step1'));
+					li.classList.add(err ? 'invalid' : 'valid');
+					return li.classList.contains('valid');
+				}
+				function validTab2(){
+					validTab1();
+					let li = document.querySelectorAll('.tabs-steps li')[1];
+					li.classList.remove('valid');
+					li.classList.remove('invalid');
+					let tab = document.getElementById('tab_step2');
+					let err = validDates(tab);
+					let wterr = validTimes(tab);
+					err += wterr;
+					li.classList.add(err ? 'invalid' : 'valid');
+					if (wterr) {
+						tab.querySelector('[data-target="tab_wdt2"]').dispatchEvent(new Event('click'));
+					}
+					return li.classList.contains('valid');
+				}
+				function validTab3(){
+					validTab2();
+					let li = document.querySelectorAll('.tabs-steps li')[2];
+					li.classList.remove('valid');
+					li.classList.remove('invalid');
+					let err = validNotEmpty(document.getElementById('tab_step3'));
+					li.classList.add(err ? 'invalid' : 'valid');
+					return li.classList.contains('valid');
+				}
 			}
-
 
 		})();
 	</script>
