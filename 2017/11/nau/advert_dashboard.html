@@ -1,69 +1,465 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Advert Dashboard</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no">
-	<link rel="stylesheet" href="css/style.css" type="text/css">
-	<style>
-		table { border-collapse: collapse; width: 100%;}
-		td { border: 1px solid silver;}
-		.descr { display: block; width: 100%;}
-	</style>
+  <meta charset="UTF-8">
+  <title>Advert Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <style>
+    .table-information { border-collapse: collapse; width: 100%;}
+    .table-information th { padding: 8px 0; text-align: center; border-bottom: 1px solid silver;}
+    .table-information td { padding: 0; text-align: center; border-bottom: 1px solid silver;}
+    .button-details { position: relative; display: block; padding: 2px 40px 2px 8px; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
+    .button-details img { display: block; width: 32px;}
+    .button-details:before { content: ""; position: absolute; right: 10px; top: 8px; transform: rotate(45deg); transition: all 400ms ease; width: 12px; height: 12px; border-right: 2px solid #999; border-bottom: 2px solid #999; opacity: 0.5;}
+    .button-details:hover:before { opacity: 1;}
+    .button-details.active:before { top: 14px; transform: rotate(225deg);}
+    .row-descr > td { text-align: left; border-bottom-width: 0;}
+    .row-descr.active > td { border-bottom-width: 1px;}
+    .row-descr > td > div { display: none; padding: 8px;}
+    .row-descr.active > td > div { display: block;}
+    .row-descr p { margin-top: 0; margin-bottom: 0; padding-top: 4px; padding-bottom: 4px;}
+    .row-descr .set { padding-bottom: 24px;}
+    .row-descr span { color: #999;}
+    .row-descr p.title { font-weight: bold;}
+    .row-descr span.title { color: #333;}
+    .row-descr small { font-size: 70%;}
+    .row-descr .offer-picture { max-width: 100%; max-height: 120px;}
+    /*.row-descr table td { text-align: left; border-top: none;}
+    .row-descr table td:first-child { border-left: none;}
+    .row-descr table td:last-child { border-right: none;}*/
+    .btn-brand {
+      display: inline-block;
+      padding: 12px 30px;
+      color: #fff;
+      line-height: 1em;
+      background: linear-gradient(to bottom, #ff8a0e, #ff5a00);
+      border: none;
+      border-radius: 21px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    .btn-brand:hover {
+      background: linear-gradient(to top, #ff8a0e, #ff5a00);
+    }
+    .dashboard-header {
+      position: relative;
+      margin-bottom: 32px;
+      background: no-repeat center center;
+      background-size: cover;
+    }
+    .dashboard-header > * {
+      position: relative;
+      z-index: 2;
+    }
+    .dashboard-header:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255,255,255,.7);
+    }
+    .advert-header {
+      display: table;
+      padding: 8px 0 0;
+    }
+    .advert-header > * {
+      display: table-cell;
+      vertical-align: top;
+    }
+    .advert-header .create-offer {
+      vertical-align: middle;
+      width: 150px;
+      text-align: right;
+    }
+    .advert-header .offer-logo {
+      width: 120px;
+    }
+    .advert-header .offer-logo img {
+      width: 120px;
+    }
+    .advert-header .advert-info {
+      padding: 0 30px;
+    }
+  </style>
 </head>
 <body>
 
-	<header>
-		<div class="container">
-			<div class="wrap">
-				<div class="logo">
-					<a href="/"><img src="img/logo.png" alt="nau.io"></a>
-				</div>
-				<div class="advert-name">
-					<strong>Name of agent ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque aut debitis deleniti</strong>
-				</div>
-				<div class="controls">
-					<button class="settings">Settings</button>
-					<button class="logout">Logout</button>
-				</div>
-			</div>
-		</div>
-	</header>
+  <header>
+    <div class="container">
+      <div class="wrap">
+        <div class="logo">
+          <a href="/"><img src="img/logo.png" alt="nau.io"></a>
+        </div>
+        <div class="advert-name">
+          <strong>Name of agent ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque aut debitis deleniti</strong>
+        </div>
+        <div class="controls">
+          <button class="settings">Settings</button>
+          <button class="logout">Logout</button>
+        </div>
+      </div>
+    </div>
+  </header>
 
-	<main>
-		<div class="container">
+  <main>
+    <div class="container">
+      <h1>Advert Dashboard</h1>
+    </div>
 
-			<h1>Advert Dashboard</h1>
+    <div class="dashboard-header" style="background-image: url(img/offer_img.png);">
+      <div class="container">
+        <div class="advert-header">
+          <div class="offer-logo"><img src="img/offer_logo.png" alt="offer name"></div>
+          <div class="advert-info">
+            <p class="advert-name">Advert Name</p>
+            <p class="advert-address">330 S. Pineapple Av., Sacramento, CA 94244</p>
+            <p class="advert-description">Description of Advert lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam assumenda at dolorum eius esse expedita incidunt ipsa ipsum, laborum libero nesciunt odio, perspiciatis quidem quis sapiente vel voluptates, voluptatum?</p>
+          </div>
+          <div class="create-offer"><button class="btn-brand btn-create-offer">Create offer</button></div>
+        </div>
+        <div class="advert-info">
 
-			<table>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <table class="table-information">
+        <tr>
+          <th>ID</th>
+          <th>Offer</th>
+          <th>Label</th>
+          <th>Working dates</th>
+          <th>Reward</th>
+          <th>Reserved</th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td width="80"><span class="button-details"><img src="img/offer_logo.png" alt="offer name"></span></td>
+          <td>Offer Name</td>
+          <td>Dec 1, 2017 &nbsp;&mdash;&nbsp; Nov 12, 2018</td>
+          <td>10%</td>
+          <td>-</td>
+          <td>active</td>
+        </tr>
+        <tr class="row-descr">
+          <td>
+            <div>
+              <div class="row set">
+                <div class="col-xs-6">
+                  <p class="row"><span class="title col-xs-3">Description:</span> <span class="col-xs-9">Offer description</span></p>
+                  <p class="row"><span class="title col-xs-3">Location:</span> <span class="col-xs-9">Ukraine, Kyiv (radius: 1)</span></p>
+                  <p class="row"><span class="title col-xs-3">Category:</span> <span class="col-xs-9">Offer category</span></p>
+                </div>
+                <div class="col-xs-6">
+                  <p class="row"><span class="title col-xs-3">Offer Picture:</span> <span class="col-xs-8"><img src="img/offer_logo.png" alt="offer picture" class="offer-picture"></span></p>
+                </div>
+              </div>
+              <div class="row set">
+                <div class="col-xs-4">
+                  <p class="title">Working time:</p>
+                  <p class="row"><span class="title col-xs-3">mon:</span> <span class="col-xs-9">12:00 - 22:00</span></p>
+                  <p class="row"><span class="title col-xs-3">tue:</span> <span class="col-xs-9">10:00 - 22:00</span></p>
+                  <p class="row"><span class="title col-xs-3">wed:</span> <span class="col-xs-9">10:00 - 22:00</span></p>
+                  <p class="row"><span class="title col-xs-3">thu:</span> <span class="col-xs-9">10:00 - 22:00</span></p>
+                  <p class="row"><span class="title col-xs-3">fri:</span> <span class="col-xs-9">10:00 - 23:59</span></p>
+                  <p class="row"><span class="title col-xs-3">sat:</span> <span class="col-xs-9">-</span></p>
+                  <p class="row"><span class="title col-xs-3">sun:</span> <span class="col-xs-9">-</span></p>
+                </div>
+                <div class="col-xs-8">
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <p class="title">Max redemption total:</p>
+                      <p class="row"><span class="title col-xs-4">Overral:</span> <span class="col-xs-8">1000</span></p>
+                      <p class="row"><span class="title col-xs-4">Daily:</span> <span class="col-xs-8">30</span></p>
+                      <p class="row"><span class="title col-xs-4">Weekly:</span> <span class="col-xs-8">100</span></p>
+                      <p class="row"><span class="title col-xs-4">Monthly:</span> <span class="col-xs-8">300</span></p>
+                    </div>
+                    <div class="col-xs-6">
+                      <p class="title">Max redemption per user:</p>
+                      <p class="row"><span class="title col-xs-4">Overral:</span> <span class="col-xs-8">50</span></p>
+                      <p class="row"><span class="title col-xs-4">Daily:</span> <span class="col-xs-8">3</span></p>
+                      <p class="row"><span class="title col-xs-4">Weekly:</span> <span class="col-xs-8">10</span></p>
+                      <p class="row"><span class="title col-xs-4">Monthly:</span> <span class="col-xs-8">30</span></p>
+                      <p>&nbsp;</p>
+                      <p class="row"><span class="title col-xs-4">User level:<br><small>(min)</small></span> <span class="col-xs-8">5</span></p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <p class="row"><span class="title col-xs-3">Created at:</span> <span class="col-xs-9">2017-09-26 08:21:37</span></p>
+                  <p class="row"><span class="title col-xs-3">Updated at:</span> <span class="col-xs-9">2017-09-26 08:21:37</span></p>
+                  <p class="row"><span class="title col-xs-3">Deleted at:</span> <span class="col-xs-9">-</span></p>
+                </div>
+                <div class="col-xs-6">
+                  <div class="pull-right">
+                    &nbsp;<br>
+                    <button class="btn-brand">Edit information</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+
+
+				
+				
 				<tr>
-					<td>a</td>
-					<td>a</td>
-					<td>a</td>
-					<td>a</td>
-					<td>a</td>
-					<td>a</td>
-					<td>a</td>
-				</tr>
+          <td>5</td>
+          <td width="80"><span class="button-details"><img src="img/offer_logo.png" alt="offer name"></span></td>
+          <td>Offer Name</td>
+          <td>Dec 1, 2017 &nbsp;&mdash;&nbsp; Nov 12, 2018</td>
+          <td>10%</td>
+          <td>-</td>
+          <td>active</td>
+        </tr>
+        <tr class="row-descr">
+          <td>
+            <div>
+              <div class="row set">
+                <div class="col-xs-6">
+                  <p class="row"><span class="title col-xs-3">Description:</span> <span class="col-xs-9">Offer description</span></p>
+                  <p class="row"><span class="title col-xs-3">Location:</span> <span class="col-xs-9">Ukraine, Kyiv (radius: 1)</span></p>
+                  <p class="row"><span class="title col-xs-3">Category:</span> <span class="col-xs-9">Offer category</span></p>
+                </div>
+                <div class="col-xs-6">
+                  <p class="row"><span class="title col-xs-3">Offer Picture:</span> <span class="col-xs-8"><img src="img/offer_logo.png" alt="offer picture" class="offer-picture"></span></p>
+                </div>
+              </div>
+              <div class="row set">
+                <div class="col-xs-4">
+                  <p class="title">Working time:</p>
+                  <p class="row"><span class="title col-xs-3">mon:</span> <span class="col-xs-9">12:00 - 22:00</span></p>
+                  <p class="row"><span class="title col-xs-3">tue:</span> <span class="col-xs-9">10:00 - 22:00</span></p>
+                  <p class="row"><span class="title col-xs-3">wed:</span> <span class="col-xs-9">10:00 - 22:00</span></p>
+                  <p class="row"><span class="title col-xs-3">thu:</span> <span class="col-xs-9">10:00 - 22:00</span></p>
+                  <p class="row"><span class="title col-xs-3">fri:</span> <span class="col-xs-9">10:00 - 23:59</span></p>
+                  <p class="row"><span class="title col-xs-3">sat:</span> <span class="col-xs-9">-</span></p>
+                  <p class="row"><span class="title col-xs-3">sun:</span> <span class="col-xs-9">-</span></p>
+                </div>
+                <div class="col-xs-8">
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <p class="title">Max redemption total:</p>
+                      <p class="row"><span class="title col-xs-4">Overral:</span> <span class="col-xs-8">1000</span></p>
+                      <p class="row"><span class="title col-xs-4">Daily:</span> <span class="col-xs-8">30</span></p>
+                      <p class="row"><span class="title col-xs-4">Weekly:</span> <span class="col-xs-8">100</span></p>
+                      <p class="row"><span class="title col-xs-4">Monthly:</span> <span class="col-xs-8">300</span></p>
+                    </div>
+                    <div class="col-xs-6">
+                      <p class="title">Max redemption per user:</p>
+                      <p class="row"><span class="title col-xs-4">Overral:</span> <span class="col-xs-8">50</span></p>
+                      <p class="row"><span class="title col-xs-4">Daily:</span> <span class="col-xs-8">3</span></p>
+                      <p class="row"><span class="title col-xs-4">Weekly:</span> <span class="col-xs-8">10</span></p>
+                      <p class="row"><span class="title col-xs-4">Monthly:</span> <span class="col-xs-8">30</span></p>
+                      <p>&nbsp;</p>
+                      <p class="row"><span class="title col-xs-4">User level:<br><small>(min)</small></span> <span class="col-xs-8">5</span></p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <p class="row"><span class="title col-xs-3">Created at:</span> <span class="col-xs-9">2017-09-26 08:21:37</span></p>
+                  <p class="row"><span class="title col-xs-3">Updated at:</span> <span class="col-xs-9">2017-09-26 08:21:37</span></p>
+                  <p class="row"><span class="title col-xs-3">Deleted at:</span> <span class="col-xs-9">-</span></p>
+                </div>
+                <div class="col-xs-6">
+                  <div class="pull-right">
+                    &nbsp;<br>
+                    <button class="btn-brand">Edit information</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
 				<tr>
-					<td class="descr">b</td>
-				</tr>
-			</table>
+          <td>5</td>
+          <td width="80"><span class="button-details"><img src="img/offer_logo.png" alt="offer name"></span></td>
+          <td>Offer Name</td>
+          <td>Dec 1, 2017 &nbsp;&mdash;&nbsp; Nov 12, 2018</td>
+          <td>10%</td>
+          <td>-</td>
+          <td>active</td>
+        </tr>
+        <tr class="row-descr">
+          <td>
+            <div>
+              <div class="row set">
+                <div class="col-xs-6">
+                  <p class="row"><span class="title col-xs-3">Description:</span> <span class="col-xs-9">Offer description</span></p>
+                  <p class="row"><span class="title col-xs-3">Location:</span> <span class="col-xs-9">Ukraine, Kyiv (radius: 1)</span></p>
+                  <p class="row"><span class="title col-xs-3">Category:</span> <span class="col-xs-9">Offer category</span></p>
+                </div>
+                <div class="col-xs-6">
+                  <p class="row"><span class="title col-xs-3">Offer Picture:</span> <span class="col-xs-8"><img src="img/offer_logo.png" alt="offer picture" class="offer-picture"></span></p>
+                </div>
+              </div>
+              <div class="row set">
+                <div class="col-xs-4">
+                  <p class="title">Working time:</p>
+                  <p class="row"><span class="title col-xs-3">mon:</span> <span class="col-xs-9">12:00 - 22:00</span></p>
+                  <p class="row"><span class="title col-xs-3">tue:</span> <span class="col-xs-9">10:00 - 22:00</span></p>
+                  <p class="row"><span class="title col-xs-3">wed:</span> <span class="col-xs-9">10:00 - 22:00</span></p>
+                  <p class="row"><span class="title col-xs-3">thu:</span> <span class="col-xs-9">10:00 - 22:00</span></p>
+                  <p class="row"><span class="title col-xs-3">fri:</span> <span class="col-xs-9">10:00 - 23:59</span></p>
+                  <p class="row"><span class="title col-xs-3">sat:</span> <span class="col-xs-9">-</span></p>
+                  <p class="row"><span class="title col-xs-3">sun:</span> <span class="col-xs-9">-</span></p>
+                </div>
+                <div class="col-xs-8">
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <p class="title">Max redemption total:</p>
+                      <p class="row"><span class="title col-xs-4">Overral:</span> <span class="col-xs-8">1000</span></p>
+                      <p class="row"><span class="title col-xs-4">Daily:</span> <span class="col-xs-8">30</span></p>
+                      <p class="row"><span class="title col-xs-4">Weekly:</span> <span class="col-xs-8">100</span></p>
+                      <p class="row"><span class="title col-xs-4">Monthly:</span> <span class="col-xs-8">300</span></p>
+                    </div>
+                    <div class="col-xs-6">
+                      <p class="title">Max redemption per user:</p>
+                      <p class="row"><span class="title col-xs-4">Overral:</span> <span class="col-xs-8">50</span></p>
+                      <p class="row"><span class="title col-xs-4">Daily:</span> <span class="col-xs-8">3</span></p>
+                      <p class="row"><span class="title col-xs-4">Weekly:</span> <span class="col-xs-8">10</span></p>
+                      <p class="row"><span class="title col-xs-4">Monthly:</span> <span class="col-xs-8">30</span></p>
+                      <p>&nbsp;</p>
+                      <p class="row"><span class="title col-xs-4">User level:<br><small>(min)</small></span> <span class="col-xs-8">5</span></p>
+                    </div>
+                  </div>
 
-		</div>
-	</main>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <p class="row"><span class="title col-xs-3">Created at:</span> <span class="col-xs-9">2017-09-26 08:21:37</span></p>
+                  <p class="row"><span class="title col-xs-3">Updated at:</span> <span class="col-xs-9">2017-09-26 08:21:37</span></p>
+                  <p class="row"><span class="title col-xs-3">Deleted at:</span> <span class="col-xs-9">-</span></p>
+                </div>
+                <div class="col-xs-6">
+                  <div class="pull-right">
+                    &nbsp;<br>
+                    <button class="btn-brand">Edit information</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+				<tr>
+          <td>5</td>
+          <td width="80"><span class="button-details"><img src="img/offer_logo.png" alt="offer name"></span></td>
+          <td>Offer Name</td>
+          <td>Dec 1, 2017 &nbsp;&mdash;&nbsp; Nov 12, 2018</td>
+          <td>10%</td>
+          <td>-</td>
+          <td>active</td>
+        </tr>
+        <tr class="row-descr">
+          <td>
+            <div>
+              <div class="row set">
+                <div class="col-xs-6">
+                  <p class="row"><span class="title col-xs-3">Description:</span> <span class="col-xs-9">Offer description</span></p>
+                  <p class="row"><span class="title col-xs-3">Location:</span> <span class="col-xs-9">Ukraine, Kyiv (radius: 1)</span></p>
+                  <p class="row"><span class="title col-xs-3">Category:</span> <span class="col-xs-9">Offer category</span></p>
+                </div>
+                <div class="col-xs-6">
+                  <p class="row"><span class="title col-xs-3">Offer Picture:</span> <span class="col-xs-8"><img src="img/offer_logo.png" alt="offer picture" class="offer-picture"></span></p>
+                </div>
+              </div>
+              <div class="row set">
+                <div class="col-xs-4">
+                  <p class="title">Working time:</p>
+                  <p class="row"><span class="title col-xs-3">mon:</span> <span class="col-xs-9">12:00 - 22:00</span></p>
+                  <p class="row"><span class="title col-xs-3">tue:</span> <span class="col-xs-9">10:00 - 22:00</span></p>
+                  <p class="row"><span class="title col-xs-3">wed:</span> <span class="col-xs-9">10:00 - 22:00</span></p>
+                  <p class="row"><span class="title col-xs-3">thu:</span> <span class="col-xs-9">10:00 - 22:00</span></p>
+                  <p class="row"><span class="title col-xs-3">fri:</span> <span class="col-xs-9">10:00 - 23:59</span></p>
+                  <p class="row"><span class="title col-xs-3">sat:</span> <span class="col-xs-9">-</span></p>
+                  <p class="row"><span class="title col-xs-3">sun:</span> <span class="col-xs-9">-</span></p>
+                </div>
+                <div class="col-xs-8">
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <p class="title">Max redemption total:</p>
+                      <p class="row"><span class="title col-xs-4">Overral:</span> <span class="col-xs-8">1000</span></p>
+                      <p class="row"><span class="title col-xs-4">Daily:</span> <span class="col-xs-8">30</span></p>
+                      <p class="row"><span class="title col-xs-4">Weekly:</span> <span class="col-xs-8">100</span></p>
+                      <p class="row"><span class="title col-xs-4">Monthly:</span> <span class="col-xs-8">300</span></p>
+                    </div>
+                    <div class="col-xs-6">
+                      <p class="title">Max redemption per user:</p>
+                      <p class="row"><span class="title col-xs-4">Overral:</span> <span class="col-xs-8">50</span></p>
+                      <p class="row"><span class="title col-xs-4">Daily:</span> <span class="col-xs-8">3</span></p>
+                      <p class="row"><span class="title col-xs-4">Weekly:</span> <span class="col-xs-8">10</span></p>
+                      <p class="row"><span class="title col-xs-4">Monthly:</span> <span class="col-xs-8">30</span></p>
+                      <p>&nbsp;</p>
+                      <p class="row"><span class="title col-xs-4">User level:<br><small>(min)</small></span> <span class="col-xs-8">5</span></p>
+                    </div>
+                  </div>
 
-	<script src="js/datetimepicker.js"></script>
-	<script>
-		(function(){
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <p class="row"><span class="title col-xs-3">Created at:</span> <span class="col-xs-9">2017-09-26 08:21:37</span></p>
+                  <p class="row"><span class="title col-xs-3">Updated at:</span> <span class="col-xs-9">2017-09-26 08:21:37</span></p>
+                  <p class="row"><span class="title col-xs-3">Deleted at:</span> <span class="col-xs-9">-</span></p>
+                </div>
+                <div class="col-xs-6">
+                  <div class="pull-right">
+                    &nbsp;<br>
+                    <button class="btn-brand">Edit information</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+      </table>
+
+    </div>
+  </main>
+
+  <script src="js/datetimepicker.js"></script>
+  <script>
+    (function(){
+
+    	document.querySelectorAll('.table-information').forEach(function(table){
+    		table.querySelectorAll('tr.row-descr').forEach(function(tr){
+    			tr.children[0].setAttribute('colspan', tr.previousElementSibling.children.length);
+        });
+      });
+
+	    document.querySelectorAll('.button-details').forEach(function(btn){
+	    	btn.addEventListener('click', function(){
+	    		this.classList.toggle('active');
+	    		this.parentElement.parentElement.nextElementSibling.classList.toggle('active');
+        });
+      });
 
 
+    })();
+  </script>
 
-		})();
-	</script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
 
 </body>
 </html>
