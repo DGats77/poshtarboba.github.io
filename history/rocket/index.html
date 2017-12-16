@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>circle-rocket</title>
+	<style>
+		body { margin: 0; padding: 0; overflow: hidden; background: black;}
+		body * { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
+		#sky,
+		#earth,
+		#overlay { position: absolute; left: 0; top: 0; width: 100vw; height: 100vh;}
+		#sky { background: black url(img/sky.jpg) no-repeat center center; background-size: cover;}
+		#earth { background: url(img/earth.png) no-repeat center bottom; background-size: contain;}
+		#rocket { position: absolute; background: url(img/rocket.png) no-repeat center center; background-size: contain; outline: 1px solid red;}
+		#mercury { position: absolute; left: 11vw; top: 55vh; width: 1.4vw; height: 1.4vw; background: url(img/mercury.png) no-repeat center center; background-size: contain;}
+		#venus { position: absolute; left: 20vw; top: 24vh; width: 2.2vw; height: 2.2vw; background: url(img/venus.png) no-repeat center center; background-size: contain;}
+		#mars { position: absolute; left: 34vw; top: 42vh; width: 1.7vw; height: 1.7vw; background: url(img/mars.png) no-repeat center center; background-size: contain;}
+		#jupiter { position: absolute; left: 47vw; top: 28vh; width: 8vw; height: 8vw; background: url(img/jupiter.png) no-repeat center center; background-size: contain;}
+		#saturn { position: absolute; left: 63vw; top: 14vh; width: 10.3vw; height: 8vw; background: url(img/saturn.png) no-repeat center center; background-size: contain;}
+		#uran { position: absolute; left: 78vw; top: 21vh; width: 4vw; height: 4vw; background: url(img/uran.png) no-repeat center center; background-size: contain;}
+		#neptun { position: absolute; left: 91vw; top: 33vh; width: 4vw; height: 4vw; background: url(img/neptun.png) no-repeat center center; background-size: contain;}
+		#table { position: absolute; left: 30vw; bottom: 5vh; background: aqua; padding: 16px 32px; font-size: 20px; line-height: 24px; border: 2px solid black; cursor: pointer;}
+		#overlay { display: none; background: black; opacity: 0.9;}
+		#popup { display: none; position: absolute; left: 50%; top: 50%; padding: 20px 32px; background: #fff; border: #999; transform: translate(-50%, -50%);}
+		#popup label { display: block; padding-bottom: 20px;}
+		#popup label select { display: block; margin: 0 auto;}
+		#popup button { display: block; margin: 0 auto;}
+	</style>
+</head>
+<body>
+
+	<div id="sky"></div>
+	<div id="earth"></div>
+
+	<div class="planets">
+		<div id="mercury"></div>
+		<div id="venus"></div>
+		<div id="mars"></div>
+		<div id="jupiter"></div>
+		<div id="saturn"></div>
+		<div id="uran"></div>
+		<div id="neptun"></div>
+	</div>
+
+	<div id="rocket"></div>
+
+	<p id="table">Квиток до мрії</p>
+
+	<div id="overlay"></div>
+	<div id="popup">
+		<label>
+			<select>
+				<option value="mercury">Меркурий</option>
+				<option value="venus">Венера</option>
+				<option value="mars">Марс</option>
+				<option value="jupiter">Юпитер</option>
+				<option value="saturn">Сатурн</option>
+				<option value="uran">Уран</option>
+				<option value="neptun">Нептун</option>
+			</select>
+		</label>
+		<button>Ok</button>
+	</div>
+
+	<script>
+		var rocket = document.querySelector('#rocket');
+		var rocketDeltaSize = 447 / 745;
+		var rocketStart = false;
+		windowResize();
+		window.addEventListener('resize', windowResize);
+		var button1 = document.querySelector('#table');
+		var button2 = document.querySelector('#popup button');
+		button1.onclick = function(){
+			document.querySelector('#overlay').style.display = 'block';
+			document.querySelector('#popup').style.display = 'block';
+		};
+		button2.onclick = function(){
+			button1.onclick = null;
+			document.querySelector('#overlay').style.display = '';
+			document.querySelector('#popup').style.display = '';
+			setTimeout(start, 1000);
+		};
+
+		function windowResize(){
+			if (!rocketStart) {
+				var w = Math.max(window.innerWidth, window.innerHeight) * 0.1;
+				rocket.style.width = w + 'px';
+				rocket.style.height = w * rocketDeltaSize + 'px';
+				rocket.style.left = window.innerWidth * 0.65 + 'px';
+				rocket.style.top = window.innerHeight * 0.95 - w * rocketDeltaSize + 'px';
+			}
+		}
+
+		function start() {
+			rocketStart = true;
+			var i = 0;
+			var si = setInterval(lift, 50);
+			setTimeout(run, 1200);
+
+			function lift(){
+				i += 50;
+				rocket.style.transform = 'rotate(' + (i / 50) + 'deg)';
+				if (i >= 1000) {
+					i = 0;
+					clearInterval(si);
+				}
+			}
+
+			function run(){
+				var x1 = rocket.offsetLeft;
+				var y1 = rocket.offsetTop;
+				var x2, y2, x4, y4;
+				var select = document.querySelector('#popup select');
+				var planet = document.querySelector('#' + select.value);
+				if (select.value === 'mercury')	{
+					x4 = planet.offsetLeft + planet.clientWidth;
+					y4 = planet.offsetTop + planet.clientHeight / 2;
+					x2 = (x1 - x4) / 2 + x4;
+					y2 = y4;
+				}
+				if (select.value === 'venus')	{
+					x4 = planet.offsetLeft;
+					y4 = planet.offsetTop + planet.clientHeight / 2;
+					x2 = -x4 * 1.5;
+					y2 = y4 / 4 + y4;
+				}
+				if (select.value === 'mars')	{
+					x4 = planet.offsetLeft + planet.clientWidth / 2;
+					y4 = planet.offsetTop + planet.clientHeight;
+					x2 = (x1 - x4) / 4 + x4;
+					y2 = (y1 - y4) / 1.3 + y4;
+				}
+				if (select.value === 'jupiter')	{
+					x4 = planet.offsetLeft;
+					y4 = planet.offsetTop + planet.clientHeight / 2;
+					x2 = 0;
+					y2 = y4 / 4 + y4;
+				}
+				if (select.value === 'saturn')	{
+					x4 = planet.offsetLeft + planet.clientWidth / 4;
+					y4 = planet.offsetTop + planet.clientHeight / 2;
+					x2 = x4 / 4;
+					y2 = y4 / 1.5 + y4;
+				}
+				if (select.value === 'uran')	{
+					x4 = planet.offsetLeft;
+					y4 = planet.offsetTop + planet.clientHeight / 2;
+					x2 = x4 / 4;
+					y2 = y4 / 1.5 + y4;
+				}
+				if (select.value === 'neptun')	{
+					x4 = planet.offsetLeft;
+					y4 = planet.offsetTop + planet.clientHeight / 2;
+					x2 = x4 / 4;
+					y2 = y4 / 1.5 + y4;
+				}
+				for (var t = 0; t <= 1; t += 0.01) {
+					var p = bezier(t, x1, y1, x2, y2, x4, y4);
+					var span = document.createElement('span');
+					span.style.position = 'absolute';
+					span.style.width = '2px';
+					span.style.height = '2px';
+					span.style.background = '#fff';
+					span.style.left = p.x + 'px';
+					span.style.top = p.y + 'px';
+					document.body.appendChild(span);
+				}
+				var duration = 8000;
+				si = setInterval(step, 50);
+				function step(){
+					i += 50;
+					var t = i / duration;
+					var p = bezier(t, x1, y1, x2, y2, x4, y4);
+					var w = Math.max(window.innerWidth, window.innerHeight) * 0.1 * (1 - t * t * t);
+					rocket.style.width = w + 'px';
+					rocket.style.height = w * rocketDeltaSize + 'px';
+					rocket.style.left = p.x + 'px';
+					rocket.style.top = p.y + 'px';
+					if (i >= duration) {
+						clearInterval(si);
+					}
+				}
+			}
+		}
+
+		/* t -> [0..1]  */
+		/* if 2 points: start, end */
+		/* if 3 points: start, middle, end */
+		/* if 4 points: start, start1, end1, end */
+		function bezier(t, x1, y1, x2, y2, x3, y3, x4, y4) {
+			var x, y;
+			if (arguments.length > 8) {
+				x =  (1 - t) * (1 - t) * (1 - t) * x1 + 3 * (1 - t) * (1 - t) * t * x2 + 3 * (1 - t) * t * t * x3 + t * t * t * x4;
+				y =  (1 - t) * (1 - t) * (1 - t) * y1 + 3 * (1 - t) * (1 - t) * t * y2 + 3 * (1 - t) * t * t * y3 + t * t * t * y4;
+			} else if (arguments.length > 6) {
+				x = (1 - t) * (1 - t) * x1 + 2 * (1 - t) * t * x2 + t * t * x3;
+				y = (1 - t) * (1 - t) * y1 + 2 * (1 - t) * t * y2 + t * t * y3;
+			} else if (arguments.length > 4) {
+				x = (1 - t) * x1 + t * x2;
+				y = (1 - t) * y1 + t * y2;
+			}
+			return { x: x, y: y };
+		}
+
+	</script>
+
+</body>
+</html>
