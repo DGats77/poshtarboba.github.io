@@ -409,11 +409,11 @@
 		var sprite_ctx = sprite_canvas.getContext('2d');
 		sprite_ctx.drawImage(this, 0, 0);
 		for (var i = 0; i < 5; i++) {
-			icons.push(sprite_ctx.getImageData(i * 40, 0, 40, 40));
+			icons.push(sprite_ctx.getImageData(i * 38, 0, 38, 38));
 		}
 
 		for (i = 0; i < 5; i++){
-			ctx.putImageData(icons[i], i * 50 + 20, i * 10 + 50);
+			ctx.putImageData(icons[i], i * 10 + 20, i * 50 + 50);
 		}
 
 	};
