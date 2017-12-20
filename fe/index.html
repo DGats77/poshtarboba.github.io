@@ -120,6 +120,105 @@ treeitem — Опция элемента tree. Этот элемент внут�
 
 			TODO: скрипти, з самого початку привчати активно використовувати консоль-лог, в кожній задачі коментуємо що відбувається, виводимо вхідні, вихідні дані
 			
+			
+			
+			Инструменты для создания параллакс-эффектов:
+
+jQuery Parallax Image Slider
+https://github.com/bobbravo2/jQuery-Parallax-Slider
+
+jQuery Image Parallax by Steve Fenton
+http://www.stevefenton.co.uk/cmsfiles/assets/File/imageparallax.html
+
+crolling Parallax: A jQuery Plugin by John Raasch
+http://jonraasch.com/blog/scrolling-parallax-jquery-plugin
+
+Scrollorama by John Polacek
+http://johnpolacek.github.com/scrollorama/
+
+Scrolldeck by John Polacek
+http://johnpolacek.github.com/scrolldeck.js/
+
+jParallax
+http://webdev.stephband.info/parallax.html
+
+Stellar.js by Mark Dalgleish
+http://markdalgleish.com/projects/stellar.js/
+
+jQuery Scroll Path by Joel Besada
+http://joelb.me/scrollpath/
+
+Curtain.js by Victor Coulon
+http://curtain.victorcoulon.fr/#intro
+
+Plax by Cameron McEfee
+http://www.cameronmcefee.com/plax/
+
+
+=============================
+бесконечное вращение:
+
+.rotate3s {
+	-webkit-animation: rotate 3s infinite linear;
+	-moz-animation: rotate 3s infinite linear;
+	-ms-animation: rotate 3s infinite linear;
+	-o-animation: rotate 3s infinite linear;
+	animation: rotate 3s infinite linear;}
+
+=============================
+появление с рывком, каждый следующий блок появляется на 0,1с позже:
+<div class="ships scroll-animate">
+	<h2>Корабли</h2>
+	<div class="ship anim">Фрегат</div>
+	<div class="ship anim">Шхуна</div>
+	<div class="ship anim">Клипер</div>
+</div>
+
+$(function() {
+	$('.scroll-animate').each(function () {
+		var block = $(this);
+		$(window).scroll(function() {
+			var top = block.offset().top;
+			var bottom = block.height()+top;
+			top = top - $(window).height();
+			var scroll_top = $(this).scrollTop();
+			if ((scroll_top > top) && (scroll_top < bottom)) {
+				if (!block.hasClass('animate')) {
+					block.addClass('animate');
+					block.trigger('animateIn');
+				}
+			} else {
+				block.removeClass('animate');
+				block.trigger('animateOut');
+			}
+		});
+	});
+
+	$('.ships').on('animateIn', function() {
+		var inter = 0;
+		$(this).find('.anim').each(function() {
+			var block = $(this);
+			setTimeout(function() {
+				block.css('opacity', 1);
+				block.css('transform', 'scale(1.0, 1.0)');
+			}, inter*100); /* задержка перед появлением следующего */
+			inter++;
+		});
+	}).on('animateOut', function() {
+		$(this).find('.anim').each(function() {
+			$(this).css('opacity', 0.01);
+			$(this).css('transform', 'scale(0.5, 0.5)');
+		});
+	});
+});
+
+
+
+
+
+
+			
+			
 		-->
 
 

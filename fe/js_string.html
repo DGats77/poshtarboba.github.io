@@ -34,8 +34,13 @@
 				for (let i = 0; i < a.length; i++){<br>
 				&nbsp;&nbsp;console.log(typeof a[i]);<br>
 				&nbsp;&nbsp;console.dir(a[i]);<br>
-				&nbsp;&nbsp;console.log(a[i].toString(),'\n======');<br>
-				}<br>
+				&nbsp;&nbsp;try {<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;console.log(a[i].toString(),'\n======');<br>
+				&nbsp;&nbsp;} catch (err) {<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;console.error('Error:');<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;console.dir(err);<br>
+				&nbsp;&nbsp;}<br>
+				}
 			</code>
 			<p>Не плутайте назви змінних і строки:</p>
 			<code>
