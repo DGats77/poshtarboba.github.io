@@ -183,7 +183,7 @@
 			<h2>Завдання:</h2>
 			<p>1. Створіть декілька примітивів програмно, створіть обробники подій click, mouseenter, mouseleave, добавляйте, забирайте класи, прописуйте стилі безпосередньо в тег.</p>
 			<p>2. Намалюйте програмно сніговичка.</p>
-			<p>3. Сервер видає дані про популярність поросят в інтернеті у вигляді <a href="files/pigs.json">JSON-файла</a>.<br>Побудуйте графік популярності поросят за тиждень.</p>
+			<p>3. Сервер видає дані про популярність поросят в інтернеті у вигляді <a href="js/pigs.json">JSON-файла</a>.<br>Побудуйте графік популярності поросят за тиждень.</p>
 			<p>4. Побудуйте кругову діаграму сумарної популярності поросят у процентах.</p>
 		</section>
 
@@ -248,24 +248,33 @@
 			</code>
 			<p>Текст по заданій траекторії:</p>
 			<code>
-				&lt;text><br>
-				&nbsp;&nbsp;&lt;textpath xlink:href="#textpath"><br>
+				&lt;text&gt;<br>
+				&nbsp;&nbsp;&lt;textpath xlink:href="#textpath"&gt;<br>
 				&nbsp;&nbsp;&nbsp;&nbsp;Text laid out along a path.<br>
-				&nbsp;&nbsp;&lt;/textpath><br>
-				&lt;/text>
+				&nbsp;&nbsp;&lt;/textpath&gt;<br>
+				&lt;/text&gt;
 			</code>
 		</section>
 
-		<!-- TODO:
+		<p>Приклад анімації ліній (клікни по колу):</p>
 		
 		<svg id="svg1" width="230" height="230" fill="#080a1a">
-			<circle cx="115" cy="115" r="110" stroke="#00ff00" stroke-width="5px" stroke-dasharray="1000" stroke-dashoffset="1000" class="outer">
-				<animate attributeName="stroke-dashoffset" begin="svg1.click" values="1000; 0" dur="20s" repeatCount="1" fill="freeze" calcMode="linear"></animate>
+			<circle cx="115" cy="115" r="110" stroke="#00ff00" fill="rgba(0,0,0,0.2)"  stroke-width="5" stroke-dasharray="1000" stroke-dashoffset="1000" style="cursor: pointer;">
+				<animate attributeName="stroke-dashoffset" begin="svg1.click" values="1000; 0" dur="5s" repeatCount="1" fill="freeze" calcMode="linear"></animate>
 			</circle>
 		</svg>
-		
-		-->
-		
+
+		<code>
+			&lt;svg id="svg1" width="230" height="230" fill="#080a1a"&gt;<br>
+			&nbsp;&nbsp;&lt;circle cx="115" cy="115" r="110" fill="rgba(0,0,0,0.2)"<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stroke="#ff0000" stroke-width="5"<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stroke-dasharray="1000" stroke-dashoffset="1000"&gt;<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&lt;animate attributeName="stroke-dashoffset" begin="svg1.click"<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values="1000; 0" dur="5s" repeatCount="1" fill="freeze"<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;calcMode="linear"&gt;&lt;/animate&gt;<br>
+			&nbsp;&nbsp;&lt;/circle&gt;
+			</svg>
+		</code>
 		
 	</div>
 </div>
