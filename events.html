@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Events</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<style>
+		section { padding: 50px 16px;}
+		section:after { content: ""; display: block; clear: both;}
+		.test { float: left; width: 98px; height: 1000px; border: 1px solid red;}
+		.test + p { margin: 0 0 0 116px; font: normal 10px/12px sans-serif;}
+		.test + p span { display: inline-block; width: 120px;}
+		.test + p em { font-style: normal;}
+	</style>
+</head>
+<body>
+
+<section>
+	<div class="test"></div>
+	<p></p>
+</section>
+
+<hr>
+
+<section>
+</section>
+
+<script>
+	let test = document.querySelector('.test');
+	let ptest = test.nextElementSibling;
+	let html = '';
+	for (let key in test) {
+		console.log(key.substr(0,2));
+		if (key.substr(0,2) === 'on') {
+			html += '<span>' + key + ':</span> <em>-</em><br>';
+			test[key] = function(e){
+				ptest.querySelectorAll('span').forEach(function(span){
+					if (span.innerText === 'on' + e.type + ':') span.nextElementSibling.innerText = Math.random();
+				});
+			}
+		}
+	}
+	ptest.innerHTML = html;
+</script>
+
+</body>
+</html>
