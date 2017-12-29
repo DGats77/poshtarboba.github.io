@@ -10,10 +10,12 @@
 	<style>
 		section { padding: 50px 16px;}
 		section:after { content: ""; display: block; clear: both;}
-		.test { float: left; width: 98px; height: 1000px; border: 1px solid red;}
-		.test + p { margin: 0 0 0 116px; font: normal 10px/12px sans-serif;}
-		.test + p span { display: inline-block; width: 120px;}
-		.test + p em { font-style: normal;}
+		.test { float: left; width: 78px; height: 1000px; border: 1px solid red;}
+		.test + p { margin: 0 0 0 100px; font: normal 10px/12px sans-serif;}
+		.test + p span, .inp span { display: inline-block; width: 120px;}
+		.test + p em, .inp em { font-style: normal;}
+		.inp { margin: 0; font: normal 10px/12px sans-serif;}
+		.inp strong { display: inline-block; min-width: 24px;}
 	</style>
 </head>
 <body>
@@ -26,6 +28,8 @@
 <hr>
 
 <section>
+	<p><label><input></label></p>
+	<p class="inp"></p>
 </section>
 
 <script>
@@ -33,17 +37,26 @@
 	let ptest = test.nextElementSibling;
 	let html = '';
 	for (let key in test) {
-		console.log(key.substr(0,2));
 		if (key.substr(0,2) === 'on') {
-			html += '<span>' + key + ':</span> <em>-</em><br>';
+			html += '<span>' + key.substr(2) + ':</span> <em>-</em><br>';
 			test[key] = function(e){
 				ptest.querySelectorAll('span').forEach(function(span){
-					if (span.innerText === 'on' + e.type + ':') span.nextElementSibling.innerText = Math.random();
+					if (span.innerText === e.type + ':') span.nextElementSibling.innerText = Math.trunc(Math.random() * 1000);
 				});
 			}
 		}
 	}
 	ptest.innerHTML = html;
+	
+	let input = document.querySelector('input');
+	let pinp = document.querySelector('.inp');
+	for (let key in input) {
+		if (key.substr(0,2) === 'on') {
+			input[key] = function(e){
+				pinp.innerHTML = '<span>' + e.type + ':</span> <strong>' + e.target.value.length + '</strong> <em>' + e.target.value + '</em><br>' + pinp.innerHTML;
+			}
+		}
+	}
 </script>
 
 </body>
