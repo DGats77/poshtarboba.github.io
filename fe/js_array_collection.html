@@ -18,7 +18,7 @@
 			<p><em>Не все то масив, що багато.</em></p>
 			<p>Виведіть в консоль наступні об'єкти, дослідіть їх:</p>
 			<code>
-				var p = document.getElementsByTagName('p'),<br>
+				let p = document.getElementsByTagName('p'),<br>
 				&nbsp;&nbsp;&nbsp;&nbsp;h2 = document.getElementsByClassName('arr-test');<br>
 				console.dir([]);<br>
 				console.dir(p);<br>
@@ -29,15 +29,15 @@
 			<p>Перевіряйте прототипи елементів, щоб з'ясувати - чи можна до них застосувати той чи інший метод.</p>
 			<p>З любого набора, колекції можна створити масив, для того, щоб скористатися методами масива:</p>
 			<code>
-				var p = document.getElementsByTagName('p'),<br>
+				let p = document.getElementsByTagName('p'),<br>
 				&nbsp;&nbsp;&nbsp;&nbsp;pa = [];<br>
-				for (var i = 0; i < p.length; i++) {<br>
+				for (let i = 0; i < p.length; i++) {<br>
 				&nbsp;&nbsp;pa.push(p[i]);<br>
 				}
 			</code>
 			<p>Виведіть повідомлення який саме об'єкт передано в функцію: масив чи об'єкт.</p>
 			<code>
-				var a = []<br>
+				let a = []<br>
 				&nbsp;&nbsp;&nbsp;&nbsp;b = {};<br>
 				console.log(typeof a);<br>
 				console.log(typeof b);<br>
@@ -125,7 +125,7 @@
 					Спробуйте зробити, щоб останній пункт закінчувався крапкою.<br>
 					Доступ до елементів списку здійсніть так:
 					<code>
-						var li = document.getElementById('list').children;
+						let li = document.getElementById('list').children;
 					</code>
 					Пофарбуйте колір тексту елементів списку у кольори з першого масиву, а бекграунди задайте кольорами з другого масиву:
 					<code>
