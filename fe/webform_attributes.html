@@ -88,6 +88,16 @@
 				...<br>
 				&lt;p>&lt;label&gt;Input name: &lt;input type="text" form="our_form"&gt;&lt;/label&gt;&lt;/p&gt;
 			</code>
+			<!--
+				приклад застосування:
+				<p>bla-bla <form style="display: inline;">...<button> </form> bla-bla</p> - fail
+				<p>bla-bla <button form="..."> bla-bla</p> - win
+				---
+				протестити
+				<form one> ... <button form="two"> ... </form>
+				<form two> ... </form>
+			-->
+			
 			<p>Кожен елемент форми може мати атрибут <strong>value</strong>, яке відповідає те, яке значення передасться на сервер у парі [ключ - значення]. Для текстових полів це значення буде рівним тексту, що ввів користувач. Для решти елементів - можуть бути варіанти.</p>
 			<code>
 				&lt;label&gt;&lt;input type="radio" name="sex" value="male"&gt; ч&lt;/label&gt;<br>
