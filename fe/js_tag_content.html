@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Вміст тега</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<section>
+			<h1>Вміст тега</h1>
+			<p>Для того, щоб зчитати чи змінити вміст тега - є дві властивості:</p>
+			<code>
+				p.innerText;<br>
+				p.innerHTML;
+			</code>
+			<p>Перша властивість поверне значення текстових нод елемента.</p>
+			<p>Друга властивість поверне HTML-код, що міститься в елементі.</p>
+			<p>Ці властивості можна змінити:</p>
+			<code>
+				&lt;p&gt;&lt;span&gt;Hey!&lt;/span&gt;&lt;/p&gt;<br>
+				p.innerText = 'Ho!!';<br>
+				p.innerHTML = '&lt;strong&gt;Ho!!&lt;/strong&gt;';
+			</code>
+			<p>Остання строчка кода автоматично створить дочірній елемент strong у параграфа.</p>
+		</section>
+
+	</div>
+</div>
+
+<script src="jquery-3.1.1.min.js"></script>
+<script src="fe.js"></script>
+
+</body>
+</html>
