@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Створення елементів</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<section>
+			<h1>Створення елементів</h1>
+			<p>Створити елемент можна двома способами.</p>
+			<p>Можна його прописати у властивість innerHTML батьківського елемента:</p>
+			<code>
+				&lt;p&gt;&lt;/p&gt;<br><br>
+				let p = document.querySelector('p');<br>
+				p.innerHTML = '&lt;span class="big"&gt;SPAN&lt;/span&gt;';<br>
+				p.innerHTML += ' &lt;strong&gt;STRONG&lt;/strong&gt;';<br>
+				p.innerHTML = '&lt;em&gt;EM&lt;/em&gt; &lt;a href="http://google.com"&gt;test&lt;/a&gt; ' + p.innerHTML;
+			</code>
+			<p>Другий варіант - це явне створення елементів за допомогою метода документа:</p>
+			<code>
+				<strong>let змінна = document.createElement('назва_тега');</strong><br><br>
+				let p = document.createElement('p');<br>
+				let price = document.createElement('strong');
+			</code>
+			<p>При цьому елемент створюється в оперативній пам'яті, а не в DOM, не відображається в браузері.</p>
+			<p>Але з цим елементом можна робити різні маніпуляції:</p>
+			<code>
+				p.innerHTML = 'Основна &lt;b&gt;мета&lt;/b&gt; нашої зустрічі...';<br>
+				p.setAttribute('title', 'Основна мета');<br>
+				p.id = 'heyHo';<br>
+				if (p.classList.contain('...')) { ... }<br>
+				console.dir(p.parentElement);
+			</code>
+			<p>Для того, щоб цей елемент вбудувати в DOM - використовуються методи:</p>
+			<code>
+				let div = document.querySelector('section#gallery');<br>
+				<strong>div.appendChild(p);</strong><br>
+				<strong>div.insertBefore(price, p);</strong>
+			</code>
+			<p>Перший метод добавляє елемент p в кінець елемента div (всередину).</p>
+			<p>Другий метод вставляє елемент price в елемент div перед елементом p.</p>
+			<p>Таким чином, щоб вставити елемент після якогось елемента, потрібно зробити такі маніпуляції:</p>
+			<code>
+				p - створений елемент;<br>
+				div - після цього блока потрібно вставити елемент p;<br>
+				div.parentElement.insertBefore(p, div.nextElementSibling);
+			</code>
+			<p>При цьому, якщо після елемента div не буде інших елементів, то конструкція div.nextElementSibling поверне null.</p>
+			<p>Якщо .insertBefore приймає null у якості другого аргумента - він добавить елемент в кінець батьківського.</p>
+			<p>Видалити елемент можна методами:</p>
+			<code>
+				p.parentElement.removeChild(p);<br>
+				let k = p.parentElement.removeChild(p);<br>
+				p.remove(); &nbsp;&nbsp; // не підтримується в IE
+			</code>
+			<p>У змінну k буде збережено видалений елемент, якщо він потрібен буде в майбутньому.</p>
+			<h3>Завдання.</h3>
+			<ol>
+				<li>Створіть пустий список елементів.</li>
+				<li>Добавте в нього 5 елементів, в кожного має бути свій id: id1, id2..., а в якості текста - нумерація 1, 2, 3...</li>
+				<li>Перед першим елементом списка вставте ще один id0.</li>
+				<li>Перед списком вставте параграф з текстом "Список:".</li>
+				<li>Після списка вставте параграф з текстом "Сума цифр: ..." (суму порахуйте програмно);</li>
+			</ol>
+		</section>
+
+		<section>
+			<h2>Перенесення елементів.</h2>
+			<p>Знайдений елемент можна перенести:</p>
+			<code>
+				let p = document.querySelectorAll('p')[11];<br>
+				let h2 = document.querySelector('h2');<br>
+				h2.parentElement.insertBefore(p, h2.nextElementSibling);<br><br>
+				document.body.appendChild(p);
+			</code>
+		</section>
+
+	</div>
+</div>
+
+<script src="jquery-3.1.1.min.js"></script>
+<script src="fe.js"></script>
+
+</body>
+</html>
