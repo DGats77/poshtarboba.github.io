@@ -1,6 +1,6 @@
 setHeaderBackground();
 window.addEventListener('scroll', setHeaderBackground);
-
+faqList();
 
 
 function setHeaderBackground(){
@@ -9,4 +9,10 @@ function setHeaderBackground(){
 	let header = document.querySelector('header');
 	let opacity = scrollTop > height ? 0.8 : scrollTop / height * 0.8;
 	header.style.background = `rgba(0, 0, 0, ${opacity})`;
+}
+
+function faqList(){
+	$('.faq-list .title').on('click', function(){
+		$(this).parents('li').toggleClass('active').find('.description').slideToggle();
+	});
 }
