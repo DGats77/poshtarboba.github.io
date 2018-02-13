@@ -29,7 +29,7 @@
 		let i = 0;
 		for (; i < $li.length; i++) {
 			let $anchor = $(`a[name="${$li.eq(i).find('a').attr('href').substr(1)}"]`);
-			if ($anchor.offset().top > scrolled) break;
+			if ($anchor.offset().top - 5 > scrolled) break;
 		}
 		$li.eq(i - 1).addClass('active');
 	}
