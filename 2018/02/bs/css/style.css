@@ -1122,3 +1122,52 @@ form .form-control:focus {
 .section-form {
 	display: none;
 }
+
+/* small mobile */
+@media (max-width: 520px) {
+	body {
+		font-size: 12px;
+		line-height: 18px;
+	}
+	header menu {
+		transform: translate(0, 12px);
+	}
+	.section-bg1 h1 {
+		font-size: 200%;
+		line-height: 1.2em;
+	}
+	.section-bg1 .under-title {
+		font-size: 150%;
+		line-height: 1.3em;
+	}
+	h2 {
+		font-size: 220%;
+		line-height: 1.2em;
+	}
+	.product-services a {
+		width: 100%;
+	}
+	.btn-initial {
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+	.section-faq ul li {
+		padding-left: 40px;
+		padding-right: 1em;
+	}
+	.section-faq ul li:before {
+		left: 14px;
+	}
+	.section-faq p.title {
+		margin-left: -40px;
+		padding-left: 40px;
+	}
+	footer menu li:not(:first-child) {
+		border-left: none;
+	}
+	footer menu li a {
+		padding: 0;
+	}
+}
+
+
