@@ -20,7 +20,7 @@
 		let height = document.getElementById('top_section').offsetHeight;
 		let header = document.querySelector('header');
 		let opacity = scrollTop > height ? 0.8 : scrollTop / height * 0.8;
-		header.style.background = `rgba(0, 0, 0, ${opacity})`;
+		header.style.background = 'rgba(0, 0, 0, ' + opacity.toString() + ')';
 	}
 
 	function activeMenuItem(){
@@ -28,7 +28,7 @@
 		let $li = $('header menu li').removeClass('active');
 		let i = 0;
 		for (; i < $li.length; i++) {
-			let $anchor = $(`a[name="${$li.eq(i).find('a').attr('href').substr(1)}"]`);
+			let $anchor = $('a[name="' + $li.eq(i).find('a').attr('href').substr(1) + '"]');
 			if ($anchor.offset().top - 5 > scrolled) break;
 		}
 		$li.eq(i - 1).addClass('active');
@@ -41,10 +41,9 @@
 	}
 
 	function scrollToSections(){
-		$('a[href^="#"]').on('click', function(e){
+		$('menu a[href^="#"], .menu a[href^="#"]').on('click', function(e){
 			e.preventDefault();
-			let href = $(this).attr('href').substr(1);
-			let top = $(`a[name="${href}"]`).offset().top;
+			let top = $('a[name="' + $(this).attr('href').substr(1) + '"]').offset().top;
 			/*let scrolled = window.pageYOffset || document.documentElement.scrollTop;
 			let delta = Math.abs(top - scrolled);
 			$('html, body').stop().animate({ scrollTop: top }, Math.round(delta / 4), 'swing');*/
