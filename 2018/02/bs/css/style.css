@@ -1132,6 +1132,9 @@ form .form-control:focus {
 	header menu {
 		transform: translate(0, 12px);
 	}
+	.section-bg1 {
+		padding-top: 14em;
+	}
 	.section-bg1 h1 {
 		font-size: 200%;
 		line-height: 1.2em;
@@ -1157,6 +1160,7 @@ form .form-control:focus {
 	}
 	.section-faq ul li:before {
 		left: 14px;
+		top: 1em;
 	}
 	.section-faq p.title {
 		margin-left: -40px;
