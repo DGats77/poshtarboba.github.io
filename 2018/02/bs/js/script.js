@@ -4,16 +4,22 @@
 	window.addEventListener('scroll', setHeaderBackground);
 	window.addEventListener('scroll', activeMenuItem);
 	faqList();
+	formSlideToggle();
 
 	scrollToSections();
-	setAnchorPosition();
-	window.addEventListener('resize', setAnchorPosition);
+	onResize();
+	window.addEventListener('resize', onResize);
 
 	initHamburger();
 
 
 
 
+	function onResize(){
+		setAnchorPosition();
+		setFooterPosition();
+		setSubSectionLinksSize();
+	}
 
 	function setHeaderBackground(){
 		let scrollTop = document.documentElement.scrollTop;
@@ -40,6 +46,13 @@
 		});
 	}
 
+	function formSlideToggle(){
+		$('[data-type="form-toggle"]').on('click', function(e){
+			e.preventDefault();
+			$($(this).toggleClass('active').attr('href')).slideToggle().find('.form-control').eq(0).focus();
+		});
+	}
+
 	function scrollToSections(){
 		$('menu a[href^="#"], .menu a[href^="#"]').on('click', function(e){
 			e.preventDefault();
@@ -53,6 +66,19 @@
 	function setAnchorPosition(){
 		let height = $('header').outerHeight();
 		$('a[name]').css('top', -height + 'px');
+	}
+	function setFooterPosition(){
+		let $footer = $('footer');
+		let height = $footer.outerHeight();
+		$footer.css('margin-top', -height + 'px');
+	}
+	function setSubSectionLinksSize(){
+		let maxHeight = 0;
+		let $links = $('.product-services.menu a');
+		$links.each(function(){
+			if ($(this).outerHeight() > maxHeight) maxHeight = $(this).outerHeight();
+		});
+		$links.css('min-height', maxHeight + 'px');
 	}
 
 	function initHamburger(){

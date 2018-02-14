@@ -13,6 +13,10 @@ body {
 		line-height: 24px;
 	}
 }
+*,
+*:focus,
+*:active,
+*:hover { outline: none !important; }
 section,
 .container {
 	position: relative;
@@ -57,6 +61,7 @@ h2.h3 {
 	color: #1a2230;
 	font-size: 180%;
 	line-height: 1.3em;
+	font-weight: normal;
 }
 
 p {
@@ -106,6 +111,10 @@ a[name] {
 	color: #fff;
 }
 
+.btn {
+	font-size: 100%;
+	font-weight: 200;
+}
 .btn-initial {
 	position: absolute;
 	z-index: 5;
@@ -119,6 +128,7 @@ a[name] {
 	background: #fff;
 	border: 1px solid #b140d3;
 }
+.btn-initial.active,
 .btn-initial:hover,
 .btn-initial:active,
 .btn-initial:focus {
@@ -126,6 +136,20 @@ a[name] {
 	text-decoration: none;
 	background: #b140d3;
 	box-shadow: 0 1em 1.5em rgba(0, 0, 0, 0.2);
+}
+.btn-blue {
+	color: #025cff;
+	background: none;
+	border: 1px solid #80a0da;
+}
+.btn-blue:hover,
+.btn-blue:active,
+.btn-blue:focus {
+	color: #fff;
+	background: #025cff;
+}
+.btn-blue[type="submit"] {
+	padding: 0.5em 1em;
 }
 
 
@@ -856,7 +880,6 @@ header menu li.active a:after {
 
 .section-bg4 {
 	background-image: url(../img/bg4.png);
-	border-bottom: 1px solid #ededfc;
 }
 .section-bg4 .coming-soon {
 	margin-top: -0.4em;
@@ -1023,26 +1046,10 @@ header menu li.active a:after {
 footer {
 	position: relative;
 	z-index: 17;
-	margin-top: -73px;
 	color: #7d9ab5;
 	font-size: 80%;
 	line-height: 1.5em;
 	border-top: 1px solid #233c5e;
-}
-@media (max-width: 1479px){
-	footer {
-		margin-top: -65px;
-	}
-}
-@media (max-width: 1199px){
-	footer {
-		margin-top: -58px;
-	}
-}
-@media (max-width: 767px){
-	footer {
-		margin-top: -58px;
-	}
 }
 footer p {
 	margin: 0;
@@ -1082,4 +1089,36 @@ footer menu li:first-child a {
 		padding: 0;
 		text-align: center;
 	}
+}
+
+.section-form {
+	padding-top: 5em;
+}
+form label {
+	display: block;
+	font-weight: 200;
+}
+form .form-group {
+	margin-bottom: 1em;
+}
+form .form-control {
+	font-size: 100%;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	height: auto;
+	box-shadow: none;
+}
+form .form-control:focus {
+	box-shadow: none;
+}
+form textarea.form-control {
+	height: 6em;
+	resize: none;
+}
+form .form-control:focus {
+	border-color: #80a0da;
+}
+
+.section-form {
+	display: none;
 }
