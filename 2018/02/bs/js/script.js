@@ -22,7 +22,7 @@
 	}
 
 	function setHeaderBackground(){
-		let scrollTop = document.documentElement.scrollTop;
+		let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 		let height = document.getElementById('top_section').offsetHeight;
 		console.log(scrollTop, height);
 		let header = document.querySelector('header');
