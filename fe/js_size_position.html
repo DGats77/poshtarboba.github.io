@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frontend. Розміри та позиція елемента</title>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<link type="text/css" rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="mainwrapper">
+	<div class="resize">
+
+		<section>
+			<h1>Розміри та позиція елемента</h1>
+			<p><a href="https://learn.javascript.ru/metrics" target="_blank">Размеры и прокрутка элементов</a></p>
+			<p>Можна брати розміри елементів зі стилів з об'єкта .getComputedStyle, при цьому стиль буде повернено так, як записано в CSS, наприклад, ширина буде включати одиниці величини: "100px", "25%".</p>
+			<p>Окрім стилів у елементів DOM є ще метрики - числові значення, завжди в пікселях.</p>
+			<code>
+				// внутрішні розміри елемента:<br>
+				<strong>p.clientWidth</strong><br>
+				<strong>p.clientHeight</strong><br><br>
+				// зовнішні розміри елемента, включаючи паддінги та бордери:<br>
+				<strong>p.offsetWidth</strong><br>
+				<strong>p.offsetHeight</strong><br><br>
+				// позиціонування елемента:<br>
+				<strong>p.offsetParent</strong> - батько, від якого рахується позиціонування<br>
+				<strong>p.offsetTop</strong><br>
+				<strong>p.offsetLeft</strong><br><br>
+				// відступи від зовнішнього краю до внутрішнього:<br>
+				<strong>p.clientTop</strong><br>
+				<strong>p.clientLeft</strong><br><br>
+				// якщо елемент має полосу прокрутки, то повний розмір визначається так:<br>
+				<strong>p.scrollWidth</strong><br>
+				<strong>p.scrollHeight</strong><br>
+				// і на скільки проскролений блок зліва та зверху:<br>
+				<strong>p.scrollLeft</strong><br>
+				<strong>p.scrollTop</strong>
+			</code>
+			<h3>Завдання</h3>
+			<ol>
+				<li>Працюйте з кодом <a href="https://jsfiddle.net/poshtarboba/7x9ugav7/7/" target="_blank">jsFiddle</a> або <a href="https://codepen.io/anon/pen/RQjzJd" target="_blank">Codepen</a>.<li>
+				<li>Знайдіть розміри span, p.<li>
+				<li>Знайдіть позиціонування span від початку сторінки.<li>
+				<li>Задайте блокам div релятивне позиціонування і знову знайдіть позиціонування span від початку сторінки.<li>
+				<li>Знайдіть розмір контенту блока section та на скільки контент проскролений.<li>
+			</ol>
+		</section>
+
+		<!--<section class="homework">
+			<h2>Домашнє завдання.</h2>
+			<ol>
+				<li>Створіть три кнопки і div.</li>
+				<li>Для третьої кнопки задайте абсолютне позиціонування і розмістіть її в позицію 300px 400px.</li>
+				<li>Для блока задайте розмір 3000х5000 пікселів, добавте бордер, жовтий фон.</li>
+				<li>При кліку на блок виводьте в консоль наскільки проскролене вікно браузера. Проскрольте вниз та вправо і клікніть по жовтому блоку.</li>
+				<li></li>
+				<li></li>
+			</ol>
+		</section>-->
+		
+	</div>
+</div>
+
+<script src="jquery-3.1.1.min.js"></script>
+<script src="fe.js"></script>
+
+</body>
+</html>
