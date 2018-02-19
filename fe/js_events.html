@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Frontend. Розміри та позиція елемента</title>
+	<title>Frontend. Події</title>
 	<meta charset="utf-8">
 	<meta name="keywords" content="">
 	<meta name="description" content="">
@@ -17,38 +17,9 @@
 <div id="mainwrapper">
 	<div class="resize">
 
-		<h1>Розміри та позиція елемента, події</h1>
+		<h1>Події</h1>
 
 		<section>
-			<h2>Розміри та позиція елемента</h2>
-			<p><a href="https://learn.javascript.ru/metrics" target="_blank">Размеры и прокрутка элементов</a></p>
-			<p>Можна брати розміри елементів зі стилів з об'єкта .getComputedStyle, при цьому стиль буде повернено так, як записано в CSS, наприклад, ширина буде включати одиниці величини: "100px".</p>
-			<p>Окрім стилів у елементів DOM є ще метрики - числові значення, завжди в пікселях:</p>
-			<code>
-				// внутрішні розміри елемента:<br>
-				<strong>p.clientWidth</strong><br>
-				<strong>p.clientHeight</strong><br><br>
-				// зовнішні розміри елемента, включаючи паддінги та бордери:<br>
-				<strong>p.offsetWidth</strong><br>
-				<strong>p.offsetHeight</strong><br><br>
-				// позиціонування елемента:<br>
-				<strong>p.offsetParent</strong> - батько, від якого рахується позиціонування<br>
-				<strong>p.offsetTop</strong><br>
-				<strong>p.offsetLeft</strong><br><br>
-				// відступи від зовнішнього краю до внутрішнього:<br>
-				<strong>p.clientTop</strong><br>
-				<strong>p.clientLeft</strong><br><br>
-				// якщо елемент має полосу прокрутки, то повний розмір визначається так:<br>
-				<strong>p.scrollWidth</strong><br>
-				<strong>p.scrollHeight</strong><br>
-				// і на скільки проскролений блок зліва та зверху:<br>
-				<strong>p.scrollLeft</strong><br>
-				<strong>p.scrollTop</strong>
-			</code>
-		</section>
-
-		<section>
-			<h2>Події</h2>
 			<p><a href="https://learn.javascript.ru/introduction-browser-events" target="_blank">Введение в браузерные события</a>.</p>
 			<p>В js є підтримка більше сотні подій.</p>
 			<p><strong>Подія</strong> - реакція браузера на зовнішні зміни: рух мишкою, клік, скролл, кінець завантаження сторінки, ресурса, об’єкта, натискання кнопок клавіатури і т.п.</p>
@@ -121,7 +92,7 @@
 			<p>Робота з фокусом зводиться до використання двох подій: .onfocus та .onblur:</p>
 			<p style="margin-bottom: 100px;"><label>Focus: <input type="text" class="js-focus"></label></p>
 			<script>
-				var focus = document.querySelector('.js-focus');
+				let focus = document.querySelector('.js-focus');
 				focus.onfocus = function(){ this.style.background = 'yellow'; };
 				focus.onblur = function(){ this.style.background = 'white'; };
 				window.onfocus = function(){ document.title = 'Welcome!'; };
@@ -129,7 +100,7 @@
 			</script>
 			<code>
 				&lt;input type="text" class="js-focus"&gt;<br><br>
-				var focus = document.querySelector('.js-focus');<br>
+				let focus = document.querySelector('.js-focus');<br>
 				focus.onfocus = function(){ this.style.background = 'yellow'; };<br>
 				focus.onblur = function(){ this.style.background = 'white'; };<br>
 				window.onfocus = function(){ document.title = 'Welcome!'; };<br>
@@ -158,8 +129,8 @@
 				<span>5</span>
 			</div>
 			<script>
-				var MouseMove = document.querySelector('#MouseMove');
-				var span = MouseMove.querySelectorAll('span');
+				let MouseMove = document.querySelector('#MouseMove');
+				let span = MouseMove.querySelectorAll('span');
 				MouseMove.onmousemove = function(event) {
 					span[0].innerHTML = event.layerX + ' - ' + event.layerY;
 				};
@@ -184,8 +155,8 @@
 				&nbsp;&nbsp;&lt;span&gt;3&lt;/span&gt;&lt;br&gt;<br>
 				&nbsp;&nbsp;&lt;span&gt;4&lt;/span&gt;&lt;br&gt;<br>
 				&lt;/div&gt;<br><br>
-				var MouseMove = document.querySelector('#MouseMove');<br>
-				var span = MouseMove.querySelectorAll('span');<br>
+				let MouseMove = document.querySelector('#MouseMove');<br>
+				let span = MouseMove.querySelectorAll('span');<br>
 				MouseMove.onmousemove = function(event) {<br>
 				&nbsp;&nbsp;span[0].innerHTML = event.layerX + ' - ' + event.layerY;<br>
 				};<br>
@@ -207,13 +178,13 @@
 			<code>
 				&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;<br>
 				div { padding: 40px; border: 1px solid #000;}<br><br>
-				var div = document.querySelector('div'); &nbsp;&nbsp; // нам потрібен лише зовнішній div<br>
+				let div = document.querySelector('div'); &nbsp;&nbsp; // нам потрібен лише зовнішній div<br>
 				div.onmouseenter = function(e){ console.log(e.type); }<br>
 				div.onmouseleave = function(e){ console.log(e.type); }
 			</code>
 			<p>Понаводьте курсор на прямокутники та подивіться результат в консолі. Простежте коли саме виникають події.</p>
 			<p>Змініть ці дві події на onmouseover та onmouseout і повторно простежте коли саме виникають події.</p>
-			<h3>Завдання.</h3>
+			<h3>Завдання</h3>
 			<ol>
 				<li>Модифікуйте скрипт так, щоб він показував координати відносно блока, а не всієї сторінки.</li>
 				<li>Виводьте також інформацію про натиснуту кнопку миші - праву, ліву, середню.</li>
@@ -224,78 +195,11 @@
 			<code>
 				button.onclick();
 			</code>
-			<h3>Інші події.</h3>
+			<h3>Інші події</h3>
 			<p>Ще є події роботи з клавіатурою, із завантаженням документа чи ресурса, прокруткою, зміною розмірів, роботою з тачскріном, поворотом екрану і т.д.</p>
 			<p>Деякі з цих подій ми будемо використовувати на практиці, з деякими - ви самі познайомитеся, коли прийде час.</p>
 		</section>
 
-		<section>
-			<h2>Прослуховувач подій addEventListener</h2>
-			<p>Нехай по кліку на кнопку ми хочемо використати 2 обробника подій:</p>
-			<code>
-				&lt;button&gt;test&lt;/button&gt;<br><br>
-				var button = document.querySelector('button');<br>
-				button.onclick = function(){ this.innerText = 'Hello!'; };<br>
-				button.onclick = function(){ console.log('click on button'); };
-			</code>
-			<p>Друга функція просто затирає першу, і перша перестане виконуватися.</p>
-			<p>Для роботи з декількома однотипними подіями є спеціальний об'єкт - прослуховувальник подій: <strong>addEventListener</strong>.</p>
-			<code>
-				<strong>element.addEventListener('event', handler);</strong><br>
-				button.addEventListener('click', function(){ this.innerText = 'Hello!'; });
-				button.addEventListener('click', function(){ console.log('click on button'); });
-			</code>
-			<p>Зверніть увагу, що подія записується без букв on, і це - строковий аргумент, тобто, назва події може зберігатися у змінній:</p>
-			<code>
-				var evname = a > b ? 'click' : 'mouseenter';<br>
-				button.addEventListener(evname, function(){ console.log('hello'); });
-			</code>
-			<p>Видалити подію можна методом <strong>.removeEventListener()</strong>.</p>
-			<p>Видаляти події потрібно коли в них вже немає необхідності, а повторний виклик події може спричинити проблеми.</p>
-			<p>Уявіть ситуацію: ви зробили форму і програмну обробку даних цієї форми, відправку на сервер по кліку на кнопку. Якщо користувач двічі клацне по кнопці - дані двічі відправляться на сервер.</p>
-			<p>Щоб уникнути цього - при першому кліку подію обробки та відправки даних потрібно прибрати з кнопки.</p>
-			<code>
-				function subm(){<br>
-				&nbsp;&nbsp;button.removeEventListener('click', subm);<br>
-				&nbsp;&nbsp;if (validateForm()) { form.submit(); }<br>
-				}<br>
-				button.addEventListener('click', subm);
-			</code>
-			<p>Зверніть увагу, що для видалення функції потрібно використовувати ім'я функції, анонімні функції видаляти неможна.</p>
-		</section>
-
-		<section class="homework">
-			<h2>Тестове завдання.</h2>
-			<ol>
-				<li>
-					Що робить наступний код?
-					<code>
-						...<br>
-						var lines, a = 'action';<br>
-						div['onmouse' + btn.dataset[a]] = function(){<br>
-						&nbsp;&nbsp;if (!(lines = document.forms[x].children).length){<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;console.dir(lines);<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;var y = document.forms[x].getAttribute(a);<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;lines = getLines()[y](x);<br>
-						&nbsp;&nbsp;}<br>
-						}
-					</code>
-				</li>
-			</ol>
-		</section>
-		
-		<!--<section class="homework">
-			<h2>Домашнє завдання.</h2>
-			<ol>
-				<li>Створіть три кнопки і div.</li>
-				<li>Для третьої кнопки задайте абсолютне позиціонування і розмістіть її в позицію 300px 400px.</li>
-				<li>Для блока задайте розмір 3000х5000 пікселів, добавте бордер, жовтий фон.</li>
-				<li>При кліку на блок виводьте в консоль наскільки проскролене вікно браузера. Проскрольте вниз та вправо і клікніть по жовтому блоку.</li>
-				<li></li>
-				<li></li>
-			</ol>
-		</section>-->
-		
 	</div>
 </div>
 
