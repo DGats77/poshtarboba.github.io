@@ -1,0 +1,1 @@
+imageUploader('.image-box');
