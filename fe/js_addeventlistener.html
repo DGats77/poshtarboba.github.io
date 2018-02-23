@@ -70,10 +70,10 @@
 			</code>
 			<p>Саму подію ініціюємо (викликаємо) методом <strong>dispatchEvent</strong>:</p>
 			<code>
-				button.onclick = function(){
-					setTimeout(function(){
-						button.dispatchEvent(new Event('button2s'));
-					}, 2000);
+				button.onclick = function(){<br>
+				&nbsp;&nbsp;setTimeout(function(){<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;button.dispatchEvent(new Event('button2s'));<br>
+				&nbsp;&nbsp;}, 2000);<br>
 				}
 			</code>
 			<p>Подію можна підв'язати під будь-який об'єкт:</p>
