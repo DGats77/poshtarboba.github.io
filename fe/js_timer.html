@@ -19,16 +19,20 @@
 			<p>JavaScript підтримує роботу з двома типами таймерів - одноразовим <strong>setTimeout()</strong> та багаторазовим <strong>setInterval()</strong>.</p>
 			<p>Кожна з цих функцій приймає в себе щонайменше 2 аргумента: функцію, яка має виконатися, і час в мілісекундах:</p>
 			<code>
-				var i = 5;<br>
-				function fun(){ console.log(i++); }<br>
-				setTimeout(function(){ console.log('hello!'); }, 5000);<br>
-				setInterval(fun, 1000);
+				setTimeout(function(){<br>
+				&nbsp;&nbsp;console.log('hello!');<br>
+				}, 5000);<br><br>
+				let i = 5;<br>
+				setInterval(fun, 1000);<br>
+				function fun(){ console.log(i++); }
 			</code>
 			<p>Якщо у функцію треба передати аргументи - вони прописуються в кінець, після часу затримки:</p>
 			<code>
-				setTimeout(function(a, b, c) { console.log(a + b + c); }, 3000, 5, 10, 20);<br>
-				function fun(k){ console.log(k); }<br>
-				setInterval(fun, 1000, 'hello');
+				setTimeout(function(a, b, c){<br>
+				&nbsp;&nbsp;console.log(a + b + c);<br>
+				}, 3000, 5, 10, 20);<br><br>
+				setInterval(fun, 1000, 'hello');<br>
+				function fun(k){ console.log(k); }
 			</code>
 			<p>Таймер можна зупинити, вимкнути. Кожна з вищевказаних функцій повертає ідентифікатор таймера (число), зупинити можна двома функціями:</p>
 			<code>
@@ -43,15 +47,19 @@
 			<p>Розглянемо приклади:</p>
 			<code>
 				// що відобразить alert?<br>
-				var x = 5;<br>
+				let x = 5;<br>
 				setTimeout(function(){ alert(x); }, 100);<br>
 				x = 10;<br><br>
 				// хочемо вивести в консоль текст перших 5-и абзаців:<br>
-				var p = document.querySelectorAll('p');<br>
+				let p = document.querySelectorAll('p');<br>
 				for (var i = 0; i < 5; i++){<br>
-				&nbsp;&nbsp;setTimeout(function(){ console.log(p[i].innerText); }, (i + 1) * 1000);<br>
+				&nbsp;&nbsp;setTimeout(function(){<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;console.log(p[i].innerText);<br>
+				&nbsp;&nbsp;}, (i + 1) * 1000);<br>
 				}
 			</code>
+			<p><em>(Наступна інформація була актуальна у 2015-2017 роках, наразі є застарілою через повсюдне використання оператора let).</em></p>
+			<!-- TODO: сховати у додаткову інформацію -->
 			<p>Ця задача популярна на співбесідах:<br><em>"Що буде виведено в консоль?"</em></p>
 			<code>
 				const arr = [10, 12, 15, 21];<br>
@@ -64,8 +72,8 @@
 			<p>Останній варіант має декілька варіантів правильного розв'язку:</p>
 			<code>
 				// використаємо let замість var (<a href="http://exploringjs.com/es6/ch_variables.html#sec_let-const-loop-heads" target="_blank">подробиці тут</a>):<br>
-				var p = document.querySelectorAll('p');<br>
-				for (let i = 0; i < 5; i++){<br>
+				let p = document.querySelectorAll('p');<br>
+				for (<strong>let</strong> i = 0; i < 5; i++){<br>
 				&nbsp;&nbsp;setTimeout(function(){ console.log(p[i].innerText); }, (i + 1) * 1000);<br>
 				}<br><br>
 				// передамо у функцію потрібний абзац у якості аргумента:<br>
