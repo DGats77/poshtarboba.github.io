@@ -24,11 +24,11 @@
 				<strong>localStorage.getItem(key);</strong><br>
 				<strong>localStorage.removeItem(key);</strong><br>
 				<strong>localStorage.clear();</strong><br><br>
-				console.log(localStorage);<br><br>
-				var data = [5, 12, '32', 7, 'html', '99'];<br>
+				console.dir(localStorage);<br><br>
+				let data = [5, 12, '32', 7, 'html', '99'];<br>
 				localStorage.setItem('bar', data);<br>
 				localStorage.setItem('hey', 'ho');<br><br>
-				var foo = localStorage.getItem('bar');<br>
+				let foo = localStorage.getItem('bar');<br>
 				console.log(foo);<br>
 				console.log(localStorage.getItem('hello'));<br><br>
 				localStorage.removeItem('bar');<br>
@@ -41,11 +41,11 @@
 			</code>
 			<p>В локальне сховище можна зберігати масиви, об'єкти:</p>
 			<code>
-				var obj = { name: 'Masha', age: 17, gender: 'female' };<br>
+				let obj = { name: 'Masha', age: 17, gender: 'female' };<br>
 				localStorage.setItem('user', JSON.stringify(obj));<br><br>
-				var newObj = localStorage.getItem('user');<br><br>
+				let newObj = localStorage.getItem('user');<br><br>
 				newObj = JSON.parse(newObj);<br><br>
-				var newObj = JSON.parse(localStorage.getItem('user'));
+				let newObj = JSON.parse(localStorage.getItem('user'));
 			</code>
 			<p>
 				Якщо потрібно задати термін дії для даних, що зберігаються - доведеться робити це вручну:<br>
