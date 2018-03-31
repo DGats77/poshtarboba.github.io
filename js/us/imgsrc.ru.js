@@ -5,7 +5,7 @@
 	
 	/* автопереход по кнопке "Продолжить просмотр" */
 	let btnNext = document.querySelector('[value="Продолжить просмотр"]');
-	if (btnNext) btnNext.parentElement.submit();
+	if (btnNext) { console.log('Button next'); btnNext.parentElement.submit(); }
 	
 	/* загрузить большие версии изображений */
 	imgLoadBigImage(document);
@@ -17,6 +17,7 @@
 	loadAllImages();
 	
 	function addTableCSS(){
+		console.log('Add hover for table');
 		let html = '.zebra tr:hover > td { background-color: #c5ccd0; }';
 		let style = document.createElement('style');
 		style.innerText = html;
@@ -28,6 +29,7 @@
 	}
 	
 	function imgLoadBigImage(parent){
+		console.log('Load big images');
 		parent.querySelectorAll('img[data-src]').forEach(function(img){
 			img.setAttribute('src', img.dataset.src);
 			img.classList.remove('lazyload');
@@ -36,6 +38,7 @@
 	}
 	
 	function linkToAllImages(){
+		console.log('Add link to all images');
 		document.querySelectorAll('a[href]').forEach(function(a){
 			if (a.innerText === 'все фото на одной странице') {
 				a.innerText = 'все фото постранично';
@@ -48,6 +51,7 @@
 	}
 	
 	function loadAllImages(){
+		console.log('Load all images');
 		let search = location.search.substr(1).split('&');
 		if (search.includes('showall=true')) {
 			let href = [];
@@ -61,6 +65,7 @@
 	}
 	
 	function getImagesPage(href){
+		console.log('Get next page');
 		if (href.length === 0) return false;
 		let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
