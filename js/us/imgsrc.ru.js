@@ -22,36 +22,36 @@ window.addEventListener('load', function(){
 		let style = document.createElement('style');
 		style.innerText = html;
 		document.head.appendChild(style);
-		let ths = document.querySelectorAll('tr:first-child > th:nth-child(2)');
-		ths.forEach(function(th){
-			if (th.innerText === 'фото') th.parentElement.parentElement.parentElement.classList.add('zebra');
+		document.querySelectorAll('table').forEach(function(table){
+			table.classList.add('zebra');
 		});
 	}
 	
 	function imgLoadBigImage(parent){
-		console.log('Load big images');
+		let i = 0;
 		parent.querySelectorAll('img[data-src]').forEach(function(img){
 			img.setAttribute('src', img.dataset.src);
 			img.classList.remove('lazyload');
 			delete img.dataset.src;
+			i++;
 		});
+		if (i) console.log('Loaded big images:', i);
 	}
 	
 	function linkToAllImages(){
-		console.log('Add link to all images');
 		document.querySelectorAll('a[href]').forEach(function(a){
-			if (a.innerText === 'все фото на одной странице') {
+			let href = a.getAttribute('href');
+			if (href.substr(0, 14) === '/main/tape.php') {
+				console.log('Add link to all images');
 				a.innerText = 'все фото постранично';
-				let url = a.getAttribute('href') + '&showall=true';
 				let span = document.createElement('span');
-				span.innerHTML = ' | <a href="' + url + '">все фото альбома</a>';
+				span.innerHTML = ' | <a href="' + href + '&showall=true">все фото альбома</a>';
 				a.parentElement.insertBefore(span, a.nextElementSibling);
 			}
 		});
 	}
 	
 	function loadAllImages(){
-		console.log('Load all images');
 		let search = location.search.substr(1).split('&');
 		if (search.includes('showall=true')) {
 			let href = [];
@@ -60,13 +60,14 @@ window.addEventListener('load', function(){
 				href.forEach(function(item){ if (item === url) url = null; });
 				if (url) href.push(url);
 			});
+			if (href.length) console.log('Load all images, found pages:', href.length + 1);
 			getImagesPage(href);
 		}
 	}
 	
 	function getImagesPage(href){
-		console.log('Get next page');
 		if (href.length === 0) return false;
+		console.log('Get next page');
 		let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if (xhr.readyState !== 4) return;
