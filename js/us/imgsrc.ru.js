@@ -1,19 +1,19 @@
 window.addEventListener('load', function(){
 	
-	/* ховер-эффект для таблиц */
+	/* С…РѕРІРµСЂ-СЌС„С„РµРєС‚ РґР»СЏ С‚Р°Р±Р»РёС† */
 	if (location.pathname === '/main/user.php' || location.pathname.substr(0, 5) === '/cat/') addTableCSS();
 	
-	/* автопереход по кнопке "Продолжить просмотр" */
-	let btnNext = document.querySelector('[value="Продолжить просмотр"]');
+	/* Р°РІС‚РѕРїРµСЂРµС…РѕРґ РїРѕ РєРЅРѕРїРєРµ "РџСЂРѕРґРѕР»Р¶РёС‚СЊ РїСЂРѕСЃРјРѕС‚СЂ" */
+	let btnNext = document.querySelector('[value="РџСЂРѕРґРѕР»Р¶РёС‚СЊ РїСЂРѕСЃРјРѕС‚СЂ"]');
 	if (btnNext) { console.log('Button next'); btnNext.parentElement.submit(); }
 	
-	/* загрузить большие версии изображений */
+	/* Р·Р°РіСЂСѓР·РёС‚СЊ Р±РѕР»СЊС€РёРµ РІРµСЂСЃРёРё РёР·РѕР±СЂР°Р¶РµРЅРёР№ */
 	imgLoadBigImage(document);
 	
-	/* добавить ссылку на все фото альбома */
+	/* РґРѕР±Р°РІРёС‚СЊ СЃСЃС‹Р»РєСѓ РЅР° РІСЃРµ С„РѕС‚Рѕ Р°Р»СЊР±РѕРјР° */
 	linkToAllImages();
 	
-	/* загрузить все изображения на одной странице */
+	/* Р·Р°РіСЂСѓР·РёС‚СЊ РІСЃРµ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РЅР° РѕРґРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ */
 	loadAllImages();
 	
 	function addTableCSS(){
@@ -43,9 +43,9 @@ window.addEventListener('load', function(){
 			let href = a.getAttribute('href');
 			if (href.substr(0, 14) === '/main/tape.php') {
 				console.log('Add link to all images');
-				a.innerText = 'все фото постранично';
+				a.innerText = 'РІСЃРµ С„РѕС‚Рѕ РїРѕСЃС‚СЂР°РЅРёС‡РЅРѕ';
 				let span = document.createElement('span');
-				span.innerHTML = ' | <a href="' + href + '&showall=true">все фото альбома</a>';
+				span.innerHTML = ' | <a href="' + href + '&showall=true">РІСЃРµ С„РѕС‚Рѕ Р°Р»СЊР±РѕРјР°</a>';
 				a.parentElement.insertBefore(span, a.nextElementSibling);
 			}
 		});
