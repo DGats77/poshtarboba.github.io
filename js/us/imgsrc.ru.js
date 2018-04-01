@@ -1,4 +1,4 @@
-(function(){
+window.addEventListener('load', function(){
 	
 	/* ховер-эффект для таблиц */
 	if (location.pathname === '/main/user.php' || location.pathname.substr(0, 5) === '/cat/') addTableCSS();
@@ -86,4 +86,4 @@
 		xhr.send();
 	}
 	
-})();
+});
