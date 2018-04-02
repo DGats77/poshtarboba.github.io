@@ -1,5 +1,5 @@
 (function(){
-	console.log('My userscripts start');
+	console.log('My UserScripts start');
 
 	window.GetURI = function(uri, handle){
 		let xhr = new XMLHttpRequest();
