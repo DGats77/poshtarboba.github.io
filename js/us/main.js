@@ -1,3 +1,13 @@
+function GetURI(uri, handle){
+	let xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function(){
+		if (xhr.readyState !== 4) return;
+		handle(xhr);
+	};
+	xhr.open('GET', uri, true);
+	xhr.send();
+}
+
 (function(){
 	console.log('My userscripts start');
 	

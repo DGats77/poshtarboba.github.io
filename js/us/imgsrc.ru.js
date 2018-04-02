@@ -1,7 +1,10 @@
-window.addEventListener('load', function(){
+(function(){
 	
 	/* ховер-эффект для таблиц */
 	if (location.pathname === '/main/user.php' || location.pathname.substr(0, 5) === '/cat/') addTableCSS();
+	
+	/* авторелоад списка категории */
+	if (location.pathname.substr(0, 5) === '/cat/') catAutoReload();
 	
 	/* автопереход по кнопке "Продолжить просмотр" */
 	let btnNext = document.querySelector('[value="Продолжить просмотр"]');
@@ -25,6 +28,23 @@ window.addEventListener('load', function(){
 		document.querySelectorAll('table').forEach(function(table){
 			table.classList.add('zebra');
 		});
+	}
+	
+	function catAutoReload(){
+		console.log('autoreload');
+		let a = document.querySelector('a[href="/main/search.php"]');
+		let c = Math.floor(Math.random() * 241 + 60);
+		let span = document.createElement('span');
+		span.style.paddingRight = '16px';
+		span.innerText = c;
+		a.parentElement.insertBefore(span, a);
+		let i = setInterval(function(){
+			span.innerText = --c;
+			if (c <= 0) {
+				clearInterval(i);
+				location.reload();
+			}
+		}, 1000);
 	}
 	
 	function imgLoadBigImage(parent){
@@ -67,24 +87,21 @@ window.addEventListener('load', function(){
 	
 	function getImagesPage(href){
 		if (href.length === 0) return false;
-		console.log('Get next page');
-		let xhr = new XMLHttpRequest();
-		xhr.onreadystatechange = function(){
-			if (xhr.readyState !== 4) return;
-			if (xhr.status !== 200) return;
-			let resp = xhr.response.match(/<body>([\s\S]*)<\/body>/gim);
-			if (!resp[0]) return;
-			let div = document.createElement('div');
-			div.innerHTML = resp[0].replace(/<\/?body>/g, '');
-			imgLoadBigImage(div);
-			let html = '';
-			div.querySelectorAll('img.big').forEach(function(img){ html += img.outerHTML + '<br>'; })
-			div.innerHTML = html;
-			document.body.appendChild(div);
+		console.log('Get next page, total left:', href.length);
+		GetURI(href.shift(), function(xhr){
+			if (xhr.status === 200){
+				let resp = xhr.response.match(/<body>([\s\S]*)<\/body>/gim);
+				if (!resp[0]) return;
+				let div = document.createElement('div');
+				div.innerHTML = resp[0].replace(/<\/?body>/g, '');
+				imgLoadBigImage(div);
+				let html = '';
+				div.querySelectorAll('img.big').forEach(function(img){ html += img.outerHTML + '<br>'; })
+				div.innerHTML = html;
+				document.body.appendChild(div);
+			}
 			getImagesPage(href);
-		};
-		xhr.open('GET', href.shift(), true);
-		xhr.send();
+		});
 	}
 	
-});
+})();
