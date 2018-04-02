@@ -1,12 +1,10 @@
-reportCardNotification('02:00');
+reportCardNotification('19:30');
 
 
 
 
 (function($){
-
 	/* TODO: переписати без jQuery */
-
 	$('.js-toggle').on('click', function(){
 		let $that = $(this);
 		$('#'+$that.data('id')).stop(true, true).slideToggle(function(){
@@ -117,7 +115,7 @@ function reportCardNotification(time) {
 	timerId = setInterval(function() {
 		console.log(6);
 		tryShowNotification();
-	}, 10 * 1000);
+	}, 5 * 60 * 1000);
 	
 	function tryShowNotification() {
 		let now = new Date();
