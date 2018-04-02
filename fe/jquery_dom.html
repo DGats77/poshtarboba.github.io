@@ -54,8 +54,8 @@
 				$('ul li:first');<br>
 				$('ul li:last');<br>
 				$('ul li:even');<br>
-				$('ul li:odd');<br>
-				ну і не забувайте про CSS-псевдокласи:<br>
+				$('ul li:odd');<br><br>
+				// ну і не забувайте про CSS-псевдокласи:<br>
 				$('button:disabled');<br>
 				$('input[type="checkbox"]:checked');<br>
 			</code>
@@ -85,7 +85,7 @@
 			<p><strong>$('ul li').not('.active');</strong> - видаляє зі знайденого набору елементів ті елементи, що відповідають селектору.</p>
 			<p><strong>$('p').add(...);</strong> - добавляє елементи до набора (аргумент - елементи або селектор).</p>
 			<code>
-				var $li = $('li');<br>
+				let $li = $('li');<br>
 				$('p').add($li).add('img.gallery').addClass('js-elem');
 			</code>
 			

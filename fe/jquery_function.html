@@ -75,7 +75,7 @@
 			<h2>Екскурс в історію</h2>
 			<p>Щоб зрозуміти чому "взлетіла" і чому останнім часом втрачає популярність бібліотека jQuery, розгляньте код добавляння класу active до елементів div.box до 2012 року (підтримка IE8-), новий варіант (ie10+) і з використанням jQuery:</p>
 			<code>
-				var boxes = document.getElementsByTagName('div');<br>
+				let boxes = document.getElementsByTagName('div');<br>
 				for (var i = 0; i &lt; boxes.length; i++) {<br>
 				&nbsp;&nbsp;var classes = boxes[i].className.split(' ');<br>
 				&nbsp;&nbsp;for (var j = 0; j &lt; classes.length; j++) {<br>
@@ -96,7 +96,7 @@
 				&nbsp;&nbsp;}<br>
 				&nbsp;&nbsp;if (!double) {<br>
 				&nbsp;&nbsp;&nbsp;&nbsp;classes.push('className');<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;elem.className = classes.join(' ')<br>;
+				&nbsp;&nbsp;&nbsp;&nbsp;elem.className = classes.join(' ');<br>
 				&nbsp;&nbsp;}<br>
 				}<br><br>
 				document.querySelelectorAll('.box').forEach(function(box){<br>
@@ -111,8 +111,8 @@
 			<p>Вважається поганою практикою робити повторні пошуки елементів, зайвий раз заставляти JS оббігати все дерево DOM в пошуку потрібних тегів, тому намагаємося робити чистий код, з мінімумом повторів пошуку. Адже кожний $(...) - це виклик функції.</p>
 			<p>Серед розробників є негласна домовленість - змінну з результатом пошуку починати з символа долара, цим ми говоримо, що у змінній зберігається jQuery-набір:</p>
 			<code>
-				var p = document.getElementsByTagName('p');<br>
-				var $p = $('p');<br><br>
+				let p = document.getElementsByTagName('p');<br>
+				let $p = $('p');<br><br>
 				console.dir(p);<br>
 				console.dir($(p));<br>
 				console.dir($p);<br><br>

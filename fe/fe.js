@@ -1,3 +1,8 @@
+reportCardNotification('02:00');
+
+
+
+
 (function($){
 
 	/* TODO: переписати без jQuery */
@@ -96,3 +101,43 @@ function toggleBox(handles){
 
 toggleBox('.js-toggle');
 */
+
+function reportCardNotification(time) {
+	console.log(1);
+	if (!isAdmin()) return;
+	console.log(2);
+	let today = new Date();
+	today = today.getFullYear() + '-' + add0(today.getMonth() + 1) + '-' + add0(today.getDate());
+	console.log(3, today);
+	if (localStorage.getItem('reportCardNotificationDate') === today) return;
+	console.log(4);
+	let timerId;
+	if (tryShowNotification()) return;
+	console.log(5);
+	timerId = setInterval(function() {
+		console.log(6);
+		tryShowNotification();
+	}, 10 * 1000);
+	
+	function tryShowNotification() {
+		let now = new Date();
+		const [time_hrs, time_min] = time.split(':').map(function(e) { return parseInt(e); });
+		const now_hrs = now.getHours();
+		const now_min = now.getMinutes();
+		if (now_hrs > time_hrs || now_hrs === time_hrs && now_min >= time_min) {
+			if (timerId) clearInterval(timerId);
+			localStorage.setItem('reportCardNotificationDate', today);
+			alert('Заповни журнал.');
+			return true;
+		}
+		return false;
+	}
+}
+
+function isAdmin() {
+	return localStorage.getItem('admin');
+}
+
+function add0(n) {
+	return n < 10 ? '0' + n : n.toString();
+}

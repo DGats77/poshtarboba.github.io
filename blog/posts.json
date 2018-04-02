@@ -1,0 +1,4 @@
+[
+	{ id: "1-text", date: "2018-04-03", tags: "tag1 tag2 tag3", title: "Lorem ipsum 1" },
+	{ id: "2-text", date: "2018-04-03", tags: "tag1 tag2 tag3", title: "Lorem ipsum 2" }
+]
