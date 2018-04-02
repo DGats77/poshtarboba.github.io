@@ -1,4 +1,4 @@
-function GetURI(uri, handle){
+window.GetURI = function(uri, handle){
 	let xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(){
 		if (xhr.readyState !== 4) return;
@@ -6,7 +6,7 @@ function GetURI(uri, handle){
 	};
 	xhr.open('GET', uri, true);
 	xhr.send();
-}
+};
 
 (function(){
 	console.log('My userscripts start');

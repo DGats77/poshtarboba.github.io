@@ -1,3 +1,10 @@
+/*
+
+TODO:
+- перед перезагрузкой категорий сохранять список в localstorage, после перезагрузки проверять новые альбомы, если они появились - добавлять в Title "[n] ", на onfocus - очищать localstorage и title
+
+*/
+
 (function(){
 	
 	/* ховер-эффект для таблиц */
@@ -35,7 +42,7 @@
 		let a = document.querySelector('a[href="/main/search.php"]');
 		let c = Math.floor(Math.random() * 241 + 60);
 		let span = document.createElement('span');
-		span.style.paddingRight = '16px';
+		span.style.paddingRight = '12px';
 		span.innerText = c;
 		a.parentElement.insertBefore(span, a);
 		let i = setInterval(function(){
