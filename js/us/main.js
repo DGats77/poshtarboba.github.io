@@ -2,14 +2,13 @@ window.GetURI = _GetURI;
 
 (function(){
 	
-	console.log('My UserScripts start');
-	
 	if (location.host === 'imgsrc.ru') addScript('imgsrc.ru.js');
 	
-	function addScript(url){
+	function addScript(fileName){
 		let script = document.createElement('script');
 		document.documentElement.appendChild(script);
-		script.setAttribute('src', 'https://poshtarboba.github.io/js/us/' + url);
+		script.setAttribute('src', 'https://poshtarboba.github.io/js/us/' + fileName);
+		console.log('Added script', fileName);
 	}
 	
 })();
