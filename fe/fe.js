@@ -1,8 +1,6 @@
 reportCardNotification('19:30');
 
 
-
-
 (function($){
 	/* TODO: переписати без jQuery */
 	$('.js-toggle').on('click', function(){
