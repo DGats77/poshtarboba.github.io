@@ -1,4 +1,10 @@
+/* нагадування про перевірку журналу */
 reportCardNotification('19:30');
+
+/* актуалізувати роки, місяці в лекціях */
+actualDates();
+
+
 
 
 (function($){
@@ -11,15 +17,6 @@ reportCardNotification('19:30');
 	});
 
 })(jQuery);
-
-/* поміняти дати у лекції на поточні */
-(function(){
-	let spans = document.querySelectorAll('.js-month');
-	if (spans.length) {
-		let d = new Date(), m = d.getMonth() + 1;
-		spans.forEach(function(span){ span.innerHTML = d.getFullYear() + '-' + (m < 10 ? '0' + m : m); });
-	}
-})();
 
 /* debug */
 
@@ -98,6 +95,14 @@ function toggleBox(handles){
 toggleBox('.js-toggle');
 */
 
+function isAdmin() {
+	return localStorage.getItem('admin');
+}
+
+function add0(n) {
+	return n < 10 ? '0' + n : n.toString();
+}
+
 function reportCardNotification(time) {
 	console.log(1);
 	if (!isAdmin()) return;
@@ -130,10 +135,10 @@ function reportCardNotification(time) {
 	}
 }
 
-function isAdmin() {
-	return localStorage.getItem('admin');
-}
-
-function add0(n) {
-	return n < 10 ? '0' + n : n.toString();
+function actualDates(){
+	let now = new Date();
+	let year = now.getFullYear();
+	let month = add0(now.getMonth() + 1);
+	document.querySelectorAll('.js-year').forEach(function(span){ span.innerHTML = year; });
+	document.querySelectorAll('.js-month').forEach(function(span){ span.innerHTML = month; });
 }

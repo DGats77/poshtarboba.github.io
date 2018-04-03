@@ -35,7 +35,7 @@
 			<p>В такому каталозі ви зможете створити один проект. Якщо вам треба 2, 3, 10, 100 проектів, то не потрібно встановлювати 100 копій веб-сервера, можна налаштувати віртуальний хост на будь-яку папку.</p>
 			<p>Нехай у нас є проект і ми хочемо відкривати його через веб-сервер:</p>
 			<code>
-				D:\work\2017-12\wp-minecraft\html\
+				D:\work\<span class="js-year">2017</span>-<span class="js-month">12</span>\wp-minecraft\html\
 			</code>
 			<p>
 				Потрібно налаштувати веб-сервер, щоб він сприймав папку <strong>html</strong> як домашній каталог<br>
@@ -71,10 +71,10 @@
 			<code>
 				&lt;VirtualHost *:80&gt;<br>
 				&nbsp;&nbsp;ServerName minecraft.local<br>
-				&nbsp;&nbsp;DocumentRoot "D:/work/2017-12/wp-minecraft/html"<br>
+				&nbsp;&nbsp;DocumentRoot "D:/work/<span class="js-year">2017</span>-<span class="js-month">12</span>/wp-minecraft/html"<br>
 				&nbsp;&nbsp;ErrorLog "logs/minecraft.local-error.log"<br>
 				&nbsp;&nbsp;CustomLog "logs/minecraft.local-access.log" common<br>
-				&nbsp;&nbsp;&lt;Directory "D:/work/2017-12/wp-minecraft/html"&gt;<br>
+				&nbsp;&nbsp;&lt;Directory "D:/work/<span class="js-year">2017</span>-<span class="js-month">12</span>/wp-minecraft/html"&gt;<br>
 				&nbsp;&nbsp;&nbsp;&nbsp;Require all granted<br>
 				&nbsp;&nbsp;&lt;/Directory&gt;<br>
 				&lt;/VirtualHost&gt;
@@ -101,28 +101,6 @@
 
 	</div>
 </div>
-
-<script>
-	(function(){
-		/* поміняти дати у лекції на поточні */
-		function add0(n){ return n < 10 ? '0' + n : n; }
-		let d = new Date(), y = d.getFullYear(), m = d.getMonth() + 1;
-		d = '' + y + add0(m) + add0(d.getDate());
-		let m1 = document.querySelectorAll('.js-month1');
-		let m2 = document.querySelectorAll('.js-month2');
-		m1.forEach(function(span, i){
-			let year = y, month = m - m1.length + i + 1;
-			if (month < 1) { month += 12; year -= 1; }
-			span.innerHTML = year + '-' + add0(month);
-		});
-		m2.forEach(function(span, i){
-			let year = y, month = m - m1.length - m2.length + i + 1;
-			if (month < 1) { month += 12; year -= 1; }
-			span.innerHTML = year + '-' + add0(month);
-		});
-		document.querySelectorAll('.js-date').forEach(function(span){ span.innerHTML = d; });
-	})();
-</script>
 
 <script src="jquery-3.1.1.min.js"></script>
 <script src="fe.js"></script>

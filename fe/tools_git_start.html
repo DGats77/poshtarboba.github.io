@@ -66,32 +66,35 @@
 				<strong>git status</strong> - перевірити поточний статус поточної гілки.<br>
 				<strong>git add .</strong> - добавити всі файли в коміт (точку збереження).<br>
 				<strong>git commit -m "текст-опис"</strong> - створити коміт (точку збереження) поточної гілки.<br>
-				<!--
-					TODO: добавити інфу про конфігурацію гіта: введення логіна і е-мейла
-					Your name and email address were configured automatically based
-					on your username and hostname. Please check that they are accurate.
-					You can suppress this message by setting them explicitly:
-
-			    git config --global user.name "Your Name"
-			    git config --global user.email you@example.com
-				-->
 				<strong>git push</strong> або <strong>git push origin master</strong> - закинути коміт на сервер.<br>
 			</code>
+			<p>Під час першого коміту скоріш за все система попросить вас прописати конфігурації:</p>
+			<code>
+				Your name and email address were configured automatically based<br>
+				on your username and hostname. Please check that they are accurate.<br>
+				You can suppress this message by setting them explicitly:<br><br>
+				<strong>git config --global user.name "Your Name"<br>
+			    git config --global user.email you@example.com</strong>
+			</code>
+			<p>Після того, як ви пропишете вказані налаштування, перевірте статус, зробіть повторно коміт і відправте файли на сервер.</p>
 			<p>В подальшому ми вивчемо ще декілька команд для колективної роботи над проектом, для створення гілок і т.п.</p>
 			<p><strong class="danger">Увага!</strong> На GitHub заливайте тільки вміст папки html, не заливайте архіви, PSD.</p>
+			<p>Станом на 2018 рік GitHub надає 1 Гб дискового простору на кожний відкритий проект (репозиторій) і дає можливість заливати файли розміром до 100 Мб.</p>
+			<p>Придивіться до сервісів GitLab, BitBucket. Останній, наприклад, дозволяє створювати приватні репозиторії на безкоштовному аккаунті.</p>
 			<h3>Завдання</h3>
 			<ol>
 				<li>Зареєструйтесь на <a href="https://github.com/" target="_blank">GitHub</a></li>
+				<li>Пришліть викладачу свій логін по viber, telegram чи e-mail у форматі: <strong>прізвище login</strong>.</li>
 				<li>Створіть на GitHub проект vizitka, встановіть галочку "Initialize this repository with a README".</li>
 				<li>
 					Клонуйте цей проект собі в папку html відповідного проекта в своїй папці проектів:
 					<code>
-						d:\work\<span class="js-month">2017-09</span>\vizitka><strong>git clone https://github.com/ваш_логін/vizitka html</strong><br>
+						d:\work\<span class="js-year">2017</span>-<span class="js-month">09</span>\vizitka&gt;<strong>git clone https://github.com/ваш_логін/vizitka html</strong><br>
 						або<br>
-						d:\work\<span class="js-month">2017-09</span>\vizitka\html><strong>git clone https://github.com/ваш_логін/vizitka .</strong>
+						d:\work\<span class="js-year">2017</span>-<span class="js-month">09</span>\vizitka\html&gt;<strong>git clone https://github.com/ваш_логін/vizitka .</strong>
 					</code>
 				</li>
-				<li>Перевірте в проводнику або файловому менеджері чи все правильно клонувалося, в потрібну папку.</li>
+				<li>Перевірте в провіднику або файловому менеджері чи все правильно клонувалося, в потрібну папку.</li>
 				<li>Перевірте, чи створилася папка .git в проекті.</li>
 				<li>Скопіюйте в поточний проект зображення.</li>
 				<li>Створіть текстовий файл і запишіть у нього вітання.</li>
@@ -132,7 +135,52 @@
 			<p>Якщо необхідно внести коригування в домашню роботу - зробіть це і оновлення заляйте на GitHub.</p>
 		</section>
 
-		<!-- TODO: домашнє завдання -->
+		<section class="questions">
+			<h2>Контрольні питання</h2>
+			<ol>
+				<li>Для чого призначена програма git?</li>
+				<li>Які є альтернативи у цієї програми?</li>
+				<li>Що таке репозиторій?</li>
+				<li>Якою програмою можна заливати файли на bitbucket.org? А на gitlab.com?</li>
+				<li>Чи можна швидко створити систему керування репозиторіями на своєму власному сервері (чи навіть комп'ютері)?</li>
+				<li>Що таке дельти файлів?</li>
+				<li>Що робить команда <strong>git clone</strong>?</li>
+				<li>Що робить команда <strong>git init</strong>?</li>
+				<li>Для чого потрібна команда <strong>status</strong>? Чому цією командою користуються чи не найчастіше?</li>
+				<li>Які дії потрібно зробити, щоб заляти оновлення файлів на сервер?</li>
+				<li>Якими способами можна скачати файли з репозиторія на інші комп'ютери?</li>
+				<li>Що потрібно зробити, якщо щось пішло не так, напортили в себе на локалці (на своєму комп'ютері) і не знаєте як швидко розрулити ситуацію?</li>
+			</ol>
+		</section>
+		
+		<section class="homework">
+			<h2>Домашнє завдання</h2>
+			<ol>
+				<li>
+					Створіть на сайті GitHub новий репозиторій <strong>t-shirts</strong>, клонуйте його собі в папку<br>
+					<strong>D:\work\<span class="js-year">2018</span>\<span class="js-month">04</span>\t-shirts</strong><br>
+					Якщо у вас така папка вже є і вона не порожня, то git не дасть вам склонувати репозиторій. Переіменуйте цю папку, наприклад, на t-shirts2 і повторіть спробу клонування.
+				</li>
+				<li>Закиньте у папку t-shirts папку <strong>img</strong> (або images) з картинками, які ви вирізали з макету про футболки.</li>
+				<li data-rate="5">Заляйте файли на сервер та киньте посилання на репозиторій викладачу у вайбер, телеграм, e-mail.</li>
+				<li>Створіть новий репозиторій <strong>ваш_логін.github.io</strong>.</li>
+				<li>Клонуйте цей репозиторій собі в папку <strong>D:\work\ваш_логін.github.io</strong>.</li>
+				<li>Створіть в цій папці файл <strong>index.html</strong>, відкрийте його в Notepad++ чи в IDE (можете створити файл в програмі). Проконтролюйте, щоб кодування було UTF-8.</li>
+				<li>
+					Впишіть у файл наступний код:
+					<code>
+						&lt;h1&gt;Мельник Іван <small>(ваші прізвище, ім'я)</small>&lt;/h1&gt;<br>
+						&lt;hr&gt;<br>
+						&lt;h2&gt;Портфоліо&lt;/h2&gt;<br>
+						&lt;hr&gt;<br>
+						&lt;p&gt;&amp;copy; Мельник Іван (ваші прізвище, ім'я)&lt;/p&gt;
+					</code>
+				</li>
+				<li>Заляйте файли на сервер. Через 1 хвилину зайдіть на сайт <strong>ваш_логін.github.io</strong> (потрібен деякий час для того щоб файли з репозиторія потрапили на сервери github.io, цей процес називається деплой, deploying, deployment).</li>
+				<li>На один логін GitHub можна створити один ось такий публічний репозиторій, файли з якого будуть доступні у вигляді веб-сайту. Ви можете використовувати лише фронт-енд частину, ніяких серверних мов програмування, баз даних github.io не підтримує.</li>
+				<li>В подальшому свої верстки будете викладати на цей сайт і давати на перевірку викладачу. Наступний проект - верстка вашого резюме, його і можна буде закинути у портфоліо як першу роботу.</li>
+			</ol>
+		</section>
 
 	</div>
 </div>
@@ -140,9 +188,10 @@
 <script>
 	(function(){
 		/* поміняти дати у лекції на поточні */
+		let d = new Date(), y = d.getFullYear(), m = add0(d.getMonth() + 1);
+		document.querySelectorAll('.js-year').forEach(function(span){ span.innerHTML = y; });
+		document.querySelectorAll('.js-month').forEach(function(span){ span.innerHTML = m; });
 		function add0(n){ return n < 10 ? '0' + n : n; }
-		let d = new Date(), y = d.getFullYear(), m = d.getMonth() + 1;
-		document.querySelectorAll('.js-month').forEach(function(span){ span.innerHTML = y + '-' + add0(m); });
 	})();
 </script>
 
