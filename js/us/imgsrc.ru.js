@@ -27,24 +27,24 @@ TODO:
 	
 	function addTableCSS() {
 		console.log('Add hover for table');
-		let style = createTag('style');
+		let style = fxCreateTag('style');
 		style.innerText = '.zebra tr:hover > td { background-color: #c5ccd0; }';
 		document.head.appendChild(style);
-		$$('table th').forEach(function(th) {
+		fx$$('table th').forEach(function(th) {
 			if (th.innerText === 'фото') th.parentElement.parentElement.parentElement.classList.add('zebra');
 		});
 	}
 	
 	function btnNextClick() {
-		let btnNext = $1('[value="Продолжить просмотр"]');
+		let btnNext = fx$1('[value="Продолжить просмотр"]');
 		if (btnNext) btnNext.parentElement.submit();
 	}
 	
 	function catAutoReload() {
 		console.log('autoreload');
-		let a = $1('a[href="/main/search.php"]');
+		let a = fx$1('a[href="/main/search.php"]');
 		let c = Math.floor(Math.random() * 241 + 60);
-		let span = createTag('span');
+		let span = fxCreateTag('span');
 		span.style.paddingRight = '12px';
 		span.innerText = c;
 		a.parentElement.insertBefore(span, a);
@@ -59,7 +59,7 @@ TODO:
 	
 	function imgLoadBigImage(parent) {
 		let i = 0;
-		$$('img[data-src]', parent).forEach(function(img) {
+		fx$$('img[data-src]', parent).forEach(function(img) {
 			img.setAttribute('src', img.dataset.src);
 			img.classList.remove('lazyload');
 			delete img.dataset.src;
@@ -69,12 +69,12 @@ TODO:
 	}
 	
 	function linkToAllImages() {
-		$$('a[href]').forEach(function(a) {
+		fx$$('a[href]').forEach(function(a) {
 			let href = a.getAttribute('href');
 			if (href.substr(0, 14) === '/main/tape.php') {
 				console.log('Add link to all images');
 				a.innerText = 'все фото постранично';
-				let span = createTag('span');
+				let span = fxCreateTag('span');
 				span.innerHTML = ' | <a href="' + href + '&showall=true">все фото альбома</a>';
 				a.parentElement.insertBefore(span, a.nextElementSibling);
 			}
@@ -85,19 +85,19 @@ TODO:
 		let search = location.search.substr(1).split('&');
 		if (search.includes('showall=true')) {
 			let href = [];
-			$$('a.navdot[href]').forEach(function(a) {
+			fx$$('a.navdot[href]').forEach(function(a) {
 				let url = a.getAttribute('href');
 				href.forEach(function(item) { if (item === url) url = null; });
 				if (url) href.push(url);
 			});
 			if (href.length) console.log('Load all images, found pages:', href.length + 1);
-			let style = createTag('style');
+			let style = fxCreateTag('style');
 			style.innerHTML = 'img.big { display: inline-block; margin-bottom: 12px; } .images-page { padding: 20px 0;}';
 			document.head.appendChild(style);
-			let div = createTag('div');
+			let div = fxCreateTag('div');
 			div.classList.add('images-page');
 			let html = '';
-			$$('img.big').forEach(function(img) { html += img.outerHTML + '<br>'; });
+			fx$$('img.big').forEach(function(img) { html += img.outerHTML + '<br>'; });
 			div.innerHTML = html;
 			document.body.appendChild(div);
 			getImagesPage(href);
@@ -107,16 +107,16 @@ TODO:
 	function getImagesPage(href) {
 		if (href.length === 0) return false;
 		console.log('Get next page, total left:', href.length);
-		GetURI(href.shift(), function(xhr){
+		fxGetURI(href.shift(), function(xhr){
 			if (xhr.status === 200){
 				let resp = xhr.response.match(/<body>([\s\S]*)<\/body>/gim);
 				if (!resp[0]) return;
-				let div = createTag('div');
+				let div = fxCreateTag('div');
 				div.classList.add('images-page');
 				div.innerHTML = resp[0].replace(/<\/?body>/g, '');
 				imgLoadBigImage(div);
 				let html = '';
-				$$('img.big', div).forEach(function(img){ html += img.outerHTML + '<br>'; })
+				fx$$('img.big', div).forEach(function(img){ html += img.outerHTML + '<br>'; })
 				div.innerHTML = html;
 				document.body.appendChild(div);
 			}
@@ -131,23 +131,23 @@ TODO:
 		if (isCatPage()) removeFineText(); // удалить красивый текст на страницах категорий
 		
 		function removeScripts() {
-			$$('body script').forEach(function(script) { script.remove(); });
-			$$('noscript').forEach(function(noscript) { noscript.remove(); });
-			$$('link[href*="flags.css"]').forEach(function(link) { link.remove(); });
+			fx$$('body script').forEach(function(script) { script.remove(); });
+			fx$$('noscript').forEach(function(noscript) { noscript.remove(); });
+			fx$$('link[href*="flags.css"]').forEach(function(link) { link.remove(); });
 		}
 		function removeFromHeader() {
-			$$('img.badge').forEach(function(img) { img.parentElement.innerHTML = "[ Logout ]" });
-			$$('.topmenu a.tomato').forEach(function(a) { a.remove(); });
-			$$('a[href="/main/dudes.php"]').forEach(function(a) { a.remove(); });
-			$$('tr.topmenu td[align="right"]').forEach(function(td) { td.innerHTML = td.innerHTML.replace(/\|/g, '&nbsp;'); });
-			$$('td[width="100"] img[width="100"][height="100"]').forEach(function(img) { img.parentElement.remove(); });
+			fx$$('img.badge').forEach(function(img) { img.parentElement.innerHTML = "[ Logout ]" });
+			fx$$('.topmenu a.tomato').forEach(function(a) { a.remove(); });
+			fx$$('a[href="/main/dudes.php"]').forEach(function(a) { a.remove(); });
+			fx$$('tr.topmenu td[align="right"]').forEach(function(td) { td.innerHTML = td.innerHTML.replace(/\|/g, '&nbsp;'); });
+			fx$$('td[width="100"] img[width="100"][height="100"]').forEach(function(img) { img.parentElement.remove(); });
 		}
 		function removeFromFooter() {
-			$1('td.bottomline').parentElement.remove();
-			$$('body > a').forEach(function(a) { a.remove(); });
+			fx$1('td.bottomline').parentElement.remove();
+			fx$$('body > a').forEach(function(a) { a.remove(); });
 		}
 		function removeFineText() {
-			let formSearch = $1('form[name="srch"]');
+			let formSearch = fx$1('form[name="srch"]');
 			if (!formSearch) return;
 			let h2, p;
 			while (true) {

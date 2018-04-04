@@ -14,16 +14,16 @@ document.writeln = function(s) { console.log('document.writeln(s), s.length = ',
 	removeAllIframes(); // видаляти iframe
 	
 	function addUserCSS() {
-		let style = createTag('style');
-		let html = '#image { position:relative; width:auto !important; max-width:80vw !important;';
-		html += 'height:98vh !important; transform: translateY(-278px); }\n#headerthumbs, #share,';
+		let style = fxCreateTag('style');
+		let html = '#image { position:relative; width:auto !important; max-width:80vw !important; ';
+		html += 'max-height:98vh !important; transform: translateY(-158px); }\n#headerthumbs, #share, ';
 		html += '.scad-i, iframe { display:none !important; }';
 		style.innerHTML = html;
 		document.head.appendChild(style);
 	}
 	
 	function imageToTop() {
-		let image = $1('#image');
+		let image = fx$1('#image');
 		if (!image) return;
 		image.style.top = -image.offsetTop + 'px';
 	}
@@ -35,7 +35,7 @@ document.writeln = function(s) { console.log('document.writeln(s), s.length = ',
 		setTimeout(removeIframes,1000);
 		
 		function removeIframes() {
-			let iframes = $$('iframe');
+			let iframes = fx$$('iframe');
 			console.log('>>> iframes.length =', iframes.length);
 			iframes.forEach(function(iframe) {
 				iframe.remove();
