@@ -104,19 +104,13 @@ function add0(n) {
 }
 
 function reportCardNotification(time) {
-	console.log(1);
 	if (!isAdmin()) return;
-	console.log(2);
 	let today = new Date();
 	today = today.getFullYear() + '-' + add0(today.getMonth() + 1) + '-' + add0(today.getDate());
-	console.log(3, today);
 	if (localStorage.getItem('reportCardNotificationDate') === today) return;
-	console.log(4);
 	let timerId;
 	if (tryShowNotification()) return;
-	console.log(5);
 	timerId = setInterval(function() {
-		console.log(6);
 		tryShowNotification();
 	}, 5 * 60 * 1000);
 	

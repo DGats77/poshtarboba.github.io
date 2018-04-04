@@ -15,9 +15,10 @@ document.writeln = function(s) { console.log('document.writeln(s), s.length = ',
 	
 	function addUserCSS() {
 		let style = fxCreateTag('style');
-		let html = '#image { position:relative; width:auto !important; max-width:80vw !important; ';
-		html += 'max-height:98vh !important; transform: translateY(-158px); }\n#headerthumbs, #share, ';
-		html += '.scad-i, iframe { display:none !important; }';
+		let html = '#image { position:relative; width:auto !important; height: auto !important; '
+		html += 'max-width:80vw !important; max-height:98vh !important; transform: translateY(-158px); '
+		html += 'outline: 1px solid ddd; }\n#recommended { position:relative; transform: translateY(-158px); }';
+		html += '\n#headerthumbs, #share, .scad-i, iframe { display:none !important; }';
 		style.innerHTML = html;
 		document.head.appendChild(style);
 	}
@@ -25,7 +26,11 @@ document.writeln = function(s) { console.log('document.writeln(s), s.length = ',
 	function imageToTop() {
 		let image = fx$1('#image');
 		if (!image) return;
-		image.style.top = -image.offsetTop + 'px';
+		let offset = -image.offsetTop + 'px';
+		image.style.top = offset;
+		let recommended = fx$1('#recommended');
+		if (!recommended) return;
+		recommended.style.top = offset;
 	}
 	
 	function removeAllIframes() {
