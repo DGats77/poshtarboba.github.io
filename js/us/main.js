@@ -1,3 +1,9 @@
+/* main script:
+
+// @require      https://poshtarboba.github.io/js/us/main.js?2
+
+*/
+
 let GetURI = _fx_GetURI;
 let add0 = _fx_add0;
 let $$ = _fx_$$;
@@ -10,6 +16,7 @@ let toggleClass = _fx_toggleClass;
 (function(){
 	
 	if (location.host === 'imgsrc.ru') addScript('imgsrc.ru.js');
+	if (location.host === 'chan.sankakucomplex.com') addScript('chan.sankakucomplex.com.js');
 	
 	function addScript(fileName){
 		let script = createTag('script');
