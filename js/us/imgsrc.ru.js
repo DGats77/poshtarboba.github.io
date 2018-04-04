@@ -98,7 +98,7 @@ TODO:
 			div.classList.add('images-page');
 			let html = '';
 			$$('img.big').forEach(function(img) { html += img.outerHTML + '<br>'; });
-			div.innerHTML = html + ;
+			div.innerHTML = html;
 			document.body.appendChild(div);
 			getImagesPage(href);
 		}
