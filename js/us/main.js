@@ -4,16 +4,16 @@
 
 */
 
-window.GetURI = _fx_GetURI;
-window.add0 = _fx_add0;
-window.$$ = _fx_$$;
-window.$1 = _fx_$1;
-window.createTag = _fx_createTag;
-window.addClass = _fx_addClass;
-window.removeClass = _fx_removeClass;
-window.toggleClass = _fx_toggleClass;
-
 (function(){
+	
+	window.GetURI = _fx_GetURI;
+	window.add0 = _fx_add0;
+	window.$$ = _fx_$$;
+	window.$1 = _fx_$1;
+	window.createTag = _fx_createTag;
+	window.addClass = _fx_addClass;
+	window.removeClass = _fx_removeClass;
+	window.toggleClass = _fx_toggleClass;
 	
 	if (location.host === 'imgsrc.ru') addScript('imgsrc.ru.js');
 	if (location.host === 'chan.sankakucomplex.com') addScript('chan.sankakucomplex.com.js');

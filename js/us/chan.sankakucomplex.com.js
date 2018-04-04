@@ -9,9 +9,9 @@ document.writeln = function(s) { console.log('document.writeln(s), s.length = ',
 
 (function() {
 	
-	addUserCSS(); // добавити користувацькі стилі
-	imageToTop(); // підняти головну картинку догори
-	removeAllIframes(); // видаляти iframe
+	addUserCSS(); // РґРѕР±Р°РІРёС‚Рё РєРѕСЂРёСЃС‚СѓРІР°С†СЊРєС– СЃС‚РёР»С–
+	imageToTop(); // РїС–РґРЅСЏС‚Рё РіРѕР»РѕРІРЅСѓ РєР°СЂС‚РёРЅРєСѓ РґРѕРіРѕСЂРё
+	removeAllIframes(); // РІРёРґР°Р»СЏС‚Рё iframe
 	
 	function addUserCSS() {
 		let style = createTag('style');
@@ -29,7 +29,7 @@ document.writeln = function(s) { console.log('document.writeln(s), s.length = ',
 	}
 	
 	function removeAllIframes() {
-		return; // немає потреби видаляти iframe, якщо грузиться chan :before
+		return; // РЅРµРјР°С” РїРѕС‚СЂРµР±Рё РІРёРґР°Р»СЏС‚Рё iframe, СЏРєС‰Рѕ РіСЂСѓР·РёС‚СЊСЃСЏ chan :before
 		// window.addEventListener('scroll', function() { removeIframes(); });
 		removeIframes();
 		setTimeout(removeIframes,1000);
