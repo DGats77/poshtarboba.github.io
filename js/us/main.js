@@ -4,14 +4,14 @@
 
 */
 
-let GetURI = _fx_GetURI;
-let add0 = _fx_add0;
-let $$ = _fx_$$;
-let $1 = _fx_$1;
-let createTag = _fx_createTag;
-let addClass = _fx_addClass;
-let removeClass = _fx_removeClass;
-let toggleClass = _fx_toggleClass;
+window.GetURI = _fx_GetURI;
+window.add0 = _fx_add0;
+window.$$ = _fx_$$;
+window.$1 = _fx_$1;
+window.createTag = _fx_createTag;
+window.addClass = _fx_addClass;
+window.removeClass = _fx_removeClass;
+window.toggleClass = _fx_toggleClass;
 
 (function(){
 	
