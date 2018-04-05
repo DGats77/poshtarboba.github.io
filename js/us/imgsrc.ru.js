@@ -99,6 +99,7 @@ TODO:
 			let html = '';
 			fx$$('img.big').forEach(function(img) { html += img.outerHTML + '<br>'; });
 			div.innerHTML = html;
+			document.body.innerHTML = '';
 			document.body.appendChild(div);
 			getImagesPage(href);
 		}
