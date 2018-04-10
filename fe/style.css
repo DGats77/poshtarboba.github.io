@@ -7,7 +7,8 @@ a:hover { color: #77f;}
 a img { border: none;}
 h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; font-weight: bold; color: #000;}
 h1 { padding: 40px 0 24px; font-size: 36px; line-height: 1.4em;}
-h2 { padding: 0 0 12px; font-size: 27px; line-height: 1.4em;}
+h2 { padding: 24px 0 12px; font-size: 27px; line-height: 1.4em;}
+section > h2:first-child { padding-top: 0;}
 h3 { padding: 24px 0 12px;}
 .fl { float: left;}
 .fr { float: right;}
@@ -39,6 +40,10 @@ kbd { margin: 0 2px; padding: 0 6px; background: #ccc; border-radius: 3px;}
 }
 section { padding: 40px 0;}
 code, .code, pre { display: block; margin: 10px 0 20px; padding: 16px 20px; font-family: monospace; background: #ffe; border: 2px dashed #eeb;}
+code .comment,
+code .comment-js { font-style: italic; color: #bbb; font-size: 90%; }
+code .comment-js { padding-left: 24px; }
+code .comment-js:before { content: "// "; }
 pre { font-size: 70%; line-height: 16px;}
 strong { color: #000;}
 abbr { cursor: help;}
