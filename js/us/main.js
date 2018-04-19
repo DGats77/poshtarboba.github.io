@@ -6,6 +6,8 @@
 
 (function(){
 	
+	console.log('UserScript: main.js');
+	
 	window.add0 = _fx_add0;
 	window.fxGetURI = _fx_GetURI;
 	window.fx$$ = _fx_$$;
