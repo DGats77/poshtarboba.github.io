@@ -13,7 +13,7 @@ TODO:
 	imgLoadBigImage(document); // загрузить большие версии изображений
 	loadAllImages(); // загрузить все изображения на одной странице
 	
-	if (isCatPage()) {
+	if (isCatPage() || isSearchPage()) {
 		addTableCSS(); // ховер-эффект для таблиц
 		catAutoReload(); // авторелоад списка категории
 	}
@@ -22,7 +22,8 @@ TODO:
 	}
 	
 	
-	function isCatPage(){ return location.pathname.substr(0, 5) === '/cat/'; } /* or /main/search.php */
+	function isCatPage(){ return location.pathname.substr(0, 5) === '/cat/'; }
+	function isSearchPage() { return location.pathname.substr(0, 16) === '/main/search.php'; }
 	function isUserPage(){ return location.pathname === '/main/user.php'; }
 	
 	function addTableCSS() {
