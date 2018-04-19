@@ -144,7 +144,8 @@ TODO:
 			fx$$('td[width="100"] img[width="100"][height="100"]').forEach(function(img) { img.parentElement.remove(); });
 		}
 		function removeFromFooter() {
-			fx$1('td.bottomline').parentElement.remove();
+			let bottomLine = fx$1('td.bottomline');
+			if (bottomLine) bottomLine.parentElement.remove();
 			fx$$('body > a').forEach(function(a) { a.remove(); });
 		}
 		function removeFineText() {
