@@ -22,7 +22,7 @@ TODO:
 	}
 	
 	
-	function isCatPage(){ return location.pathname.substr(0, 5) === '/cat/'; }
+	function isCatPage(){ return location.pathname.substr(0, 5) === '/cat/'; } /* or /main/search.php */
 	function isUserPage(){ return location.pathname === '/main/user.php'; }
 	
 	function addTableCSS() {
