@@ -19,6 +19,7 @@
 	
 	if (location.host === 'imgsrc.ru') addScript('imgsrc.ru.js');
 	if (location.host === 'chan.sankakucomplex.com') addScript('chan.sankakucomplex.com.js');
+	if (location.host === '9gag.com') addScript('9gag.com.js');
 	
 	function addScript(fileName){
 		let script = fxCreateTag('script');
